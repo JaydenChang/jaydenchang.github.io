@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>对链表相关知识的整理</title>
+      <link href="2020/12/27/0x0003/"/>
+      <url>2020/12/27/0x0003/</url>
+      
+        <content type="html"><![CDATA[<p>花了两周整理链表的相关知识</p><p>以一个主函数和多个函数的形式来呈现</p><pre><code class="c++">/*链表合集*/#include&lt;iostream&gt;#include&lt;cstdlib&gt;using namespace std;typedef struct node&#123;    int a;    struct node *next;&#125; Node;//排序void Sort(Node*head)&#123;    node *p, *s, *pt;    p = head;    s = p-&gt;next;    while (p-&gt;next != NULL)&#123;        while(s-&gt;next != NULL)&#123;            if(p-&gt;next &gt; s-&gt;next)&#123;                pt-&gt;next = p-&gt;next;                p-&gt;next = s-&gt;next;                s-&gt;next = pt-&gt;next;            &#125;            s = s-&gt;next;        &#125;        p = p-&gt;next;        pt = s;    &#125;&#125;Node *add(Node*head,int num)&#123;//在表尾插入元素    Node *p = NULL, *pr = head;    p = (Node *)malloc(sizeof(Node));    if(p == NULL)&#123;        cout &lt;&lt; &quot;no enough memory to allocate&quot;;    &#125;    if(head == NULL)&#123;        head = p;    &#125;else&#123;        while(pr-&gt;next != NULL)&#123;            pr = pr-&gt;next;        &#125;        pr-&gt;next = p;    &#125;    p-&gt;a = num;    p-&gt;next = NULL;    return head;&#125;//打印链表void show(Node*head)&#123;    Node *p = head;    while(p != NULL)&#123;        cout &lt;&lt; p-&gt;a &lt;&lt; &quot; &quot;;        p = p-&gt;next;    &#125;&#125;void del(Node*head)&#123;//释放申请的内存空间    Node *p = head, *pr = NULL;    while(p != NULL)&#123;        pr = p;        p = p-&gt;next;        free(pr);    &#125;&#125;//删除链表里某一个节点Node* Delete(Node*head,int num)&#123;    Node *p = head, *pr = head;    //pr是目标元素前一个节点    if(head == NULL)&#123;        cout &lt;&lt; &quot;empty table&quot;;        return head;//空表退出    &#125;    while(num != p-&gt;a &amp;&amp; p-&gt;next != NULL)&#123;        //未找到且不是空表        pr = p;        p = p-&gt;next;//p直接指向当前节点的下一节点    &#125;    if(num == p-&gt;a)&#123;//找到了待删除节点        if(p == head)&#123;            head = p-&gt;next;//直接让头指针指向待删除结点p的下一节点        &#125;else&#123;            pr-&gt;next = p-&gt;next;            //前一节点的指针域指向待删除结点的下一节点        &#125;        free(p);    &#125;else&#123;//到表尾且没找到        cout &lt;&lt; &quot;not found&quot;;    &#125;    return head;&#125;//在链表里插入元素Node* insert(Node*head,int num)&#123;    Node *pr = head, *p = head, *temp = NULL;    p = (Node *)malloc(sizeof(Node));    if(p == NULL)&#123;        cout &lt;&lt; &quot;no enough memory&quot;;        exit(0);    &#125;    p-&gt;next = NULL;//待插入节点指针域为空指针    p-&gt;a = num;//待插入节点的数值域为num    if(head == NULL)&#123;        head = p;//若原链表为空表，待插入节点为头节点    &#125;else&#123;//若为非空    //若未找到待插入节点的位置且未找到表尾则继续找        while(pr-&gt;a &lt; num &amp;&amp; pr-&gt;next != NULL)&#123;            temp = pr;//temp保存当前节点的下一节点            pr = pr-&gt;next;//pr指向当前节点的下一节点        &#125;        if(pr-&gt;a &gt;= num)&#123;            if(pr == head)&#123;//若在头节点前插入新节点                p-&gt;next = head;            //将新节点的指针域指向原链表的头节点                head = p;//让head指向新节点            &#125;else&#123;//在链表中部插入新节点            //进行排序                pr = temp;                p-&gt;next = pr-&gt;next;                pr-&gt;next = p;            &#125;        &#125;else&#123;//若在表尾插入新节点            pr-&gt;next = p;//让末节点的指针域指向新节点        &#125;    &#125;    return head;//返回插入新节点猴的链表头指针head的值&#125;int main()&#123;    int num;    char ch;    struct node *head = NULL;    do&#123;        cin &gt;&gt; num;        if(num &gt;= 0)&#123;            head = add(head, num);            show(head);        &#125;        if(num % 5 ==0)&#123;            cout &lt;&lt; &quot;continue?(y/n)&quot;;            cin &gt;&gt; ch;            if((ch == &#39;n&#39;) || (ch == &#39;N&#39;))&#123;                break;            &#125;        &#125;//避免死循环    &#125; while (num &gt;= 0);    del(head);&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2020年度总结</title>
+      <link href="2020/12/25/0x0002/"/>
+      <url>2020/12/25/0x0002/</url>
+      
+        <content type="html"><![CDATA[<h1 id="年报"><a href="#年报" class="headerlink" title="年报"></a>年报</h1><p>2020是奇幻的一年，犹记得刚放寒假时，就听到了科比不幸逝世的噩耗，心里为之震撼，然后就是牵动全国人民的心的新冠疫情，总的来说，我的上半年并没有很认真，没有做到最好，所幸，还有老番茄和何无空的大学的开挂之旅激励着我。</p><p>进入大学后，首先要感谢世豪师兄，他把我点上台唱歌[Facepalm]，开启了我大学的奇幻之旅，先是军训时的连队负责人(算半个)，然后到军训合唱团的指挥，不断尝试新事物。军训期间面试了两个组织部门，都没过一面，让我开始反思自己。军训后，面试了三个组织部门，都过了一面，再三考虑，还是选择了软件协会，然而我的二面经历是坎坷的，让我想不到的是，二面居然玩剧本杀，让我提前体验到社会的险恶，其他同学都有着自己的小心思，各种尔虞我诈，我被各种骗得团团转，最后应该是靠着嘴皮子功夫进了信宣部吧(逃)。大学竞选班长兼团支书，让我体验到了前所未有的忙。然后就是接下来的各种活动，班长嘛，肯定要第一个上的，于是我就担任了主持人，负责人，运动员，班赛球队队员，摄影师(虽然也没拍多少照)，文案撰写等，以至于其他班班长说9班班长是”全能班长”[Facepalm]，渐渐地我也开始摸索出一条摸鱼(划掉)高效率的工作模式，这样下来，确实腾出了许多时间。当了班长，就要有很多次上台发言、向其他班展示的情况，我企图在这些环节来改善我语速过快的缺点，但是我太天真了，效果甚微，还是只能从最基本的读书做起[Hurt]。加入了一个部门，认识了很多大佬，活也不多(划掉)，工作分配很合理，真正意义上接触了公众号，了解了公众号的一些基本信息(后来发现部门的男生就我不知道这些[Hurt])，总的来说，在这个部门还是很快乐的。回望这三个月，因为当了班长，我很多时间被占用了，包括周末用来打球的时间，全部被分配去收集、整理、填写资料，但有个好处是，我终于不会那么闲了，一闲下来就不知道要干什么，还有ddl的出现，让我提高了办事效率[Hurt]。大学里进行了多次团建，让我印象最深刻的一次是整个软协出去团建，当时只有我傻乎乎地说要骑单车回去，结果没想到mobike在佛山的运营区域还是分开的，当时我心急如焚找不到下策，只好乖乖等公车，所幸，都搭上了末班车，也算是给自己一次教训。这学期里认识了好多有趣的人，包括其他班的班长以及其他部门的人，他们都说自己是蒟蒻，结果我发现只有我才是蒟蒻[Hurt]。</p><p>在过去一年里，我总是太在意别人的看法，经常因为别人一句话而彻夜不眠，今年，忘却昨日的功与过，踏踏实实做好一个班长，认认真真写好每一篇信宣推文，多参加比赛，让自己的大一不留遗憾。</p><p>2021我也不立那么多flag，以前立的就没拔出过几个，2021就不立了，好好学习，朝着藏在自己心里的那个目标继续前进！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>This is my new blog</title>
+      <link href="2020/12/25/0x0001/"/>
+      <url>2020/12/25/0x0001/</url>
+      
+        <content type="html"><![CDATA[<p>纪念我的第一个小项目–个人博客，也当作昨日迟来的平安夜礼物q(≧▽≦q)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
