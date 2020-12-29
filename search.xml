@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>二分查找的四种实现</title>
+      <link href="2020/12/29/0x0004/"/>
+      <url>2020/12/29/0x0004/</url>
+      
+        <content type="html"><![CDATA[<pre><code class="c++">//二分查找判断某个元素是否在序列里long search(int a[],int low,int high,int k)&#123;    if(low &lt;= high)&#123;        int mid = low + (high - low) / 2;        if(k == a[mid])&#123;            return 1;//找到了返回1        &#125;else if(a[mid] &gt; k)&#123;//比中值小在左边找                        return search(a, low, mid - 1, k);        &#125;else&#123;//比中值大在右边找                        return search(a, mid + 1, high, k);        &#125;    &#125;    return 0;//如果都找不到默认返回0    &#125;</code></pre><pre><code class="c++">//oj的题目是给定长度为n的不下降序列，做m个询问//1.从左逼近(直接丢函数包)long fun(long a[],long low,long high,long key)&#123;    int mid = low + (low + high) / 2;    if(low &lt;= high)&#123;        if(a[mid] &lt; key)&#123;//在右边查找                        return fun(a, mid + 1, high, key);        &#125;        if(a[mid] &gt; key)&#123;//在左边查找                        return fun(a, low, mid - 1, key);        &#125;        else&#123;/*如果找到目标元素，判断有无重复，有的话取最大下标*/            while(mid&gt;=0)&#123;                if(a[mid]!=key)&#123;                    break;                &#125;                mid++;            &#125;        &#125;    &#125;    return mid;&#125;</code></pre><pre><code class="c++">//二分查找(从右逼近)long fun(int a[],int target ,int temp)&#123;    int low = 0, high = target, int temp, mid;    while(low &lt; high)&#123;        mid = (low + high) / 2;        if(a[mid] == taret)&#123;            high = mid;        &#125;        else if(a[mid] &gt; target)&#123;            high = mid;        &#125;else&#123;            low = mid + 1;        &#125;    &#125;    if(a[temp] &lt; target)&#123;        return temp + 2;    &#125;    /*这里是来区分有没有找到目标值，只要从始至终都没有找到目标    元素，返回n+2*/    return low + 1;&#125;</code></pre><pre><code class="c++">/*计算包含再给定区间里的序列数值的个数*/#include&lt;iostream&gt;#include&lt;cstdlib&gt;#include&lt;algorithm&gt;using namespace std;//这里输入的序列是不按照顺序的int left(int a[], int target, int temp) &#123;    int low = 0, high = temp;    int mid;//左端不断向右边逼近        while (low &lt; high) &#123;        mid = (low + high) / 2;        if (a[mid] == target) &#123;            low = mid + 1;        &#125;else if (a[mid] &lt; target) &#123;            low = mid + 1;        &#125;        else if (a[mid] &gt; target) &#123;            high = mid;        &#125;    &#125;    return low;&#125;int right(int a[], int target, int temp) &#123;    int low = 0, high = temp;    int mid;//右端不断向左端逼近        while (low &lt; high) &#123;        mid = (low + high) / 2;        if (a[mid] == target) &#123;            high = mid;        &#125;        else if (a[mid] &gt; target) &#123;            high = mid;        &#125;        else if (a[mid] &lt; target) &#123;            low = mid + 1;        &#125;    &#125;    return low;&#125;int main()&#123;    int i, j, k, n, m, p, q;    cin &gt;&gt; n &gt;&gt; m;//n表示有几个数字，m表示要输入几组数字    int* a = (int*)malloc(n * sizeof(int));    for (i = 0; i &lt; n; i++) &#123;        cin &gt;&gt; a[i];    &#125;    sort(a, a + n);    for (j = 0; j &lt; m; j++) &#123;        cin &gt;&gt; p &gt;&gt; q;//p&lt;=q，p是左区间，q是右区间        cout &lt;&lt; left(a, q, n) - right(a, p, n) &lt;&lt; endl;/*left把n不断往左靠，使得右边界逼近q，right把p不断右移，不断逼近右边界*/    &#125;    free(a);&#125;/*排完序后再放进函数里，left的作用:对比左数和序列里的每一个数,返回小于p的数的序号right是让q与序列的数比较，返回大于q的序号然后大减小就得到了区间里包含的数*/</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>对链表相关知识的整理</title>
       <link href="2020/12/27/0x0003/"/>
       <url>2020/12/27/0x0003/</url>
