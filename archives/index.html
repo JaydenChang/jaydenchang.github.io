@@ -173,6 +173,8 @@ void Sor...
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.4" target="_blank" rel="noopener">v1.4.4</a></small>
+        <br>
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数 <span id="busuanzi_value_site_uv"></span> 人
     </p>
 </footer>
 
@@ -330,19 +332,7 @@ void Sor...
         </div>
     </div>
 </div>
- 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-
-  gtag('config', 'UA-149874671-1');
-</script>
- 
+  
 
 <script>
   function initialTyped() {
@@ -365,6 +355,38 @@ void Sor...
   }
 </script>
 
+ 
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'en';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'QzBaPzTq1ksSIDJFKIxcCWWc-gzGzoHsz',
+      appKey: 'PdoHCnFmD0gbXJz9QNWY7pdF',
+      notify: '',
+      verify: 'false',
+      avatar: 'mp',
+      placeholder: 'Leave your throughs behind~',
+      visitor: 'false',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
 
 
 

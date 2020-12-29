@@ -114,11 +114,6 @@ long search(int a[],int low,int high,int k)&amp;#123;
                 
                 
                 
-                <span id="busuanzi_container_page_pv">
-                    <b class="iconfont icon-read"></b> <i>Read count</i>
-                    <span id="busuanzi_value_page_pv">0</span>
-                </span>
-                
             </p>
             
             
@@ -292,6 +287,8 @@ right是让q与序列的数比较，返回大于q的序号
             
             
             
+            <div id="vcomments"></div>
+            
         </div>
         <div class="sidebar">
             <div class="box animated fadeInRight">
@@ -342,6 +339,8 @@ right是让q与序列的数比较，返回大于q的序号
             <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
         </span>
         <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.4" target="_blank" rel="noopener">v1.4.4</a></small>
+        <br>
+本站总访问量 <span id="busuanzi_value_site_pv"></span> 次&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数 <span id="busuanzi_value_site_uv"></span> 人
     </p>
 </footer>
 
@@ -499,19 +498,7 @@ right是让q与序列的数比较，返回大于q的序号
         </div>
     </div>
 </div>
- 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="//www.googletagmanager.com/gtag/js?id=UA-149874671-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-
-  gtag('config', 'UA-149874671-1');
-</script>
- 
+  
 
 <script>
   function initialTyped() {
@@ -534,6 +521,38 @@ right是让q与序列的数比较，返回大于q的序号
   }
 </script>
 
+ 
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'en';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'QzBaPzTq1ksSIDJFKIxcCWWc-gzGzoHsz',
+      appKey: 'PdoHCnFmD0gbXJz9QNWY7pdF',
+      notify: '',
+      verify: 'false',
+      avatar: 'mp',
+      placeholder: 'Leave your throughs behind~',
+      visitor: 'false',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
 
 
 
