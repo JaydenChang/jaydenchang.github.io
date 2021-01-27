@@ -5,17 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>对链表相关知识的整理 - Jayden&#39;s Blog</title>
+    <title>1月的胡思乱想 - Jayden&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="JaydenChang,"> 
-    <meta name="description" content="花了两周整理链表的相关知识
-以一个主函数和多个函数的形式来呈现
-/*链表合集*/
-#include&amp;lt;iostream&amp;gt;
-#include&amp;lt;cstdlib&amp;gt;
-using nam,"> 
+    <meta name="description" content="1.17
+最近在考试，好久没更了，就断断续续写下自己这些天的所思所想吧。
+1.19
+刚考完试，这几周的压力、负面情绪都挤压了在一起，对职业生涯的焦虑，学自己这学期忙碌而又不是很充实的遗憾、失落，总体,"> 
     <meta name="author" content="Jayden Chang"> 
     <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -63,7 +61,7 @@ using nam,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">对链表相关知识的整理</h3>
+        <h3 class="subtitle">1月的胡思乱想</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -93,25 +91,25 @@ using nam,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/技术"><b>「
-                    </b>技术<b> 」</b></a>
+                <a href="/categories/随笔"><b>「
+                    </b>随笔<b> 」</b></a>
                 
-                December 29, 2020
+                January 27, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/12/29/0x0003/" title="对链表相关知识的整理" class="">对链表相关知识的整理</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/01/27/0x0005/" title="1月的胡思乱想" class="">1月的胡思乱想</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.9k
+                    2.4k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    4 mins.
+                    2 mins.
                 </span>
                 
                 
@@ -119,7 +117,7 @@ using nam,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
             
         </div>
     </div>
@@ -140,153 +138,22 @@ using nam,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>花了两周整理链表的相关知识</p>
-<p>以一个主函数和多个函数的形式来呈现</p>
-<pre><code class="c++">/*链表合集*/
-#include&lt;iostream&gt;
-#include&lt;cstdlib&gt;
-using namespace std;
-typedef struct node&#123;
-    int a;
-    struct node *next;
-&#125; Node;
-//排序
-void Sort(Node*head)&#123;
-    node *p, *s, *pt;
-    p = head;
-    s = p-&gt;next;
-    while (p-&gt;next != NULL)&#123;
-        while(s-&gt;next != NULL)&#123;
-            if(p-&gt;next &gt; s-&gt;next)&#123;
-                pt-&gt;next = p-&gt;next;
-                p-&gt;next = s-&gt;next;
-                s-&gt;next = pt-&gt;next;
-            &#125;
-            s = s-&gt;next;
-        &#125;
-        p = p-&gt;next;
-        pt = s;
-    &#125;
-&#125;
-
-Node *add(Node*head,int num)&#123;//在表尾插入元素
-    Node *p = NULL, *pr = head;
-    p = (Node *)malloc(sizeof(Node));
-    if(p == NULL)&#123;
-        cout &lt;&lt; &quot;no enough memory to allocate&quot;;
-    &#125;
-    if(head == NULL)&#123;
-        head = p;
-    &#125;else&#123;
-        while(pr-&gt;next != NULL)&#123;
-            pr = pr-&gt;next;
-        &#125;
-        pr-&gt;next = p;
-    &#125;
-    p-&gt;a = num;
-    p-&gt;next = NULL;
-    return head;
-&#125;
-//打印链表
-void show(Node*head)&#123;
-    Node *p = head;
-    while(p != NULL)&#123;
-        cout &lt;&lt; p-&gt;a &lt;&lt; &quot; &quot;;
-        p = p-&gt;next;
-    &#125;
-&#125;
-
-void del(Node*head)&#123;//释放申请的内存空间
-    Node *p = head, *pr = NULL;
-    while(p != NULL)&#123;
-        pr = p;
-        p = p-&gt;next;
-        free(pr);
-    &#125;
-&#125;
-//删除链表里某一个节点
-Node* Delete(Node*head,int num)&#123;
-    Node *p = head, *pr = head;
-    //pr是目标元素前一个节点
-    if(head == NULL)&#123;
-        cout &lt;&lt; &quot;empty table&quot;;
-        return head;//空表退出
-    &#125;
-    while(num != p-&gt;a &amp;&amp; p-&gt;next != NULL)&#123;
-        //未找到且不是空表
-        pr = p;
-        p = p-&gt;next;//p直接指向当前节点的下一节点
-    &#125;
-    if(num == p-&gt;a)&#123;//找到了待删除节点
-        if(p == head)&#123;
-            head = p-&gt;next;//直接让头指针指向待删除结点p的下一节点
-        &#125;else&#123;
-            pr-&gt;next = p-&gt;next;
-            //前一节点的指针域指向待删除结点的下一节点
-        &#125;
-        free(p);
-    &#125;else&#123;//到表尾且没找到
-        cout &lt;&lt; &quot;not found&quot;;
-    &#125;
-    return head;
-&#125;
-//在链表里插入元素
-Node* insert(Node*head,int num)&#123;
-    Node *pr = head, *p = head, *temp = NULL;
-    p = (Node *)malloc(sizeof(Node));
-    if(p == NULL)&#123;
-        cout &lt;&lt; &quot;no enough memory&quot;;
-        exit(0);
-    &#125;
-    p-&gt;next = NULL;//待插入节点指针域为空指针
-    p-&gt;a = num;//待插入节点的数值域为num
-    if(head == NULL)&#123;
-        head = p;//若原链表为空表，待插入节点为头节点
-    &#125;else&#123;//若为非空
-    //若未找到待插入节点的位置且未找到表尾则继续找
-        while(pr-&gt;a &lt; num &amp;&amp; pr-&gt;next != NULL)&#123;
-            temp = pr;//temp保存当前节点的下一节点
-            pr = pr-&gt;next;//pr指向当前节点的下一节点
-        &#125;
-        if(pr-&gt;a &gt;= num)&#123;
-            if(pr == head)&#123;//若在头节点前插入新节点
-                p-&gt;next = head;
-            //将新节点的指针域指向原链表的头节点
-                head = p;//让head指向新节点
-            &#125;else&#123;//在链表中部插入新节点
-            //进行排序
-                pr = temp;
-                p-&gt;next = pr-&gt;next;
-                pr-&gt;next = p;
-            &#125;
-        &#125;else&#123;//若在表尾插入新节点
-            pr-&gt;next = p;//让末节点的指针域指向新节点
-        &#125;
-    &#125;
-    return head;//返回插入新节点猴的链表头指针head的值
-&#125;
-
-int main()
-&#123;
-    int num;
-    char ch;
-    struct node *head = NULL;
-    do&#123;
-        cin &gt;&gt; num;
-        if(num &gt;= 0)&#123;
-            head = add(head, num);
-            show(head);
-        &#125;
-        if(num % 5 ==0)&#123;
-            cout &lt;&lt; &quot;continue?(y/n)&quot;;
-            cin &gt;&gt; ch;
-            if((ch == &#39;n&#39;) || (ch == &#39;N&#39;))&#123;
-                break;
-            &#125;
-        &#125;//避免死循环
-    &#125; while (num &gt;= 0);
-    del(head);
-&#125;</code></pre>
+            <p>1.17</p>
+<p>最近在考试，好久没更了，就断断续续写下自己这些天的所思所想吧。</p>
+<p>1.19</p>
+<p>刚考完试，这几周的压力、负面情绪都挤压了在一起，对职业生涯的焦虑，学自己这学期忙碌而又不是很充实的遗憾、失落，总体给人一个很丧的感觉，但是又不想把自己的负面情绪散播出去，影响到在意我的好友们，过去，我常常在以他人的目光，有时他人的一句话甚至会作为我的情绪的晴雨表，不得不说我以前实在是太玻璃心了。这学期我一直在想，我发朋友圈的目的是为了什么，是为了获得他人的认可吗？是要他人来评价自己吗？这学期来，我尝试过发过几条朋友圈，都是获得比较少赞的，当时我还是比较失落的。在某一个夜晚，我躺在床上翻来覆去睡不着，忽然想到这个问题，相比起高中，我在大学发圈的频率大大上升，在成为班长之后，我结识了更多的人，有时的朋友圈可以有80+的赞，有时也寥寥无几。这时我突然回忆起我高考完和Sam的一次通话，”其实吧，我发朋友圈是为了记录生活，不管别人赞不赞，开心的是自己”，想到这里，突然豁然开朗。</p>
+<p>1.20</p>
+<p>其实我知道自己一直有轻微的抑郁，心理方面有时会表现得很病态，一直找不到一种解脱的方式，自己写博客，就当是一种泄愤的方式，一种自我治疗吧。我的个人兴趣爱好和很多人表现得不一样，特别是行为方式上，有一些人格格不入，我们相互不能理解对方。有时我打开音乐播放器，点击纯音乐，查看评论，发现原来这个世界上还是有那么一群人和我有着相同的感受，无言却胜千言，不同人有着不同的经历，在外人看来，你可能就是矫情，可他没经历过，那就让他说去吧。</p>
+<p>1.21<br>今早很早就醒了，大概六点，继续沿着昨天的思绪，回忆整个高三越来越发现我和Sam太像了，相似的经历，相近的行为作风、性格，真的很高兴能在高三与你做朋友、共同进步，在学习和生活上，我们相互较劲，有不好的情绪，我们相互倾诉。</p>
+<p>其实高三我还想感谢潘，你的出现，让我感到了前所未有的压力，当然是在认识她之后。整个高三，我都是以你为目标，不断想超越你，在球场上，有一半时间都是我去防你，一想到她，我就防的更积极，也有很多时候我主攻你。尽管我高三这样做在外人看起来真的好变态，高考完那个晚上，我也这样认为[facepalm]，我高考完回到教室，对你说的那一声谢谢，让我的高三得到了解脱，尽管我们以后可能不会再有交集，但还是真的很感谢你！</p>
+<p>1.22<br>今日大学城寒招队伍碰面，新认识了许多有趣的小伙伴，个个都是人才，说话又好听(滑稽)。吹完水后，又与Sam相约大学城，把整个华师校区都骑了一遍，才发觉，这才是我高考前梦中隐约出现大学该有的样子(这里没有黑南海)，有人曾和我说过，有机会要去别的大学，甚至是本学校的其他校区看看，对比了石牌，大学城和华工五山，果然越好的大学，对于校园环境、设施的建设总是做的比较好的，这就不难解释为什么中国营造着拼了命要考上好大学的氛围。图书馆，教学楼，各学院院楼，阳光映射在人工湖上，在轻微的波澜中，透过竹林，鱼鳞般阳光的碎隙格外显眼……</p>
+<p>1.23</p>
+<p>今天整天沉浸在代码行里，没什么思绪[doge]</p>
+<p>1.24</p>
+<p>又到了每月固定的网抑云时刻，又默默地打开网易云里纯音乐的歌单，那一个个音符，都与我产生了共鸣，回忆起高三，也许这就是青春吧，每天与Sam在教室里奋笔疾书，回到宿舍拿起吉他和Four和Sam唱。这里引用席慕容的一句话，青春的锦绣与贵重，就在于它的天真与无瑕，在于它的可遇而不可求，在于它的永不重回。</p>
+<p>1.26<br>今天上午出发找Sam，径直前往天河地区漫游(瞎逛)，再次感受繁华城市的繁华地带，随后又路过一个唱吧，在那里欣赏了许多路人的歌声，不得不多，高手在民间。</p>
+<p>然后就是今天的重点，我！回！去！寒！招！啦！踏进校园的那一刻，走到校友墙那里，自己终于上了墙，内心满是激动，不过也在感叹，时光过得太快了，三年一眨眼就过去了，高三时的每个场景又浮现在我眼前，熟悉的教室角落，和蔼的老师们，看见老师，又想起一年前的自己……进教室了，看见了可爱有趣学弟学妹们，一年前自己要站在讲台上宣讲的愿望终于实现了，也是一年前，学长学姐站在讲台上宣讲，今年轮到我了，也进入凡尔赛(吹牛)状态(滑稽)，才发现原来自己高三也牛B过，自己在高三后期摸索出的方法也在高考前几天帮我稳住了自己。进了学校，先是龙哥来接应我们，看见龙哥，又想起那让人欲睡的课堂[doge]，进入教学楼，看见了永远保持一颗童心的汪老师，不得不说，汪老师在高三阶段帮我解决了很多学习、心理上的困惑，以至于我无法用文字来表达我的感激之情；后来我也见到了我的学长–Sharp[doge]，见面即握手致意相互寒暄(吹水)……收到了学弟学妹感谢的小纸条，内心满是感动。后来又与Sam和老马一同喝茶，聊天(还是吹水)，真的不得不佩服老马的大局观，对一些细节的处理，在交谈过程中，才发现以前看似枯燥的课堂，其实蕴含着许多人生的道理，只不过我们没发掘罢了</p>
+<p>1.27<br>肝完这篇文章，就去码代码<br>今早起来，回想昨天发生了什么，感觉真的就发生在一瞬间，天知道我经历了什么，不过寒招也接近尾声了，我也要继续完成我咕了几天的信宣推文了。<br>Last but not least,2021,码好每一行代码，弹好每一个音符，唱好每一首歌，投好每一个球，充实过好每一天<br>                                                                                                                      To Be Continued…</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
