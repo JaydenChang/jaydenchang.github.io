@@ -141,22 +141,22 @@
             <a href="/categories/技术"><b>「
                 </b>技术<b> 」</b></a>
             
-            January 30, 2021
+            December 29, 2020
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/2021/01/30/0x0006/" title="基于单链表的图书管理系统" class="posttitle">基于单链表的图书管理系统</a></h3>
+            <a href="/2020/12/29/0x0004/" title="二分查找的四种实现" class="posttitle">二分查找的四种实现</a></h3>
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>Words count</i>
-                18k
+                3.4k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                16 mins.
+                3 mins.
             </span>
             
             
@@ -167,9 +167,12 @@
         
         <div class="md-content animated fadeIn">
             
-            <p>上个月在复习链表知识时，本来想动手运用下，但是我没想到我上一篇关于链表的文章写的程序漏洞百出，加上其他班要求写一个基于单链表的图书管理系统，我的班没有布置，并且大二要学数据结构，又听说链表是数据结构里...</p>
+            <pre><code class="c++">//二分查找判断某个元素是否在序列里
+long search(int a[],int low,int high,int k)&#123;
+    if(low &lt;= high)&#123;
+        int mid...</code></pre>
             
-            <span class="read-more"><a href="/2021/01/30/0x0006/" title="Read article" class="posttitle">Read article</a>
+            <span class="read-more"><a href="/2020/12/29/0x0004/" title="Read article" class="posttitle">Read article</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -190,61 +193,6 @@
 
     <div id="primary">
         
-<div class="post" id="post">
-    <div class="post-cover animated fadeIn" style="
-            background-image:
-            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-            url(/img/welcome-cover.jpg);">
-    </div>
-    <div class="else">
-        <p class="animated fadeInDown">
-            
-                <a href="/categories/技术">
-                  <b>「 </b>技术<b> 」</b>
-                </a>
-            
-            December 29, 2020
-        </p>
-        <h3 class="post-title animated fadeInDown"><a href="/2020/12/29/0x0004/" title="二分查找的四种实现" class="posttitle">二分查找的四种实现</a></h3>
-        
-            <p class="post-count animated fadeInDown">
-                
-                    <span>
-                        <b class="iconfont icon-text2"></b> <i>Words count</i>
-                        3.4k
-                    </span>
-                
-                
-                    <span>
-                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                        3 mins.
-                    </span>
-                
-                
-            </p>
-            
-                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
-            
-        
-        <div class="md-content animated fadeIn">
-            
-                <pre><code class="c++">//二分查找判断某个元素是否在序列里
-long search(int a[],int low,int high,int k)&#123;
-    if(low &lt;= high)&#123;
-        int mid = low + (high - low) / 2;
-        if(k == a[mid])&#123;
-            return 1;//找到了返回1
-        &#125;else if(a[mid] &gt; k)&#123;
-//比中值小在左边找            
-            return search(a, low, mid - 1, k);
-        &...</code></pre>
-            
-            <span class="read-more"><a href="/2020/12/29/0x0004/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
-        </div>
-    </div>
-</div>
-
-
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
