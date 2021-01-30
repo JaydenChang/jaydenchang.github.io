@@ -1,0 +1,923 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>基于单链表的图书管理系统 - Jayden&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="JaydenChang,"> 
+    <meta name="description" content="上个月在复习链表知识时，本来想动手运用下，但是我没想到我上一篇关于链表的文章写的程序漏洞百出，加上其他班要求写一个基于单链表的图书管理系统，我的班没有布置，并且大二要学数据结构，又听说链表是数据结构,"> 
+    <meta name="author" content="Jayden Chang"> 
+    <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Jayden&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">基于单链表的图书管理系统</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/技术"><b>「
+                    </b>技术<b> 」</b></a>
+                
+                January 30, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/01/30/0x0006/" title="基于单链表的图书管理系统" class="">基于单链表的图书管理系统</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    18k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    16 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>上个月在复习链表知识时，本来想动手运用下，但是我没想到我上一篇关于链表的文章写的程序漏洞百出，加上其他班要求写一个基于单链表的图书管理系统，我的班没有布置，并且大二要学数据结构，又听说链表是数据结构里最简单的一部分，只得花了一个月来查阅各种资料、阅读各种博文，在综合网友们的代码后，自己整理了下，写了这个图书管理系统(一定还有bug我没发现)，代码如下：</p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;conio.h&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+#include&lt;iomanip&gt;
+#include&lt;Windows.h&gt;
+using namespace std;
+
+struct mInfo &#123;
+    unsigned long long ID;
+    char name[21];
+    int score;
+&#125;;
+
+struct mList &#123;
+    struct mInfo data;
+    struct mList* next;
+&#125;;
+
+mList* mCreate(mList* mHead)
+&#123;
+    //initialize the list
+    mHead = (mList*)malloc(sizeof(mList));
+    if (mHead == NULL) &#123;
+        return 0;
+    &#125;
+    mHead-&gt;next = NULL;
+    return mHead;
+&#125;
+
+mList* add_m(mList* mHead)
+&#123;
+    mList* s, * p;//p-&gt;pointer to next,s-&gt;pointer to data
+    p = mHead;
+    int num = 0;
+    cout &lt;&lt; &quot;How many memberships do you want to registry: &quot;;
+    cin &gt;&gt; num;
+    for (int i = 0; i &lt; num; i++) &#123;
+        s = (mList*)malloc(sizeof(mList));
+        cout &lt;&lt; &quot;memership No.&quot; &lt;&lt; i+1 &lt;&lt; &quot; &#39;s info&quot; &lt;&lt; endl;
+        cout &lt;&lt; &quot;enter the num: &quot;;
+        cin &gt;&gt; s-&gt;data.ID;
+        cout &lt;&lt; &quot;enter the name: &quot;;
+        cin &gt;&gt; s-&gt;data.name;
+        cout &lt;&lt; &quot;enter the score: &quot;;
+        cin &gt;&gt; s-&gt;data.score;
+        p-&gt;next = s;
+        p = s;
+        system(&quot;cls&quot;);
+    &#125;
+    p-&gt;next = NULL;
+    return mHead;
+&#125;
+
+void print_m(mList* L)
+&#123;
+    cout &lt;&lt; &quot;num&quot; &lt;&lt; &#39;\t&#39; &lt;&lt; &quot;name&quot; &lt;&lt; &#39;\t&#39; &lt;&lt; &quot;score\n&quot;;
+    mList* p;
+    p = L-&gt;next;
+    while (p != NULL) &#123;
+        cout.setf(ios::fixed);
+        cout &lt;&lt; p-&gt;data.ID &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;data.name &lt;&lt; &quot;\t&quot; &lt;&lt; p-&gt;data.score &lt;&lt; endl;
+        p = p-&gt;next;
+        //system(&quot;pause&quot;);
+    &#125;
+&#125;
+
+void insert_m(mList* L)
+&#123;
+    mList* p, * s;//p-&gt;pointer to next,s-&gt;pointer to data
+    p = L-&gt;next;
+    s = (mList*)malloc(sizeof(mList));
+    while (p-&gt;next != NULL) &#123;
+        p = p-&gt;next;
+    &#125;
+    cout &lt;&lt; &quot;enter the ID for membership: &quot;;
+    cin &gt;&gt; s-&gt;data.ID;
+    cout &lt;&lt; &quot;enter the name: &quot;;
+    cin &gt;&gt; s-&gt;data.name;
+    cout &lt;&lt; &quot;enter the score: &quot;;
+    cin &gt;&gt; s-&gt;data.score;
+    s-&gt;next = p-&gt;next;
+    p-&gt;next = s;
+&#125;
+
+void del_m(mList* L)
+&#123;
+    mList* p, *pre;
+    p = L-&gt;next;
+    pre = p;
+    unsigned long long num = 0;
+    cout &lt;&lt; &quot;enter the ID: &quot;;
+    cin &gt;&gt; num;
+    while (p != NULL) &#123;
+        if (p-&gt;data.ID == num) &#123;
+            pre-&gt;next = p-&gt;next;
+            free(p);
+            cout &lt;&lt; &quot;delete successfully\n&quot;;
+            return;
+        &#125;
+        pre = p;
+        p = p-&gt;next;
+    &#125;
+    cout &lt;&lt; &quot;could not find the book that you want to delete\n&quot;;
+&#125;
+
+void edit_m(mList* L) 
+&#123;
+    mList* p;
+    unsigned num = 0;
+    p = L-&gt;next;
+    cout &lt;&lt; &quot;enter the num of the book that you want to delete: &quot;;
+    cin &gt;&gt; num;
+    while (p != NULL) &#123;
+        if (p-&gt;data.ID == num) &#123;
+            cout &lt;&lt; &quot;you can only edit the name\n&quot;;
+            /*cout &lt;&lt; &quot;enter the new num: &quot;;
+            cin &gt;&gt; p-&gt;data.ID;*/
+            cout &lt;&lt; &quot;enter the new name: &quot;;
+            cin &gt;&gt; p-&gt;data.name;
+            //cout &lt;&lt; &quot;enter the new score: &quot;
+            return;
+        &#125;
+        p = p-&gt;next;
+    &#125;
+    cout &lt;&lt; &quot;could not find the book that you want to edit\n&quot;;
+    p = p-&gt;next;
+&#125;
+
+void search_m(mList* L)
+&#123;
+    mList* p;
+    unsigned long long num = 0;
+    p = L-&gt;next;
+    cout &lt;&lt; &quot;enter the book that you want to search: &quot;;
+    cin &gt;&gt; num;
+    while (p != NULL) &#123;
+        if (p-&gt;data.ID == num) &#123;
+            cout &lt;&lt; &quot;num&quot; &lt;&lt; &#39;\t&#39; &lt;&lt; &quot;name&quot; &lt;&lt; &#39;\t&#39; &lt;&lt; &quot;price\n&quot;;
+            cout &lt;&lt; p-&gt;data.ID &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;data.name &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;data.score &lt;&lt; endl;
+            //system(&quot;pause&quot;);
+            return;
+        &#125;
+        p = p-&gt;next;
+    &#125;
+    cout &lt;&lt; &quot;not found\n&quot;;
+    system(&quot;pause&quot;);
+&#125;
+
+struct info_b &#123;
+    unsigned long long ID;
+    char name[21];
+    double price;
+&#125;;
+
+struct bList &#123;
+    struct info_b data;
+    struct bList* next;
+&#125;;
+
+struct bList* bCreate(bList* bHead)
+&#123;
+    //initialize the list
+    bHead = (struct bList*)malloc(sizeof(struct bList));
+    if (bHead == NULL) &#123;
+        return 0;
+    &#125;
+    bHead-&gt;next = NULL;
+    return bHead;
+&#125;
+
+bList* add_b(bList* bHead)
+&#123;
+    bList* p = NULL, * s = NULL;
+    int num = 0;
+    p = bHead;
+    cout &lt;&lt; &quot;How many books that you want to registry: &quot;;
+    cin &gt;&gt; num;
+    for (int i = 0; i &lt; num; i++) &#123;
+        cout &lt;&lt; &quot;book No.&quot; &lt;&lt; i + 1 &lt;&lt; &quot; &#39;s info\n&quot;;
+        s = (bList*)malloc(sizeof(bList));
+        cout &lt;&lt; &quot;enter the book ID: &quot;;
+        cin &gt;&gt; s-&gt;data.ID;
+        cout &lt;&lt; &quot;enter the book name: &quot;;
+        cin &gt;&gt; s-&gt;data.name;
+        cout &lt;&lt; &quot;enter the book price: &quot;;
+        cin &gt;&gt; s-&gt;data.price;
+        p-&gt;next = s;
+        p = s;
+        system(&quot;cls&quot;);
+    &#125;
+    p-&gt;next = NULL;
+    return bHead;
+&#125;
+
+void print_b(bList* L)
+&#123;
+    bList* p;
+    p = L-&gt;next;
+    cout &lt;&lt; &quot;book num&quot; &lt;&lt; &#39;\t&#39; &lt;&lt; &quot;book name&quot; &lt;&lt; &#39;\t&#39; &lt;&lt; &quot;book price\n&quot;;
+    while (p != NULL) &#123;
+        cout.setf(ios::fixed);
+        cout &lt;&lt; p-&gt;data.ID &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;data.name &lt;&lt; &#39;\t&#39; &lt;&lt; setprecision(2) &lt;&lt; p-&gt;data.price &lt;&lt; endl;;
+        p = p-&gt;next;
+    &#125;
+&#125;
+
+void insert_b(bList* L)
+&#123;
+    bList* p, * s;
+    p = L-&gt;next;
+    while (p-&gt;next != NULL) &#123;
+        p = p-&gt;next;
+    &#125;
+    s = (bList*)malloc(sizeof(bList));
+    cout &lt;&lt; &quot;enter the book ID: &quot;;
+    cin &gt;&gt; s-&gt;data.ID;
+    cout &lt;&lt; &quot;enter the book name: &quot;;
+    cin &gt;&gt; s-&gt;data.name;
+    cout &lt;&lt; &quot;enter the book price: &quot;;
+    cin &gt;&gt; s-&gt;data.price;
+    s-&gt;next = p-&gt;next;
+    p-&gt;next = s;//pointer point to the next data
+&#125;
+
+void del_b(bList* L)
+&#123;
+    bList* p,* pre;
+    unsigned long long num = 0;
+    p = L-&gt;next;
+    pre = p;
+    cout &lt;&lt; &quot;enter the book ID that you want to delete: &quot;;
+    cin &gt;&gt; num;
+    while (p != NULL) &#123;
+        if (p-&gt;data.ID == num) &#123;
+            pre-&gt;next = p-&gt;next;
+            free(p);
+            cout &lt;&lt; &quot;delete successfully\n&quot;;
+            return;
+        &#125;
+        pre = p;
+        p = p-&gt;next;
+    &#125;
+&#125;
+
+void edit_b(bList* L)
+&#123;
+    bList* p;
+    p = L-&gt;next;
+    unsigned long long num = 0;
+    cout &lt;&lt; &quot;enter the book ID that you want to edit: &quot;;
+    cin &gt;&gt; num;
+    while (p != NULL) &#123;
+        if (p-&gt;data.ID == num) &#123;
+            cout &lt;&lt; &quot;enter the book ID: &quot;;
+            cin &gt;&gt; p-&gt;data.ID;
+            cout &lt;&lt; &quot;enter the book name: &quot;;
+            cin &gt;&gt; p-&gt;data.name;
+            cout &lt;&lt; &quot;enter the book price: &quot;;
+            cin &gt;&gt; p-&gt;data.price;
+            cout &lt;&lt; &quot;edit successfully\n&quot;;
+            return;
+        &#125;
+        p = p-&gt;next;
+    &#125;
+&#125;
+
+void search_b(bList* L)
+&#123;
+    bList* p;
+    p = L-&gt;next;
+    unsigned long long num;
+    cout &lt;&lt; &quot;enter the book ID that you want to search: &quot;;
+    cin &gt;&gt; num;
+    while (p != NULL) &#123;
+        if (p-&gt;data.ID == num) &#123;
+            cout.setf(ios::fixed);
+            cout &lt;&lt; &quot;book ID&quot; &lt;&lt; &#39;\t&#39; &lt;&lt; &quot;book name&quot; &lt;&lt; &#39;\t&#39; &lt;&lt; &quot;book price\n&quot;;
+            cout &lt;&lt; p-&gt;data.ID &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;data.name &lt;&lt; &#39;\t&#39; &lt;&lt;setprecision(2) &lt;&lt; p-&gt;data.price &lt;&lt; endl;
+            return;
+        &#125;
+        p = p-&gt;next;
+    &#125;
+    cout &lt;&lt; &quot;opps, could not find the book\n&quot;;
+&#125;
+
+void total_b(bList* L)
+&#123;
+    double sum = 0;
+    bList* p = L-&gt;next;
+    while (p != NULL) &#123;
+        sum += p-&gt;data.price;
+        p = p-&gt;next;
+    &#125;
+    cout &lt;&lt; &quot;calculating...\n&quot;;
+    Sleep(1500);
+    cout.setf(ios::fixed);
+    cout &lt;&lt; &quot;the total cost: &quot; &lt;&lt; setprecision(2) &lt;&lt; sum &lt;&lt; &#39;$&#39; &lt;&lt; endl;
+&#125;
+
+void login()
+&#123;
+
+    string account, password;
+    int index = 0;
+    char ch;
+    while (1) &#123;
+        cout &lt;&lt; &quot;account: &quot;;
+        cin &gt;&gt; account;
+        cout &lt;&lt; &quot;password: &quot;;
+        while ((ch = _getch()) != &#39;\r&#39;) &#123;
+            if (ch == 8) &#123;
+                password[index] = &#39;\0&#39;;
+                break;
+            &#125;
+            password += ch;
+            index++;
+            if (ch != &#39;\b&#39;) &#123;
+                cout &lt;&lt; &quot;*&quot;;
+            &#125;
+            else &#123;
+                if (index != 0) &#123;
+                    cout &lt;&lt; &#39;\b&#39; &lt;&lt; &quot; &quot; &lt;&lt; &#39;\b&#39;;
+                    index--;
+                &#125;
+            &#125;
+        &#125;
+        if ((account == &quot;admin&quot;) &amp;&amp; (password == &quot;123456&quot;)) &#123;
+            break;
+        &#125;
+        else &#123;
+            cout &lt;&lt; &quot;\nerror,check your account or password&quot; &lt;&lt; endl;
+            system(&quot;pause&quot;);
+            fflush(stdin);
+            password.clear();
+            system(&quot;cls&quot;);
+        &#125;
+    &#125;
+&#125;
+
+int menu()
+&#123;
+    int mode = 0;
+    cout &lt;&lt; &quot;**********************************************&quot; &lt;&lt; &quot;\n&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;* book sales management system(admin edition)&quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+    cout &lt;&lt; &quot;*     1.membership management  &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+    cout &lt;&lt; &quot;*     2.books management       &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+    cout &lt;&lt; &quot;*     3.clear the bill         &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+    cout &lt;&lt; &quot;*     0.sign out               &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+    cout &lt;&lt; &quot;**********************************************&quot; &lt;&lt; &quot;\n&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;choose a mode: &quot;;
+    cin &gt;&gt; mode;
+    return mode;
+&#125;
+
+int main()
+&#123;
+    login();
+    mList* mHead = NULL, * M = NULL;
+    bList* bHead = NULL, * B = NULL;
+    int mode = 0;
+    system(&quot;cls&quot;);
+    while (1) &#123;
+        mode = menu();
+        if (mode == 1) &#123;
+            while (1) &#123;
+                system(&quot;cls&quot;);
+                int mode1;
+                cout &lt;&lt; &quot;book sales management system &gt; membership management &quot; &lt;&lt; endl;
+                cout &lt;&lt; &quot;******************************&quot; &lt;&lt; &quot;\n&quot; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 1.initialize the system&quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 2.show all the memberships &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 3.add membership           &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 4.edit membership          &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 5.delete membership        &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 6.search the membership    &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 0.back to main menu        &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;******************************&quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;select a mode: &quot;;
+                cin &gt;&gt; mode1;
+                if (mode1 == 1) &#123;
+                    mHead = mCreate(mHead);
+                    M = add_m(mHead);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode1 == 2) &#123;
+                    print_m(M);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode1 == 3) &#123;
+                    insert_m(M);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode1 == 4) &#123;
+                    edit_m(M);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode1 == 5) &#123;
+                    del_m(M);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode1 == 6) &#123;
+                    search_m(M);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode1 == 0) &#123;
+                    system(&quot;pause&quot;);
+                    system(&quot;cls&quot;);
+                    break;
+                &#125;
+                else &#123;
+                    cout &lt;&lt; &quot;opps, please check what you inputted\n&quot;;
+                    system(&quot;pause&quot;);
+                    system(&quot;cls&quot;);
+                &#125;
+            &#125;
+        &#125;
+        else if (mode == 2) &#123;
+            while (1) &#123;
+                system(&quot;cls&quot;);
+                cout &lt;&lt; &quot;book sales management system &gt; book management&quot; &lt;&lt; endl;
+                cout &lt;&lt; &quot;***************************&quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 1.initialize the system&quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 2.browse the book   &quot; &lt;&lt; &quot;\n&quot; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 3.add book          &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 4.edit book         &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 5.delete book       &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 6.search the book   &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;* 0.back to main menu &quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                cout &lt;&lt; &quot;***************************&quot; &lt;&lt; &#39;\n&#39; &lt;&lt; endl;
+                int mode2;
+                cout &lt;&lt; &quot;select one mode: &quot;;
+                cin &gt;&gt; mode2;
+                if (mode2 == 1) &#123;
+                    bHead = bCreate(bHead);
+                    B = add_b(bHead);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if(mode2 == 2) &#123;
+                    print_b(B);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if(mode2 == 3) &#123;
+                    insert_b(B);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode2 == 4) &#123;
+                    edit_b(B);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode2 == 5) &#123;
+                    del_b(B);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode2 == 6) &#123;
+                    search_b(B);
+                    system(&quot;pause&quot;);
+                &#125;
+                else if (mode2 == 0) &#123;
+                    system(&quot;pause&quot;);
+                    system(&quot;cls&quot;);
+                    break;
+                &#125;
+                else &#123;
+                    cout &lt;&lt; &quot;opps, please check what you inputted\n&quot;;
+                    system(&quot;pause&quot;);
+                    system(&quot;cls&quot;);
+                &#125;
+            &#125;
+        &#125;
+        else if (mode == 3) &#123;
+            double sum = 0,temp = 0;
+            while (1) &#123;
+                cout &lt;&lt; &quot;Do you want to clear the bill?(y/n) &quot;;
+                char ch;
+                cin &gt;&gt; ch;
+                if ((ch == &#39;y&#39;) || (ch == &#39;Y&#39;)) &#123;
+                    total_b(B);
+                    //system(&quot;pause&quot;);
+                &#125;
+                else if ((ch == &#39;n&#39;) || (ch == &#39;N&#39;)) &#123;
+                    cout &lt;&lt; &quot;exiting...\n&quot;;
+                    Sleep(2000);
+                    //system(&quot;pause&quot;);
+                    break;
+                &#125;
+                system(&quot;pause&quot;);
+                system(&quot;cls&quot;);
+                break;
+            &#125;
+        &#125;
+        else if (mode == 0) &#123;
+            system(&quot;pause&quot;);
+            system(&quot;cls&quot;);
+            break;
+        &#125;
+        else &#123;
+            cout &lt;&lt; &quot;opps, please check what you inputted\n&quot;;
+            system(&quot;pause&quot;);
+            system(&quot;cls&quot;);
+        &#125;
+    &#125;
+&#125;</code></pre>
+<p>如果各位读者能发现我的代码中的bug的话，欢迎指出，也可和我私信一同讨论！</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/少年再见.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/Jayden.jpg" height=300 width=300></img>
+                    <p>Jayden Chang</p>
+                    <span>身在井隅，心向星光。眼中有诗，自在远方</span>
+                    <dl>
+                        <dd><a href="https://github.com/JaydenChang" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/JaydenChang7" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/15092270/jayden-chang" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">6 <p>Articles</p></a></li>
+                    <li><a href="/categories">2 <p>Categories</p></a></li>
+                    <li><a href="/tags">3 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            Jayden Chang
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.4" target="_blank" rel="noopener">v1.4.4</a></small>
+        <br>
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次|本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        <!-- 本文总阅读量<span id="busuanzi_value_page_pv"></span>次 -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['身在井隅，心向星光。眼中有诗，自在远方', ''],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ 
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'en';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'QzBaPzTq1ksSIDJFKIxcCWWc-gzGzoHsz',
+      appKey: 'PdoHCnFmD0gbXJz9QNWY7pdF',
+      notify: '',
+      verify: 'false',
+      avatar: 'mp',
+      placeholder: 'Leave your throughs behind~',
+      visitor: 'false',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+ <!-- 例：百度统计 --> <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?your_code"; var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s); })(); </script> <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> </script> 
+
+</html>
