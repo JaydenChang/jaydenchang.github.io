@@ -1,0 +1,901 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>第二次html作业 - Jayden&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="JaydenChang,"> 
+    <meta name="description" content="第二次前端作业(前台部分)，难的一批，花了我大概5天的时间，其中各种引用样式、添加表格，总是出错。后来反过来想，先把页面中的文字、图片等单独提出来做，再加进主文件中，发现许多困难迎刃而解，下面是源代,"> 
+    <meta name="author" content="Jayden Chang"> 
+    <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Jayden&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">第二次html作业</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg) ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/技术"><b>「
+                    </b>技术<b> 」</b></a>
+                
+                March 17, 2021
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/17/0x0009/" title="第二次html作业" class="">第二次html作业</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>Words count</i>
+                    27k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                    25 mins.
+                </span>
+                
+                
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/html/" rel="tag">html</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <p>第二次前端作业(前台部分)，难的一批，花了我大概5天的时间，其中各种引用样式、添加表格，总是出错。后来反过来想，先把页面中的文字、图片等单独提出来做，再加进主文件中，发现许多困难迎刃而解，下面是源代码</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;!-- &lt;html lang=&quot;en&quot;&gt;    --&gt;
+
+&lt;head&gt;
+    &lt;!-- &lt;meta charset=&quot;UTF-8&quot;&gt; --&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+    &lt;!-- &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; --&gt;
+    &lt;title&gt;漫步时尚广场-餐饮栏目&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/detail.css&quot;&gt;
+    &lt;!-- &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/show.css&quot;&gt; --&gt;
+    &lt;!-- &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/show_frame.css&quot;&gt; --&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/style.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/style1.css&quot;&gt;
+
+    &lt;style&gt;
+        #left &#123;
+            float: left;
+        &#125;
+
+        #right &#123;
+            float: right;
+        &#125;
+
+        #pic_list &#123;
+            /* font-family: SinSum; */
+            font-size: 14px;
+            float: left;
+            border: 1px solid #ccc;
+            padding: 5px;
+            width: 290px;
+            margin-bottom: 10px
+        &#125;
+
+        #notice_title &#123;
+            font-size: 16px;
+            /* text-indent: 20px; */
+            /* text-align-last: left; */
+            float: left;
+        &#125;
+
+        #font &#123;
+            font-size: 14px;
+        &#125;
+
+        #center &#123;
+            float: center;
+            text-align: center;
+        &#125;
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;!-- 顶部区域 --&gt;
+    &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;top_line&quot;&gt;
+        &lt;tr&gt;
+            &lt;td bgcolor=&quot;#f7f7f7&quot;&gt;
+                &lt;table width=&quot;1200&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; align=&quot;center&quot;&gt;
+                    &lt;tr&gt;
+                        &lt;td class=&quot;padding-top&quot;&gt;&lt;img src=&quot;images/star.jpg&quot;&gt;收藏 | HI，欢迎来订购 ！&lt;a href=&quot;#&quot;
+                                class=&quot;orange&quot;&gt;[请登录]&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;orange&quot;&gt; [免费注册]&lt;/a&gt;&lt;/td&gt;
+                        &lt;td align=&quot;right&quot;&gt; 客户服务&lt;img src=&quot;images/arrow.gif&quot;&gt;&amp;nbsp;网站导航&lt;img
+                                src=&quot;images/arrow.gif&quot;&gt;&amp;nbsp;&lt;span class=&quot;droparrow&quot;&gt;&lt;span
+                                    class=&quot;shopcart&quot;&gt;&lt;/span&gt;我的购物车&lt;span class=&quot;orange&quot;&gt;0&lt;/span&gt;件&lt;img
+                                    src=&quot;images/arrow.gif&quot; /&gt;&lt;/span&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+
+    &lt;/table&gt;
+    &lt;!-- logo和banner --&gt;
+    &lt;table width=&quot;1200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; align=&quot;center&quot;&gt;
+        &lt;tr&gt;
+            &lt;td height=&quot;95&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/logo.jpg&quot;&gt;&lt;/a&gt;&lt;/td&gt;
+            &lt;td align=&quot;right&quot;&gt;&lt;img src=&quot;images/banner.jpg&quot;&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+
+
+    &lt;!-- 菜单导航 --&gt;
+    &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; bgcolor=&quot;#ce2626&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;table width=&quot;1200&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; align=&quot;center&quot; class=&quot;nav_font16&quot;&gt;
+                    &lt;tr&gt;
+                        &lt;td width=&quot;200&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                        &lt;td width=&quot;80&quot; align=&quot;center&quot; class=&quot;nav_active&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;white&quot;&gt;首页&lt;/a&gt;&lt;/td&gt;
+                        &lt;td width=&quot;100&quot; align=&quot;center&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;white&quot;&gt;美食&lt;/a&gt;&lt;/td&gt;
+                        &lt;td width=&quot;100&quot; align=&quot;center&quot;&gt;今日新单&lt;/td&gt;
+                        &lt;td width=&quot;80&quot; align=&quot;center&quot;&gt;团购&lt;/td&gt;
+                        &lt;td width=&quot;100&quot; align=&quot;center&quot;&gt;身边外卖&lt;/td&gt;
+                        &lt;td width=&quot;100&quot; align=&quot;center&quot;&gt;休闲娱乐&lt;/td&gt;
+                        &lt;td width=&quot;100&quot; align=&quot;center&quot;&gt;生活服务&lt;/td&gt;
+                        &lt;td width=&quot;200&quot; align=&quot;center&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;!-- 中间部分 --&gt;
+    &lt;!-- 左侧上方 --&gt;
+    &lt;table width=&quot;1200&quot; border=&quot;0&quot; align=&quot;center&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;padding-top&quot;&gt;
+        &lt;tr&gt;
+            &lt;td width=&quot;220&quot; valign=&quot;top&quot;&gt;
+                &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;1&quot; class=&quot;table1&quot; bgcolor=&quot;#e5e4e1&quot;&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;按分类&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;火锅&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;日韩料理&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot;
+                                align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;西餐&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;小吃快餐&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot;
+                                align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;自助餐&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;th&gt;按地区&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;市北区&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;市南区&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;李沧区&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;崂山区&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;黄岛区&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;th&gt;按人数&lt;/th&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;单人餐&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;双人餐&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot; align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;3-4人&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot;
+                                align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;span class=&quot;red_dot&quot;&gt;&lt;/span&gt;&lt;a href=&quot;#&quot;&gt;5-6人&lt;/a&gt;&lt;img src=&quot;images/arrow_r.jpg&quot;
+                                align=&quot;right&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+
+                &lt;!-- 左侧下方 --&gt;
+                &lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;dt&gt;
+                                &lt;span id=&quot;notice_title&quot;&gt;&amp;nbsp;猜你喜欢&lt;/span&gt;
+                                &lt;span id=&quot;right&quot;&gt;更多&amp;gt;&amp;gt;&lt;/span&gt;
+                            &lt;/dt&gt;
+                        &lt;/td&gt;
+
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;hr size=&quot;3px&quot; width=&quot;210px&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/food_index/love1.jpg&quot;&gt;&lt;/a&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td id=&quot;font&quot;&gt;
+                            &lt;span id=&quot;left&quot;&gt;阳平肥肠&lt;/span&gt;
+                            &lt;span id=&quot;right&quot;&gt;￥79起&lt;/span&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/food_index/love2.jpg&quot;&gt;&lt;/a&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td id=&quot;font&quot;&gt;
+                            &lt;span id=&quot;left&quot;&gt;xxx火锅(绵阳店)&lt;/span&gt;
+                            &lt;span id=&quot;right&quot;&gt;￥138起&lt;/span&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+
+            &lt;!-- 购物分类 --&gt;
+            &lt;td width=&quot;716&quot; valign=&quot;top&quot;&gt;
+                &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                    &lt;tr&gt;
+                        &lt;td align=&quot;center&quot;&gt;
+                            &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;
+                                &lt;tr&gt;
+                                    &lt;td valign=&quot;top&quot; align=&quot;left&quot;&gt;
+                                        &lt;!-- 焦点图 --&gt;
+                                        &lt;img src=&quot;images/food_index/food_ad.jpg&quot; width=&quot;550&quot; height=&quot;350&quot;&gt;
+                                    &lt;/td&gt;
+                                    &lt;td valign=&quot;top&quot;&gt;
+                                        &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+                                            &lt;tr&gt;
+                                                &lt;td&gt;
+                                                    &lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;5&quot; cellpadding=&quot;0&quot;&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;img src=&quot;images/food_index/food1.jpg&quot;&gt;
+                                                                &lt;dt&gt;
+                                                                    &lt;span&gt;&lt;strong&gt;阿尔卑斯牛排披萨自助&lt;/strong&gt;&lt;/span&gt;
+                                                                    &lt;span id=&quot;right&quot;&gt;￥66&lt;/span&gt;
+                                                                &lt;/dt&gt;
+                                                            &lt;/td&gt;
+
+                                                            &lt;td&gt;&lt;img src=&quot;images/food_index/food2.jpg&quot;&gt;
+                                                                &lt;dt&gt;
+                                                                    &lt;span&gt;&lt;strong&gt;鼎尚九宫格火锅&lt;/strong&gt;&lt;/span&gt;
+                                                                    &lt;span id=&quot;right&quot;&gt;￥78&lt;/span&gt;
+                                                                &lt;/dt&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                        &lt;tr&gt;
+                                                            &lt;td&gt;&lt;img src=&quot;images/food_index/food3.jpg&quot;&gt;
+                                                                &lt;dt&gt;
+                                                                    &lt;span&gt;&lt;strong&gt;雀舞云南菜&lt;/strong&gt;&lt;/span&gt;
+                                                                    &lt;span id=&quot;right&quot;&gt;￥85&lt;/span&gt;
+                                                                &lt;/dt&gt;
+                                                            &lt;/td&gt;
+                                                            &lt;td&gt;&lt;img src=&quot;images/food_index/food4.jpg&quot;&gt;
+                                                                &lt;dt&gt;
+                                                                    &lt;span&gt;&lt;strong&gt;爵士牛排馆&lt;/strong&gt;&lt;/span&gt;
+                                                                    &lt;span id=&quot;right&quot;&gt;￥45&lt;/span&gt;
+                                                                &lt;/dt&gt;
+                                                            &lt;/td&gt;
+                                                        &lt;/tr&gt;
+                                                    &lt;/table&gt;
+                                                &lt;/td&gt;
+                                            &lt;/tr&gt;
+                                        &lt;/table&gt;
+                                    &lt;/td&gt;
+
+                                &lt;/tr&gt;
+                            &lt;/table&gt;
+                        &lt;/td&gt;
+
+                    &lt;/tr&gt;
+
+
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;dt&gt;
+                                &lt;!-- &lt;dd id=&quot;notice_title&quot;&gt;&lt;span id=&quot;left&quot;&gt;今日新单&lt;/span&gt;&lt;/dd&gt;
+                                &lt;dd id=&quot;right&quot;&gt;更多&amp;gt;&amp;gt;&lt;/dd&gt; --&gt;
+                                &lt;span id=&quot;notice_title&quot;&gt;&amp;nbsp;今日新单&lt;/span&gt;
+                                &lt;span id=&quot;right&quot;&gt;更多&amp;gt;&amp;gt;&lt;/span&gt;
+                            &lt;/dt&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;hr width=&quot;980px&quot; size=&quot;3px&quot;&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+
+
+                    &lt;table width=&quot;290px&quot; border=&quot;0&quot; align=&quot;left&quot; cellpadding=&quot;3&quot; cellspacing=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/food_index/cd1.jpg&quot;&gt;&lt;/a&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td id=&quot;pic_list&quot;&gt;
+                                &lt;span id=&quot;left&quot;&gt;大渔铁板烧(心海广场店)&lt;/span&gt;&lt;br&gt;
+                                &lt;span id=&quot;left&quot;&gt;￥180起&lt;/span&gt;
+                                &lt;span id=&quot;right&quot;&gt;人均60元&lt;/span&gt;
+                            &lt;/td&gt;
+                    &lt;/table&gt;
+
+                    &lt;!-- try --&gt;
+                    &lt;table width=&quot;290px&quot; border=&quot;0&quot; align=&quot;left&quot; cellpadding=&quot;3&quot; cellspacing=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/food_index/cd2.jpg&quot; width=&quot;300px&quot;&gt;&lt;/a&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td id=&quot;pic_list&quot;&gt;
+                                &lt;span id=&quot;left&quot;&gt;西里牛排欢乐自助餐厅&lt;/span&gt;&lt;br&gt;
+                                &lt;span id=&quot;left&quot;&gt;￥45起&lt;/span&gt;
+                                &lt;span id=&quot;right&quot;&gt;人均66元&lt;/span&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                    &lt;table width=&quot;290px&quot; border=&quot;0&quot; align=&quot;left&quot; cellpadding=&quot;3&quot; cellspacing=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/food_index/cd3.jpg&quot;&gt;&lt;/a&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td id=&quot;pic_list&quot;&gt;
+                                &lt;span id=&quot;left&quot;&gt;全食客自助餐厅&lt;/span&gt;&lt;br&gt;
+                                &lt;span id=&quot;left&quot;&gt;￥55起&lt;/span&gt;
+                                &lt;span id=&quot;right&quot;&gt;人均57元&lt;/span&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                    &lt;table width=&quot;290&quot; border=&quot;0&quot; align=&quot;left&quot; cellpadding=&quot;3&quot; cellspacing=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/food_index/cd4.jpg&quot;&gt;&lt;/a&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td id=&quot;pic_list&quot;&gt;
+                                &lt;span id=&quot;left&quot;&gt;川香麻辣香锅&lt;/span&gt;&lt;br&gt;
+                                &lt;span id=&quot;left&quot;&gt;￥38起&lt;/span&gt;
+                                &lt;span id=&quot;right&quot;&gt;人均34元&lt;/span&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                    &lt;table width=&quot;290&quot; border=&quot;0&quot; align=&quot;left&quot; cellpadding=&quot;3&quot; cellspacing=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/food_index/cd5.jpg&quot;&gt;&lt;/a&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td id=&quot;pic_list&quot;&gt;
+                                &lt;span id=&quot;left&quot;&gt;好圣溢自助烤肉火锅&lt;/span&gt;&lt;br&gt;
+                                &lt;span id=&quot;left&quot;&gt;￥39.9起&lt;/span&gt;
+                                &lt;span id=&quot;right&quot;&gt;人均45元&lt;/span&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                    &lt;table width=&quot;290&quot; border=&quot;0&quot; align=&quot;left&quot; cellpadding=&quot;3&quot; cellspacing=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;
+                                &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/food_index/cd6.jpg&quot;&gt;&lt;/a&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td id=&quot;pic_list&quot;&gt;
+                                &lt;span id=&quot;left&quot;&gt;海都大酒店&lt;/span&gt;&lt;br&gt;
+                                &lt;span id=&quot;left&quot;&gt;￥89起&lt;/span&gt;
+                                &lt;span id=&quot;right&quot;&gt;人均80元&lt;/span&gt;
+                            &lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+
+                    &lt;!--  --&gt;
+            &lt;/td&gt;
+
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;dt&gt;
+                    &lt;span style=&quot;font-size: 16px;&quot;&gt;精选推荐&lt;/span&gt;
+                &lt;/dt&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;!-- 这里是下面的横排部分，具体细节就先不实现了[doge] --&gt;
+        &lt;tr&gt;
+            &lt;table border=&quot;1&quot; width=&quot;1200px&quot; height=&quot;180px&quot; align=&quot;center&quot; cellpadding=&quot;3px&quot; cellspacing=&quot;10px&quot;&gt;
+                &lt;tr&gt;
+                    &lt;td width=&quot;20px&quot;&gt;
+                        &lt;img src=&quot;images/food_index/arrow_left.jpg&quot;&gt;
+                    &lt;/td&gt;
+                    &lt;td width=&quot;180px&quot;&gt;
+                        &lt;img src=&quot;images/food_index/tj1.jpg&quot;&gt;
+                        &lt;dt&gt;
+                            &lt;span id=&quot;left&quot;&gt;尚品小土豆素毛肚&lt;/span&gt;
+                            &lt;span id=&quot;right&quot;&gt;￥76起&lt;/span&gt;
+                        &lt;/dt&gt;
+                    &lt;/td&gt;
+                    &lt;td width=&quot;180px&quot;&gt;
+                        &lt;img src=&quot;images/food_index/tj2.jpg&quot;&gt;
+                        &lt;dt&gt;
+                            &lt;span id=&quot;left&quot;&gt;陈记xx牛杂汤&lt;/span&gt;
+                            &lt;span id=&quot;right&quot;&gt;￥8.9起&lt;/span&gt;
+                        &lt;/dt&gt;
+                        &lt;/dt&gt;
+                    &lt;/td&gt;
+
+                    &lt;td width=&quot;180px&quot;&gt; 
+                        &lt;img src=&quot;images/food_index/tj3.jpg&quot;&gt;
+                        &lt;dt&gt;
+                            &lt;span id=&quot;left&quot;&gt;三只xx自助餐厅&lt;/span&gt;
+                            &lt;span id=&quot;right&quot;&gt;￥76起&lt;/span&gt;
+                        &lt;/dt&gt;
+                    &lt;/td&gt;
+                    &lt;td width=&quot;180px&quot;&gt; 
+                        &lt;img src=&quot;images/food_index/tj4.jpg&quot;&gt;
+                        &lt;dt&gt;
+                            &lt;span id=&quot;left&quot;&gt;腾飞xx大酒店&lt;/span&gt;
+                            &lt;span id=&quot;right&quot;&gt;￥86起&lt;/span&gt;
+                        &lt;/dt&gt;
+                    &lt;/td&gt;
+                    &lt;td width=&quot;180px&quot;&gt;
+                        &lt;img src=&quot;images/food_index/tj5.jpg&quot;&gt;
+                        &lt;dt&gt;
+                            &lt;span id=&quot;left&quot;&gt;xxxx一锅鲜&lt;/span&gt;
+                            &lt;span id=&quot;right&quot;&gt;￥86起&lt;/span&gt;
+                        &lt;/dt&gt;
+                    &lt;/td&gt;
+                    &lt;td width=&quot;20px&quot;&gt;
+                        &lt;img src=&quot;images/food_index/arrow_right.jpg&quot;&gt;
+                    &lt;/td&gt;
+
+                &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+
+        &lt;/tr&gt;
+
+        &lt;!-- 页脚部分 --&gt;
+        &lt;br&gt;
+        &lt;div id=&quot;center&quot; style=&quot;background-color: #efefef;&quot;&gt;
+            &lt;span&gt;
+                Copyright 2015-2020 Q- Walking Fashion E&amp;S 漫步时尚广场（QST教育）版权所有&lt;Br /&gt;
+            &lt;/span&gt;
+            &lt;span&gt;
+                中国青岛 高新区河东路8888号 青软教育集团 咨询热线：400-658-0166 400-658-1022&lt;br /&gt;
+            &lt;/span&gt;
+            &lt;img src=&quot;images/foot_pic.jpg&quot;&gt;
+        &lt;/div&gt;
+    &lt;/table&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+<p>这里是页面的效果图</p>
+<p><img src="https://jaydenchang.gitee.io/img/images/0x0009-1.png" alt="image"></p>
+<p><img src="https://jaydenchang.gitee.io/img/images/0x0009-2.png" alt="image"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/少年再见.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+            <div id="vcomments"></div>
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/Jayden.jpg" height=300 width=300></img>
+                    <p>Jayden Chang</p>
+                    <span>身在井隅，心向星光。眼中有诗，自在远方</span>
+                    <dl>
+                        <dd><a href="https://github.com/JaydenChang" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="https://twitter.com/JaydenChang7" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="https://stackoverflow.com/users/15092270/jayden-chang" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">9 <p>Articles</p></a></li>
+                    <li><a href="/categories">2 <p>Categories</p></a></li>
+                    <li><a href="/tags">4 <p>Tags</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2021
+        <span class="gradient-text">
+            Jayden Chang
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.4" target="_blank" rel="noopener">v1.4.4</a></small>
+        <br>
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次|本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        <!-- 本文总阅读量<span id="busuanzi_value_page_pv"></span>次 -->
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['身在井隅，心向星光。眼中有诗，自在远方', ''],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+ 
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var valine = new Valine();
+
+  function initValine(path) {
+    if (!path) path = window.location.pathname;
+    let language = 'en';
+    if (!language) {
+      language = 'en';
+    } else {
+      language = language.toLowerCase();
+    }
+    valine.init({
+      el: '#vcomments',
+      appId: 'QzBaPzTq1ksSIDJFKIxcCWWc-gzGzoHsz',
+      appKey: 'PdoHCnFmD0gbXJz9QNWY7pdF',
+      notify: '',
+      verify: 'false',
+      avatar: 'mp',
+      placeholder: 'Leave your throughs behind~',
+      visitor: 'false',
+      path: path,
+      lang: language,
+    });
+  }
+
+  $(document).ready(function () {
+    initValine();
+  });
+</script>
+
+
+
+ <!-- 例：百度统计 --> <script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?your_code"; var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s); })(); </script> <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> </script> 
+
+</html>
