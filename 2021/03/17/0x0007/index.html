@@ -5,17 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>对链表相关知识的整理 - Jayden&#39;s Blog</title>
+    <title>近期沉沦、颓废的一些感受 - Jayden&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="JaydenChang,"> 
-    <meta name="description" content="花了两周整理链表的相关知识
-以一个主函数和多个函数的形式来呈现
-/*链表合集*/
-#include&amp;lt;iostream&amp;gt;
-#include&amp;lt;cstdlib&amp;gt;
-using nam,"> 
+    <meta name="description" content="过去这几天一直颓废，断断续续写下这几天的感受。
+从颓废中走出2.8-2.15颓废的一周，一天醒着的16小时，有8小时是泡在B站的，加上自己本身是军迷，对一些战争类的电影比较感兴趣，点开推荐的一个视频,"> 
     <meta name="author" content="Jayden Chang"> 
     <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -63,7 +59,7 @@ using nam,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">对链表相关知识的整理</h3>
+        <h3 class="subtitle">近期沉沦、颓废的一些感受</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -93,25 +89,25 @@ using nam,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/技术"><b>「
-                    </b>技术<b> 」</b></a>
+                <a href="/categories/随笔"><b>「
+                    </b>随笔<b> 」</b></a>
                 
-                December 29, 2020
+                March 17, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/12/29/0x0003/" title="对链表相关知识的整理" class="">对链表相关知识的整理</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/17/0x0007/" title="近期沉沦、颓废的一些感受" class="">近期沉沦、颓废的一些感受</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.9k
+                    1.7k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    4 mins.
+                    2 mins.
                 </span>
                 
                 
@@ -119,7 +115,7 @@ using nam,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
             
         </div>
     </div>
@@ -140,153 +136,15 @@ using nam,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>花了两周整理链表的相关知识</p>
-<p>以一个主函数和多个函数的形式来呈现</p>
-<pre><code class="c++">/*链表合集*/
-#include&lt;iostream&gt;
-#include&lt;cstdlib&gt;
-using namespace std;
-typedef struct node&#123;
-    int a;
-    struct node *next;
-&#125; Node;
-//排序
-void Sort(Node*head)&#123;
-    node *p, *s, *pt;
-    p = head;
-    s = p-&gt;next;
-    while (p-&gt;next != NULL)&#123;
-        while(s-&gt;next != NULL)&#123;
-            if(p-&gt;next &gt; s-&gt;next)&#123;
-                pt-&gt;next = p-&gt;next;
-                p-&gt;next = s-&gt;next;
-                s-&gt;next = pt-&gt;next;
-            &#125;
-            s = s-&gt;next;
-        &#125;
-        p = p-&gt;next;
-        pt = s;
-    &#125;
-&#125;
-
-Node *add(Node*head,int num)&#123;//在表尾插入元素
-    Node *p = NULL, *pr = head;
-    p = (Node *)malloc(sizeof(Node));
-    if(p == NULL)&#123;
-        cout &lt;&lt; &quot;no enough memory to allocate&quot;;
-    &#125;
-    if(head == NULL)&#123;
-        head = p;
-    &#125;else&#123;
-        while(pr-&gt;next != NULL)&#123;
-            pr = pr-&gt;next;
-        &#125;
-        pr-&gt;next = p;
-    &#125;
-    p-&gt;a = num;
-    p-&gt;next = NULL;
-    return head;
-&#125;
-//打印链表
-void show(Node*head)&#123;
-    Node *p = head;
-    while(p != NULL)&#123;
-        cout &lt;&lt; p-&gt;a &lt;&lt; &quot; &quot;;
-        p = p-&gt;next;
-    &#125;
-&#125;
-
-void del(Node*head)&#123;//释放申请的内存空间
-    Node *p = head, *pr = NULL;
-    while(p != NULL)&#123;
-        pr = p;
-        p = p-&gt;next;
-        free(pr);
-    &#125;
-&#125;
-//删除链表里某一个节点
-Node* Delete(Node*head,int num)&#123;
-    Node *p = head, *pr = head;
-    //pr是目标元素前一个节点
-    if(head == NULL)&#123;
-        cout &lt;&lt; &quot;empty table&quot;;
-        return head;//空表退出
-    &#125;
-    while(num != p-&gt;a &amp;&amp; p-&gt;next != NULL)&#123;
-        //未找到且不是空表
-        pr = p;
-        p = p-&gt;next;//p直接指向当前节点的下一节点
-    &#125;
-    if(num == p-&gt;a)&#123;//找到了待删除节点
-        if(p == head)&#123;
-            head = p-&gt;next;//直接让头指针指向待删除结点p的下一节点
-        &#125;else&#123;
-            pr-&gt;next = p-&gt;next;
-            //前一节点的指针域指向待删除结点的下一节点
-        &#125;
-        free(p);
-    &#125;else&#123;//到表尾且没找到
-        cout &lt;&lt; &quot;not found&quot;;
-    &#125;
-    return head;
-&#125;
-//在链表里插入元素
-Node* insert(Node*head,int num)&#123;
-    Node *pr = head, *p = head, *temp = NULL;
-    p = (Node *)malloc(sizeof(Node));
-    if(p == NULL)&#123;
-        cout &lt;&lt; &quot;no enough memory&quot;;
-        exit(0);
-    &#125;
-    p-&gt;next = NULL;//待插入节点指针域为空指针
-    p-&gt;a = num;//待插入节点的数值域为num
-    if(head == NULL)&#123;
-        head = p;//若原链表为空表，待插入节点为头节点
-    &#125;else&#123;//若为非空
-    //若未找到待插入节点的位置且未找到表尾则继续找
-        while(pr-&gt;a &lt; num &amp;&amp; pr-&gt;next != NULL)&#123;
-            temp = pr;//temp保存当前节点的下一节点
-            pr = pr-&gt;next;//pr指向当前节点的下一节点
-        &#125;
-        if(pr-&gt;a &gt;= num)&#123;
-            if(pr == head)&#123;//若在头节点前插入新节点
-                p-&gt;next = head;
-            //将新节点的指针域指向原链表的头节点
-                head = p;//让head指向新节点
-            &#125;else&#123;//在链表中部插入新节点
-            //进行排序
-                pr = temp;
-                p-&gt;next = pr-&gt;next;
-                pr-&gt;next = p;
-            &#125;
-        &#125;else&#123;//若在表尾插入新节点
-            pr-&gt;next = p;//让末节点的指针域指向新节点
-        &#125;
-    &#125;
-    return head;//返回插入新节点猴的链表头指针head的值
-&#125;
-
-int main()
-&#123;
-    int num;
-    char ch;
-    struct node *head = NULL;
-    do&#123;
-        cin &gt;&gt; num;
-        if(num &gt;= 0)&#123;
-            head = add(head, num);
-            show(head);
-        &#125;
-        if(num % 5 ==0)&#123;
-            cout &lt;&lt; &quot;continue?(y/n)&quot;;
-            cin &gt;&gt; ch;
-            if((ch == &#39;n&#39;) || (ch == &#39;N&#39;))&#123;
-                break;
-            &#125;
-        &#125;//避免死循环
-    &#125; while (num &gt;= 0);
-    del(head);
-&#125;</code></pre>
+            <p>过去这几天一直颓废，断断续续写下这几天的感受。</p>
+<h3 id="从颓废中走出"><a href="#从颓废中走出" class="headerlink" title="从颓废中走出"></a>从颓废中走出</h3><p>2.8-2.15<br>颓废的一周，一天醒着的16小时，有8小时是泡在B站的，加上自己本身是军迷，对一些战争类的电影比较感兴趣，点开推荐的一个视频后，便一发不可收拾。B站的网课，看不够三个番茄钟，马上就去首页看推荐的视频，唯独在洛谷做题时还能保持一个比较专注的状态。然后过年那几天，学习的时间不超过两小时，有人说，过年了，看自己去年高考备考那么累，玩几天没问题的。当时我也是这么想的，可我没想到人的惰性会这么强大，一连续玩了三天，想着初四要开工了，继续学习，我七点起床，坐在书桌前，打开电脑，打上B站的网址，手不自主的点开了战争电影的推荐，又开始颓废的上午……中午睡醒后，我又打开了B站，推荐里出现了老番茄的毕业vlog，这个视频在我的收藏夹里，我点开了它，当看到老番茄平均绩点3.96那里，我不禁陷入了沉思，难道我注定要这样颓废下去?这时候，我的微信会话框出现了一个小红点，原来是浩宇师兄，他在给学弟学妹们分享干货，此刻，我正在回忆20天前的我，站在华附教室的讲台上自信的样子，我又陷入了沉思，难道我……”该醒醒了”，我的目光洒在我的右手手环上，”I PROMISE”，戴着它我却没有做到……</p>
+<h3 id="找回状态"><a href="#找回状态" class="headerlink" title="找回状态"></a>找回状态</h3><p>2.16<br>今天的学习节奏稍微换了下，以往都是看着网课来敲代码，今天直接刷一整天的洛谷，反倒发现这样的方式我更能沉浸在里面，有效避免了学习中途去看片的颓废行为，事后想了下，这不就是我高三那段时间的状态嘛，不断地刷题，to be continue……</p>
+<h3 id="访问故地"><a href="#访问故地" class="headerlink" title="访问故地"></a>访问故地</h3><p>2.17<br>事实证明，我果然是不适合长时间更着网课学，还是要动手才不会那么容易分心。<br>今天下午闲着没事 <del>其实是敲代码敲累了</del>，回访故居，我在那个区域居住了四年，后来搬走了，去年大学开学前又搬回了那附近，十年前，一片落后的景象，河涌污泥遍布，成群的烂尾楼……十年后重返故地，一片繁华的景象。这一切对我来说，既熟悉又陌生，曾经的烂尾楼早已被推倒，取而代之的是林立的高楼。走进那一个个小巷，感受那富含历史积淀的民风；生了锈的路牌，见证着这块区域的变迁；而我，也在这变迁之中，不断刷新着我对这个世界的认知。</p>
+<p>“童年的纸飞机，现在终于飞回我手里”，耳机里突然出现这一段歌词，此时我骑着单车，沿着绿化后的河流，心中满是感慨</p>
+<p>写到这里，我的状态逐渐回暖，我也不再去过多理会内卷，内卷往往被当今的媒体过分渲染，春节前看着部门的好友做出了一个UI设计很好看的小游戏，心中满是蕉绿，过一会缓过来，蕉绿顶个p用，不必过多关注他人，每一天在自己的节奏里不断多学一点就是进步。</p>
+<h3 id="多出去走走"><a href="#多出去走走" class="headerlink" title="多出去走走"></a>多出去走走</h3><p>另外，这几天的实践发现，人有时间还是要多出门走走，亲近自然，春节那几天，一整天宅在家，连续十个小时对着电脑，等到看片看腻了，想学习了，却发现脑袋不清醒，有点晕。越是快节奏的生活，越是要抽点时间让自己慢下来，例如打场球，沿着绿道骑行。</p>
+<p>写到这里，算是给上一周一个交代。在这里立一个flag，每半个月更一次博客，内容不限，逼自己养成一个自我反思的习惯。</p>
+<p>这样的随笔尽管思路很混乱，但每天记录自己闹钟忽闪即逝的有趣的想法看起来很不错。这一切都交给日后的自己来评价。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -330,6 +188,13 @@ int main()
             </div>
             
             
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E9%A2%93%E5%BA%9F%E4%B8%AD%E8%B5%B0%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">从颓废中走出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%9B%9E%E7%8A%B6%E6%80%81"><span class="toc-number">2.</span> <span class="toc-text">找回状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%95%85%E5%9C%B0"><span class="toc-number">3.</span> <span class="toc-text">访问故地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%87%BA%E5%8E%BB%E8%B5%B0%E8%B5%B0"><span class="toc-number">4.</span> <span class="toc-text">多出去走走</span></a></li></ol>
+                </div>
+            </div>
             
             
         </div>

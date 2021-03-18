@@ -5,15 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>1月的胡思乱想 - Jayden&#39;s Blog</title>
+    <title>二分查找的四种实现 - Jayden&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="JaydenChang,"> 
-    <meta name="description" content="1.17
-最近在考试，好久没更了，就断断续续写下自己这些天的所思所想吧。
-1.19
-刚考完试，这几周的压力、负面情绪都挤压了在一起，对职业生涯的焦虑，学自己这学期忙碌而又不是很充实的遗憾、失落，总体,"> 
+    <meta name="description" content="//二分查找判断某个元素是否在序列里
+long search(int a[],int low,int high,int k)&amp;#123;
+    if(low &amp;lt;= high)&amp;#123;
+ ,"> 
     <meta name="author" content="Jayden Chang"> 
     <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -61,7 +61,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">1月的胡思乱想</h3>
+        <h3 class="subtitle">二分查找的四种实现</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -91,25 +91,25 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/随笔"><b>「
-                    </b>随笔<b> 」</b></a>
+                <a href="/categories/技术"><b>「
+                    </b>技术<b> 」</b></a>
                 
-                January 27, 2021
+                March 17, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/01/27/0x0005/" title="1月的胡思乱想" class="">1月的胡思乱想</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/17/0x0004/" title="二分查找的四种实现" class="">二分查找的四种实现</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    2.4k
+                    3.4k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
+                    3 mins.
                 </span>
                 
                 
@@ -117,7 +117,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
             
         </div>
     </div>
@@ -138,22 +138,138 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>1.17</p>
-<p>最近在考试，好久没更了，就断断续续写下自己这些天的所思所想吧。</p>
-<p>1.19</p>
-<p>刚考完试，这几周的压力、负面情绪都挤压了在一起，对职业生涯的焦虑，学自己这学期忙碌而又不是很充实的遗憾、失落，总体给人一个很丧的感觉，但是又不想把自己的负面情绪散播出去，影响到在意我的好友们，过去，我常常在以他人的目光，有时他人的一句话甚至会作为我的情绪的晴雨表，不得不说我以前实在是太玻璃心了。这学期我一直在想，我发朋友圈的目的是为了什么，是为了获得他人的认可吗？是要他人来评价自己吗？这学期来，我尝试过发过几条朋友圈，都是获得比较少赞的，当时我还是比较失落的。在某一个夜晚，我躺在床上翻来覆去睡不着，忽然想到这个问题，相比起高中，我在大学发圈的频率大大上升，在成为班长之后，我结识了更多的人，有时的朋友圈可以有80+的赞，有时也寥寥无几。这时我突然回忆起我高考完和Sam的一次通话，”其实吧，我发朋友圈是为了记录生活，不管别人赞不赞，开心的是自己”，想到这里，突然豁然开朗。</p>
-<p>1.20</p>
-<p>其实我知道自己一直有轻微的抑郁，心理方面有时会表现得很病态，一直找不到一种解脱的方式，自己写博客，就当是一种泄愤的方式，一种自我治疗吧。我的个人兴趣爱好和很多人表现得不一样，特别是行为方式上，有一些人格格不入，我们相互不能理解对方。有时我打开音乐播放器，点击纯音乐，查看评论，发现原来这个世界上还是有那么一群人和我有着相同的感受，无言却胜千言，不同人有着不同的经历，在外人看来，你可能就是矫情，可他没经历过，那就让他说去吧。</p>
-<p>1.21<br>今早很早就醒了，大概六点，继续沿着昨天的思绪，回忆整个高三越来越发现我和Sam太像了，相似的经历，相近的行为作风、性格，真的很高兴能在高三与你做朋友、共同进步，在学习和生活上，我们相互较劲，有不好的情绪，我们相互倾诉。</p>
-<p>其实高三我还想感谢潘，你的出现，让我感到了前所未有的压力，当然是在认识她之后。整个高三，我都是以你为目标，不断想超越你，在球场上，有一半时间都是我去防你，一想到她，我就防的更积极，也有很多时候我主攻你。尽管我高三这样做在外人看起来真的好变态，高考完那个晚上，我也这样认为[facepalm]，我高考完回到教室，对你说的那一声谢谢，让我的高三得到了解脱，尽管我们以后可能不会再有交集，但还是真的很感谢你！</p>
-<p>1.22<br>今日大学城寒招队伍碰面，新认识了许多有趣的小伙伴，个个都是人才，说话又好听(滑稽)。吹完水后，又与Sam相约大学城，把整个华师校区都骑了一遍，才发觉，这才是我高考前梦中隐约出现大学该有的样子(这里没有黑南海)，有人曾和我说过，有机会要去别的大学，甚至是本学校的其他校区看看，对比了石牌，大学城和华工五山，果然越好的大学，对于校园环境、设施的建设总是做的比较好的，这就不难解释为什么中国营造着拼了命要考上好大学的氛围。图书馆，教学楼，各学院院楼，阳光映射在人工湖上，在轻微的波澜中，透过竹林，鱼鳞般阳光的碎隙格外显眼……</p>
-<p>1.23</p>
-<p>今天整天沉浸在代码行里，没什么思绪[doge]</p>
-<p>1.24</p>
-<p>又到了每月固定的网抑云时刻，又默默地打开网易云里纯音乐的歌单，那一个个音符，都与我产生了共鸣，回忆起高三，也许这就是青春吧，每天与Sam在教室里奋笔疾书，回到宿舍拿起吉他和Four和Sam唱。这里引用席慕容的一句话，青春的锦绣与贵重，就在于它的天真与无瑕，在于它的可遇而不可求，在于它的永不重回。</p>
-<p>1.26<br>今天上午出发找Sam，径直前往天河地区漫游(瞎逛)，再次感受繁华城市的繁华地带，随后又路过一个唱吧，在那里欣赏了许多路人的歌声，不得不多，高手在民间。</p>
-<p>然后就是今天的重点，我！回！去！寒！招！啦！踏进校园的那一刻，走到校友墙那里，自己终于上了墙，内心满是激动，不过也在感叹，时光过得太快了，三年一眨眼就过去了，高三时的每个场景又浮现在我眼前，熟悉的教室角落，和蔼的老师们，看见老师，又想起一年前的自己……进教室了，看见了可爱有趣学弟学妹们，一年前自己要站在讲台上宣讲的愿望终于实现了，也是一年前，学长学姐站在讲台上宣讲，今年轮到我了，也进入凡尔赛(吹牛)状态(滑稽)，才发现原来自己高三也牛B过，自己在高三后期摸索出的方法也在高考前几天帮我稳住了自己。进了学校，先是龙哥来接应我们，看见龙哥，又想起那让人欲睡的课堂[doge]，进入教学楼，看见了永远保持一颗童心的汪老师，不得不说，汪老师在高三阶段帮我解决了很多学习、心理上的困惑，以至于我无法用文字来表达我的感激之情；后来我也见到了我的学长–Sharp[doge]，见面即握手致意相互寒暄(吹水)……收到了学弟学妹感谢的小纸条，内心满是感动。后来又与Sam和老马一同喝茶，聊天(还是吹水)，真的不得不佩服老马的大局观，对一些细节的处理，在交谈过程中，才发现以前看似枯燥的课堂，其实蕴含着许多人生的道理，只不过我们没发掘罢了</p>
-<p>1.27<br>肝完这篇文章，就去码代码<br>今早起来，回想昨天发生了什么，感觉真的就发生在一瞬间，天知道我经历了什么，不过寒招也接近尾声了，我也要继续完成我咕了几天的信宣推文了。<br>Last but not least,2021,码好每一行代码，弹好每一个音符，唱好每一首歌，投好每一个球，充实过好每一天<br>                                                                                                                      To Be Continued…</p>
+            <pre><code class="c++">//二分查找判断某个元素是否在序列里
+long search(int a[],int low,int high,int k)&#123;
+    if(low &lt;= high)&#123;
+        int mid = low + (high - low) / 2;
+        if(k == a[mid])&#123;
+            return 1;//找到了返回1
+        &#125;else if(a[mid] &gt; k)&#123;
+//比中值小在左边找            
+            return search(a, low, mid - 1, k);
+        &#125;else&#123;
+//比中值大在右边找            
+            return search(a, mid + 1, high, k);
+        &#125;
+    &#125;
+    return 0;
+//如果都找不到默认返回0    
+&#125;
+</code></pre>
+<pre><code class="c++">//oj的题目是给定长度为n的不下降序列，做m个询问
+//1.从左逼近(直接丢函数包)
+long fun(long a[],long low,long high,long key)
+&#123;
+    int mid = low + (low + high) / 2;
+    if(low &lt;= high)&#123;
+        if(a[mid] &lt; key)&#123;
+//在右边查找            
+            return fun(a, mid + 1, high, key);
+        &#125;
+        if(a[mid] &gt; key)&#123;
+//在左边查找            
+            return fun(a, low, mid - 1, key);
+        &#125;
+        else&#123;
+/*如果找到目标元素，判断有无重复，有的话取最大下标*/
+            while(mid&gt;=0)&#123;
+                if(a[mid]!=key)&#123;
+                    break;
+                &#125;
+                mid++;
+            &#125;
+        &#125;
+    &#125;
+    return mid;
+&#125;
+</code></pre>
+<pre><code class="c++">//二分查找(从右逼近)
+long fun(int a[],int target ,int temp)
+&#123;
+    int low = 0, high = target, int temp, mid;
+    while(low &lt; high)&#123;
+        mid = (low + high) / 2;
+        if(a[mid] == taret)&#123;
+            high = mid;
+        &#125;
+        else if(a[mid] &gt; target)&#123;
+            high = mid;
+        &#125;else&#123;
+            low = mid + 1;
+        &#125;
+    &#125;
+    if(a[temp] &lt; target)&#123;
+        return temp + 2;
+    &#125;
+    /*这里是来区分有没有找到目标值，只要从始至终都没有找到目标
+    元素，返回n+2*/
+    return low + 1;
+&#125;</code></pre>
+<pre><code class="c++">/*计算包含再给定区间里的序列数值的个数*/
+#include&lt;iostream&gt;
+#include&lt;cstdlib&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+//这里输入的序列是不按照顺序的
+int left(int a[], int target, int temp) &#123;
+    int low = 0, high = temp;
+    int mid;
+//左端不断向右边逼近    
+    while (low &lt; high) &#123;
+        mid = (low + high) / 2;
+        if (a[mid] == target) &#123;
+            low = mid + 1;
+        &#125;else if (a[mid] &lt; target) &#123;
+            low = mid + 1;
+        &#125;
+        else if (a[mid] &gt; target) &#123;
+            high = mid;
+        &#125;
+    &#125;
+    return low;
+&#125;
+int right(int a[], int target, int temp) &#123;
+    int low = 0, high = temp;
+    int mid;
+//右端不断向左端逼近    
+    while (low &lt; high) &#123;
+        mid = (low + high) / 2;
+        if (a[mid] == target) &#123;
+            high = mid;
+        &#125;
+        else if (a[mid] &gt; target) &#123;
+            high = mid;
+        &#125;
+        else if (a[mid] &lt; target) &#123;
+            low = mid + 1;
+        &#125;
+    &#125;
+    return low;
+&#125;
+
+int main()
+&#123;
+    int i, j, k, n, m, p, q;
+    cin &gt;&gt; n &gt;&gt; m;
+//n表示有几个数字，m表示要输入几组数字
+    int* a = (int*)malloc(n * sizeof(int));
+    for (i = 0; i &lt; n; i++) &#123;
+        cin &gt;&gt; a[i];
+    &#125;
+    sort(a, a + n);
+    for (j = 0; j &lt; m; j++) &#123;
+        cin &gt;&gt; p &gt;&gt; q;//p&lt;=q，p是左区间，q是右区间
+        cout &lt;&lt; left(a, q, n) - right(a, p, n) &lt;&lt; endl;
+/*left把n不断往左靠，使得右边界逼近q，right把p不断右移，
+不断逼近右边界*/
+    &#125;
+    free(a);
+&#125;
+/*排完序后再放进函数里，left的作用:
+对比左数和序列里的每一个数,返回小于p的数的序号
+right是让q与序列的数比较，返回大于q的序号
+然后大减小就得到了区间里包含的数*/
+</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
