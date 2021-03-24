@@ -5,15 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>1月的胡思乱想 - Jayden&#39;s Blog</title>
+    <title>c++类的作业实例(单链表) - Jayden&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="JaydenChang,"> 
-    <meta name="description" content="1.17
-最近在考试，好久没更了，就断断续续写下自己这些天的所思所想吧。
-1.19
-刚考完试，这几周的压力、负面情绪都挤压了在一起，对职业生涯的焦虑，学自己这学期忙碌而又不是很充实的遗憾、失落，总体,"> 
+    <meta name="description" content="这两周的c++课都没怎么听，也许是对自己太自信了，第一次的类的作业竟然不会做(丢人)，翻看了书本，加上论坛大佬的代码才大概弄明白；然而这次的上机作业，要求再用类写个链表系统，做的时候有发现问题了，虽,"> 
     <meta name="author" content="Jayden Chang"> 
     <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -61,7 +58,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">1月的胡思乱想</h3>
+        <h3 class="subtitle">c++类的作业实例(单链表)</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -91,25 +88,25 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/随笔"><b>「
-                    </b>随笔<b> 」</b></a>
+                <a href="/categories/技术"><b>「
+                    </b>技术<b> 」</b></a>
                 
-                March 17, 2021
+                March 24, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/03/17/0x0005/" title="1月的胡思乱想" class="">1月的胡思乱想</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/24/0x0011/" title="c++类的作业实例(单链表)" class="">c++类的作业实例(单链表)</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    2.4k
+                    6k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
+                    5 mins.
                 </span>
                 
                 
@@ -117,7 +114,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
             
         </div>
     </div>
@@ -138,22 +135,202 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>1.17</p>
-<p>最近在考试，好久没更了，就断断续续写下自己这些天的所思所想吧。</p>
-<p>1.19</p>
-<p>刚考完试，这几周的压力、负面情绪都挤压了在一起，对职业生涯的焦虑，学自己这学期忙碌而又不是很充实的遗憾、失落，总体给人一个很丧的感觉，但是又不想把自己的负面情绪散播出去，影响到在意我的好友们，过去，我常常在以他人的目光，有时他人的一句话甚至会作为我的情绪的晴雨表，不得不说我以前实在是太玻璃心了。这学期我一直在想，我发朋友圈的目的是为了什么，是为了获得他人的认可吗？是要他人来评价自己吗？这学期来，我尝试过发过几条朋友圈，都是获得比较少赞的，当时我还是比较失落的。在某一个夜晚，我躺在床上翻来覆去睡不着，忽然想到这个问题，相比起高中，我在大学发圈的频率大大上升，在成为班长之后，我结识了更多的人，有时的朋友圈可以有80+的赞，有时也寥寥无几。这时我突然回忆起我高考完和Sam的一次通话，”其实吧，我发朋友圈是为了记录生活，不管别人赞不赞，开心的是自己”，想到这里，突然豁然开朗。</p>
-<p>1.20</p>
-<p>其实我知道自己一直有轻微的抑郁，心理方面有时会表现得很病态，一直找不到一种解脱的方式，自己写博客，就当是一种泄愤的方式，一种自我治疗吧。我的个人兴趣爱好和很多人表现得不一样，特别是行为方式上，有一些人格格不入，我们相互不能理解对方。有时我打开音乐播放器，点击纯音乐，查看评论，发现原来这个世界上还是有那么一群人和我有着相同的感受，无言却胜千言，不同人有着不同的经历，在外人看来，你可能就是矫情，可他没经历过，那就让他说去吧。</p>
-<p>1.21<br>今早很早就醒了，大概六点，继续沿着昨天的思绪，回忆整个高三越来越发现我和Sam太像了，相似的经历，相近的行为作风、性格，真的很高兴能在高三与你做朋友、共同进步，在学习和生活上，我们相互较劲，有不好的情绪，我们相互倾诉。</p>
-<p>其实高三我还想感谢潘，你的出现，让我感到了前所未有的压力，当然是在认识她之后。整个高三，我都是以你为目标，不断想超越你，在球场上，有一半时间都是我去防你，一想到她，我就防的更积极，也有很多时候我主攻你。尽管我高三这样做在外人看起来真的好变态，高考完那个晚上，我也这样认为[facepalm]，我高考完回到教室，对你说的那一声谢谢，让我的高三得到了解脱，尽管我们以后可能不会再有交集，但还是真的很感谢你！</p>
-<p>1.22<br>今日大学城寒招队伍碰面，新认识了许多有趣的小伙伴，个个都是人才，说话又好听(滑稽)。吹完水后，又与Sam相约大学城，把整个华师校区都骑了一遍，才发觉，这才是我高考前梦中隐约出现大学该有的样子(这里没有黑南海)，有人曾和我说过，有机会要去别的大学，甚至是本学校的其他校区看看，对比了石牌，大学城和华工五山，果然越好的大学，对于校园环境、设施的建设总是做的比较好的，这就不难解释为什么中国营造着拼了命要考上好大学的氛围。图书馆，教学楼，各学院院楼，阳光映射在人工湖上，在轻微的波澜中，透过竹林，鱼鳞般阳光的碎隙格外显眼……</p>
-<p>1.23</p>
-<p>今天整天沉浸在代码行里，没什么思绪[doge]</p>
-<p>1.24</p>
-<p>又到了每月固定的网抑云时刻，又默默地打开网易云里纯音乐的歌单，那一个个音符，都与我产生了共鸣，回忆起高三，也许这就是青春吧，每天与Sam在教室里奋笔疾书，回到宿舍拿起吉他和Four和Sam唱。这里引用席慕容的一句话，青春的锦绣与贵重，就在于它的天真与无瑕，在于它的可遇而不可求，在于它的永不重回。</p>
-<p>1.26<br>今天上午出发找Sam，径直前往天河地区漫游(瞎逛)，再次感受繁华城市的繁华地带，随后又路过一个唱吧，在那里欣赏了许多路人的歌声，不得不多，高手在民间。</p>
-<p>然后就是今天的重点，我！回！去！寒！招！啦！踏进校园的那一刻，走到校友墙那里，自己终于上了墙，内心满是激动，不过也在感叹，时光过得太快了，三年一眨眼就过去了，高三时的每个场景又浮现在我眼前，熟悉的教室角落，和蔼的老师们，看见老师，又想起一年前的自己……进教室了，看见了可爱有趣学弟学妹们，一年前自己要站在讲台上宣讲的愿望终于实现了，也是一年前，学长学姐站在讲台上宣讲，今年轮到我了，也进入凡尔赛(吹牛)状态(滑稽)，才发现原来自己高三也牛B过，自己在高三后期摸索出的方法也在高考前几天帮我稳住了自己。进了学校，先是龙哥来接应我们，看见龙哥，又想起那让人欲睡的课堂[doge]，进入教学楼，看见了永远保持一颗童心的汪老师，不得不说，汪老师在高三阶段帮我解决了很多学习、心理上的困惑，以至于我无法用文字来表达我的感激之情；后来我也见到了我的学长–Sharp[doge]，见面即握手致意相互寒暄(吹水)……收到了学弟学妹感谢的小纸条，内心满是感动。后来又与Sam和老马一同喝茶，聊天(还是吹水)，真的不得不佩服老马的大局观，对一些细节的处理，在交谈过程中，才发现以前看似枯燥的课堂，其实蕴含着许多人生的道理，只不过我们没发掘罢了</p>
-<p>1.27<br>肝完这篇文章，就去码代码<br>今早起来，回想昨天发生了什么，感觉真的就发生在一瞬间，天知道我经历了什么，不过寒招也接近尾声了，我也要继续完成我咕了几天的信宣推文了。<br>Last but not least,2021,码好每一行代码，弹好每一个音符，唱好每一首歌，投好每一个球，充实过好每一天<br>                                                                                                                      To Be Continued…</p>
+            <p>这两周的c++课都没怎么听，也许是对自己太自信了，第一次的类的作业竟然不会做(丢人)，翻看了书本，加上论坛大佬的代码才大概弄明白；然而这次的上机作业，要求再用类写个链表系统，做的时候有发现问题了，虽然之前总结过链表，但是是用结构体写的，貌似不支持string(基于类的链表支持string)，这次又浏览了论坛上大佬的帖子，总结了一波，做出了以下单链表系统(阉割版)</p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+typedef struct student &#123;
+    string name, ID, publisher, author;
+    student* next;
+&#125; student, * stu;
+
+class list &#123;
+public:
+    ~list();//析构函数
+    list(string, string, string, string);//构造函数
+    void search(string name);
+    void insert(string, string, string, string);
+    void del(string);
+    void print();
+    void edit(string);
+    struct student* head;
+&#125;;
+
+list::~list()
+&#123;
+    cout &lt;&lt; &quot;release successfully&quot; &lt;&lt; endl;
+    system(&quot;pause&quot;);
+&#125;
+//析构函数不要出现在主函数里，不然会报错
+
+list::list(string a, string b, string c, string d)
+&#123;
+    head = new student;
+    head-&gt;next = NULL;
+    student* s = NULL;
+    s = new student;
+    s-&gt;name = a;
+    s-&gt;ID = b;
+    s-&gt;author = c;
+    s-&gt;publisher = d;
+    s-&gt;next = head-&gt;next;
+    head-&gt;next = s;
+&#125;
+//初始化链表
+
+void list::search(string name)
+&#123;
+    student* p = head-&gt;next;
+    while (p != NULL) &#123;
+        if (p-&gt;name == name) &#123;
+            //return p;
+            cout &lt;&lt; &quot;name: &quot; &lt;&lt; p-&gt;name &lt;&lt; endl;
+            cout &lt;&lt; &quot;ID: &quot; &lt;&lt; p-&gt;ID &lt;&lt; endl;
+            cout &lt;&lt; &quot;author: &quot; &lt;&lt; p-&gt;author &lt;&lt; endl;
+            cout &lt;&lt; &quot;publisher: &quot; &lt;&lt; p-&gt;publisher &lt;&lt; endl;
+            break;
+        &#125;
+        p = p-&gt;next;
+    &#125;
+    system(&quot;pause&quot;);
+    //return NULL;
+&#125;
+//查找链表中的成员
+
+void list::insert(string a, string b, string c, string d)
+&#123;
+    student* p = head, * s = NULL;
+    s = new student;
+    s-&gt;name = a;
+    s-&gt;ID = b;
+    s-&gt;author = c;
+    s-&gt;publisher = d;
+    s-&gt;next = p-&gt;next;
+    head-&gt;next = s;
+&#125;
+//往链表添加新成员
+
+void list::del(string name)
+&#123;
+    student* p = head-&gt;next, * s = head, * q = NULL;
+    q = new student;
+    while (p != NULL &amp;&amp; p-&gt;name != name) &#123;
+        p = p-&gt;next;
+        s = s-&gt;next;
+    &#125;
+    if (p-&gt;name == name) &#123;
+        s-&gt;next = p-&gt;next;
+        q = p;
+        delete q;
+        cout &lt;&lt; &quot;delete successfully&quot; &lt;&lt; endl;
+    &#125;
+&#125;
+//删除链表的结点
+
+void list::print()
+&#123;
+    student* p = head-&gt;next;
+    cout &lt;&lt; &quot;name\t&quot; &lt;&lt; &quot;ID\t&quot; &lt;&lt; &quot;author\t&quot; &lt;&lt; &quot;publisher&quot; &lt;&lt; endl;
+    while (p != NULL) &#123;
+        cout &lt;&lt; p-&gt;name &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;ID &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;author &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;publisher &lt;&lt; endl;
+        p = p-&gt;next;
+    &#125;
+    cout &lt;&lt; endl;
+&#125;
+//打印链表
+
+void list::edit(string name)
+&#123;
+    student* p = head-&gt;next;
+    while (p != NULL) &#123;
+        if (p-&gt;name == name) &#123;
+            break;
+        &#125;
+        p = p-&gt;next;
+    &#125;
+    while (1) &#123;
+        cout &lt;&lt; &quot;what data do you wanna edit(enter &#39;none&#39; to exit): &quot;;
+        string temp;
+        cin &gt;&gt; temp;
+        cout &lt;&lt; &quot;enter the new data: &quot;;
+        if (temp == name) &#123;
+            cin &gt;&gt; p-&gt;name;
+        &#125;
+        else if (temp == &quot;ID&quot;) &#123;
+            cin &gt;&gt; p-&gt;ID;
+        &#125;
+        else if (temp == &quot;author&quot;) &#123;
+            cin &gt;&gt; p-&gt;author;
+        &#125;
+        else if (temp == &quot;publisher&quot;) &#123;
+            cin &gt;&gt; p-&gt;publisher;
+        &#125;
+        else if (temp == &quot;none&quot;) &#123;
+            break;
+        &#125;
+        else &#123;
+            cout &lt;&lt; &quot;error, please check what you enter&quot; &lt;&lt; endl;
+        &#125;
+
+    &#125;
+&#125;
+//编辑链表成员的数据
+
+int main()
+&#123;
+    list li(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;);
+    while (1) &#123;
+        cout &lt;&lt; &quot;---------------------------\n&quot;;
+        cout &lt;&lt; &quot;1.add the info             \n&quot;;
+        cout &lt;&lt; &quot;2.search the info          \n&quot;;
+        cout &lt;&lt; &quot;3.edit the info            \n&quot;;
+        cout &lt;&lt; &quot;4.delete the info          \n&quot;;
+        cout &lt;&lt; &quot;5.print the list           \n&quot;;
+        cout &lt;&lt; &quot;0.exit                     \n&quot;;
+        cout &lt;&lt; &quot;---------------------------\n&quot;;
+        cout &lt;&lt; &quot;choose a mode: &quot;;
+        int mode;
+        cin &gt;&gt; mode;
+        if (mode == 1) &#123;
+            string a, b, c, d;
+            cout &lt;&lt; &quot;enter the new data(name ID author publisher): &quot;;
+            cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
+            li.insert(a, b, c, d);
+        &#125;
+        else if (mode == 2) &#123;
+            string temp;
+            cout &lt;&lt; &quot;enter the book&#39;s name that you want to search: &quot;;
+            cin &gt;&gt; temp;
+            li.search(temp);
+        &#125;
+        else if (mode == 3) &#123;
+            string temp;
+            cin &gt;&gt; temp;
+            li.edit(temp);
+        &#125;
+        else if (mode == 4) &#123;
+            string temp;
+            cin &gt;&gt; temp;
+            li.del(temp);
+            system(&quot;pause&quot;);
+        &#125;
+        else if (mode == 5) &#123;
+            li.print();
+            system(&quot;pause&quot;);
+        &#125;
+        else if (mode == 0) &#123;
+            cout &lt;&lt; endl;
+            system(&quot;pause&quot;);
+            break;
+        &#125;
+        else &#123;
+            cout &lt;&lt; &quot;error, please select the mode again\n&quot;;
+            system(&quot;pause&quot;);
+        &#125;
+        system(&quot;cls&quot;);
+    &#125;
+&#125;</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
