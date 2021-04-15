@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>第六次前端作业</title>
+      <link href="2021/04/15/0x0012/"/>
+      <url>2021/04/15/0x0012/</url>
+      
+        <content type="html"><![CDATA[<p>第六次前端作业，在写的过程中发现许多坑，开贴来记录下</p><pre><code class="html">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;    &lt;title&gt;Document&lt;/title&gt;    &lt;style type=&quot;text/css&quot;&gt;        *&#123;            padding: 0;            margin: 0;        &#125;        /*消除li列表所有默认缩进*/        #aa&#123;            background-image: url(image/bgimage.png);            width: 900px;            height: 280px;        &#125;        ul&#123;            list-style: none;            position: relative;            top: 70px;            left: 25px;        /*设置ul列表所在的区域*/            overflow: hidden;       /*这里的position参数很重要，缺少这个起不到控制边距作用*/        &#125;        li&#123;            padding: 4px;            padding-left: 0px;            background-color: #549154;            width: 220px;            border-bottom: dashed 1px  white;            /*设置列表背景，下划线样式*/        &#125;        a&#123;            text-decoration: none;            color: #ffd700;            padding-left: 20px;            font-weight: bold;            letter-spacing: 1px;        /*设置字体样式*/        &#125;        .kk&#123;            background-color: #dfa937;            display: inline;            /*如果display用了block，则block和文字部分不在同一行，则出现色块填充不全的情况*/            padding: 6px;        /*设置字体前的列表样式，也就是颜色块*/        &#125;    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;    &lt;div id=&quot;aa&quot;&gt;        &lt;ul&gt;            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 图书分类&lt;/a&gt;&lt;/li&gt;            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 人文社科&lt;/a&gt;&lt;/li&gt;            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 历史古迹&lt;/a&gt;&lt;/li&gt;            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 哲学宗教&lt;/a&gt;&lt;/li&gt;            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 社会科学&lt;/a&gt;&lt;/li&gt;            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 科普百科&lt;/a&gt;&lt;/li&gt;            &lt;!-- style=&quot;&#39;display: block&#39;&quot;; 添加这个会突兀出一块空白的区域，这是一个带有换行符的块元素--&gt;        &lt;/ul&gt;    &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><p>图例</p><img src="https://jaydenchang.gitee.io/images/images/0x0012.png">]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+            <tag> html </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>c++类的作业实例(单链表)</title>
       <link href="2021/03/23/0x0011/"/>
       <url>2021/03/23/0x0011/</url>
