@@ -5,17 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>对链表相关知识的整理 - Jayden&#39;s Blog</title>
+    <title>Tag: css - Jayden&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="JaydenChang,"> 
-    <meta name="description" content="花了两周整理链表的相关知识
-以一个主函数和多个函数的形式来呈现
-/*链表合集*/
-#include&amp;lt;iostream&amp;gt;
-#include&amp;lt;cstdlib&amp;gt;
-using nam,"> 
+    
     <meta name="author" content="Jayden Chang"> 
     <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -56,73 +51,132 @@ using nam,">
     </div>
     <span id="config-title" style="display:none">Jayden&#39;s Blog</span>
     <div id="loader"></div>
-    <div id="single">
-    <div class="scrollbar gradient-bg-rev"></div>
-<div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <div class="navigation animated fadeIn fast delay-1s">
-        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
-        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">对链表相关知识的整理</h3>
-        <div class="social">
-            <!--        <div class="like-icon">-->
-            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-            <!--        </div>-->
-            <div>
-                <div class="share">
-                    
-                        <a href="javascript:;" class="iconfont icon-share1"></a>
-                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
-                    
-                </div>
-            </div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/about/" title="ABOUT" external="false">ABOUT</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="CATEGORIES" external="false">CATEGORIES</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="TAGS" external="false">TAGS</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="ARCHIVES" external="false">ARCHIVES</a>
+        </li>
+        
+    </ul>
+    <p class="copyright" id="copyright">
+        &copy; 2021 Jayden Chang.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+    </p>
+</div>
+
+<div id="container">
+    
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+        <div id="local-search-result" class="local-search-result-cls" data-initialise="Initialising search index..."
+            data-start="Please input search keywords." data-empty="No result found, please try other keywords.">
+            <span>Please input search keywords.</span>
         </div>
     </div>
 </div>
-
-    <div class="section">
-        <div class=article-header-wrapper>
-    <div class="article-header">
-        <div class="article-cover animated fadeIn" style="
-            animation-delay: 600ms;
-            animation-duration: 1.2s;
-            background-image: 
-                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(/img/cover.jpg) ">
+<div id="header">
+    <div>
+        <div class="logo animated fadeInDown">
+            <img src="/img/favicon.png" alt="">
+            <a class="image-logo" href="/"></a>
         </div>
-        <div class="else">
-            <p class="animated fadeInDown">
-                
-                <a href="/categories/技术"><b>「
-                    </b>技术<b> 」</b></a>
-                
-                March 17, 2021
-            </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/03/17/0x0003/" title="对链表相关知识的整理" class="">对链表相关知识的整理</a>
-            </h3>
+        <ul id="menu-menu" class="menu text-menu">
             
-            <p class="post-count animated fadeInDown">
-                
-                <span>
-                    <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.9k
-                </span>
-                
-                
-                <span>
-                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    4 mins.
-                </span>
-                
-                
-                
-            </p>
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/about/" title="ABOUT" external="false" class="menu-link">ABOUT</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/categories/" title="CATEGORIES" external="false" class="menu-link">CATEGORIES</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/tags/" title="TAGS" external="false" class="menu-link">TAGS</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/archives/" title="ARCHIVES" external="false" class="menu-link">ARCHIVES</a>
+            </li>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+            <li class="animated fadeInDown search-bar iconfont icon-search"></li>
             
+        </ul>
+        <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
+    </div>
+</div>
+<div id="screen">
+    <div id="mark">
+        <div class="cover animated fadeIn" style="
+            animation-delay: 900ms;
+            animation-duration: 2.8s;
+            background-image:
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
+                url(/img/cover.jpg);">
         </div>
     </div>
+    
+    <div id="post0" class="else">
+        <p class="animated fadeInDown">
+            
+            <a href="/categories/技术"><b>「
+                </b>技术<b> 」</b></a>
+            
+            April 21, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown">
+            <a href="/2021/04/21/0x0013/" title="关于下拉二级菜单" class="posttitle">关于下拉二级菜单</a></h3>
+        
+        <p class="post-count animated fadeInDown">
+            
+            <span>
+                <b class="iconfont icon-text2"></b> <i>Words count</i>
+                5k
+            </span>
+            
+            
+            <span>
+                <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                5 mins.
+            </span>
+            
+            
+        </p>
+        
+        
+        <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/css/" rel="tag">css</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/html/" rel="tag">html</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
+            
+            <p>第七次前端作业，要求做一个下拉二级菜单，本次工程采用html+css完成</p>
+<p>分别展示html和css的代码</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot...</code></pre>
+            
+            <span class="read-more"><a href="/2021/04/21/0x0013/" title="Read article" class="posttitle">Read article</a>
+                <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+    
 </div>
 
 <div class="screen-gradient-after">
@@ -130,214 +184,21 @@ using nam,">
         <div class="screen-gradient-content-inside">
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
-                    <span class="animated fadeIn delay-1s"></span>
+                    <span class="typed-text"></span>
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="article">
-    <div class='main'>
-        <div class="content markdown animated fadeIn">
-            <p>花了两周整理链表的相关知识</p>
-<p>以一个主函数和多个函数的形式来呈现</p>
-<pre><code class="c++">/*链表合集*/
-#include&lt;iostream&gt;
-#include&lt;cstdlib&gt;
-using namespace std;
-typedef struct node&#123;
-    int a;
-    struct node *next;
-&#125; Node;
-//排序
-void Sort(Node*head)&#123;
-    node *p, *s, *pt;
-    p = head;
-    s = p-&gt;next;
-    while (p-&gt;next != NULL)&#123;
-        while(s-&gt;next != NULL)&#123;
-            if(p-&gt;next &gt; s-&gt;next)&#123;
-                pt-&gt;next = p-&gt;next;
-                p-&gt;next = s-&gt;next;
-                s-&gt;next = pt-&gt;next;
-            &#125;
-            s = s-&gt;next;
-        &#125;
-        p = p-&gt;next;
-        pt = s;
-    &#125;
-&#125;
-
-Node *add(Node*head,int num)&#123;//在表尾插入元素
-    Node *p = NULL, *pr = head;
-    p = (Node *)malloc(sizeof(Node));
-    if(p == NULL)&#123;
-        cout &lt;&lt; &quot;no enough memory to allocate&quot;;
-    &#125;
-    if(head == NULL)&#123;
-        head = p;
-    &#125;else&#123;
-        while(pr-&gt;next != NULL)&#123;
-            pr = pr-&gt;next;
-        &#125;
-        pr-&gt;next = p;
-    &#125;
-    p-&gt;a = num;
-    p-&gt;next = NULL;
-    return head;
-&#125;
-//打印链表
-void show(Node*head)&#123;
-    Node *p = head;
-    while(p != NULL)&#123;
-        cout &lt;&lt; p-&gt;a &lt;&lt; &quot; &quot;;
-        p = p-&gt;next;
-    &#125;
-&#125;
-
-void del(Node*head)&#123;//释放申请的内存空间
-    Node *p = head, *pr = NULL;
-    while(p != NULL)&#123;
-        pr = p;
-        p = p-&gt;next;
-        free(pr);
-    &#125;
-&#125;
-//删除链表里某一个节点
-Node* Delete(Node*head,int num)&#123;
-    Node *p = head, *pr = head;
-    //pr是目标元素前一个节点
-    if(head == NULL)&#123;
-        cout &lt;&lt; &quot;empty table&quot;;
-        return head;//空表退出
-    &#125;
-    while(num != p-&gt;a &amp;&amp; p-&gt;next != NULL)&#123;
-        //未找到且不是空表
-        pr = p;
-        p = p-&gt;next;//p直接指向当前节点的下一节点
-    &#125;
-    if(num == p-&gt;a)&#123;//找到了待删除节点
-        if(p == head)&#123;
-            head = p-&gt;next;//直接让头指针指向待删除结点p的下一节点
-        &#125;else&#123;
-            pr-&gt;next = p-&gt;next;
-            //前一节点的指针域指向待删除结点的下一节点
-        &#125;
-        free(p);
-    &#125;else&#123;//到表尾且没找到
-        cout &lt;&lt; &quot;not found&quot;;
-    &#125;
-    return head;
-&#125;
-//在链表里插入元素
-Node* insert(Node*head,int num)&#123;
-    Node *pr = head, *p = head, *temp = NULL;
-    p = (Node *)malloc(sizeof(Node));
-    if(p == NULL)&#123;
-        cout &lt;&lt; &quot;no enough memory&quot;;
-        exit(0);
-    &#125;
-    p-&gt;next = NULL;//待插入节点指针域为空指针
-    p-&gt;a = num;//待插入节点的数值域为num
-    if(head == NULL)&#123;
-        head = p;//若原链表为空表，待插入节点为头节点
-    &#125;else&#123;//若为非空
-    //若未找到待插入节点的位置且未找到表尾则继续找
-        while(pr-&gt;a &lt; num &amp;&amp; pr-&gt;next != NULL)&#123;
-            temp = pr;//temp保存当前节点的下一节点
-            pr = pr-&gt;next;//pr指向当前节点的下一节点
-        &#125;
-        if(pr-&gt;a &gt;= num)&#123;
-            if(pr == head)&#123;//若在头节点前插入新节点
-                p-&gt;next = head;
-            //将新节点的指针域指向原链表的头节点
-                head = p;//让head指向新节点
-            &#125;else&#123;//在链表中部插入新节点
-            //进行排序
-                pr = temp;
-                p-&gt;next = pr-&gt;next;
-                pr-&gt;next = p;
-            &#125;
-        &#125;else&#123;//若在表尾插入新节点
-            pr-&gt;next = p;//让末节点的指针域指向新节点
-        &#125;
-    &#125;
-    return head;//返回插入新节点猴的链表头指针head的值
-&#125;
-
-int main()
-&#123;
-    int num;
-    char ch;
-    struct node *head = NULL;
-    do&#123;
-        cin &gt;&gt; num;
-        if(num &gt;= 0)&#123;
-            head = add(head, num);
-            show(head);
-        &#125;
-        if(num % 5 ==0)&#123;
-            cout &lt;&lt; &quot;continue?(y/n)&quot;;
-            cin &gt;&gt; ch;
-            if((ch == &#39;n&#39;) || (ch == &#39;N&#39;))&#123;
-                break;
-            &#125;
-        &#125;//避免死循环
-    &#125; while (num &gt;= 0);
-    del(head);
-&#125;</code></pre>
-
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls"
-                data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-            <ul id="audio-list" style="display:none">
-                
-                
-                <li title='0' data-url='/statics/少年再见.mp3'></li>
-                
-                    
-            </ul>
-            
-            
-            
-            <div id="vcomments"></div>
-            
-        </div>
-        <div class="sidebar">
-            <div class="box animated fadeInRight">
-                <div class="subbox">
-                    <img src="/img/Jayden.jpg" height=300 width=300></img>
-                    <p>Jayden Chang</p>
-                    <span>身在井隅，心向星光。眼中有诗，自在远方</span>
-                    <dl>
-                        <dd><a href="https://github.com/JaydenChang" target="_blank"><span
-                                    class=" iconfont icon-github"></span></a></dd>
-                        <dd><a href="https://twitter.com/JaydenChang7" target="_blank"><span
-                                    class=" iconfont icon-twitter"></span></a></dd>
-                        <dd><a href="https://stackoverflow.com/users/15092270/jayden-chang" target="_blank"><span
-                                    class=" iconfont icon-stack-overflow"></span></a></dd>
-                    </dl>
-                </div>
-                <ul>
-                    <li><a href="/">13 <p>Articles</p></a></li>
-                    <li><a href="/categories">2 <p>Categories</p></a></li>
-                    <li><a href="/tags">5 <p>Tags</p></a></li>
-                </ul>
-            </div>
-            
-            
-            
-            
-        </div>
+    <div id="primary">
+        
     </div>
+    
 </div>
+<div id="preview"></div>
 
-    </div>
-</div>
+
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

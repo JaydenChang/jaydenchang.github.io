@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>关于下拉二级菜单</title>
+      <link href="2021/04/21/0x0013/"/>
+      <url>2021/04/21/0x0013/</url>
+      
+        <content type="html"><![CDATA[<p>第七次前端作业，要求做一个下拉二级菜单，本次工程采用html+css完成</p><p>分别展示html和css的代码</p><pre><code class="html">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;    &lt;title&gt;Document&lt;/title&gt;    &lt;link rel=&quot;stylesheet&quot; href=&quot;aaaa.css&quot;&gt;    &lt;!-- &lt;link rel=&quot;stylesheet&quot; href=&quot;reset.css&quot;&gt; --&gt;    &lt;style&gt;        *&#123;            list-style: none;            text-decoration: none;            margin: 0;            padding: 0;        &#125;    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;    &lt;div class=&quot;topmenu&quot;&gt;        &lt;ul class=&quot;nav&quot;&gt;            &lt;li class=&quot;nav-container&quot;&gt;                &lt;a href=&quot;#&quot;&gt;首页&lt;/a&gt;                &lt;ul class=&quot;nav-list&quot;&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;教育动态&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;学术动态&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;学生动态&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;通知公告&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;信息公开&lt;/a&gt;&lt;/li&gt;                &lt;/ul&gt;            &lt;/li&gt;            &lt;li class=&quot;nav-container&quot;&gt;                &lt;a href=&quot;#&quot;&gt;学院概况&lt;/a&gt;                &lt;ul class=&quot;nav-list&quot;&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;院长寄语&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;学院简介&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;历史沿革&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;学院机构&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;校园印象&lt;/a&gt;&lt;/li&gt;                &lt;/ul&gt;            &lt;/li&gt;&lt;li class=&quot;nav-container&quot;&gt;                &lt;a href=&quot;#&quot;&gt;教职员工&lt;/a&gt;                &lt;ul class=&quot;nav-list&quot;&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;专任教师&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;实验技术人员&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;行政人员&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;离退休&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;招聘信息&lt;/a&gt;&lt;/li&gt;                &lt;/ul&gt;            &lt;/li&gt;&lt;li class=&quot;nav-container&quot;&gt;                &lt;a href=&quot;#&quot;&gt;学生工作&lt;/a&gt;                &lt;ul class=&quot;nav-list&quot;&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;本科生工作&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;研究生工作&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;共青团&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;学生会&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;研究生会&lt;/a&gt;&lt;/li&gt;                &lt;/ul&gt;            &lt;/li&gt;&lt;li class=&quot;nav-container&quot;&gt;                &lt;a href=&quot;#&quot;&gt;科学研究&lt;/a&gt;                &lt;ul class=&quot;nav-list&quot;&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;学术活动&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;科研平台&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;研究方向&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;重大研究&lt;/a&gt;&lt;/li&gt;                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;科研成果&lt;/a&gt;&lt;/li&gt;                &lt;/ul&gt;            &lt;/li&gt;                    &lt;/ul&gt;    &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><p>css代码</p><pre><code class="css">.topmenu&#123;    width: 100%;    height: 50px;    /* background: whitesmoke; */    background: lightgrey;&#125;/*hover是来设置鼠标的属性*/.topmenu .nav .nav-container&#123;    float: left;    /* left: 300px;    position: relative; */    background: lightgrey;    text-align: center;    width: 155px;    /* border-right: solid 2px #fff; */&#125;a &#123;    line-height: 50px;    color: #fff;&#125;.topmenu .nav .nav-container .nav-list &#123;    display: none;    /*一级菜单的属性，不显示二级内容*/&#125;.topmenu .nav .nav-container:hover .nav-list &#123;    display: list-item;    /*当鼠标停留在相关标签上，展开二级菜单*/&#125;/* .topmenu .nav-container:hover .nav-list&#123;    display: list-item;    这种写法也行，一定要.topmenu .nav-container:hover .nav-list    不然鼠标指针停留在标签上无反应在设置颜色时，注意颜色不要冲突了*/.topmenu li:hover &#123;    background: lightskyblue;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+            <tag> html </tag>
+            
+            <tag> css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第六次前端作业</title>
       <link href="2021/04/15/0x0012/"/>
       <url>2021/04/15/0x0012/</url>
