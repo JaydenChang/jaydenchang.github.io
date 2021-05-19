@@ -5,16 +5,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>第六次前端作业 - Jayden&#39;s Blog</title>
+    <title> - Jayden&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="JaydenChang,"> 
-    <meta name="description" content="第六次前端作业，在写的过程中发现许多坑，开贴来记录下
+    <meta name="description" content="这次作业算是JavaScript的一个入门吧，确实有很多新的知识点
+html部分
 &amp;lt;!DOCTYPE html&amp;gt;
 &amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-    ,"> 
+&amp;lt,"> 
     <meta name="author" content="Jayden Chang"> 
     <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -62,7 +62,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">第六次前端作业</h3>
+        <h3 class="subtitle"></h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -95,22 +95,22 @@
                 <a href="/categories/技术"><b>「
                     </b>技术<b> 」</b></a>
                 
-                April 15, 2021
+                May 19, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/04/15/0x0012/" title="第六次前端作业" class="">第六次前端作业</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/05/19/0x0016/" title="Untitled" class="">Untitled</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    2.7k
+                    9.9k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
+                    9 mins.
                 </span>
                 
                 
@@ -118,7 +118,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/css/" rel="tag">css</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/html/" rel="tag">html</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/html/" rel="tag">html</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
             
         </div>
     </div>
@@ -139,7 +139,8 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>第六次前端作业，在写的过程中发现许多坑，开贴来记录下</p>
+            <p>这次作业算是JavaScript的一个入门吧，确实有很多新的知识点</p>
+<p>html部分</p>
 <pre><code class="html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
@@ -148,71 +149,251 @@
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
     &lt;title&gt;Document&lt;/title&gt;
     &lt;style type=&quot;text/css&quot;&gt;
-        *&#123;
-            padding: 0;
-            margin: 0;
+        div&#123;
+            margin-bottom: 30px;
+            margin-top: 30px;
         &#125;
-        /*消除li列表所有默认缩进*/
-        #aa&#123;
-            background-image: url(image/bgimage.png);
-            width: 900px;
-            height: 280px;
+        td,
+        th &#123;
+            padding: 10px;
+            border: 1px solid #696969;
         &#125;
-        ul&#123;
-            list-style: none;
-            position: relative;
-            top: 70px;
-            left: 25px;
-        /*设置ul列表所在的区域*/
-            overflow: hidden;
-       /*这里的position参数很重要，缺少这个起不到控制边距作用*/
+
+        table &#123;
+            border: 1px solid #A9A9A9;
         &#125;
-        li&#123;
-            padding: 4px;
-            padding-left: 0px;
-            background-color: #549154;
-            width: 220px;
-            border-bottom: dashed 1px  white;
-            /*设置列表背景，下划线样式*/
+
+        button &#123;
+            width: 70px;
+            padding: 5px;
+            color: grey;
         &#125;
-        a&#123;
-            text-decoration: none;
-            color: #ffd700;
-            padding-left: 20px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        /*设置字体样式*/
-        &#125;
-        .kk&#123;
-            background-color: #dfa937;
-            display: inline;
-            /*如果display用了block，则block和文字部分不在同一行，则出现色块填充不全的情况*/
-            padding: 6px;
-        /*设置字体前的列表样式，也就是颜色块*/
+        select, button, input&#123;
+            color: gray;
         &#125;
     &lt;/style&gt;
+
+    &lt;script src=&quot;22.js&quot;&gt;&lt;/script&gt;        
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;div id=&quot;aa&quot;&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 图书分类&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 人文社科&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 历史古迹&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 哲学宗教&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 社会科学&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;div class=&quot;kk&quot;&gt;&lt;/div&gt;&lt;a href=&quot;#&quot;&gt; 科普百科&lt;/a&gt;&lt;/li&gt;
-            &lt;!-- style=&quot;&#39;display: block&#39;&quot;; 添加这个会突兀出一块空白的区域，这是一个带有换行符的块元素--&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
+
+    &lt;div&gt;        
+            &lt;table id=&quot;Form&quot;&gt;
+                &lt;br&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;ID&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sid&quot; placeholder=&quot;please enter id&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;name&lt;/td&gt;
+                    &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;Name&quot; placeholder=&quot;please enter name&quot;&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;sex&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;male&quot;&gt;male
+                        &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;female&quot;&gt;female
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;major&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;select id=&quot;major&quot;&gt;                            
+                            &lt;option value=&quot;software engine&quot; selected=&quot;selected&quot;&gt;software engine&lt;/option&gt;
+                            &lt;option value=&quot;artificial intelligence&quot;&gt;artificial intelligence&lt;/option&gt;
+                            &lt;option value=&quot;network engine&quot;&gt;network engine&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;action&lt;/td&gt;
+                    &lt;td color=&quot;gray&quot;&gt;
+                        &lt;input type=&quot;button&quot; value=&quot;add&quot; onclick=&quot;insert()&quot;&gt;
+                        &lt;input type=&quot;button&quot; value=&quot;reset&quot; id=&quot;reset&quot; onclick=&quot;reset()&quot;&gt;                        
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;        
+    &lt;/div&gt;    
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-<p>图例</p>
-<img src="https://jaydenchang.gitee.io/images/images/0x0012.png">
+<p>JavaScript部分</p>
+<pre><code class="javascript">var selall = &quot;&lt;input type=checkbox id=selAll onclick=SelectAll()&gt;select all&quot;;
+var selthis = &quot;&lt;input type=checkbox Name=sel onclick=Select()&gt;select&quot;;
+var action = &quot;&lt;a href=&#39;#&#39; onclick=del(this)&gt;delete&lt;/a&gt;| &lt;a href=&#39;#&#39; onclick=edit(this)&gt;edit&lt;/a&gt;&quot;;
+var title = new Array(selall, &quot;ID&quot;, &quot;Name&quot;, &quot;sex&quot;, &quot;major&quot;, &quot;action&quot;);
+var student = new Array();
+var Td = new Array();
+var td = new Array();
+student[0] = new Array(selthis, &quot;0x0001&quot;, &quot;Kobe&quot;, &quot;male&quot;, &quot;software engine&quot;, action);
+student[1] = new Array(selthis, &quot;0x0002&quot;, &quot;Wade&quot;, &quot;male&quot;, &quot;artificial intelligence&quot;,  action);
+student[2] = new Array(selthis, &quot;0x0003&quot;, &quot;Rachel&quot;, &quot;female&quot;, &quot;network engine&quot;, action);
+// 创建一个学生数据数组 
+var oldValue = new Array();
+var newData = new Array();
+document.write(&quot;&lt;table id=Table&gt;&quot;);
+document.write(&quot;&lt;tr&gt;&quot;);
+for (var i = 0; i &lt; title.length; i++) &#123;
+    document.write(&quot;&lt;th&gt;&quot; + title[i] + &quot;&lt;/th&gt;&quot;);
+&#125;
+document.write(&quot;&lt;/tr&gt;&quot;);
+for (var r = 0; r &lt; student.length; r++) &#123;
+    document.write(&quot;&lt;tr&gt;&quot;);
+    for (var c = 0; c &lt; title.length; c++) &#123;
+        document.write(&quot;&lt;td&gt;&quot; + student[r][c] + &quot;&lt;/td&gt;&quot;);
+    &#125;
+    document.write(&quot;&lt;/tr&gt;&quot;);
+&#125;
+// 这里用js打印出学生数据数组
+function SelectAll() &#123;
+    var selectall = document.getElementById(&quot;selAll&quot;);
+    var Sel = document.getElementsByName(&quot;sel&quot;);
+    if (selectall.checked == true)
+        for (var i = 0; i &lt; Sel.length; i++)
+            Sel[i].checked = true;
+    else
+        for (var i = 0; i &lt; Sel.length; i++)
+            Sel[i].checked = false;
+&#125;
+// 全选函数，注意下里面的算法
+
+function Select() &#123;
+    var selectall = document.getElementById(&quot;selAll&quot;);
+    var Sel = document.getElementsByName(&quot;sel&quot;);
+    for (var i = 0; i &lt; Sel.length; i++)
+        if (!Sel[i].checked) &#123;
+            selectall.checked = false;
+            break;
+        &#125; else
+            selectall.checked = true;
+
+&#125;
+// 选择函数的算法，和全选函数搭配
+
+// 以下的函数都需要get table的元素
+function del(that) &#123;
+    var currentRow = that.parentNode.parentNode.rowIndex;
+    var ObjTable = document.getElementById(&quot;Table&quot;);
+    if (confirm(&quot;delete the data on this row?&quot;))
+        ObjTable.deleteRow(currentRow);
+&#125;
+// 删除整行元素的函数
+function edit(that) &#123;
+    var tdStr = &quot;&lt;a href=&#39;#&#39; onclick=save(this)&gt;save&lt;/a&gt;|&lt;a href=&#39;#&#39; onclick=cancel(this)&gt;cancel&lt;/a&gt;&quot;;
+    var ObjTable = document.getElementById(&quot;Table&quot;);
+    var currentRow = that.parentNode.parentNode.rowIndex;
+    var ObjTr = ObjTable.rows[currentRow];       
+    var td6 = ObjTr.cells.item(5);
+    td6.innerHTML = tdStr;
+    for (var i = 1; i &lt; title.length - 1; i++)&#123;
+        Td[i] = ObjTr.cells.item(i);    
+        oldValue[i] = Td[i].innerHTML;
+        var Str = &quot;&lt;input type=text Name=msg value=&quot; + oldValue[i] + &quot;&gt;&quot;;
+        Td[i].innerHTML = Str;
+    // 这里已经是从1开始了，下面的save函数的遍历要从0开始
+    &#125;
+&#125;
+function cancel(that) &#123;
+    var ObjTable = document.getElementById(&quot;Table&quot;);
+    var currentRow = that.parentNode.parentNode.rowIndex;
+    var ObjTr = ObjTable.rows[currentRow];    
+    for (var i = 1; i &lt; title.length; i++)&#123;
+        ObjTr.cells.item(i).innerHTML = oldValue[i];
+    &#125;
+    ObjTr.cells.item(5).innerHTML = action;
+&#125;
+function save(that) &#123;
+    var ObjTable = document.getElementById(&quot;Table&quot;);
+    var currentRow = that.parentNode.parentNode.rowIndex;
+    var ObjTr = ObjTable.rows[currentRow];
+    var Td = new Array();
+    newData = document.getElementsByName(&quot;msg&quot;);
+    for (var i = 0; i &lt; title.length - 2; i++)&#123;
+        Td[i] = newData[i].value;
+        ObjTr.cells.item(i).value = newData[i].value;
+
+    &#125;
+    for (var i = 0; i &lt; title.length-1; i++)
+        ObjTr.cells.item(i+1).innerHTML = Td[i];
+    ObjTr.cells.item(5).innerHTML = action;
+
+&#125;
+window.onload = function () &#123;
+    var reset = document.getElementById(&quot;reset&quot;);
+    reset.onclick = function () &#123;
+        sid.value = &quot;&quot;;
+        Name.value = &quot;&quot;;
+        // 使文本框恢复默认
+        var radio = document.getElementsByName(&quot;sex&quot;);
+        for (var i = 0; i &lt; radio.length; i++)
+            if (radio[i].checked)
+                radio[i].checked = false;
+        // 这部分是使单选框恢复默认
+    &#125;
+&#125;
+
+function insert() &#123;
+    var sid = document.getElementById(&quot;sid&quot;).value;
+    if (sid == &quot;&quot; || sid.length != 6) &#123;
+        alert(&quot;id shouldn&#39;t be empty and the length should be 6&quot;);
+        document.getElementById(&quot;sid&quot;).focus();
+        return false;
+    &#125;        
+    var Name = document.getElementById(&quot;Name&quot;).value;
+    if (Name.length &lt; 1) &#123;
+        alert(&quot;Name shouldn&#39;t be empty&quot;);
+        document.getElementById(&quot;Name&quot;).focus();
+        return false;
+    &#125;
+    var ssex = document.getElementsByName(&quot;sex&quot;);
+    var sex;
+    for (var i = 0; i &lt; ssex.length; i++)&#123;
+        if (ssex[i].checked) &#123;
+            sex = ssex[i].value;
+            break;
+        &#125;
+    &#125;
+    if (!sex) &#123;
+        alert(&quot;please choose a gender&quot;);
+        return false;
+    &#125;
+    // 以上操作均有对文本框进行检查，确保有值输入
+    // 这里每一步检查的return false很重要，使函数不会进行到下一步
+
+
+    var major = document.getElementById(&quot;major&quot;).value;    
+
+    var ObjTable = document.getElementById(&quot;Table&quot;);
+    var ObjTr = document.createElement(&quot;Tr&quot;);    
 
 
 
+    for (var i = 0; i &lt; title.length; i++)&#123;
+        td[i] = document.createElement(&quot;Td&quot;);
+    &#125;
+    td[0].innerHTML = selthis;
+    ObjTr.appendChild(td[0]);
 
+    td[1].innerHTML = sid;
+    ObjTr.appendChild(td[1]);
 
+    td[2].innerHTML = Name;
+    ObjTr.appendChild(td[2]);
+
+    td[3].innerHTML = sex;
+    ObjTr.appendChild(td[3]);
+
+    td[4].innerHTML = major;
+    ObjTr.appendChild(td[4]);
+
+    td[5].innerHTML = action;
+    ObjTr.appendChild(td[5]);
+
+    ObjTable.appendChild(ObjTr);
+    // 这一步最重要，没有这一步就不会向表单添加新的一行
+    // 向表单添加ObjTr这个新的行元素
+&#125;</code></pre>
+<p>效果图如下</p>
+<p><img src="https://jaydenchang.gitee.io/images/images/0x0016.png"></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
