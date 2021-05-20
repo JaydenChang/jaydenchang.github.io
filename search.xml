@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>最小生成树之prim</title>
+      <link href="2021/05/20/0x0017/"/>
+      <url>2021/05/20/0x0017/</url>
+      
+        <content type="html"><![CDATA[<p>现在来补发之前c++作业的总结，不得不说，那次作业确实有点难顶，涉及到复杂的算法，好在洛谷社区有模板套，现在来削微总结下算法，尽管现在能理解算法背后的原理，但还是写不出算法，趁现在还记得这件事先记录下，日后经验丰富后再来回顾</p><p>代码如下</p><pre><code class="c++">#include &lt;bits/stdc++.h&gt;using namespace std;double book[100], dis[100], MAX = 99999, maps[100][100];vector&lt;double&gt; length(0);vector&lt;double&gt; ttt(0);class point&#123;private:    double x, y;public:    double getx() const &#123; return x; &#125;    double gety() const &#123; return y; &#125;    void set()    &#123;        cin &gt;&gt; x &gt;&gt; y;    &#125;&#125;;double calc(point p1, point p2)&#123;    double l1, l2;    l1 = (p1.getx() - p2.getx()) * (p1.getx() - p2.getx());    l2 = (p1.gety() - p2.gety()) * (p1.gety() - p2.gety());    return sqrt(l1 + l2);&#125;int main()&#123;    int n = 5, m = 10, i, j;    int min, minIndex;    double sum = 0;    vector&lt;point&gt; pp(6);    for (int i = 1; i &lt;= 5; i++)    &#123;        pp[i].set();    &#125;    // 对maps初始化，除了自己到自己距离是0，其他都是边界值    for (i = 1; i &lt;= n;i++)    &#123;        for (j = 1; j &lt;= n;j++)        &#123;            if(i != j)                maps[i][j] = MAX;            else                maps[i][j] = 0;        &#125;    &#125;    // 输入数据，输入无向图    for (int i = 1; i &lt; 6;i++)    &#123;        for (int j = i + 1; j &lt; 6;j++)        &#123;            double temp = calc(pp[i], pp[j]);            length.push_back(temp);            maps[i][j] = temp;            maps[j][i] = temp;        &#125;    &#125;    // 初始化距离数组，默认把离1最近的找出来储存起来    for (i = 1; i &lt;= n; i++)        dis[i] = maps[1][i];    book[1] = 1;    for (i = 1; i &lt;= n - 1; i++)    &#123;        min = MAX;    // 对最小值复制，寻找离树最近的点        for (j = 1; j &lt;= n; j++)        &#123;            if (book[j] == 0 &amp;&amp; dis[j] &lt; min)            &#123;                min = dis[j];                minIndex = j;            &#125;        &#125;        // 标记这个点被访问过        book[minIndex] = 1;        sum += dis[minIndex];        for (j = 1; j &lt;= n; j++)        &#123;        // 如果这个点没被访问过，如果距离更近就更新            if (book[j] == 0 &amp;&amp; maps[minIndex][j] &lt; dis[j])                dis[j] = maps[minIndex][j];        &#125;    &#125;    cout.setf(ios::fixed);    cout &lt;&lt; setprecision(6) &lt;&lt; sum &lt;&lt; endl;    cout &lt;&lt; endl;    // 输出最小生成树&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+            <tag> C++ </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>第十一次前端作业</title>
       <link href="2021/05/19/0x0016/"/>
       <url>2021/05/19/0x0016/</url>

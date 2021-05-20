@@ -5,13 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>This is my new blog - Jayden&#39;s Blog</title>
+    <title>最小生成树之prim - Jayden&#39;s Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="JaydenChang,"> 
-    <meta name="description" content="纪念我的第一个小项目–个人博客，也当作昨日迟来的平安夜礼物q(≧▽≦q)
-"> 
+    <meta name="description" content="现在来补发之前c++作业的总结，不得不说，那次作业确实有点难顶，涉及到复杂的算法，好在洛谷社区有模板套，现在来削微总结下算法，尽管现在能理解算法背后的原理，但还是写不出算法，趁现在还记得这件事先记录,"> 
     <meta name="author" content="Jayden Chang"> 
     <link rel="alternative" href="atom.xml" title="Jayden&#39;s Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -59,7 +58,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://jaydenchang.gitee.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">This is my new blog</h3>
+        <h3 class="subtitle">最小生成树之prim</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -89,25 +88,25 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/随笔"><b>「
-                    </b>随笔<b> 」</b></a>
+                <a href="/categories/技术"><b>「
+                    </b>技术<b> 」</b></a>
                 
-                December 25, 2020
+                May 20, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2020/12/25/0x0001/" title="This is my new blog" class="">This is my new blog</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/05/20/0x0017/" title="最小生成树之prim" class="">最小生成树之prim</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    44
+                    2.4k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    1 mins.
+                    2 mins.
                 </span>
                 
                 
@@ -115,7 +114,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
             
         </div>
     </div>
@@ -136,7 +135,98 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>纪念我的第一个小项目–个人博客，也当作昨日迟来的平安夜礼物q(≧▽≦q)</p>
+            <p>现在来补发之前c++作业的总结，不得不说，那次作业确实有点难顶，涉及到复杂的算法，好在洛谷社区有模板套，现在来削微总结下算法，尽管现在能理解算法背后的原理，但还是写不出算法，趁现在还记得这件事先记录下，日后经验丰富后再来回顾</p>
+<p>代码如下</p>
+<pre><code class="c++">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+double book[100], dis[100], MAX = 99999, maps[100][100];
+vector&lt;double&gt; length(0);
+vector&lt;double&gt; ttt(0);
+class point
+&#123;
+private:
+    double x, y;
+
+public:
+    double getx() const &#123; return x; &#125;
+    double gety() const &#123; return y; &#125;
+    void set()
+    &#123;
+        cin &gt;&gt; x &gt;&gt; y;
+    &#125;
+&#125;;
+double calc(point p1, point p2)
+&#123;
+    double l1, l2;
+    l1 = (p1.getx() - p2.getx()) * (p1.getx() - p2.getx());
+    l2 = (p1.gety() - p2.gety()) * (p1.gety() - p2.gety());
+    return sqrt(l1 + l2);
+&#125;
+
+int main()
+&#123;
+    int n = 5, m = 10, i, j;
+    int min, minIndex;
+    double sum = 0;
+    vector&lt;point&gt; pp(6);
+    for (int i = 1; i &lt;= 5; i++)
+    &#123;
+        pp[i].set();
+    &#125;
+    // 对maps初始化，除了自己到自己距离是0，其他都是边界值
+    for (i = 1; i &lt;= n;i++)
+    &#123;
+        for (j = 1; j &lt;= n;j++)
+        &#123;
+            if(i != j)
+                maps[i][j] = MAX;
+            else
+                maps[i][j] = 0;
+        &#125;
+    &#125;
+    // 输入数据，输入无向图
+    for (int i = 1; i &lt; 6;i++)
+    &#123;
+        for (int j = i + 1; j &lt; 6;j++)
+        &#123;
+            double temp = calc(pp[i], pp[j]);
+            length.push_back(temp);
+            maps[i][j] = temp;
+            maps[j][i] = temp;
+        &#125;
+    &#125;
+    // 初始化距离数组，默认把离1最近的找出来储存起来
+    for (i = 1; i &lt;= n; i++)
+        dis[i] = maps[1][i];
+    book[1] = 1;
+    for (i = 1; i &lt;= n - 1; i++)
+    &#123;
+        min = MAX;
+    // 对最小值复制，寻找离树最近的点
+        for (j = 1; j &lt;= n; j++)
+        &#123;
+            if (book[j] == 0 &amp;&amp; dis[j] &lt; min)
+            &#123;
+                min = dis[j];
+                minIndex = j;
+            &#125;
+        &#125;
+        // 标记这个点被访问过
+        book[minIndex] = 1;
+        sum += dis[minIndex];
+        for (j = 1; j &lt;= n; j++)
+        &#123;
+        // 如果这个点没被访问过，如果距离更近就更新
+            if (book[j] == 0 &amp;&amp; maps[minIndex][j] &lt; dis[j])
+                dis[j] = maps[minIndex][j];
+        &#125;
+    &#125;
+    cout.setf(ios::fixed);
+    cout &lt;&lt; setprecision(6) &lt;&lt; sum &lt;&lt; endl;
+    cout &lt;&lt; endl;
+    // 输出最小生成树
+&#125;
+</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
