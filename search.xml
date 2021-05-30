@@ -89,64 +89,6 @@
     
     
     <entry>
-      <title>最小生成树之prim</title>
-      <link href="/post/0x0017.html"/>
-      <url>/post/0x0017.html</url>
-      
-        <content type="html"><![CDATA[<p>现在来补发之前c++作业的总结，不得不说，那次作业确实有点难顶，涉及到复杂的算法，好在洛谷社区有模板套，现在来削微总结下算法，尽管现在能理解算法背后的原理，但还是写不出算法，趁现在还记得这件事先记录下，日后经验丰富后再来回顾</p><p>代码如下</p><pre><code class="c++">#include &lt;bits/stdc++.h&gt;using namespace std;double book[100], dis[100], MAX = 99999, maps[100][100];vector&lt;double&gt; length(0);// vector&lt;double&gt; ttt(0);class point&#123;private:    double x, y;public:    double getx() const &#123; return x; &#125;    double gety() const &#123; return y; &#125;    void set()    &#123;        cin &gt;&gt; x &gt;&gt; y;    &#125;&#125;;double calc(point p1, point p2)&#123;    double l1, l2;    l1 = (p1.getx() - p2.getx()) * (p1.getx() - p2.getx());    l2 = (p1.gety() - p2.gety()) * (p1.gety() - p2.gety());    return sqrt(l1 + l2);&#125;int main()&#123;    int n = 5, m = 10, i, j;    int min, minIndex;    double sum = 0;    vector&lt;point&gt; pp(6);    for (int i = 1; i &lt;= 5; i++)    &#123;        pp[i].set();    &#125;    // 对maps初始化，除了自己到自己距离是0，其他都是边界值    for (i = 1; i &lt;= n;i++)    &#123;        for (j = 1; j &lt;= n;j++)        &#123;            if(i != j)                maps[i][j] = MAX;            else                maps[i][j] = 0;        &#125;    &#125;    // 输入数据，输入无向图    for (int i = 1; i &lt; 6;i++)    &#123;        for (int j = i + 1; j &lt; 6;j++)        &#123;            double temp = calc(pp[i], pp[j]);            length.push_back(temp);            maps[i][j] = temp;            maps[j][i] = temp;        &#125;    &#125;    // 初始化距离数组，默认把离1最近的找出来储存起来    for (i = 1; i &lt;= n; i++)        dis[i] = maps[1][i];    book[1] = 1;    for (i = 1; i &lt;= n - 1; i++)    &#123;        min = MAX;    // 对最小值复制，寻找离树最近的点        for (j = 1; j &lt;= n; j++)        &#123;            if (book[j] == 0 &amp;&amp; dis[j] &lt; min)            &#123;                min = dis[j];                minIndex = j;            &#125;        &#125;        // 标记这个点被访问过        book[minIndex] = 1;        sum += dis[minIndex];        for (j = 1; j &lt;= n; j++)        &#123;        // 如果这个点没被访问过，如果距离更近就更新            if (book[j] == 0 &amp;&amp; maps[minIndex][j] &lt; dis[j])                dis[j] = maps[minIndex][j];        &#125;    &#125;    cout.setf(ios::fixed);    cout &lt;&lt; setprecision(6) &lt;&lt; sum &lt;&lt; endl;    cout &lt;&lt; endl;    // 输出最小生成树&#125;</code></pre><p>快速理解原理：<a href="https://www.bilibili.com/video/BV1Ma4y1W7pJ?from=search&seid=16640512887684164710">2分钟搞懂最小生成树prim算法_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p><p>题解模板：<a href="https://www.luogu.com.cn/problem/solution/P3366">P3366 【模板】最小生成树 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a><br>(有很多模板，选择适合自己，能看懂的为上策)</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-            <tag> C++ </tag>
-            
-            <tag> 算法 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>第十一次前端作业</title>
-      <link href="/post/0x0016.html"/>
-      <url>/post/0x0016.html</url>
-      
-        <content type="html"><![CDATA[<p>这次作业算是JavaScript的一个入门吧，确实有很多新的知识点</p><p>html部分</p><pre><code class="html">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;    &lt;title&gt;Document&lt;/title&gt;    &lt;style type=&quot;text/css&quot;&gt;        div&#123;            margin-bottom: 30px;            margin-top: 30px;        &#125;        td,        th &#123;            padding: 10px;            border: 1px solid #696969;        &#125;        table &#123;            border: 1px solid #A9A9A9;        &#125;        button &#123;            width: 70px;            padding: 5px;            color: grey;        &#125;        select, button, input&#123;            color: gray;        &#125;    &lt;/style&gt;    &lt;script src=&quot;22.js&quot;&gt;&lt;/script&gt;        &lt;/head&gt;&lt;body&gt;    &lt;div&gt;                    &lt;table id=&quot;Form&quot;&gt;                &lt;br&gt;                &lt;tr&gt;                    &lt;td&gt;ID&lt;/td&gt;                    &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;sid&quot; placeholder=&quot;please enter id&quot;&gt;&lt;/td&gt;                &lt;/tr&gt;                &lt;tr&gt;                    &lt;td&gt;name&lt;/td&gt;                    &lt;td&gt;&lt;input type=&quot;text&quot; id=&quot;Name&quot; placeholder=&quot;please enter name&quot;&gt;&lt;/td&gt;                &lt;/tr&gt;                &lt;tr&gt;                    &lt;td&gt;sex&lt;/td&gt;                    &lt;td&gt;                        &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;male&quot;&gt;male                        &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;female&quot;&gt;female                    &lt;/td&gt;                &lt;/tr&gt;                &lt;tr&gt;                    &lt;td&gt;major&lt;/td&gt;                    &lt;td&gt;                        &lt;select id=&quot;major&quot;&gt;                                                        &lt;option value=&quot;software engine&quot; selected=&quot;selected&quot;&gt;software engine&lt;/option&gt;                            &lt;option value=&quot;artificial intelligence&quot;&gt;artificial intelligence&lt;/option&gt;                            &lt;option value=&quot;network engine&quot;&gt;network engine&lt;/option&gt;                        &lt;/select&gt;                    &lt;/td&gt;                &lt;/tr&gt;                &lt;tr&gt;                    &lt;td&gt;action&lt;/td&gt;                    &lt;td color=&quot;gray&quot;&gt;                        &lt;input type=&quot;button&quot; value=&quot;add&quot; onclick=&quot;insert()&quot;&gt;                        &lt;input type=&quot;button&quot; value=&quot;reset&quot; id=&quot;reset&quot; onclick=&quot;reset()&quot;&gt;                                            &lt;/td&gt;                &lt;/tr&gt;            &lt;/table&gt;            &lt;/div&gt;    &lt;/body&gt;&lt;/html&gt;</code></pre><p>JavaScript部分</p><pre><code class="javascript">var selall = &quot;&lt;input type=checkbox id=selAll onclick=SelectAll()&gt;select all&quot;;var selthis = &quot;&lt;input type=checkbox Name=sel onclick=Select()&gt;select&quot;;var action = &quot;&lt;a href=&#39;#&#39; onclick=del(this)&gt;delete&lt;/a&gt;| &lt;a href=&#39;#&#39; onclick=edit(this)&gt;edit&lt;/a&gt;&quot;;var title = new Array(selall, &quot;ID&quot;, &quot;Name&quot;, &quot;sex&quot;, &quot;major&quot;, &quot;action&quot;);var student = new Array();var Td = new Array();var td = new Array();student[0] = new Array(selthis, &quot;0x0001&quot;, &quot;Kobe&quot;, &quot;male&quot;, &quot;software engine&quot;, action);student[1] = new Array(selthis, &quot;0x0002&quot;, &quot;Wade&quot;, &quot;male&quot;, &quot;artificial intelligence&quot;,  action);student[2] = new Array(selthis, &quot;0x0003&quot;, &quot;Rachel&quot;, &quot;female&quot;, &quot;network engine&quot;, action);// 创建一个学生数据数组 var oldValue = new Array();var newData = new Array();document.write(&quot;&lt;table id=Table&gt;&quot;);document.write(&quot;&lt;tr&gt;&quot;);for (var i = 0; i &lt; title.length; i++) &#123;    document.write(&quot;&lt;th&gt;&quot; + title[i] + &quot;&lt;/th&gt;&quot;);&#125;document.write(&quot;&lt;/tr&gt;&quot;);for (var r = 0; r &lt; student.length; r++) &#123;    document.write(&quot;&lt;tr&gt;&quot;);    for (var c = 0; c &lt; title.length; c++) &#123;        document.write(&quot;&lt;td&gt;&quot; + student[r][c] + &quot;&lt;/td&gt;&quot;);    &#125;    document.write(&quot;&lt;/tr&gt;&quot;);&#125;// 这里用js打印出学生数据数组function SelectAll() &#123;    var selectall = document.getElementById(&quot;selAll&quot;);    var Sel = document.getElementsByName(&quot;sel&quot;);    if (selectall.checked == true)        for (var i = 0; i &lt; Sel.length; i++)            Sel[i].checked = true;    else        for (var i = 0; i &lt; Sel.length; i++)            Sel[i].checked = false;&#125;// 全选函数，注意下里面的算法function Select() &#123;    var selectall = document.getElementById(&quot;selAll&quot;);    var Sel = document.getElementsByName(&quot;sel&quot;);    for (var i = 0; i &lt; Sel.length; i++)        if (!Sel[i].checked) &#123;            selectall.checked = false;            break;        &#125; else            selectall.checked = true;&#125;// 选择函数的算法，和全选函数搭配// 以下的函数都需要get table的元素function del(that) &#123;    var currentRow = that.parentNode.parentNode.rowIndex;    var ObjTable = document.getElementById(&quot;Table&quot;);    if (confirm(&quot;delete the data on this row?&quot;))        ObjTable.deleteRow(currentRow);&#125;// 删除整行元素的函数function edit(that) &#123;    var tdStr = &quot;&lt;a href=&#39;#&#39; onclick=save(this)&gt;save&lt;/a&gt;|&lt;a href=&#39;#&#39; onclick=cancel(this)&gt;cancel&lt;/a&gt;&quot;;    var ObjTable = document.getElementById(&quot;Table&quot;);    var currentRow = that.parentNode.parentNode.rowIndex;    var ObjTr = ObjTable.rows[currentRow];           var td6 = ObjTr.cells.item(5);    td6.innerHTML = tdStr;    for (var i = 1; i &lt; title.length - 1; i++)&#123;        Td[i] = ObjTr.cells.item(i);            oldValue[i] = Td[i].innerHTML;        var Str = &quot;&lt;input type=text Name=msg value=&quot; + oldValue[i] + &quot;&gt;&quot;;        Td[i].innerHTML = Str;    // 这里已经是从1开始了，下面的save函数的遍历要从0开始    &#125;&#125;function cancel(that) &#123;    var ObjTable = document.getElementById(&quot;Table&quot;);    var currentRow = that.parentNode.parentNode.rowIndex;    var ObjTr = ObjTable.rows[currentRow];        for (var i = 1; i &lt; title.length; i++)&#123;        ObjTr.cells.item(i).innerHTML = oldValue[i];    &#125;    ObjTr.cells.item(5).innerHTML = action;&#125;function save(that) &#123;    var ObjTable = document.getElementById(&quot;Table&quot;);    var currentRow = that.parentNode.parentNode.rowIndex;    var ObjTr = ObjTable.rows[currentRow];    var Td = new Array();    newData = document.getElementsByName(&quot;msg&quot;);    for (var i = 0; i &lt; title.length - 2; i++)&#123;        Td[i] = newData[i].value;        ObjTr.cells.item(i).value = newData[i].value;    &#125;    for (var i = 0; i &lt; title.length-1; i++)        ObjTr.cells.item(i+1).innerHTML = Td[i];    ObjTr.cells.item(5).innerHTML = action;&#125;window.onload = function () &#123;    var reset = document.getElementById(&quot;reset&quot;);    reset.onclick = function () &#123;        sid.value = &quot;&quot;;        Name.value = &quot;&quot;;        // 使文本框恢复默认        var radio = document.getElementsByName(&quot;sex&quot;);        for (var i = 0; i &lt; radio.length; i++)            if (radio[i].checked)                radio[i].checked = false;        // 这部分是使单选框恢复默认    &#125;&#125;function insert() &#123;    var sid = document.getElementById(&quot;sid&quot;).value;    if (sid == &quot;&quot; || sid.length != 6) &#123;        alert(&quot;id shouldn&#39;t be empty and the length should be 6&quot;);        document.getElementById(&quot;sid&quot;).focus();        return false;    &#125;            var Name = document.getElementById(&quot;Name&quot;).value;    if (Name.length &lt; 1) &#123;        alert(&quot;Name shouldn&#39;t be empty&quot;);        document.getElementById(&quot;Name&quot;).focus();        return false;    &#125;    var ssex = document.getElementsByName(&quot;sex&quot;);    var sex;    for (var i = 0; i &lt; ssex.length; i++)&#123;        if (ssex[i].checked) &#123;            sex = ssex[i].value;            break;        &#125;    &#125;    if (!sex) &#123;        alert(&quot;please choose a gender&quot;);        return false;    &#125;    // 以上操作均有对文本框进行检查，确保有值输入    // 这里每一步检查的return false很重要，使函数不会进行到下一步    var major = document.getElementById(&quot;major&quot;).value;        var ObjTable = document.getElementById(&quot;Table&quot;);    var ObjTr = document.createElement(&quot;Tr&quot;);        for (var i = 0; i &lt; title.length; i++)&#123;        td[i] = document.createElement(&quot;Td&quot;);    &#125;    td[0].innerHTML = selthis;    ObjTr.appendChild(td[0]);    td[1].innerHTML = sid;    ObjTr.appendChild(td[1]);    td[2].innerHTML = Name;    ObjTr.appendChild(td[2]);    td[3].innerHTML = sex;    ObjTr.appendChild(td[3]);    td[4].innerHTML = major;    ObjTr.appendChild(td[4]);    td[5].innerHTML = action;    ObjTr.appendChild(td[5]);    ObjTable.appendChild(ObjTr);    // 这一步最重要，没有这一步就不会向表单添加新的一行    // 向表单添加ObjTr这个新的行元素&#125;</code></pre><p>效果图如下</p><p><img src="https://jaydenchang.gitee.io/images/images/0x0016.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-            <tag> html </tag>
-            
-            <tag> JavaScript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>第十一次前端作业</title>
       <link href="/post/0x0010.html"/>
       <url>/post/0x0010.html</url>
@@ -195,62 +137,6 @@
             <tag> html </tag>
             
             <tag> JavaScript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>第十次前端作业</title>
-      <link href="/post/0x0015.html"/>
-      <url>/post/0x0015.html</url>
-      
-        <content type="html"><![CDATA[<p>这波博客确实鸽了好久，一直在忙别的事。享受、珍惜这总结、写文案的时刻。</p><p>第十次前端作业，这里要求做一个图片轮播和鼠标悬浮切换图片的效果。</p><p>html部分代码</p><pre><code class="html">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=, initial-scale=1.0&quot;&gt;    &lt;title&gt;Document&lt;/title&gt;    &lt;style&gt;           *&#123;            padding: 0;            margin: 0;            list-style: none;            border: 0;        &#125;             .change&#123;            margin-top: 30px;        &#125;        button&#123;            width: 70px;            padding: 5px;            color: grey;        &#125;        .cycle&#123;            margin-top: 30px;            margin-bottom: 20px;        &#125;        /* .bo&#123;            position: absolute;            top: 430px;        &#125; */    &lt;/style&gt;    &lt;script type=&quot;text/javascript&quot; src=&quot;aaa.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;    &lt;div class=&quot;cycle&quot; align=&quot;center&quot;&gt;        &lt;img src=&quot;images1/love1.jpg&quot; id=&quot;img1&quot;&gt;    &lt;/div&gt;    &lt;div align=&quot;center&quot; &gt;        &lt;span&gt;&lt;button id=&quot;b1&quot;&gt;start&lt;/button&gt;&lt;/span&gt;        &lt;span&gt;&lt;button id=&quot;b2&quot;&gt;pause&lt;/button&gt;&lt;/span&gt;        &lt;!-- &lt;img src=&quot;images1/love1.jpg&quot; id=&quot;img1&quot;&gt; --&gt;    &lt;/div&gt;    &lt;div align=&quot;center&quot;&gt;        &lt;div class=&quot;change&quot;&gt;            &lt;img src=&quot;images2/dl1.jpg&quot;            onmouseover=&quot;this.src=&#39;images2/dl1d.jpg&#39;&quot;            onmouseout=&quot;this.src=&#39;images2/dl1.jpg&#39;&quot;&gt;        &lt;/div&gt;    &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><p>JavaScript部分代码</p><pre><code class="javascript">window.onload = function () &#123;    var img1 = document.getElementById(&quot;img1&quot;);    var imgArr = [&quot;images1/love1.jpg&quot;, &quot;images1/love2.jpg&quot;, &quot;images1/love3.jpg&quot;, &quot;images1/love4.jpg&quot;, &quot;images1/love5.jpg&quot;];    // 定义一个图片列表    var index = 0;    // 创建一个图片索引变量    var timer;    // 创建一个变量来保存定时器标识    var b1 = document.getElementById(&quot;b1&quot;);    // 为b1绑定一个单击相应函数    b1.onclick = function () &#123;        clearInterval(timer)        // clear的意思是清除之前已有的计时器，重新设置一个        // 开启一个计时器，来回切换图片        timer = setInterval(() =&gt; &#123;            // 如上一行，set的意思是定义一个新计时器            index++;            // 判断索引是否超过最大值，这里的方法很巧妙            index = index % imgArr.length            img1.src = imgArr[index]        &#125;, 1000);        // 1000指的是1000毫秒，即每秒切换一次    &#125;    var b2 = document.getElementById(&quot;b2&quot;)    // 为b2绑定一个单击响应函数    b2.onclick = function () &#123;        clearInterval(timer)    &#125;&#125;</code></pre><p>效果图如下</p><img src="https://jaydenchang.gitee.io/images/images/0x0015.png">]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> html </tag>
-            
-            <tag> JavaScript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>第八次前端作业</title>
-      <link href="/post/0x0014.html"/>
-      <url>/post/0x0014.html</url>
-      
-        <content type="html"><![CDATA[<p>第八次前端作业，要求结合div和css来做一个小页面，这个工程有许多小细节，特别是在css中，本次采用内部样式表</p><pre><code class="html">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset=&quot;UTF-8&quot;&gt;    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;    &lt;title&gt;Document&lt;/title&gt;    &lt;style&gt;        *&#123;            list-style: none;        &#125;        .all&#123;            margin: 10px;            padding: 10px;        &#125;        .pic&#123;            border: 2px solid goldenrod;            height: 230px;            width: 1200px;        &#125;        .pic li&#123;            float: left;            margin: 10px;            margin-top: 20px;            /* margin-top是来限定pic下的li的上边距 */        &#125;        .pic li p&#123;            text-align: center;        &#125;        /* .t1&#123;            border: 1px solid goldenrod;            height: 20px;            width: 500px;            position: relative;        &#125;        .ti li&#123;            float: left;            margin: 1px;        &#125; */        .a1&#123;            width: 590px;            height: 250px;            border: 2px solid goldenrod;            /* 设置边框的粗细 */            float: left;            /* 设置这里的div是为了可以多个div并排 */            margin-bottom: 20px;        &#125;        .a1 div&#123;            float: left;            /* 如果不设置float，那么文字就会飘在父级div下方 */        &#125;        .a2&#123;            width: 250px;            height: 280px;            border: 2px solid goldenrod;            float: left;        &#125;        .a2 div&#123;            margin-top: 30px;            margin-left: 15px;            line-height: 16px;        &#125;        .a3&#123;            width: 930px;            height: 280px;            border: 2px solid goldenrod;            float: left;            margin-left: 50px;        &#125;        .a3 div&#123;            margin-left: 15px;            margin-right: 15px;            line-height: 26px;            /* 设置行高，间接设置行间距 */        &#125;    &lt;/style&gt;&lt;/head&gt;&lt;body&gt;    &lt;div class=&quot;all&quot;&gt;        &lt;div&gt;            &lt;ul class=&quot;pic&quot;&gt;                &lt;li&gt;                    &lt;img src=&quot;images/i01.jpg&quot; width=&quot;150px&quot;&gt;                    &lt;p&gt;天街&lt;/p&gt;                &lt;/li&gt;                &lt;li&gt;                    &lt;img src=&quot;images/i02.gif&quot; width=&quot;216px&quot;&gt;                    &lt;p&gt;中天门&lt;/p&gt;                &lt;/li&gt;                &lt;li&gt;                    &lt;img src=&quot;images/i03.jpg&quot; width=&quot;212px&quot;&gt;                    &lt;p&gt;旭日东升&lt;/p&gt;                &lt;/li&gt;                &lt;li&gt;                    &lt;img src=&quot;images/i04.jpg&quot; width=&quot;242px&quot;&gt;                    &lt;p&gt;五岳独尊&lt;/p&gt;                &lt;/li&gt;                &lt;li&gt;                    &lt;img src=&quot;images/i05.jpg&quot; width=&quot;225px&quot;&gt;                    &lt;p&gt;云海玉盘&lt;/p&gt;                &lt;/li&gt;            &lt;/ul&gt;        &lt;/div&gt;        &lt;br&gt;        &lt;div class=&quot;a1&quot;&gt;            &lt;p style=&quot;position: absolute;margin-left:70px;color:black;&quot;&gt;泰山摄影&lt;/p&gt;                &lt;img src=&quot;images/bg01.gif&quot; width=&quot;590px&quot;&gt;                &lt;!-- 这里文字内嵌在图片上方，先把文字放在图片前，再加position，设置absolute，注意设置左边距 --&gt;            &lt;div&gt;                &lt;img src=&quot;images/caishixi.jpg&quot; style=&quot;margin-top: 20px;margin-left:20px&quot;&gt;                &lt;p align=&quot;center&quot;&gt;彩石溪&lt;/p&gt;            &lt;/div&gt;            &lt;div style=&quot;float: left;width:380px;margin-left:10px&quot;&gt;                    进入桃花峪，行约2公里，溪中流水之下忽如才是铺就，溪底一条条石纹五彩纷呈，                    阳光照耀下，分外生动，这就是著名的“彩石溪”。完完全全的溪水就像是被彩石染上了颜色，                    也像是一条五彩的飘带，在此流淌得格外精神。动人的彩石时长引得有人驻足，如果你细心，                    就可看见水中的赤鳞鱼。            &lt;/div&gt;        &lt;/div&gt;        &lt;div class=&quot;a1&quot; style=&quot;margin-left: 50px;&quot;&gt;            &lt;p style=&quot;position: absolute;margin-left:70px;color:black;&quot;&gt;景点推荐&lt;/p&gt;            &lt;img src=&quot;images/bg02.gif&quot; width=&quot;590px&quot;&gt;            &lt;div&gt;                &lt;img src=&quot;images/shanziya.jpg&quot;  style=&quot;margin-left:10px;margin-top:20px;&quot;&gt;                &lt;p align=&quot;center&quot; style=&quot;margin-top: 5px;&quot;&gt;扇子崖&lt;/p&gt;            &lt;/div&gt;            &lt;div style=&quot;float:left;width:370px;margin-left:10px;&quot;&gt;                位于泰山西溪西侧的扇子崖，奇峰突兀，高耸峻峭，形如扇面，故名。                崖上有明人杨博题刻摩崖石刻“仙人掌”。崖西有铁梯，攀援可登崖巅，                北眺龙角山，九女寨历历在目，西望傲徕峰尽收眼底。向东俯视，                龙潭水库宛若镶嵌在西溪的一颗璀璨的明珠，闪闪发光。清人孙宝僮有诗云：                “剑峰怒刺天，积铁拔千仞；俯临鬼谷幽，旁倚丈人峻”，的确写出了扇子崖的风韵。            &lt;/div&gt;        &lt;/div&gt;        &lt;br&gt;        &lt;br&gt;        &lt;div class=&quot;a2&quot;&gt;            &lt;img src=&quot;images/bg03.gif&quot; width=&quot;250px&quot; height=&quot;30px&quot; style=&quot;position: absolute;z-index: 1;&quot;&gt;            &lt;!-- 图片内嵌图片，除了设置position，还要设置z-index，数字越大，越靠近上方 --&gt;            &lt;img src=&quot;images/arrow.gif&quot; style=&quot;position:absolute;margin-left:10px;z-index:2&quot;&gt;            &lt;p style=&quot;position:absolute;float: left;margin-left:60px;margin-top:5px;color:black;z-index:3&quot;&gt;泰山旅游景点&lt;/p&gt;            &lt;div style=&quot;margin-top: 40px;font-size:14px;&quot;&gt;                &lt;p&gt;岱庙：宋天贶殿 ……&lt;/p&gt;                &lt;p&gt;丽区：王母池  ……&lt;/p&gt;                &lt;p&gt;幽区：岱宗坊  ……&lt;/p&gt;                &lt;p&gt;妙区：南天门  ……&lt;/p&gt;                &lt;p&gt;奥区：后石坞 ……&lt;/p&gt;                &lt;p&gt;旷区：扇子崖  ……&lt;/p&gt;                &lt;p&gt;秀区：桃花峪 ……&lt;/p&gt;                &lt;p&gt;奇观：旭日东升 ……&lt;/p&gt;            &lt;/div&gt;        &lt;/div&gt;        &lt;div class=&quot;a3&quot;&gt;            &lt;p style=&quot;position:absolute;margin-left: 70px;margin-top:5px;color:black;font-weight:bolder;&quot;&gt;泰山介绍&lt;/p&gt;            &lt;img src=&quot;images/bg05.gif&quot; width=&quot;930px&quot; height=&quot;30px&quot;&gt;            &lt;div style=&quot;margin-top: 5px;&quot;&gt;                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山突兀而立于华北大平原东侧的齐鲁古国，东临浩波无涯的大海，西靠源远流长、奔流到海不复回的黄河，南有汶、泗、淮之水。纵览东部沿海广大区域，泰山踞高临下、凌驾于齐鲁丘群之上，真正成了茫茫原野上的&quot;东天一柱&quot;。这样，古人们便有了泰山为天下之中心的感觉。&lt;br&gt;                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山除了深厚的文化内涵，还具有丰富的自然美，如果我们把风景自然美的形象特征概括为雄、奇、险、秀、幽、奥、旷的话，那么泰山除了从总体上和宏观上具有雄伟的特征外，还在雄中蕴含着奇、险、秀、幽、奥、旷等美的形象。&lt;br&gt;                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山风景区内，有山峰156座，崖岭138座，名洞72处，奇石72块，溪谷130条， 瀑潭64处，名泉72眼，古树名木万余株，寺庙58座，古遗址128处，碑碣1239块，摩崖刻石1277处。主要分布在岱阳、岱顶、岱阴及灵岩。&lt;br&gt;                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山是一座天然的历史、艺术博物馆，仅在泰山的中轴线上就现存有各种石刻1800余处，有的为帝王亲制，有的出自名流之手，大都文辞优美，书体高雅，制作精巧…… &lt;/div&gt;            &lt;/div&gt;        &lt;/div&gt;        &lt;br&gt;&lt;br&gt;    &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre><p>最后的效果</p><img src="https://jaydenchang.gitee.io/images/images/0x0014.png" style="zoom:70%;"  >]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 技术 </tag>
-            
-            <tag> html </tag>
-            
-            <tag> css </tag>
             
         </tags>
       
