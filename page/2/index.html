@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jayden&#39;s Blog">
 <meta property="og:url" content="https://jaydenchang.top/page/2/index.html">
@@ -101,15 +101,19 @@
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
-  <div class="search-input-container"></div>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
   <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div class="search-result-container">
-  <div class="algolia-stats"><hr></div>
-  <div class="algolia-hits"></div>
-  <div class="algolia-pagination"></div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
 </div>
 
     </div>
@@ -255,7 +259,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+        <time title="Modified: 2021-12-11 09:55:29" itemprop="dateModified" datetime="2021-12-11T09:55:29+08:00">2021-12-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -276,19 +280,6 @@
       <span class="leancloud-visitors-count"></span>
     </span>
   
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x001F.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x001F.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -299,28 +290,345 @@
     
     <div class="post-body" itemprop="articleBody">
           <h3 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h3><p>当一个数组中大部分元素是0时，或者为同一个值的数组时，可以用稀疏数组来保存该数组，节省储存空间(二维数组储存太浪费空间了)</p>
-<p>应用场景</p>
+<!--more>
+
+应用场景
+
+- 五子棋、围棋记录黑白子，无占位处记为0，黑白分别记为1，2
+- 扫雷
+- 象棋类，跳棋等
+
+处理方法：
+
+- 记录数组有几行几列，有多少个不同的值
+- 把有不同值的元素的行列及值记录在一个小规模的数组里，从而缩小程序的规模
+
+二维数组转化稀疏数组的思路
+
+- 遍历原始二维数组，得到有效数据的个数
+- 根据sum就可以创建稀疏数组 `int spareseArr[sum + 1][3]`
+- 将二维数组的有效数据的个数sum存入稀疏数组
+
+稀疏数组转原始二维数组
+
+- 先读稀疏数组第一行，根据第一行数据创建原始二维数组
+- 在读取稀疏数组后几行的数据，并赋予原始的二维数组`int originArr[size][size]`即可
+
+#### 代码
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;spareseArray.java
+import java.util.Scanner;
+public class spareseArray&#123;
+    public static void main(String[] args)&#123;
+        public static void main(String[] args) &#123;
+        Scanner scan &#x3D; new Scanner(System.in);
+        int size &#x3D; scan.nextInt();
+        scan.close();
+        int chessArr[][] &#x3D; new int[size][size];&#x2F;&#x2F;创建一个11*11的棋盘
+        chessArr[1][2] &#x3D; 1;
+        chessArr[2][3] &#x3D; 2;
+        chessArr[4][6] &#x3D; 1;
+        int sum &#x3D; 0;
+        for (int i &#x3D; 0; i &lt; size; i++) &#123;
+            for (int j &#x3D; 0; j &lt; size; j++) &#123;
+                if (chessArr[i][j] !&#x3D; 0)
+                    sum++;
+            &#125;
+        &#125;
+        &#x2F;&#x2F;创建稀疏数组
+        int spareseArr[][] &#x3D; new int[sum + 1][3];
+        &#x2F;&#x2F;给稀疏数组赋值
+        spareseArr[0][0] &#x3D; size;
+        spareseArr[0][1] &#x3D; size;
+        spareseArr[0][2] &#x3D; sum;
+        &#x2F;&#x2F;遍历二维数组，把非0的值存放在稀疏数组中
+        int count &#x3D; 0;&#x2F;&#x2F;计数器，记录非0数据个数
+        for (int i &#x3D; 0; i &lt; size; i++) &#123;
+            for (int j &#x3D; 0; j &lt; size; j++) &#123;
+                if (chessArr[i][j] !&#x3D; 0) &#123;
+                    count++;
+                    spareseArr[count][0] &#x3D; i;
+                    spareseArr[count][1] &#x3D; j;
+                    spareseArr[count][2] &#x3D; chessArr[i][j];
+                &#125;
+            &#125;
+        &#125;
+        &#x2F;&#x2F;输出稀疏数组的形式
+        System.out.println(&quot;the sparese Array:&quot;);
+        for (int i &#x3D; 0; i &lt; sum + 1; i++) &#123;
+            System.out.printf(&quot;%d %d %d\n&quot;, spareseArr[i][0], spareseArr[i][1], spareseArr[i][2]);
+        &#125;
+        &#x2F;&#x2F;稀疏数组恢复二维数组
+        int originArr[][] &#x3D; new int[spareseArr[0][0]][spareseArr[0][1]];
+        &#x2F;&#x2F;输出恢复后的二维数组
+        for (int i &#x3D; 1; i &lt; spareseArr.length; i++) &#123;
+            originArr[spareseArr[i][0]][spareseArr[i][1]] &#x3D; spareseArr[i][2];
+        &#125;
+        System.out.println(&quot;the origin array:&quot;);
+        for (int i &#x3D; 0; i &lt; size; i++) &#123;
+            for (int j &#x3D; 0; j &lt; size; j++) &#123;
+                System.out.print(originArr[i][j] + &quot; &quot;);
+            &#125;
+            System.out.println();
+        &#125;    
+    &#125;
+&#125;</code></pre>
+
+<p>参考链接：<a target="_blank" rel="noopener" href='https://www.bilibili.com/video/BV1E4411H73v?from=search&seid=10722391219764061578'>尚硅谷–Java数据结构p7-p9  bilibili</a></p>
+<h3 id="队列-数组"><a href="#队列-数组" class="headerlink" title="队列(数组)"></a>队列(数组)</h3><p>队列是一个有序列表，可以用数组或者链表来实现。遵循先入先出原则，这一部分用数组来模拟</p>
+<p>应用场景：银行排队案例</p>
+<p>队列本身是有序列表，需要两个变量front和rear分别标记队列前后端，front随着数据输出而改变，rear随着数据输入而改变。还有需要一个maxSize来标记队列的最大容量。</p>
+<p>当存数据入列时</p>
 <ul>
-<li>五子棋、围棋记录黑白子，无占位处记为0，黑白分别记为1，2</li>
-<li>扫雷</li>
-<li>象棋类，跳棋等</li>
+<li>把尾指针后移：rear+1，当front=rear [ 空 ]</li>
+<li>若尾指针rear小于队列的最大下标maxSize-1，则将数据存入rear所指的数组元素中，否则无法存入数据。<code>rear == maxSize-1</code> =&gt; 队列满</li>
 </ul>
-<p>处理方法：</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">package hello;
+import java.util.Scanner;
+public class Queue &#123;
+    public static void main(String[] args) &#123;
+        &#x2F;&#x2F;创建一个队列
+        ArrayQueue queue &#x3D; new ArrayQueue(3);
+        char key &#x3D; &#39; &#39;;
+        Scanner scan &#x3D; new Scanner(System.in);
+        boolean loop &#x3D; true;
+        &#x2F;&#x2F;输出一个菜单
+        while (loop) &#123;
+            System.out.println(&quot;s(show queue)&quot;);
+            System.out.println(&quot;e(exit)&quot;);
+            System.out.println(&quot;a(add)&quot;);
+            System.out.println(&quot;g(get)&quot;);
+            System.out.println(&quot;h(head)&quot;);
+            key &#x3D; scan.next().charAt(0);
+            switch (key) &#123;
+                case &#39;s&#39;:
+                    queue.showQueue();
+                    break;
+                case &#39;a&#39;:
+                    System.out.println(&quot;output a num:&quot;);
+                    int value &#x3D; scan.nextInt();
+                    queue.addQueue(value);
+                    break;
+                case &#39;g&#39;:
+                    try &#123;
+                        int res &#x3D; queue.getQueue();
+                        System.out.printf(&quot;get the num is: %d\n&quot;, res);
+                    &#125; catch (Exception e) &#123;
+                        &#x2F;&#x2F;TODO: handle exception
+                        System.out.println(e.getMessage());
+                        break;
+                    &#125;
+                    break;
+                case &#39;h&#39;:
+                    &#x2F;&#x2F;查看队列头数据
+                    try &#123;
+                        int res &#x3D; queue.headQueue();
+                        System.out.printf(&quot;head data: %d\n&quot;, res);
+                    &#125; catch (Exception e) &#123;
+                        &#x2F;&#x2F;TODO: handle exception
+                        System.out.println(e.getMessage());
+                    &#125;
+                    break;
+                case &#39;e&#39;:&#x2F;&#x2F;退出
+                    scan.close();
+                    loop &#x3D; false;&#x2F;&#x2F;退出while循环
+                    break;
+                default:
+                    break;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+class ArrayQueue &#123;
+    private int maxSize;&#x2F;&#x2F;数组最大容量
+    private int front;&#x2F;&#x2F;队列头
+    private int rear;&#x2F;&#x2F;队列尾
+    private int[] arr;&#x2F;&#x2F;该数组用于存放数据，模拟队列
+    &#x2F;&#x2F;创建队列的构造器
+    public ArrayQueue(int arrMaxSize) &#123;
+        maxSize &#x3D; arrMaxSize;
+        arr &#x3D; new int[maxSize];
+        front &#x3D; -1;&#x2F;&#x2F;指向队列头部，指向数据头部前一个位置
+        rear &#x3D; -1;&#x2F;&#x2F;指向队列尾，指向队列尾的数据(即队列最后一个数据)
+    &#125;
+    &#x2F;&#x2F;判断队列是否满
+    public boolean isFull() &#123;
+        return rear &#x3D;&#x3D; maxSize - 1;
+    &#125;
+    &#x2F;&#x2F;判断队列是否空
+    public boolean isEmpty() &#123;
+        return rear &#x3D;&#x3D; front;
+    &#125;
+    &#x2F;&#x2F;添加数据到队列
+    public void addQueue(int n) &#123;
+        &#x2F;&#x2F;判断队列是否满
+        if (isFull()) &#123;
+            System.out.println(&quot;the queue is full~~&quot;);
+            return;
+        &#125;
+        &#x2F;&#x2F;rear++;&#x2F;&#x2F;rear后移
+        &#x2F;&#x2F;arr[rear] &#x3D; n;
+        arr[++rear] &#x3D; n;&#x2F;&#x2F;这是上两行代码简写
+    &#125;
+    &#x2F;&#x2F;获取队列数据，出队列
+    public int getQueue() &#123;
+        &#x2F;&#x2F;判断是否为空
+        if (isEmpty()) &#123;
+            &#x2F;&#x2F;抛出异常
+            throw new RuntimeException(&quot;empty queue~~&quot;);
+        &#125;
+        front++;
+        return arr[front];
+    &#125;
+    &#x2F;&#x2F;显示队列所有数据
+    public void showQueue() &#123;
+        if (isEmpty()) &#123;
+            System.out.println(&quot;empty queue~~&quot;);
+            return;
+        &#125;
+        for (int i &#x3D; 0; i &lt; arr.length; i++) &#123;
+            System.out.printf(&quot;arr[%d]&#x3D;%d\n&quot;, i, arr[i]);
+        &#125;
+    &#125;
+    &#x2F;&#x2F;显示队列的头数据，不是取出数据
+    public int headQueue() &#123;
+        if (isEmpty()) &#123;
+            throw new RuntimeException(&quot;empty queue~~&quot;);
+        &#125;
+        return arr[front + 1];&#x2F;&#x2F;使front指向头数据
+    &#125;
+&#125;</code></pre>
+
+<p>缺点：</p>
 <ul>
-<li>记录数组有几行几列，有多少个不同的值</li>
-<li>把有不同值的元素的行列及值记录在一个小规模的数组里，从而缩小程序的规模</li>
+<li>数组只能用一次</li>
 </ul>
-<p>二维数组转化稀疏数组的思路</p>
+<p>优化：</p>
 <ul>
-<li>遍历原始二维数组，得到有效数据的个数</li>
-<li>根据sum就可以创建稀疏数组 <code>int spareseArr[sum + 1][3]</code></li>
-<li>将二维数组的有效数据的个数sum存入稀疏数组</li>
+<li>改进成为环形队列 算法思想：取模%</li>
 </ul>
-<p>稀疏数组转原始二维数组</p>
+<h3 id="数组模拟环形队列"><a href="#数组模拟环形队列" class="headerlink" title="数组模拟环形队列"></a>数组模拟环形队列</h3><p>思路：</p>
 <ul>
-<li>先读稀疏数组第一行，根据第一行数据创建原始二维数组</li>
-<li>在读取稀疏数组后几行的数据，并赋予原始的二维数组<code>int originArr[size][size]</code>即可</li>
+<li>front变量含义做一个调整：front指向队列第一个元素，也就是<code>arr[front]</code>就是队列第一个元素</li>
+<li>rear变量含义做一个调整：rear指向队列最后一个元素的后一个位置。留出一个空间来判断队列是空或满</li>
+<li>当队列满时，条件是：<code>(rear+1)&amp;maxSize == front</code>  =&gt;队列满</li>
 </ul>
+<p>队列中有效数据的个数 <code>(rear + maxSize - front) % maxSize</code></p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Scanner;
+public class CircleArrayQueue &#123;
+    public static void main(String[] args) &#123;
+        CircleArray queue &#x3D; new CircleArray(4);&#x2F;&#x2F;队列有效数据是3
+        char key &#x3D; &#39; &#39;;
+        Scanner scan &#x3D; new Scanner(System.in);
+        boolean loop &#x3D; true;
+        &#x2F;&#x2F;输出一个菜单
+        while (loop) &#123;
+            System.out.println(&quot;s(show queue)&quot;);
+            System.out.println(&quot;e(exit)&quot;);
+            System.out.println(&quot;a(add)&quot;);
+            System.out.println(&quot;g(get)&quot;);
+            System.out.println(&quot;h(head)&quot;);
+            key &#x3D; scan.next().charAt(0);
+            switch (key) &#123;
+                case &#39;s&#39;:
+                    queue.showQueue();
+                    break;
+                case &#39;a&#39;:
+                    System.out.println(&quot;output a num:&quot;);
+                    int value &#x3D; scan.nextInt();
+                    queue.addQueue(value);
+                    break;
+                case &#39;g&#39;:
+                    try &#123;
+                        int res &#x3D; queue.getQueue();
+                        System.out.printf(&quot;get the num is: %d\n&quot;, res);
+                    &#125; catch (Exception e) &#123;
+                        &#x2F;&#x2F;TODO: handle exception
+                        System.out.println(e.getMessage());
+                        break;
+                    &#125;
+                    break;
+                case &#39;h&#39;:
+                    &#x2F;&#x2F;查看队列头数据
+                    try &#123;
+                        int res &#x3D; queue.headQueue();
+                        System.out.printf(&quot;head data: %d\n&quot;, res);
+                    &#125; catch (Exception e) &#123;
+                        &#x2F;&#x2F;TODO: handle exception
+                        System.out.println(e.getMessage());
+                    &#125;
+                    break;
+                case &#39;e&#39;:
+                    scan.close();
+                    loop &#x3D; false;
+                    break;
+                default:
+                    break;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+class CircleArray &#123;
+    private int maxSize;&#x2F;&#x2F;数组最大容量
+    private int front;&#x2F;&#x2F;队列头，队列的第一个元素，不一定是0
+    private int rear;&#x2F;&#x2F;队列尾
+    private int[] arr;&#x2F;&#x2F;该数组用于存放数据，模拟队列
+
+    public CircleArray(int arrMaxSize) &#123;
+        maxSize &#x3D; arrMaxSize;
+        arr &#x3D; new int[maxSize];
+        front &#x3D; 0;
+        rear &#x3D; 0;
+    &#125;
+    public boolean isFull() &#123;
+        return (rear + 1) % maxSize &#x3D;&#x3D; front;&#x2F;&#x2F;+1是利用了留出的空位来判断队列是否为满
+    &#125;
+    public boolean isEmpty() &#123;
+        return rear &#x3D;&#x3D; front;&#x2F;&#x2F;初始化时rear和front都是0，如果没有add，即可判断为空
+    &#125;
+    public void addQueue(int n) &#123;
+        if (isFull()) &#123;
+            System.out.println(&quot;full array~~&quot;);
+            return;
+        &#125;
+        arr[rear] &#x3D; n;&#x2F;&#x2F;直接把n赋给arr
+        rear &#x3D; (rear + 1) % maxSize;&#x2F;&#x2F;考虑取模
+    &#125;
+    public int getQueue() &#123;
+        if (isEmpty()) &#123;
+            throw new RuntimeException(&quot;empty array~~&quot;);
+        &#125;
+        &#x2F;&#x2F;这里要分析出front是指向队列的第一个元素
+        &#x2F;&#x2F;1.先把front对应的值保留到一个临时变量
+        &#x2F;&#x2F;2.把front后移
+        &#x2F;&#x2F;3.把临时保存的变量返回
+        int value &#x3D; arr[front];    
+        front &#x3D; (front + 1) % maxSize;
+        return value;
+    &#125;
+    public void showQueue() &#123;
+        if (isEmpty()) &#123;
+            System.out.println(&quot;empty array~~&quot;);
+            return;
+        &#125;
+        for (int i &#x3D; front; i &lt; front + size(); i++) &#123;
+            System.out.printf(&quot;arr[%d]&#x3D;%d\n&quot;, i % maxSize, arr[i % maxSize]);
+        &#125;
+    &#125;
+    &#x2F;&#x2F;求出当前队列有效数据个数
+    public int size() &#123;
+        return (rear + maxSize - front) % maxSize;
+    &#125;
+    public int headQueue() &#123;
+        if (isEmpty()) &#123;
+            throw new RuntimeException(&quot;empty array~~&quot;);
+        &#125;
+        return arr[front];
+    &#125;
+&#125;</code></pre>
+
+-->
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/0x001F.html#more" rel="contents">
@@ -405,19 +713,6 @@
       <span class="post-meta-item-text">Views: </span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x001E.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x001E.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -533,19 +828,6 @@ if(url &#x3D;&#x3D; &#39;www.google.com.hk&#39; || url &#x3D;&#x3D; &#39;www.goo
       <span class="leancloud-visitors-count"></span>
     </span>
   
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x001C.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x001C.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -647,19 +929,6 @@ if(url &#x3D;&#x3D; &#39;www.google.com.hk&#39; || url &#x3D;&#x3D; &#39;www.goo
       <span class="post-meta-item-text">Views: </span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x001B.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x001B.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -801,19 +1070,6 @@ class teacher implements person&#123;
       <span class="leancloud-visitors-count"></span>
     </span>
   
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x001A.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x001A.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -927,19 +1183,6 @@ class student extends person &#123;
       <span class="post-meta-item-text">Views: </span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x0018.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0018.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -1102,19 +1345,6 @@ class student extends person &#123;
       <span class="post-meta-item-text">Views: </span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x0017.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0017.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -1364,19 +1594,6 @@ img &#123;
       <span class="post-meta-item-text">Views: </span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x0016.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0016.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -1641,19 +1858,6 @@ a&#123;
       <span class="leancloud-visitors-count"></span>
     </span>
   
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x0015.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0015.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
 </div>
 
         </div>
@@ -1880,19 +2084,6 @@ function removeElement(id) &#123;
       <span class="post-meta-item-text">Views: </span>
       <span class="leancloud-visitors-count"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x0014.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0014.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -2340,8 +2531,8 @@ int main()
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch-lite.umd.js" integrity="sha256-48AZ24Ct05NAMLT7hvYgeW1X350OgEcZvHd6Ih6xwOA=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.33.2/dist/instantsearch.production.min.js" integrity="sha256-0B5Q7I/DVd8yp8JYLzbpELEonNBlVe7NLixMCLEnlBU=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -2351,13 +2542,11 @@ int main()
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","app_key":"ilR9U6Vhlpi6qDnDIQJESR3O","server_url":"qvyuwipq.api.lncldglobal.com","security":true}</script>
-  <script src="/js/third-party/statistics/lean-analytics.js"></script>
 
 
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"qvyuwipq.api.lncldglobal.com","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/page/2/"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以更快收到回复噢~","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/page/2/"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)

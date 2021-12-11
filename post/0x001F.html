@@ -19,16 +19,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="稀疏数组当一个数组中大部分元素是0时，或者为同一个值的数组时，可以用稀疏数组来保存该数组，节省储存空间(二维数组储存太浪费空间了) 应用场景  五子棋、围棋记录黑白子，无占位处记为0，黑白分别记为1，2 扫雷 象棋类，跳棋等  处理方法：  记录数组有几行几列，有多少个不同的值 把有不同值的元素的行列及值记录在一个小规模的数组里，从而缩小程序的规模  二维数组转化稀疏数组的思路  遍历原始二维数组">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="稀疏数组当一个数组中大部分元素是0时，或者为同一个值的数组时，可以用稀疏数组来保存该数组，节省储存空间(二维数组储存太浪费空间了)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="稀疏数组和队列(数组)">
 <meta property="og:url" content="https://jaydenchang.top/post/0x001F.html">
 <meta property="og:site_name" content="Jayden&#39;s Blog">
-<meta property="og:description" content="稀疏数组当一个数组中大部分元素是0时，或者为同一个值的数组时，可以用稀疏数组来保存该数组，节省储存空间(二维数组储存太浪费空间了) 应用场景  五子棋、围棋记录黑白子，无占位处记为0，黑白分别记为1，2 扫雷 象棋类，跳棋等  处理方法：  记录数组有几行几列，有多少个不同的值 把有不同值的元素的行列及值记录在一个小规模的数组里，从而缩小程序的规模  二维数组转化稀疏数组的思路  遍历原始二维数组">
+<meta property="og:description" content="稀疏数组当一个数组中大部分元素是0时，或者为同一个值的数组时，可以用稀疏数组来保存该数组，节省储存空间(二维数组储存太浪费空间了)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-08-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-06T12:31:35.098Z">
+<meta property="article:modified_time" content="2021-12-11T01:55:29.963Z">
 <meta property="article:author" content="Jayden Chang">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="Java">
@@ -107,15 +107,19 @@
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
-  <div class="search-input-container"></div>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
   <span class="popup-btn-close" role="button">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div class="search-result-container">
-  <div class="algolia-stats"><hr></div>
-  <div class="algolia-hits"></div>
-  <div class="algolia-pagination"></div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
 </div>
 
     </div>
@@ -145,7 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">稀疏数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%9F%E5%88%97-%E6%95%B0%E7%BB%84"><span class="nav-number">2.</span> <span class="nav-text">队列(数组)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">2.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%A8%A1%E6%8B%9F%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">数组模拟环形队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">稀疏数组</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -263,7 +267,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+        <time title="Modified: 2021-12-11 09:55:29" itemprop="dateModified" datetime="2021-12-11T09:55:29+08:00">2021-12-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -276,13 +280,6 @@
     </span>
 
   
-    <span id="/post/0x001F.html" class="post-meta-item leancloud_visitors" data-flag-title="稀疏数组和队列(数组)" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
     <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
@@ -290,19 +287,13 @@
       <span class="post-meta-item-text">Views: </span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
+    <span id="/post/0x001F.html" class="post-meta-item leancloud_visitors" data-flag-title="稀疏数组和队列(数组)" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="leancloud-visitors-count"></span>
     </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x001F.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x001F.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
   
 </div>
 
@@ -314,29 +305,33 @@
     
     <div class="post-body" itemprop="articleBody">
         <h3 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h3><p>当一个数组中大部分元素是0时，或者为同一个值的数组时，可以用稀疏数组来保存该数组，节省储存空间(二维数组储存太浪费空间了)</p>
-<p>应用场景</p>
-<ul>
-<li>五子棋、围棋记录黑白子，无占位处记为0，黑白分别记为1，2</li>
-<li>扫雷</li>
-<li>象棋类，跳棋等</li>
-</ul>
-<p>处理方法：</p>
-<ul>
-<li>记录数组有几行几列，有多少个不同的值</li>
-<li>把有不同值的元素的行列及值记录在一个小规模的数组里，从而缩小程序的规模</li>
-</ul>
-<p>二维数组转化稀疏数组的思路</p>
-<ul>
-<li>遍历原始二维数组，得到有效数据的个数</li>
-<li>根据sum就可以创建稀疏数组 <code>int spareseArr[sum + 1][3]</code></li>
-<li>将二维数组的有效数据的个数sum存入稀疏数组</li>
-</ul>
-<p>稀疏数组转原始二维数组</p>
-<ul>
-<li>先读稀疏数组第一行，根据第一行数据创建原始二维数组</li>
-<li>在读取稀疏数组后几行的数据，并赋予原始的二维数组<code>int originArr[size][size]</code>即可</li>
-</ul>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;spareseArray.java
+<!--more>
+
+应用场景
+
+- 五子棋、围棋记录黑白子，无占位处记为0，黑白分别记为1，2
+- 扫雷
+- 象棋类，跳棋等
+
+处理方法：
+
+- 记录数组有几行几列，有多少个不同的值
+- 把有不同值的元素的行列及值记录在一个小规模的数组里，从而缩小程序的规模
+
+二维数组转化稀疏数组的思路
+
+- 遍历原始二维数组，得到有效数据的个数
+- 根据sum就可以创建稀疏数组 `int spareseArr[sum + 1][3]`
+- 将二维数组的有效数据的个数sum存入稀疏数组
+
+稀疏数组转原始二维数组
+
+- 先读稀疏数组第一行，根据第一行数据创建原始二维数组
+- 在读取稀疏数组后几行的数据，并赋予原始的二维数组`int originArr[size][size]`即可
+
+#### 代码
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;spareseArray.java
 import java.util.Scanner;
 public class spareseArray&#123;
     public static void main(String[] args)&#123;
@@ -403,7 +398,7 @@ public class spareseArray&#123;
 <li>把尾指针后移：rear+1，当front=rear [ 空 ]</li>
 <li>若尾指针rear小于队列的最大下标maxSize-1，则将数据存入rear所指的数组元素中，否则无法存入数据。<code>rear == maxSize-1</code> =&gt; 队列满</li>
 </ul>
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">package hello;
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">package hello;
 import java.util.Scanner;
 public class Queue &#123;
     public static void main(String[] args) &#123;
@@ -534,7 +529,7 @@ class ArrayQueue &#123;
 <li>当队列满时，条件是：<code>(rear+1)&amp;maxSize == front</code>  =&gt;队列满</li>
 </ul>
 <p>队列中有效数据的个数 <code>(rear + maxSize - front) % maxSize</code></p>
-<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Scanner;
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Scanner;
 public class CircleArrayQueue &#123;
     public static void main(String[] args) &#123;
         CircleArray queue &#x3D; new CircleArray(4);&#x2F;&#x2F;队列有效数据是3
@@ -733,8 +728,8 @@ class CircleArray &#123;
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch-lite.umd.js" integrity="sha256-48AZ24Ct05NAMLT7hvYgeW1X350OgEcZvHd6Ih6xwOA=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.33.2/dist/instantsearch.production.min.js" integrity="sha256-0B5Q7I/DVd8yp8JYLzbpELEonNBlVe7NLixMCLEnlBU=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
@@ -744,13 +739,11 @@ class CircleArray &#123;
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
-  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","app_key":"ilR9U6Vhlpi6qDnDIQJESR3O","server_url":"qvyuwipq.api.lncldglobal.com","security":true}</script>
-  <script src="/js/third-party/statistics/lean-analytics.js"></script>
 
 
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"qvyuwipq.api.lncldglobal.com","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x001F.html"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以更快收到回复噢~","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x001F.html"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
