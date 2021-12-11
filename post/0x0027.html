@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="本次来简单总结下简单二叉树(无序)，前面欠的债有点多，最近在疯狂追赶课程进度，简单记录下自己对简单二叉树的一些理解、">
+<meta name="description" content="整理了简单二叉树的简单应用，包括前中后遍历，求树的深度、叶子节点个数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构--简单二叉树(无序)">
 <meta property="og:url" content="https://jaydenchang.top/post/0x0027.html">
 <meta property="og:site_name" content="Jayden&#39;s Blog">
-<meta property="og:description" content="本次来简单总结下简单二叉树(无序)，前面欠的债有点多，最近在疯狂追赶课程进度，简单记录下自己对简单二叉树的一些理解、">
+<meta property="og:description" content="整理了简单二叉树的简单应用，包括前中后遍历，求树的深度、叶子节点个数">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-11T01:50:59.704Z">
+<meta property="article:modified_time" content="2021-12-11T05:45:42.062Z">
 <meta property="article:author" content="Jayden Chang">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="C++">
@@ -136,7 +136,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -149,6 +149,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#binary-tree"><span class="nav-number">1.</span> <span class="nav-text">binary tree</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#the-main-structure"><span class="nav-number">1.1.</span> <span class="nav-text">the main structure</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Create"><span class="nav-number">1.2.</span> <span class="nav-text">Create()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Release"><span class="nav-number">1.3.</span> <span class="nav-text">Release()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PreOrder"><span class="nav-number">1.4.</span> <span class="nav-text">PreOrder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#InOrder"><span class="nav-number">1.5.</span> <span class="nav-text">InOrder()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PostOrder"><span class="nav-number">1.6.</span> <span class="nav-text">PostOrder()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LevelOrder"><span class="nav-number">1.7.</span> <span class="nav-text">LevelOrder()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#leafNum"><span class="nav-number">1.8.</span> <span class="nav-text">leafNum()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Complete-code"><span class="nav-number">1.9.</span> <span class="nav-text">Complete code</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -266,7 +267,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-11 09:50:59" itemprop="dateModified" datetime="2021-12-11T09:50:59+08:00">2021-12-11</time>
+        <time title="Modified: 2021-12-11 13:45:42" itemprop="dateModified" datetime="2021-12-11T13:45:42+08:00">2021-12-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -296,6 +297,7 @@
   
 </div>
 
+            <div class="post-description">整理了简单二叉树的简单应用，包括前中后遍历，求树的深度、叶子节点个数</div>
         </div>
       </header>
 
@@ -303,14 +305,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>本次来简单总结下简单二叉树(无序)，前面欠的债有点多，最近在疯狂追赶课程进度，简单记录下自己对简单二叉树的一些理解、</p>
-<!--more>
-
-#### binary tree
-
-##### the main structure
-
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int Max &#x3D; 100;
+        <p>本次来简单总结下简单二叉树(无序)，前面欠的债有点多，最近在疯狂追赶课程进度，简单记录下自己对简单二叉树的一些理解</p>
+<h4 id="binary-tree"><a href="#binary-tree" class="headerlink" title="binary tree"></a>binary tree</h4><h5 id="the-main-structure"><a href="#the-main-structure" class="headerlink" title="the main structure"></a>the main structure</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int Max &#x3D; 100;
 
 template &lt;class DataType&gt;
 struct BiNode &#123;

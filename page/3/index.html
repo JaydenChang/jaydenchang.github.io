@@ -261,7 +261,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+        <time title="Modified: 2021-12-11 14:00:35" itemprop="dateModified" datetime="2021-12-11T14:00:35+08:00">2021-12-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -291,128 +291,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>本次会用到两个html和两个js文件</p>
-<h3 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h3><h4 id="index页面"><a href="#index页面" class="headerlink" title="index页面"></a>index页面</h4><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;head&gt;
-    &lt;style&gt;
-    	button,
-        input &#123;
-            color: grey;            
-        &#125;
-
-        table &#123;
-            border: 1px solid #a9a9a9;
-            padding: 3px;            
-        &#125;
-
-        tr,
-        td &#123;
-            border: 1px solid #a9a9a9;
-            padding: 5px;
-        &#125;
-    &lt;&#x2F;style&gt;
-    &lt;script src&#x3D;&quot;Frm.js&quot;&gt;&lt;&#x2F;script&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;form id&#x3D;&quot;form1&quot;&gt;
-        &lt;table align&#x3D;&quot;center&quot;&gt;            
-            &lt;h4 align&#x3D;&quot;center&quot;&gt;push the data&lt;&#x2F;h4&gt;
-            &lt;tr&gt;
-                &lt;td&gt;ID&lt;&#x2F;td&gt;
-                &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;userid&quot; placeholder&#x3D;&quot;enter the ID&quot;&gt;&lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;name&lt;&#x2F;td&gt;
-                &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;username&quot; placeholder&#x3D;&quot;enter the name&quot;&gt;&lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;gender&lt;&#x2F;td&gt;
-                &lt;td&gt;
-                    &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;sex&quot; value&#x3D;&quot;male&quot;&gt;male
-                    &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;sex&quot; value&#x3D;&quot;gemale&quot;&gt;female
-                &lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;&#x2F;td&gt;
-                &lt;td&gt;
-                    &lt;!-- &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;submit&quot; onclick&#x3D;&quot;submitFrm()&quot;&gt; --&gt;
-                    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;submit&quot; onclick&#x3D;&quot;submitFrm()&quot;&gt;
-                    &lt;input type&#x3D;&quot;reset&quot; value&#x3D;&quot;reset&quot;&gt;
-                &lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;            
-        &lt;&#x2F;table&gt;
-    &lt;&#x2F;form&gt;
-
-    &lt;form id&#x3D;&quot;form2&quot;&gt;
-        &lt;table align&#x3D;&quot;center&quot;&gt;
-            &lt;h4 align&#x3D;&quot;center&quot;&gt;url push dada&lt;&#x2F;h4&gt;
-            &lt;tr&gt;
-                &lt;td&gt;ID&lt;&#x2F;td&gt;
-                &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;userid1&quot; placeholder&#x3D;&quot;enter the ID&quot;&gt;&lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;name&lt;&#x2F;td&gt;
-                &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username1&quot; placeholder&#x3D;&quot;enter the name&quot;&gt;&lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;gender&lt;&#x2F;td&gt;
-                &lt;td&gt;
-                    &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;ssex&quot; value&#x3D;&quot;male&quot;&gt;male
-                    &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;ssex&quot; value&#x3D;&quot;female&quot;&gt;female
-                &lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;file&lt;&#x2F;td&gt;
-                &lt;td&gt;&lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;myfile&quot;&gt;&lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;
-            &lt;tr&gt;
-                &lt;td&gt;&lt;&#x2F;td&gt;
-                &lt;td&gt;
-                    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;submit&quot; onclick&#x3D;&quot;send()&quot;&gt;
-                    &lt;input type&#x3D;&quot;reset&quot; value&#x3D;&quot;reset&quot;&gt;
-                &lt;&#x2F;td&gt;
-            &lt;&#x2F;tr&gt;
-        &lt;&#x2F;table&gt;
-    &lt;&#x2F;form&gt;
-&lt;&#x2F;body&gt;</code></pre>
-
-<h4 id="get页面"><a href="#get页面" class="headerlink" title="get页面"></a>get页面</h4><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;script src&#x3D;&quot;get.js&quot;&gt;
-	var frmValue &#x3D; window.location.search;
-    frmValue &#x3D; decodeURIComponent(frmValue);
-&lt;&#x2F;script&gt;</code></pre>
-
-<h3 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h3><p>接下来到了本次作业的难点，涉及到的js逻辑对初学者来说有点复杂</p>
-<h4 id="Frm-js"><a href="#Frm-js" class="headerlink" title="Frm.js"></a>Frm.js</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function submitFrm() &#123;
-    var objFrm &#x3D; document.getElementById(&quot;form1&quot;);
-    console.log(objFrm);
-    objFrm.method &#x3D; &quot;get&quot;;
-    objFrm.action &#x3D; &quot;get.html&quot;;
-    objFrm.submit();
-    &#x2F;&#x2F; form表单自带提交函数，只需定义提交方式和目的地址
-&#125;
-function send() &#123;
-    var sid &#x3D; document.getElementById(&quot;userid1&quot;).value;
-    var nname &#x3D; document.getElementById(&quot;username1&quot;).value;
-    var ssex &#x3D; document.getElementsByName(&quot;ssex&quot;);
-    var filevalue &#x3D; document.getElementById(&quot;myfile&quot;).value;
-    var index1 &#x3D; filevalue.lastIndexOf(&quot;.&quot;);
-    var fileExt &#x3D; filevalue.substring(index1 + 1);
-    var index2 &#x3D; filevalue.lastIndexOf(&quot;\\&quot;);
-    var fileName &#x3D; filevalue.substring(index2 + 1, index1);
-    var sex;
-    for (var i &#x3D; 0; i &lt; ssex.length; i++) &#123;
-        if (ssex[i].checked)
-            sex &#x3D; ssex[i].value;
-        &#x2F;&#x2F; 获取性别的值
-    &#125;
-    &#x2F;&#x2F; 通过url方式提交页面数据
-    var URL &#x3D; &quot;get.html?id&#x3D;&quot; + sid + &quot;&amp;name&#x3D;&quot; + nname + &quot;&amp;sex&#x3D;&quot; + sex + &quot;&amp;fileName : &quot; + fileName + &quot;&amp;FileExt : &quot; + fileExt;
-    window.location.href &#x3D; URL;
-    &#x2F;&#x2F; 动态输出跳转
-&#125;
-</code></pre>
+          <p>简单实现提交数据到另一个页面</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/post/0x0013.html#more" rel="contents">
+              <a class="btn" href="/post/0x0013.html">
                 Read more &raquo;
               </a>
             </div>
@@ -474,7 +356,7 @@ function send() &#123;
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-09 16:17:38" itemprop="dateModified" datetime="2021-12-09T16:17:38+08:00">2021-12-09</time>
+        <time title="Modified: 2021-12-11 14:01:34" itemprop="dateModified" datetime="2021-12-11T14:01:34+08:00">2021-12-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -504,126 +386,10 @@ function send() &#123;
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="对-的重载-实现深拷贝"><a href="#对-的重载-实现深拷贝" class="headerlink" title="对=的重载(实现深拷贝)"></a>对=的重载(实现深拷贝)</h3><h4 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class point;
-class Array
-&#123;
-private:
-    point *p;
-    int size;
-public:
-    Array(Array &amp;a)
-    &#123;
-        size &#x3D; a.size;
-        p &#x3D; new point[size];
-        for(int i &#x3D; 0;i &lt; size;i++)
-            p[i] &#x3D; a.p[i];
-    &#125;&#x2F;&#x2F;拷贝复制函数，少了这个会出问题
-    Array(int n, point pp)
-    &#123;
-        size &#x3D; n;
-        p &#x3D; new point[size];
-        for(int i &#x3D; 0;i &lt; size;i++)
-            p[i] &#x3D; pp;&#x2F;&#x2F;经过实践，发现这一步是将point类的数据导入到Array类
-       &#x2F;&#x2F;之前做的时候没有把pp赋给p[i]，最后结果输出要么是0要么是不规则数
-    &#125;
-    ~Array()&#123;&#125;
-    Array &amp;operator&#x3D;(Array&amp;a)
-    &#123;
-        if(&amp;a !&#x3D; this)
-        &#123;
-            if(size !&#x3D; a.size)
-            &#123;
-                delete[] p;
-                size &#x3D; a.size;
-                p &#x3D; new point[size];
-            &#125;
-            for(int i &#x3D; 0;i &lt; size;i++)
-                p[i] &#x3D; a.p[i];
-            &#x2F;&#x2F;开辟新空间，深拷贝，把a的p数组传给this
-        &#125;
-        return *this;
-    &#125;
-&#125;;</code></pre>
-
-
-
-<h4 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F;对string类的重写
-class mystr
-&#123;
-private:
-    char *str;
-    int size;
-public:
-    mystr&amp; operator&#x3D;(mystr &amp;ss)
-    &#123;     
-        if(this &#x3D;&#x3D; &amp;ss) return *this;
-        if(str !&#x3D; NULL)
-        &#123;
-            delete[] str;&#x2F;&#x2F;清空原来的内容
-            str &#x3D; NULL;
-        &#125;
-        size &#x3D; strlen(SS);
-        str &#x3D; new char[size+1];
-        strcpy(str,ss);
-        return *this;
-    &#125;
-&#125;</code></pre>
-
-<h3 id="对-的重载"><a href="#对-的重载" class="headerlink" title="对+=的重载"></a>对+=的重载</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class mystr
-&#123;
-private:
-    char *str;
-    int size;
-public:
-    mystr &amp;operator+&#x3D;(mystr &amp;ss)
-    &#123;
-        size +&#x3D; ss.size;
-        strcat(str,ss.str);
-        return *this;
-        &#x2F;*错误示范
-        mystr s1;
-        s1.size &#x3D; size + ss.size;
-        s1.str &#x3D; new char[size+1];
-        s1.str &#x3D; strcat(str,ss.str);
-        return s1;
-        *&#x2F;
-        &#x2F;&#x2F;这种方式在win32下会显示乱码，在Linux下会提示被释放两次，并且不输出字符，无需再申请一个临时变量储存数据
-    &#125;
-&#125;</code></pre>
-
-<h3 id="对-的重载-1"><a href="#对-的重载-1" class="headerlink" title="对+的重载"></a>对+的重载</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class mystr
-&#123;
-private:
-    char *str;
-    int size;
-public:
-    mystr &amp;operator+(mystr &amp;ss)
-    &#123;
-        size +&#x3D; ss.size;
-        strcat(str,ss.str);
-        return *this;
-        &#x2F;*
-        mystr s1;
-        s1.size &#x3D; size + ss.size;
-        s1.str &#x3D; new char[s1.size+1];
-        s1.str &#x3D; strcat(str,ss.str);
-        return s1;        
-        *&#x2F;
-        &#x2F;&#x2F;仍然是错误示范，同上
-    &#125;
-    mystr &amp;operator+(char *ss)
-    &#123;
-        size +&#x3D; strlen(ss);
-        strcat(str,ss);
-        return *this;
-        &#x2F;&#x2F;错误示范和上一个函数的类似
-    &#125;
-&#125;</code></pre>
-
-<h3 id="对-lt-lt-和-gt-gt-重载"><a href="#对-lt-lt-和-gt-gt-重载" class="headerlink" title="对&lt;&lt;和&gt;&gt;重载"></a>对&lt;&lt;和&gt;&gt;重载</h3>
+          <p>总结部分c++重载运算符</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/post/0x0012.html#more" rel="contents">
+              <a class="btn" href="/post/0x0012.html">
                 Read more &raquo;
               </a>
             </div>
@@ -685,7 +451,7 @@ public:
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+        <time title="Modified: 2021-12-11 14:02:57" itemprop="dateModified" datetime="2021-12-11T14:02:57+08:00">2021-12-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -715,105 +481,10 @@ public:
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>现在来补发之前c++作业的总结，不得不说，那次作业确实有点难顶，涉及到复杂的算法，好在洛谷社区有模板套，现在来削微总结下算法，尽管现在能理解算法背后的原理，但还是写不出算法，趁现在还记得这件事先记录下，日后经验丰富后再来回顾</p>
-<p>代码如下</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-double book[100], dis[100], MAX &#x3D; 99999, maps[100][100];
-vector&lt;double&gt; length(0);
-&#x2F;&#x2F; vector&lt;double&gt; ttt(0);
-class point
-&#123;
-private:
-    double x, y;
-
-public:
-    double getx() const &#123; return x; &#125;
-    double gety() const &#123; return y; &#125;
-    void set()
-    &#123;
-        cin &gt;&gt; x &gt;&gt; y;
-    &#125;
-&#125;;
-double calc(point p1, point p2)
-&#123;
-    double l1, l2;
-    l1 &#x3D; (p1.getx() - p2.getx()) * (p1.getx() - p2.getx());
-    l2 &#x3D; (p1.gety() - p2.gety()) * (p1.gety() - p2.gety());
-    return sqrt(l1 + l2);
-&#125;
-
-int main()
-&#123;
-    int n &#x3D; 5, m &#x3D; 10, i, j;
-    int min, minIndex;
-    double sum &#x3D; 0;
-    vector&lt;point&gt; pp(6);
-    for (int i &#x3D; 1; i &lt;&#x3D; 5; i++)
-    &#123;
-        pp[i].set();
-    &#125;
-    &#x2F;&#x2F; 对maps初始化，除了自己到自己距离是0，其他都是边界值
-    for (i &#x3D; 1; i &lt;&#x3D; n;i++)
-    &#123;
-        for (j &#x3D; 1; j &lt;&#x3D; n;j++)
-        &#123;
-            if(i !&#x3D; j)
-                maps[i][j] &#x3D; MAX;
-            else
-                maps[i][j] &#x3D; 0;
-        &#125;
-    &#125;
-    &#x2F;&#x2F; 输入数据，输入无向图
-    for (int i &#x3D; 1; i &lt; 6;i++)
-    &#123;
-        for (int j &#x3D; i + 1; j &lt; 6;j++)
-        &#123;
-            double temp &#x3D; calc(pp[i], pp[j]);
-            length.push_back(temp);
-            maps[i][j] &#x3D; temp;
-            maps[j][i] &#x3D; temp;
-        &#125;
-    &#125;
-    &#x2F;&#x2F; 初始化距离数组，默认把离1最近的找出来储存起来
-    for (i &#x3D; 1; i &lt;&#x3D; n; i++)
-        dis[i] &#x3D; maps[1][i];
-    book[1] &#x3D; 1;
-    for (i &#x3D; 1; i &lt;&#x3D; n - 1; i++)
-    &#123;
-        min &#x3D; MAX;
-    &#x2F;&#x2F; 对最小值复制，寻找离树最近的点
-        for (j &#x3D; 1; j &lt;&#x3D; n; j++)
-        &#123;
-            if (book[j] &#x3D;&#x3D; 0 &amp;&amp; dis[j] &lt; min)
-            &#123;
-                min &#x3D; dis[j];
-                minIndex &#x3D; j;
-            &#125;
-        &#125;
-        &#x2F;&#x2F; 标记这个点被访问过
-        book[minIndex] &#x3D; 1;
-        sum +&#x3D; dis[minIndex];
-        for (j &#x3D; 1; j &lt;&#x3D; n; j++)
-        &#123;
-        &#x2F;&#x2F; 如果这个点没被访问过，如果距离更近就更新
-            if (book[j] &#x3D;&#x3D; 0 &amp;&amp; maps[minIndex][j] &lt; dis[j])
-                dis[j] &#x3D; maps[minIndex][j];
-        &#125;
-    &#125;
-    cout.setf(ios::fixed);
-    cout &lt;&lt; setprecision(6) &lt;&lt; sum &lt;&lt; endl;
-    cout &lt;&lt; endl;
-    &#x2F;&#x2F; 输出最小生成树
-&#125;
-</code></pre>
-
-<p>快速理解原理：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ma4y1W7pJ?from=search&seid=16640512887684164710">2分钟搞懂最小生成树prim算法_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</a></p>
-<p>题解模板：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/solution/P3366">P3366 【模板】最小生成树 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)</a><br>(有很多模板，选择适合自己，能看懂的为上策)</p>
-
+          <p>这是一篇发完后回头看也看不太懂的文章(作业怎么可以难)</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/post/0x0011.html#more" rel="contents">
+              <a class="btn" href="/post/0x0011.html">
                 Read more &raquo;
               </a>
             </div>
@@ -875,7 +546,7 @@ int main()
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+        <time title="Modified: 2021-12-11 14:03:19" itemprop="dateModified" datetime="2021-12-11T14:03:19+08:00">2021-12-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -905,267 +576,10 @@ int main()
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>这次作业算是JavaScript的一个入门吧，确实有很多新的知识点</p>
-<p>html部分</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-    &lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;
-        div&#123;
-            margin-bottom: 30px;
-            margin-top: 30px;
-        &#125;
-		td,
-		th &#123;
-			padding: 10px;
-			border: 1px solid #696969;
-		&#125;
-
-		table &#123;
-			border: 1px solid #A9A9A9;
-		&#125;
-
-		button &#123;
-			width: 70px;
-			padding: 5px;
-			color: grey;
-		&#125;
-        select, button, input&#123;
-            color: gray;
-        &#125;
-	&lt;&#x2F;style&gt;
-
-    &lt;script src&#x3D;&quot;22.js&quot;&gt;&lt;&#x2F;script&gt;		
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    
-    &lt;div&gt;        
-            &lt;table id&#x3D;&quot;Form&quot;&gt;
-                &lt;br&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;ID&lt;&#x2F;td&gt;
-                    &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;sid&quot; placeholder&#x3D;&quot;please enter id&quot;&gt;&lt;&#x2F;td&gt;
-                &lt;&#x2F;tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;name&lt;&#x2F;td&gt;
-                    &lt;td&gt;&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;Name&quot; placeholder&#x3D;&quot;please enter name&quot;&gt;&lt;&#x2F;td&gt;
-                &lt;&#x2F;tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;sex&lt;&#x2F;td&gt;
-                    &lt;td&gt;
-                        &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;sex&quot; value&#x3D;&quot;male&quot;&gt;male
-                        &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;sex&quot; value&#x3D;&quot;female&quot;&gt;female
-                    &lt;&#x2F;td&gt;
-                &lt;&#x2F;tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;major&lt;&#x2F;td&gt;
-                    &lt;td&gt;
-                        &lt;select id&#x3D;&quot;major&quot;&gt;                            
-                            &lt;option value&#x3D;&quot;software engine&quot; selected&#x3D;&quot;selected&quot;&gt;software engine&lt;&#x2F;option&gt;
-                            &lt;option value&#x3D;&quot;artificial intelligence&quot;&gt;artificial intelligence&lt;&#x2F;option&gt;
-                            &lt;option value&#x3D;&quot;network engine&quot;&gt;network engine&lt;&#x2F;option&gt;
-                        &lt;&#x2F;select&gt;
-                    &lt;&#x2F;td&gt;
-                &lt;&#x2F;tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;action&lt;&#x2F;td&gt;
-                    &lt;td color&#x3D;&quot;gray&quot;&gt;
-                        &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;add&quot; onclick&#x3D;&quot;insert()&quot;&gt;
-                        &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;reset&quot; id&#x3D;&quot;reset&quot; onclick&#x3D;&quot;reset()&quot;&gt;                        
-                    &lt;&#x2F;td&gt;
-                &lt;&#x2F;tr&gt;
-            &lt;&#x2F;table&gt;        
-    &lt;&#x2F;div&gt;    
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;</code></pre>
-
-<p>JavaScript部分</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">var selall &#x3D; &quot;&lt;input type&#x3D;checkbox id&#x3D;selAll onclick&#x3D;SelectAll()&gt;select all&quot;;
-var selthis &#x3D; &quot;&lt;input type&#x3D;checkbox Name&#x3D;sel onclick&#x3D;Select()&gt;select&quot;;
-var action &#x3D; &quot;&lt;a href&#x3D;&#39;#&#39; onclick&#x3D;del(this)&gt;delete&lt;&#x2F;a&gt;| &lt;a href&#x3D;&#39;#&#39; onclick&#x3D;edit(this)&gt;edit&lt;&#x2F;a&gt;&quot;;
-var title &#x3D; new Array(selall, &quot;ID&quot;, &quot;Name&quot;, &quot;sex&quot;, &quot;major&quot;, &quot;action&quot;);
-var student &#x3D; new Array();
-var Td &#x3D; new Array();
-var td &#x3D; new Array();
-student[0] &#x3D; new Array(selthis, &quot;0x0001&quot;, &quot;Kobe&quot;, &quot;male&quot;, &quot;software engine&quot;, action);
-student[1] &#x3D; new Array(selthis, &quot;0x0002&quot;, &quot;Wade&quot;, &quot;male&quot;, &quot;artificial intelligence&quot;,  action);
-student[2] &#x3D; new Array(selthis, &quot;0x0003&quot;, &quot;Rachel&quot;, &quot;female&quot;, &quot;network engine&quot;, action);
-&#x2F;&#x2F; 创建一个学生数据数组 
-var oldValue &#x3D; new Array();
-var newData &#x3D; new Array();
-document.write(&quot;&lt;table id&#x3D;Table&gt;&quot;);
-document.write(&quot;&lt;tr&gt;&quot;);
-for (var i &#x3D; 0; i &lt; title.length; i++) &#123;
-    document.write(&quot;&lt;th&gt;&quot; + title[i] + &quot;&lt;&#x2F;th&gt;&quot;);
-&#125;
-document.write(&quot;&lt;&#x2F;tr&gt;&quot;);
-for (var r &#x3D; 0; r &lt; student.length; r++) &#123;
-    document.write(&quot;&lt;tr&gt;&quot;);
-    for (var c &#x3D; 0; c &lt; title.length; c++) &#123;
-        document.write(&quot;&lt;td&gt;&quot; + student[r][c] + &quot;&lt;&#x2F;td&gt;&quot;);
-    &#125;
-    document.write(&quot;&lt;&#x2F;tr&gt;&quot;);
-&#125;
-&#x2F;&#x2F; 这里用js打印出学生数据数组
-function SelectAll() &#123;
-    var selectall &#x3D; document.getElementById(&quot;selAll&quot;);
-    var Sel &#x3D; document.getElementsByName(&quot;sel&quot;);
-    if (selectall.checked &#x3D;&#x3D; true)
-        for (var i &#x3D; 0; i &lt; Sel.length; i++)
-            Sel[i].checked &#x3D; true;
-    else
-        for (var i &#x3D; 0; i &lt; Sel.length; i++)
-            Sel[i].checked &#x3D; false;
-&#125;
-&#x2F;&#x2F; 全选函数，注意下里面的算法
-
-function Select() &#123;
-    var selectall &#x3D; document.getElementById(&quot;selAll&quot;);
-    var Sel &#x3D; document.getElementsByName(&quot;sel&quot;);
-    for (var i &#x3D; 0; i &lt; Sel.length; i++)
-        if (!Sel[i].checked) &#123;
-            selectall.checked &#x3D; false;
-            break;
-        &#125; else
-            selectall.checked &#x3D; true;
-
-&#125;
-&#x2F;&#x2F; 选择函数的算法，和全选函数搭配
-
-&#x2F;&#x2F; 以下的函数都需要get table的元素
-function del(that) &#123;
-    var currentRow &#x3D; that.parentNode.parentNode.rowIndex;
-    var ObjTable &#x3D; document.getElementById(&quot;Table&quot;);
-    if (confirm(&quot;delete the data on this row?&quot;))
-        ObjTable.deleteRow(currentRow);
-&#125;
-&#x2F;&#x2F; 删除整行元素的函数
-function edit(that) &#123;
-    var tdStr &#x3D; &quot;&lt;a href&#x3D;&#39;#&#39; onclick&#x3D;save(this)&gt;save&lt;&#x2F;a&gt;|&lt;a href&#x3D;&#39;#&#39; onclick&#x3D;cancel(this)&gt;cancel&lt;&#x2F;a&gt;&quot;;
-    var ObjTable &#x3D; document.getElementById(&quot;Table&quot;);
-    var currentRow &#x3D; that.parentNode.parentNode.rowIndex;
-    var ObjTr &#x3D; ObjTable.rows[currentRow];       
-    var td6 &#x3D; ObjTr.cells.item(5);
-    td6.innerHTML &#x3D; tdStr;
-    for (var i &#x3D; 1; i &lt; title.length - 1; i++)&#123;
-        Td[i] &#x3D; ObjTr.cells.item(i);    
-        oldValue[i] &#x3D; Td[i].innerHTML;
-        var Str &#x3D; &quot;&lt;input type&#x3D;text Name&#x3D;msg value&#x3D;&quot; + oldValue[i] + &quot;&gt;&quot;;
-        Td[i].innerHTML &#x3D; Str;
-    &#x2F;&#x2F; 这里已经是从1开始了，下面的save函数的遍历要从0开始
-    &#125;
-&#125;
-function cancel(that) &#123;
-    var ObjTable &#x3D; document.getElementById(&quot;Table&quot;);
-    var currentRow &#x3D; that.parentNode.parentNode.rowIndex;
-    var ObjTr &#x3D; ObjTable.rows[currentRow];    
-    for (var i &#x3D; 1; i &lt; title.length; i++)&#123;
-        ObjTr.cells.item(i).innerHTML &#x3D; oldValue[i];
-    &#125;
-    ObjTr.cells.item(5).innerHTML &#x3D; action;
-&#125;
-function save(that) &#123;
-    var ObjTable &#x3D; document.getElementById(&quot;Table&quot;);
-    var currentRow &#x3D; that.parentNode.parentNode.rowIndex;
-    var ObjTr &#x3D; ObjTable.rows[currentRow];
-    var Td &#x3D; new Array();
-    newData &#x3D; document.getElementsByName(&quot;msg&quot;);
-    for (var i &#x3D; 0; i &lt; title.length - 2; i++)&#123;
-        Td[i] &#x3D; newData[i].value;
-        ObjTr.cells.item(i).value &#x3D; newData[i].value;
-        
-    &#125;
-    for (var i &#x3D; 0; i &lt; title.length-1; i++)
-        ObjTr.cells.item(i+1).innerHTML &#x3D; Td[i];
-    ObjTr.cells.item(5).innerHTML &#x3D; action;
-    
-&#125;
-window.onload &#x3D; function () &#123;
-    var reset &#x3D; document.getElementById(&quot;reset&quot;);
-    reset.onclick &#x3D; function () &#123;
-        sid.value &#x3D; &quot;&quot;;
-        Name.value &#x3D; &quot;&quot;;
-        &#x2F;&#x2F; 使文本框恢复默认
-        var radio &#x3D; document.getElementsByName(&quot;sex&quot;);
-        for (var i &#x3D; 0; i &lt; radio.length; i++)
-            if (radio[i].checked)
-                radio[i].checked &#x3D; false;
-        &#x2F;&#x2F; 这部分是使单选框恢复默认
-    &#125;
-&#125;
-
-function insert() &#123;
-    var sid &#x3D; document.getElementById(&quot;sid&quot;).value;
-    if (sid &#x3D;&#x3D; &quot;&quot; || sid.length !&#x3D; 6) &#123;
-        alert(&quot;id shouldn&#39;t be empty and the length should be 6&quot;);
-        document.getElementById(&quot;sid&quot;).focus();
-        return false;
-    &#125;        
-    var Name &#x3D; document.getElementById(&quot;Name&quot;).value;
-    if (Name.length &lt; 1) &#123;
-        alert(&quot;Name shouldn&#39;t be empty&quot;);
-        document.getElementById(&quot;Name&quot;).focus();
-        return false;
-    &#125;
-    var ssex &#x3D; document.getElementsByName(&quot;sex&quot;);
-    var sex;
-    for (var i &#x3D; 0; i &lt; ssex.length; i++)&#123;
-        if (ssex[i].checked) &#123;
-            sex &#x3D; ssex[i].value;
-            break;
-        &#125;
-    &#125;
-    if (!sex) &#123;
-        alert(&quot;please choose a gender&quot;);
-        return false;
-    &#125;
-    &#x2F;&#x2F; 以上操作均有对文本框进行检查，确保有值输入
-    &#x2F;&#x2F; 这里每一步检查的return false很重要，使函数不会进行到下一步
-    
-
-    var major &#x3D; document.getElementById(&quot;major&quot;).value;    
-
-    var ObjTable &#x3D; document.getElementById(&quot;Table&quot;);
-    var ObjTr &#x3D; document.createElement(&quot;Tr&quot;);    
-
-    
-
-    for (var i &#x3D; 0; i &lt; title.length; i++)&#123;
-        td[i] &#x3D; document.createElement(&quot;Td&quot;);
-    &#125;
-    td[0].innerHTML &#x3D; selthis;
-    ObjTr.appendChild(td[0]);
-
-    td[1].innerHTML &#x3D; sid;
-    ObjTr.appendChild(td[1]);
-
-    td[2].innerHTML &#x3D; Name;
-    ObjTr.appendChild(td[2]);
-
-    td[3].innerHTML &#x3D; sex;
-    ObjTr.appendChild(td[3]);
-
-    td[4].innerHTML &#x3D; major;
-    ObjTr.appendChild(td[4]);
-
-    td[5].innerHTML &#x3D; action;
-    ObjTr.appendChild(td[5]);
-
-    ObjTable.appendChild(ObjTr);
-    &#x2F;&#x2F; 这一步最重要，没有这一步就不会向表单添加新的一行
-    &#x2F;&#x2F; 向表单添加ObjTr这个新的行元素
-&#125;</code></pre>
-
-<p>效果图如下</p>
-<p><img src="https://jaydenchang.gitee.io/images/images/0x0010.png"></p>
-
+          <p>JavaScript入门</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/post/0x0010.html#more" rel="contents">
+              <a class="btn" href="/post/0x0010.html">
                 Read more &raquo;
               </a>
             </div>
