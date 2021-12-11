@@ -88,7 +88,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">38</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -157,7 +157,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -274,13 +274,7 @@
     </span>
 
   
-    <span id="/post/0x0029.html" class="post-meta-item leancloud_visitors" data-flag-title="数据结构-图及最小生成树" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -295,287 +289,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/0x0029.html">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0028.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jayden Chang">
-      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jayden's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/0x0028.html" class="post-title-link" itemprop="url">数据结构--哈夫曼树与哈夫曼编码</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-11-20 00:00:00" itemprop="dateCreated datePublished" datetime="2021-11-20T00:00:00+08:00">2021-11-20</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-11 09:50:44" itemprop="dateModified" datetime="2021-12-11T09:50:44+08:00">2021-12-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/post/0x0028.html" class="post-meta-item leancloud_visitors" data-flag-title="数据结构--哈夫曼树与哈夫曼编码" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>填坑系列之哈夫曼树</p>
-<p>刚开始看哈夫曼树时有点懵懵的，加权是啥子玩意，后面查阅资料后才明白，哈夫曼树以及哈夫曼编码多用在压缩编码中，再配合二倍速食用B站大学的网课，算是把整个算法过了一遍</p>
-<!--more>
-
-#### the main structure
-
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int Max &#x3D; 1000;
-char **HuffmanCode;
-
-typedef struct Node &#123;
-    int weight;
-    int parent, left, right;
-&#125; HTNode, *HuffmanTree;</code></pre>
-
-<h4 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h4><p>select是来选择剩余结点中权值最小的两颗二叉树(包括新构造的树)的左右子树来构建一个新的二叉树，新根节点权值为其左右子树根节点的权值之和</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void Select(HuffmanTree ht, int k, int&amp; id1, int&amp; id2) &#123;
-    long min1, min2;
-    min1 &#x3D; min2 &#x3D; 99999; &#x2F;&#x2F; 不能太小
-    for (int i &#x3D; 0;i &lt; k;i++) &#123;
-        if (ht[i].parent &#x3D;&#x3D; -1 &amp;&amp; min1 &gt; ht[i].weight) &#123;
-            &#x2F;&#x2F; 选择无双亲的结点
-            if (min1 &lt; min2) &#123; 
-                &#x2F;&#x2F; 这里是比大小的操作，规定min1为小
-                min2 &#x3D; min1;
-                id2 &#x3D; id1;
-            &#125;
-            min1 &#x3D; ht[i].weight; &#x2F;&#x2F; 这个操作可以把这k个数据都遍历一遍，可以选出两个最小的结点
-            id1 &#x3D; i;
-        &#125; else if (ht[i].parent &#x3D;&#x3D; -1 &amp;&amp; min2 &gt; ht[i].weight) &#123;
-            min2 &#x3D; ht[i].weight;
-            id2 &#x3D; i;
-        &#125;
-    &#125;
-&#125;</code></pre>
-
-<h4 id="Create-a-Huffman-Tree"><a href="#Create-a-Huffman-Tree" class="headerlink" title="Create a Huffman Tree"></a>Create a Huffman Tree</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void HuffmanTree(huffTree &amp;ht, int n) &#123;
-    int m &#x3D; n * 2 - 1;
-    int id1, id2;
-    int i;
-    if (n &lt; 0) &#x2F;&#x2F; 创建空树
-        return;
-    ht &#x3D; new Node[m];
-    for (i &#x3D; 0;i &lt; m;i++) &#123;
-        ht[i].parent &#x3D; ht[i].left &#x3D; ht[i].right &#x3D; -1;
-        &#x2F;&#x2F; 初始化各节点
-    &#125;
-    for (i &#x3D; 0;i &lt; n;i++) &#123;
-        cin &gt;&gt; ht[i].weight; &#x2F;&#x2F; 输入各个结点的权值
-    &#125;
-    for (i &#x3D; n;i &lt; m;i++) &#123;
-        Select(ht, i, id1, id2);
-        &#x2F;&#x2F; 在n个结点中选择俩无双亲的结点且权值最小的结点
-        ht[id1].parent &#x3D; ht[id2].parent &#x3D; i;
-        &#x2F;&#x2F; 获得id1，id2，把第i个结点设为它俩的双亲
-        ht[i].left &#x3D; id1;
-        ht[i].right &#x3D; id2; &#x2F;&#x2F; 设第i个结点的左右孩子为id1，id2
-        ht[i].weight &#x3D; ht[id1].weight + ht[id2].weight;
-    &#125;
-&#125;</code></pre>
-
-<h4 id="destroy-a-Huffman-Tree"><a href="#destroy-a-Huffman-Tree" class="headerlink" title="destroy a Huffman Tree"></a>destroy a Huffman Tree</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void Destroy(HuffmanTree &amp;ht) &#123;
-    delete[] ht;
-    ht &#x3D; NULL;
-&#125;</code></pre>
-
-<h4 id="create-the-Huffman-Code"><a href="#create-the-Huffman-Code" class="headerlink" title="create the Huffman Code"></a>create the Huffman Code</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">void createHuffmanCode(HuffmanTree ht, HuffmanCode &amp;hc, int n) &#123;
-    int start;
-    int cur, f;
-    hc &#x3D; new char *[n + 1];
-    char *cd &#x3D; new char[n];
-    cd[n - 1] &#x3D; &#39;\0&#39;;
-    for (i &#x3D; 0;i &lt; n;i++) &#123;
-        start &#x3D; n - 1; 
-        cur &#x3D; i; &#x2F;&#x2F; 当前结点在数组中的位置
-        f &#x3D; hf[i].parent; &#x2F;&#x2F; 当前结点的父节点在数组的位置
-        while (f !&#x3D; 0) &#123;
-            &#x2F;&#x2F; 如果该结点是父节点的左孩子则对应编码为0，否则右孩子为1
-            start--;
-            if (hf[f].left &#x3D;&#x3D; cur)
-                cd[start] &#x3D; &#39;0&#39;;
-            else 
-                cd[start] &#x3D; &#39;1&#39;;
-            &#x2F;&#x2F; 以父节点为孩子结点，继续朝树根的方向遍历
-            cur &#x3D; f;
-            f &#x3D; hf[f].parent;
-        &#125;
-        &#x2F;&#x2F; 跳出循环后，cd数组中从下标start开始，存放的就是该结点的哈夫曼编码
-        hc[i] &#x3D; new char[n - start];
-        strcpy(hc[i], &amp;cd[start]);
-    &#125;
-    delete cd;
-&#125;</code></pre>
-
-
-
-<h4 id="the-code"><a href="#the-code" class="headerlink" title="the code"></a>the code</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
-using namespace std;
-const int Max &#x3D; 9999;
-typedef char **HuffmanCode;
-typedef struct Node &#123;
-    int weight;
-    int parent, left, right;
-&#125; HTNode, *HuffmanTree;
-
-void Select(HuffmanTree ht, int k, int id1, int id2) &#123;
-    int min1 &#x3D; min2 &#x3D; 9999;
-	for (int i &#x3D; 0;i &lt; k;i++) &#123;
-        if (ht[i].parent &#x3D;&#x3D; -1 &amp;&amp; min1 &lt; ht[i].weight) &#123;
-            if (min1 &lt; min2) &#123;
-                min2 &#x3D; min1;
-                id2 &#x3D; id1;
-            &#125;
-            id1 &#x3D; i;
-            min1 &#x3D; ht[i].weight;
-        &#125; else if (ht[i].parent &#x3D;&#x3D; -1 &amp;&amp; min2 &gt; ht[i].weight) &#123;
-            min2 &#x3D; ht[i].weight;
-            id2 &#x3D; i;
-        &#125;
-    &#125;
-&#125;
-
-void createHuffmanTree(HuffmanTree ht, int n) &#123;
-    int id1, id2;
-    if (n &lt;&#x3D; 0) 
-        return;
-    for (int i &#x3D; 0; i &lt; n; i++) &#123;
-        ht[i].left &#x3D; ht[i].right &#x3D; ht[i].parent &#x3D; 0;
-    &#125;
-    for (int i &#x3D; 0;i &lt; n;i++) &#123;
-        cin &gt;&gt; ht[i].weight;
-    &#125;
-    for (int i &#x3D; 0;i &lt; n;i++) &#123;
-        Select(ht, i, id1, id2);
-        ht[id1].parent &#x3D; ht[id2].parent &#x3D; i;
-        ht[i].left &#x3D; id1;
-        ht[i].right &#x3D; id2;
-        ht[weight] &#x3D; ht[id1].weight + ht[id2].weight;
-    &#125;
-&#125;
-
-void createHuffmanTreeCode(HuffmanTree ht, HuffmanCode &amp;hc, int n) &#123;
-    int start, cur f;
-    hc &#x3D; new char*[n + 1];
-    char* cd &#x3D; new char[n];
-    cd[n - 1] &#x3D; &#39;\0&#39;;
-    for (int i &#x3D; 0;i &lt; n;i++) &#123;
-        start &#x3D; n - 1;
-        cur &#x3D; i;
-        f &#x3D; ht[i].parent;
-        while (f !&#x3D; 0) &#123;
-            start--;
-            if (ht[f].left &#x3D;&#x3D; cur) &#123;
-                cd[start] &#x3D; &#39;0&#39;;
-            &#125; else &#123;
-                cd[start] &#x3D; &#39;1&#39;;
-            &#125;
-            cur &#x3D; f;
-            f &#x3D; ht[i].parent;
-        &#125;
-        hc[i] &#x3D; cd[n - start];
-        strcpy(hc[i], &amp;cd[start]);
-    &#125;
-    delete cd;
-&#125;
-
-int main() &#123;
-    int n;
-    cin &gt;&gt; n;
-    HuffmanTree ht;
-    HuffmanCode hc;
-    int sum &#x3D; 0;
-    HuffmanTree(ht, n);
-    createHuffmanCode(ht, hc, n);
-    for (int i &#x3D; 0;i &lt; 2 * n - 1;i++) &#123;
-        cout &lt;&lt; ht[i].weight &lt;&lt; &#39; &#39;; &#x2F;&#x2F; 测试，输出所有结点，包括非原有结点
-    &#125;
-    cout &lt;&lt; endl;
-    for (int i &#x3D; 0;i &lt; n;i++) &#123;
-        cout &lt;&lt; hc[i] &lt;&lt; &#39; &#39;; &#x2F;&#x2F; 输出每个结点的HuffmanCode
-    &#125;
-&#125;</code></pre>
-
-
-
-<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linfangnan/p/12593480.html">数据结构：哈夫曼树与哈夫曼编码 - 乌漆WhiteMoon - 博客园 (cnblogs.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18t411U7Tb">数据结构与算法基础–第09周04–5.7哈夫曼树及其应用4-5.7.2哈夫曼树的构造算法2-哈夫曼树算法实现_哔哩哔哩_bilibili</a>(共6p)</p>
--->
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/0x0028.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -650,13 +363,7 @@ int main() &#123;
     </span>
 
   
-    <span id="/post/0x0027.html" class="post-meta-item leancloud_visitors" data-flag-title="数据结构--简单二叉树(无序)" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -745,13 +452,7 @@ int main() &#123;
     </span>
 
   
-    <span id="/post/0x0026.html" class="post-meta-item leancloud_visitors" data-flag-title="kmp" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -840,13 +541,7 @@ int main() &#123;
     </span>
 
   
-    <span id="/post/0x0025.html" class="post-meta-item leancloud_visitors" data-flag-title="数据结构--不设头指针的循环链队列" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -935,13 +630,7 @@ int main() &#123;
     </span>
 
   
-    <span id="/post/0x0024.html" class="post-meta-item leancloud_visitors" data-flag-title="数据结构--关于单链表小细节的一些补充" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -1030,13 +719,7 @@ int main() &#123;
     </span>
 
   
-    <span id="/post/0x0023.html" class="post-meta-item leancloud_visitors" data-flag-title="旧手机改造成web服务器并实现内网穿透" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -1125,13 +808,7 @@ int main() &#123;
     </span>
 
   
-    <span id="/post/0x0022.html" class="post-meta-item leancloud_visitors" data-flag-title="迁移博客" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -1220,13 +897,7 @@ int main() &#123;
     </span>
 
   
-    <span id="/post/0x0021.html" class="post-meta-item leancloud_visitors" data-flag-title="为博客添加评论邮件提醒功能(踩坑全过程)" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -1315,13 +986,7 @@ int main() &#123;
     </span>
 
   
-    <span id="/post/0x0020.html" class="post-meta-item leancloud_visitors" data-flag-title="单链表(Java)" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
+  
   
 </div>
 
@@ -1336,6 +1001,95 @@ int main() &#123;
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/0x0020.html">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x001F.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/0x001F.html" class="post-title-link" itemprop="url">稀疏数组和队列(数组)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-08-06 00:00:00" itemprop="dateCreated datePublished" datetime="2021-08-06T00:00:00+08:00">2021-08-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-12-11 14:06:16" itemprop="dateModified" datetime="2021-12-11T14:06:16+08:00">2021-12-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>简单记录稀疏数组的用法</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/0x001F.html">
                 Read more &raquo;
               </a>
             </div>
@@ -1425,7 +1179,7 @@ int main() &#123;
 
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":true,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":false,"recordIP":true,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
