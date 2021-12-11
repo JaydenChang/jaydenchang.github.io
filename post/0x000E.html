@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="mask-icon" href="https://jaydenchang.gitee.io/images/Jayden.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="第八次前端作业，要求结合div和css来做一个小页面，这个工程有许多小细节，特别是在css中，本次采用内部样式表 &lt;!DOCTYPE html&gt; &lt;html lang&#x3D;&quot;en&quot;&gt; &lt;head&gt;     &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;     &lt;meta http-equi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第八次前端作业">
+<meta property="og:url" content="https://jaydenchang.top/post/0x000E.html">
+<meta property="og:site_name" content="Jayden&#39;s Blog">
+<meta property="og:description" content="第八次前端作业，要求结合div和css来做一个小页面，这个工程有许多小细节，特别是在css中，本次采用内部样式表 &lt;!DOCTYPE html&gt; &lt;html lang&#x3D;&quot;en&quot;&gt; &lt;head&gt;     &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;     &lt;meta http-equi">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x000E.png">
+<meta property="article:published_time" content="2021-04-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-06T12:31:35.090Z">
+<meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaydenchang.gitee.io/images/images/0x000E.png">
+
+
+<link rel="canonical" href="https://jaydenchang.top/post/0x000E.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x000E.html","path":"/post/0x000E.html","title":"第八次前端作业"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>第八次前端作业 | Jayden's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jayden's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="https://jaydenchang.gitee.io/images/Jayden.jpg" alt="Jayden's Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jayden Chang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JaydenChang" title="Github → https:&#x2F;&#x2F;github.com&#x2F;JaydenChang" rel="noopener" target="_blank">Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jaydenchang@gmail.com" title="E-Mail → jaydenchang@gmail.com">E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/jaydenchang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;jaydenchang" rel="noopener" target="_blank">Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JaydenChang7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JaydenChang7" rel="noopener" target="_blank">Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/jaydenchang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;jaydenchang" rel="noopener" target="_blank">FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15092270/jayden-chang" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15092270&#x2F;jayden-chang" rel="noopener" target="_blank">StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/jaydenchang7" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;jaydenchang7" rel="noopener" target="_blank">Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x000E.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第八次前端作业
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-21T00:00:00+08:00">2021-04-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/FrontEnd/" itemprop="url" rel="index"><span itemprop="name">FrontEnd</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/post/0x000E.html" class="post-meta-item leancloud_visitors" data-flag-title="第八次前端作业" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/post/0x000E.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x000E.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>第八次前端作业，要求结合div和css来做一个小页面，这个工程有许多小细节，特别是在css中，本次采用内部样式表</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+    &lt;style&gt;
+        *&#123;
+            list-style: none;
+            
+        &#125;
+        .all&#123;
+            margin: 10px;
+            padding: 10px;
+        &#125;
+        .pic&#123;
+            border: 2px solid goldenrod;
+            height: 230px;
+            width: 1200px;
+            
+        &#125;
+        .pic li&#123;
+            float: left;
+            margin: 10px;
+            margin-top: 20px;
+            &#x2F;* margin-top是来限定pic下的li的上边距 *&#x2F;
+        &#125;
+        .pic li p&#123;
+            text-align: center;
+        &#125;
+        &#x2F;* .t1&#123;
+            border: 1px solid goldenrod;
+            height: 20px;
+            width: 500px;
+            position: relative;
+            
+            
+        &#125;
+        .ti li&#123;
+            float: left;
+            margin: 1px;
+        &#125; *&#x2F;
+        .a1&#123;
+            
+            width: 590px;
+            height: 250px;
+            border: 2px solid goldenrod;
+            &#x2F;* 设置边框的粗细 *&#x2F;
+            float: left;
+            &#x2F;* 设置这里的div是为了可以多个div并排 *&#x2F;
+            margin-bottom: 20px;
+        &#125;
+        .a1 div&#123;
+            float: left;
+            &#x2F;* 如果不设置float，那么文字就会飘在父级div下方 *&#x2F;
+        &#125;
+        .a2&#123;
+            width: 250px;
+            height: 280px;
+            border: 2px solid goldenrod;
+            float: left;
+        &#125;
+        .a2 div&#123;
+            margin-top: 30px;
+            margin-left: 15px;
+            line-height: 16px;
+        &#125;
+        .a3&#123;
+            width: 930px;
+            height: 280px;
+            border: 2px solid goldenrod;
+            float: left;
+            margin-left: 50px;
+        &#125;
+        .a3 div&#123;
+            margin-left: 15px;
+            margin-right: 15px;
+            line-height: 26px;
+            &#x2F;* 设置行高，间接设置行间距 *&#x2F;
+        &#125;
+    &lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;div class&#x3D;&quot;all&quot;&gt;
+        &lt;div&gt;
+            &lt;ul class&#x3D;&quot;pic&quot;&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i01.jpg&quot; width&#x3D;&quot;150px&quot;&gt;
+                    &lt;p&gt;天街&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i02.gif&quot; width&#x3D;&quot;216px&quot;&gt;
+                    &lt;p&gt;中天门&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i03.jpg&quot; width&#x3D;&quot;212px&quot;&gt;
+                    &lt;p&gt;旭日东升&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i04.jpg&quot; width&#x3D;&quot;242px&quot;&gt;
+                    &lt;p&gt;五岳独尊&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i05.jpg&quot; width&#x3D;&quot;225px&quot;&gt;
+                    &lt;p&gt;云海玉盘&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+            &lt;&#x2F;ul&gt;
+        &lt;&#x2F;div&gt;
+        &lt;br&gt;
+        &lt;div class&#x3D;&quot;a1&quot;&gt;
+            &lt;p style&#x3D;&quot;position: absolute;margin-left:70px;color:black;&quot;&gt;泰山摄影&lt;&#x2F;p&gt;
+                &lt;img src&#x3D;&quot;images&#x2F;bg01.gif&quot; width&#x3D;&quot;590px&quot;&gt;
+                &lt;!-- 这里文字内嵌在图片上方，先把文字放在图片前，再加position，设置absolute，注意设置左边距 --&gt;
+            &lt;div&gt;
+                &lt;img src&#x3D;&quot;images&#x2F;caishixi.jpg&quot; style&#x3D;&quot;margin-top: 20px;margin-left:20px&quot;&gt;
+                &lt;p align&#x3D;&quot;center&quot;&gt;彩石溪&lt;&#x2F;p&gt;
+            &lt;&#x2F;div&gt;
+            &lt;div style&#x3D;&quot;float: left;width:380px;margin-left:10px&quot;&gt;
+                    进入桃花峪，行约2公里，溪中流水之下忽如才是铺就，溪底一条条石纹五彩纷呈，
+                    阳光照耀下，分外生动，这就是著名的“彩石溪”。完完全全的溪水就像是被彩石染上了颜色，
+                    也像是一条五彩的飘带，在此流淌得格外精神。动人的彩石时长引得有人驻足，如果你细心，
+                    就可看见水中的赤鳞鱼。
+            &lt;&#x2F;div&gt;
+            
+        &lt;&#x2F;div&gt;
+        &lt;div class&#x3D;&quot;a1&quot; style&#x3D;&quot;margin-left: 50px;&quot;&gt;
+            &lt;p style&#x3D;&quot;position: absolute;margin-left:70px;color:black;&quot;&gt;景点推荐&lt;&#x2F;p&gt;
+            &lt;img src&#x3D;&quot;images&#x2F;bg02.gif&quot; width&#x3D;&quot;590px&quot;&gt;
+            &lt;div&gt;
+                &lt;img src&#x3D;&quot;images&#x2F;shanziya.jpg&quot;  style&#x3D;&quot;margin-left:10px;margin-top:20px;&quot;&gt;
+                &lt;p align&#x3D;&quot;center&quot; style&#x3D;&quot;margin-top: 5px;&quot;&gt;扇子崖&lt;&#x2F;p&gt;
+            &lt;&#x2F;div&gt;
+            &lt;div style&#x3D;&quot;float:left;width:370px;margin-left:10px;&quot;&gt;
+                位于泰山西溪西侧的扇子崖，奇峰突兀，高耸峻峭，形如扇面，故名。
+				崖上有明人杨博题刻摩崖石刻“仙人掌”。崖西有铁梯，攀援可登崖巅，
+				北眺龙角山，九女寨历历在目，西望傲徕峰尽收眼底。向东俯视，
+				龙潭水库宛若镶嵌在西溪的一颗璀璨的明珠，闪闪发光。清人孙宝僮有诗云：
+				“剑峰怒刺天，积铁拔千仞；俯临鬼谷幽，旁倚丈人峻”，的确写出了扇子崖的风韵。
+            &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;div class&#x3D;&quot;a2&quot;&gt;
+            &lt;img src&#x3D;&quot;images&#x2F;bg03.gif&quot; width&#x3D;&quot;250px&quot; height&#x3D;&quot;30px&quot; style&#x3D;&quot;position: absolute;z-index: 1;&quot;&gt;
+            &lt;!-- 图片内嵌图片，除了设置position，还要设置z-index，数字越大，越靠近上方 --&gt;
+            &lt;img src&#x3D;&quot;images&#x2F;arrow.gif&quot; style&#x3D;&quot;position:absolute;margin-left:10px;z-index:2&quot;&gt;
+            &lt;p style&#x3D;&quot;position:absolute;float: left;margin-left:60px;margin-top:5px;color:black;z-index:3&quot;&gt;泰山旅游景点&lt;&#x2F;p&gt;
+            &lt;div style&#x3D;&quot;margin-top: 40px;font-size:14px;&quot;&gt;
+                &lt;p&gt;岱庙：宋天贶殿 ……&lt;&#x2F;p&gt;
+				&lt;p&gt;丽区：王母池  ……&lt;&#x2F;p&gt;
+				&lt;p&gt;幽区：岱宗坊  ……&lt;&#x2F;p&gt;
+				&lt;p&gt;妙区：南天门  ……&lt;&#x2F;p&gt;
+				&lt;p&gt;奥区：后石坞 ……&lt;&#x2F;p&gt;
+				&lt;p&gt;旷区：扇子崖  ……&lt;&#x2F;p&gt;
+				&lt;p&gt;秀区：桃花峪 ……&lt;&#x2F;p&gt;
+				&lt;p&gt;奇观：旭日东升 ……&lt;&#x2F;p&gt;
+            &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+        &lt;div class&#x3D;&quot;a3&quot;&gt;
+            &lt;p style&#x3D;&quot;position:absolute;margin-left: 70px;margin-top:5px;color:black;font-weight:bolder;&quot;&gt;泰山介绍&lt;&#x2F;p&gt;
+            &lt;img src&#x3D;&quot;images&#x2F;bg05.gif&quot; width&#x3D;&quot;930px&quot; height&#x3D;&quot;30px&quot;&gt;
+            &lt;div style&#x3D;&quot;margin-top: 5px;&quot;&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山突兀而立于华北大平原东侧的齐鲁古国，东临浩波无涯的大海，西靠源远流长、奔流到海不复回的黄河，南有汶、泗、淮之水。纵览东部沿海广大区域，泰山踞高临下、凌驾于齐鲁丘群之上，真正成了茫茫原野上的&quot;东天一柱&quot;。这样，古人们便有了泰山为天下之中心的感觉。&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山除了深厚的文化内涵，还具有丰富的自然美，如果我们把风景自然美的形象特征概括为雄、奇、险、秀、幽、奥、旷的话，那么泰山除了从总体上和宏观上具有雄伟的特征外，还在雄中蕴含着奇、险、秀、幽、奥、旷等美的形象。&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山风景区内，有山峰156座，崖岭138座，名洞72处，奇石72块，溪谷130条， 瀑潭64处，名泉72眼，古树名木万余株，寺庙58座，古遗址128处，碑碣1239块，摩崖刻石1277处。主要分布在岱阳、岱顶、岱阴及灵岩。&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山是一座天然的历史、艺术博物馆，仅在泰山的中轴线上就现存有各种石刻1800余处，有的为帝王亲制，有的出自名流之手，大都文辞优美，书体高雅，制作精巧…… &lt;&#x2F;div&gt;
+            &lt;&#x2F;div&gt;
+
+        &lt;&#x2F;div&gt;
+        &lt;br&gt;&lt;br&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+</code></pre>
+
+<p>最后的效果</p>
+<img src="https://jaydenchang.gitee.io/images/images/0x000E.png" style="zoom:70%;"  >
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"># html</a>
+              <a href="/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x000D.html" rel="prev" title="关于下拉二级菜单">
+                  <i class="fa fa-chevron-left"></i> 关于下拉二级菜单
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/0x000C.html" rel="next" title="第六次前端作业">
+                  第六次前端作业 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jayden Chang</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-core.min.js" integrity="sha256-vlRYHThwdq55dA+n1BKQRzzLwFtH9VINdSI68+5JhpU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-cl5LNmPvcRcGFaQFjwEKIfs51AX7wBkvoByH6LTxQCs=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-K837BwIyiXo5k/9fCYgqUyA14bN4/Ve9P2SIT0KmZD0=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch-lite.umd.js" integrity="sha256-48AZ24Ct05NAMLT7hvYgeW1X350OgEcZvHd6Ih6xwOA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.33.2/dist/instantsearch.production.min.js" integrity="sha256-0B5Q7I/DVd8yp8JYLzbpELEonNBlVe7NLixMCLEnlBU=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","app_key":"ilR9U6Vhlpi6qDnDIQJESR3O","server_url":"qvyuwipq.api.lncldglobal.com","security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"qvyuwipq.api.lncldglobal.com","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x000E.html"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>

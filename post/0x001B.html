@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="mask-icon" href="https://jaydenchang.gitee.io/images/Jayden.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="接口定义及基础用法interface定义：没有字段的抽象类 interface person&amp;#123;     void hello();     String getName(); &amp;#125; &#x2F;*接口本质上就是抽象类 abstract class person&amp;#123; 	public abstract void fun(); 	public abstract String g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="接口和包">
+<meta property="og:url" content="https://jaydenchang.top/post/0x001B.html">
+<meta property="og:site_name" content="Jayden&#39;s Blog">
+<meta property="og:description" content="接口定义及基础用法interface定义：没有字段的抽象类 interface person&amp;#123;     void hello();     String getName(); &amp;#125; &#x2F;*接口本质上就是抽象类 abstract class person&amp;#123; 	public abstract void fun(); 	public abstract String g">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-06T12:31:35.097Z">
+<meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jaydenchang.top/post/0x001B.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x001B.html","path":"/post/0x001B.html","title":"接口和包"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>接口和包 | Jayden's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jayden's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="https://jaydenchang.gitee.io/images/Jayden.jpg" alt="Jayden's Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">定义及基础用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BB%A7%E6%89%BF"><span class="nav-number">1.2.</span> <span class="nav-text">多继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#abstract%E5%92%8Cinterface%E5%AF%B9%E6%AF%94"><span class="nav-number">1.3.</span> <span class="nav-text">abstract和interface对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#default%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">default方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%AD%97%E6%AE%B5%E5%92%8C%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">静态字段和静态方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%9D%99%E6%80%81%E5%AD%97%E6%AE%B5"><span class="nav-number">1.6.</span> <span class="nav-text">接口的静态字段</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.1.</span> <span class="nav-text">包作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import"><span class="nav-number">2.2.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import-static"><span class="nav-number">2.3.</span> <span class="nav-text">import static</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">2.4.</span> <span class="nav-text">最佳实践</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jayden Chang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JaydenChang" title="Github → https:&#x2F;&#x2F;github.com&#x2F;JaydenChang" rel="noopener" target="_blank">Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jaydenchang@gmail.com" title="E-Mail → jaydenchang@gmail.com">E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/jaydenchang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;jaydenchang" rel="noopener" target="_blank">Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JaydenChang7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JaydenChang7" rel="noopener" target="_blank">Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/jaydenchang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;jaydenchang" rel="noopener" target="_blank">FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15092270/jayden-chang" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15092270&#x2F;jayden-chang" rel="noopener" target="_blank">StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/jaydenchang7" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;jaydenchang7" rel="noopener" target="_blank">Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x001B.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          接口和包
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-07-18 00:00:00" itemprop="dateCreated datePublished" datetime="2021-07-18T00:00:00+08:00">2021-07-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/post/0x001B.html" class="post-meta-item leancloud_visitors" data-flag-title="接口和包" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/post/0x001B.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x001B.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h4 id="定义及基础用法"><a href="#定义及基础用法" class="headerlink" title="定义及基础用法"></a>定义及基础用法</h4><p>interface定义：没有字段的抽象类</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">interface person&#123;
+    void hello();
+    String getName();
+&#125;
+&#x2F;*接口本质上就是抽象类
+abstract class person&#123;
+	public abstract void fun();
+	public abstract String getName();
+&#125;
+*&#x2F;</code></pre>
+
+<p>如上代码，方法没有具体化，在需要调用的类里面通过覆写来实现具体功能，多个类之间重新覆写的功能相互不影响。继承接口时，一定要覆写接口里的所有方法</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class student implements person&#123;
+    private String name;
+    public student(String name)&#123;
+        this.name &#x3D; name;
+    &#125;
+    @override
+    public void hello()&#123;
+        System.out.print(&quot;hello, &quot; + this.name);
+    &#125;
+    @override
+    public String getName()&#123;
+        return this.name;
+    &#125;
+&#125;
+class teacher implements person&#123;
+    private String name;
+    public student(String name)&#123;
+        this.name &#x3D; name;
+    &#125;
+    @override
+    public void hello()&#123;
+        System.out.print(&quot;hello, Mr&#x2F;Mrs.&quot; + this.name);
+    &#125;
+    @override
+    public String getName()&#123;
+        return this.name;
+    &#125;
+&#125;</code></pre>
+
+<h4 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h4><p>普通类继承中，只能继承一个类，而接口可实现多继承</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class teacher implements person, parents&#123;&#x2F;**&#x2F;&#125;</code></pre>
+
+<p>一个interface可以继承自另一个interface</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">interface hello&#123;
+    void hello();
+&#125;
+interface person extends hello&#123;
+    void fun();
+    String getName();
+    &#x2F;&#x2F;此时，person接口实际上有三个抽象方法前面，其中一个继承自hello
+&#125;</code></pre>
+
+
+
+<h4 id="abstract和interface对比"><a href="#abstract和interface对比" class="headerlink" title="abstract和interface对比"></a>abstract和interface对比</h4><blockquote>
+<p>abstract</p>
+<ul>
+<li>定义实例字段</li>
+<li>定义抽象方法</li>
+<li>定义非抽象方法</li>
+<li>but，只能extends一个class</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>interface</p>
+<ul>
+<li>可以implements多个interface</li>
+<li>定义抽象方法</li>
+<li>定义default方法</li>
+<li>but，不能定义实例字段</li>
+</ul>
+</blockquote>
+<br>
+
+<h4 id="default方法"><a href="#default方法" class="headerlink" title="default方法"></a>default方法</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class aa &#123;
+    public static void main(String[] args) &#123;
+        person p &#x3D; new student(&quot;aaaaa&quot;);
+        p.fun();
+    &#125;
+&#125;
+interface person &#123;
+    String getName();
+    default void fun() &#123;
+        System.out.println(getName() + &quot; fun()&quot;);
+    &#125;&#x2F;&#x2F;default修饰具体方法
+&#125;
+class student implements person &#123;
+    private String name;
+    public student(String name) &#123;
+        this.name &#x3D; name;
+    &#125;
+    public String getName() &#123;
+        return this.name;
+    &#125;
+    &#x2F;&#x2F;在这个例子中，student类就没有去重新覆写fun()函数
+&#125;</code></pre>
+
+<p>当接口新增一个方法时，会涉及到修改全部子类，如果新增的是default方法，子类就不必全部修改，只需要在需要覆写的地方去覆写新增方法</p>
+<p>default和抽象类的普通方法是不太一样的，interface没有字段，default无法访问字段，而抽象类的普通方法可以访问实例字段。不过在interface中，default可以修饰具体方法</p>
+<h4 id="静态字段和静态方法"><a href="#静态字段和静态方法" class="headerlink" title="静态字段和静态方法"></a>静态字段和静态方法</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java">public class aa &#123;
+    public static void main(String[] args) &#123;
+        person.setNumber(99);
+        System.out.println(person.number);
+    &#125;
+&#125;
+class person &#123;
+    public static int number;
+    public static void setNumber(int value) &#123;
+        number &#x3D; value;
+    &#125;
+&#125;</code></pre>
+
+<p>静态方法属于class不属于实例，可以直接通过类名来调用</p>
+<h4 id="接口的静态字段"><a href="#接口的静态字段" class="headerlink" title="接口的静态字段"></a>接口的静态字段</h4><p>尽管interface是纯抽象类，但它可以有静态字段，静态字段必须是final类型</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;person.java
+public interface person&#123;
+    public static final int male &#x3D; 1;
+    public static final int female &#x3D; 2;
+&#125;</code></pre>
+
+<p>实际上，因为interface的字段只能是<code>public static final</code>类型，所以我们可以把int前面的修饰符去掉</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;person.java
+public interface person&#123;
+    int male &#x3D; 1;
+    int female &#x3D; 2;
+    &#x2F;&#x2F;编译器会自动把该字段变为public static final类型
+&#125;</code></pre>
+
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3><p>例如，在同一文件夹下，a写了一个person类，b也写了一个person类，c想用a和b的person类，这时候引入包(package)的概念</p>
+<blockquote>
+<p>aa.java</p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">package hello;
+class person&#123;&#125;
+public class aa&#123;&#125;</code></pre>
+
+<blockquote>
+<p>bb.java</p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">package hello;
+class person&#123;&#125;
+public class bb&#123;&#125;</code></pre>
+
+<p>包可以是多层结构，用<code>.</code>隔开，例如<code>java.util</code></p>
+<p>:::tip</p>
+<p>包没有父子关系，<code>java.util</code>和<code>java.util.zip</code>是不同的包，两者没有继承关系</p>
+<p>:::</p>
+<h4 id="包作用域"><a href="#包作用域" class="headerlink" title="包作用域"></a>包作用域</h4><p>:::tip</p>
+<p>例如，如果想要定义包hello，则需要新建一个文件夹并命名为hello，文件夹下存放有hello包的Java文件</p>
+<p>:::</p>
+<blockquote>
+<p><code>hello\person.java</code></p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">package hello;
+public class person&#123;
+    void hello()&#123;
+        System.out.println(&quot;hello&quot;);
+    &#125;
+&#125;</code></pre>
+
+<blockquote>
+<p><code>hello\main.java</code></p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">package hello;
+public class main&#123;
+    public static void main(String[] args)&#123;
+        person p &#x3D; new person();
+        p.hello();&#x2F;&#x2F;result: hello
+    &#125;
+&#125;</code></pre>
+
+<h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><p>在一个class中，我们会引用其他的class，例如，Jay的<code>person.jay</code>类，如果要引用jjlin的<code>hello.jjlin</code>类，需要引入这个包</p>
+<blockquote>
+<p><code>hello\jjlin.java</code></p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;jjlin.java
+package hello;
+public class jjlin&#123;
+    public void fun()&#123;
+        System.out.println(&quot;hello&quot;);
+    &#125;
+&#125;</code></pre>
+
+<blockquote>
+<p><code>person\jay.java</code></p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;jay.java
+package person;
+import hello.jjlin;&#x2F;&#x2F;表示引入hello文件夹下的jjlin文件
+public class jay&#123;
+    public void run()&#123;
+        jjlin temp &#x3D; new jjlin();
+    &#125;
+&#125;</code></pre>
+
+<p>除了引入包下的具体类，也可以使用*，把包下的所有class都导入进来(不辨认子包的class)</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">package person;
+import jay.*;&#x2F;&#x2F;引入jay文件夹下所有class
+public class jay&#123;
+    public void run()&#123;
+        jjlin temp &#x3D; new jjlin();
+    &#125;
+&#125;</code></pre>
+
+<h4 id="import-static"><a href="#import-static" class="headerlink" title="import static"></a>import static</h4><p>此方法可以导入一个类的静态字段和静态方法，此语法比较少用</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;package main;
+import static java.lang.System.*;
+&#x2F;&#x2F;导入System类的所有静态字段和静态方法
+public class main&#123;
+    public static void main(String[] args)&#123;
+        out.println(&quot;hello&quot;);
+        &#x2F;&#x2F;如果不引用System包，则要写成下面形式
+        &#x2F;&#x2F;System.out.println(&quot;hello&quot;);        
+    &#125;
+&#125;</code></pre>
+
+<p>Java编译器最终编译出的<code>.class</code>文件只是用完整类名，因此，在代码中，当编译器遇到一个class名称时：</p>
+<ul>
+<li>如果是完整类名，就直接根据完整类名来查找这个class</li>
+<li>如果是简单类名，依次按照下面的顺序依次查找<ul>
+<li>查找当前package是否存在这个class</li>
+<li>查找import包是否含有这个class</li>
+<li>查找<code>java.lang</code>包是否含有这个class</li>
+</ul>
+</li>
+</ul>
+<p>如果按照上面规则还无法确定类名，则编译报错</p>
+<p>下面是一个例子</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;main.java
+package test;
+import java.text.Format;
+public class main&#123;
+    public static void main(String[] args)&#123;
+        java.util.list list;&#x2F;&#x2F;ok，使用完整类名
+        Format format &#x3D; null;&#x2F;&#x2F;ok，使用import的类
+        String s &#x3D; &quot;hi&quot;;&#x2F;&#x2F;ok，使用java.lang的包的String
+        System.out.println(s);&#x2F;&#x2F;ok，使用java.lang的包的System
+        MessageFormat mf &#x3D; null;&#x2F;&#x2F;错误，无法找到MessageFormat
+    &#125;
+&#125;</code></pre>
+
+<p>因此在编写class时，编译器会自动帮我们做两个import动作</p>
+<ul>
+<li>默认自动import当前package的其他class</li>
+<li>默认<code>import java.lang.*</code></li>
+</ul>
+<p>:::tip</p>
+<p>自动导入的是<code>java.lang</code>的包，但类似<code>java.lang.reflect</code>这些包还需要手动导入</p>
+<p>:::</p>
+<h4 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h4><p>为避免名字冲突，我们需要确定唯一的包名，推荐使用倒置的域名来确保唯一性</p>
+<ul>
+<li><code>org.apache</code>，本质上是<code>/org/apache/</code>路径下的class，下同</li>
+<li><code>org.apache.commons.log</code></li>
+<li><code>com.jayden.sample</code></li>
+</ul>
+<p>子包就可以根据功能自行命名</p>
+<p>注意不要和<code>java.lang</code>的包的类重名</p>
+<ul>
+<li><code>String</code></li>
+<li><code>System</code></li>
+<li><code>Runtime</code></li>
+<li>…</li>
+</ul>
+<p>也不要和jdk常用的类重名</p>
+<ul>
+<li><code>java.util.List</code></li>
+<li><code>java.text.Format</code></li>
+<li><code>java.math.BigInteger</code></li>
+<li>…</li>
+</ul>
+<p><a target="_blank" rel="noopener" href='https://www.liaoxuefeng.com/wiki/1252599548343744/1260456790454816'>参考链接-廖雪峰-Java-面向对象编程-接口</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1252599548343744/1260467032946976">参考链接-廖雪峰-Java-面向对象编程-包</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x001A.html" rel="prev" title="关于面向对象编程">
+                  <i class="fa fa-chevron-left"></i> 关于面向对象编程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/0x001C.html" rel="next" title="练字时我在想什么">
+                  练字时我在想什么 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jayden Chang</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-core.min.js" integrity="sha256-vlRYHThwdq55dA+n1BKQRzzLwFtH9VINdSI68+5JhpU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-cl5LNmPvcRcGFaQFjwEKIfs51AX7wBkvoByH6LTxQCs=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-K837BwIyiXo5k/9fCYgqUyA14bN4/Ve9P2SIT0KmZD0=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch-lite.umd.js" integrity="sha256-48AZ24Ct05NAMLT7hvYgeW1X350OgEcZvHd6Ih6xwOA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.33.2/dist/instantsearch.production.min.js" integrity="sha256-0B5Q7I/DVd8yp8JYLzbpELEonNBlVe7NLixMCLEnlBU=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","app_key":"ilR9U6Vhlpi6qDnDIQJESR3O","server_url":"qvyuwipq.api.lncldglobal.com","security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"qvyuwipq.api.lncldglobal.com","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x001B.html"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>

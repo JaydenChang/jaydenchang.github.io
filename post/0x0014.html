@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="mask-icon" href="https://jaydenchang.gitee.io/images/Jayden.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="本次作业要求补写课本样例的链表模板 node.h (节点类模板)#ifndef __NODE_H_ #define __NODE_H_   template&lt;class tt&gt; class node &amp;#123; private : 	node&lt;tt&gt; * next; &#x2F;&#x2F;pointer to next public : 	tt data;&#x2F;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模板类链表">
+<meta property="og:url" content="https://jaydenchang.top/post/0x0014.html">
+<meta property="og:site_name" content="Jayden&#39;s Blog">
+<meta property="og:description" content="本次作业要求补写课本样例的链表模板 node.h (节点类模板)#ifndef __NODE_H_ #define __NODE_H_   template&lt;class tt&gt; class node &amp;#123; private : 	node&lt;tt&gt; * next; &#x2F;&#x2F;pointer to next public : 	tt data;&#x2F;&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-06T12:31:35.094Z">
+<meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jaydenchang.top/post/0x0014.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x0014.html","path":"/post/0x0014.html","title":"模板类链表"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>模板类链表 | Jayden's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jayden's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="https://jaydenchang.gitee.io/images/Jayden.jpg" alt="Jayden's Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#node-h-%E8%8A%82%E7%82%B9%E7%B1%BB%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">node.h (节点类模板)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#link-h-%E9%93%BE%E8%A1%A8%E7%B1%BB%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.</span> <span class="nav-text">link.h (链表类模板)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main-cpp-%E4%B8%BB%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">main.cpp(主函数)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jayden Chang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JaydenChang" title="Github → https:&#x2F;&#x2F;github.com&#x2F;JaydenChang" rel="noopener" target="_blank">Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jaydenchang@gmail.com" title="E-Mail → jaydenchang@gmail.com">E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/jaydenchang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;jaydenchang" rel="noopener" target="_blank">Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JaydenChang7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JaydenChang7" rel="noopener" target="_blank">Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/jaydenchang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;jaydenchang" rel="noopener" target="_blank">FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15092270/jayden-chang" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15092270&#x2F;jayden-chang" rel="noopener" target="_blank">StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/jaydenchang7" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;jaydenchang7" rel="noopener" target="_blank">Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0014.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          模板类链表
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-02T00:00:00+08:00">2021-06-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/post/0x0014.html" class="post-meta-item leancloud_visitors" data-flag-title="模板类链表" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/post/0x0014.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0014.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本次作业要求补写课本样例的链表模板</p>
+<h4 id="node-h-节点类模板"><a href="#node-h-节点类模板" class="headerlink" title="node.h (节点类模板)"></a>node.h (节点类模板)</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#ifndef __NODE_H_
+#define __NODE_H_
+ 
+template&lt;class tt&gt;
+class node
+&#123;
+private :
+	node&lt;tt&gt; * next; &#x2F;&#x2F;pointer to next
+public :
+	tt data;&#x2F;&#x2F; data space
+	node(const tt&amp; data, node&lt;tt&gt; *next);
+	void insertAfter(node&lt;tt&gt; *p);&#x2F;&#x2F;insert the same node after this node
+	node&lt;tt&gt; * deleteAfter();&#x2F;&#x2F;delete the node after this node,return the address
+	node&lt;tt&gt; * nextNode();	&#x2F;&#x2F;get the address after this node
+&#125;;
+ 
+template &lt;class tt&gt;
+node&lt;tt&gt;::node(const tt&amp; data, node&lt;tt&gt; * next):data(data), next(next)&#123;&#125;
+ 
+template &lt;class tt&gt;
+void node&lt;tt&gt;::insertAfter(node&lt;tt&gt; *p)
+&#123;
+	p-&gt;next &#x3D; next;
+	next &#x3D; p;	
+&#125; 
+ 
+template &lt;class tt&gt;
+node&lt;tt&gt; * node&lt;tt&gt;::deleteAfter()
+&#123;
+	node&lt;tt&gt; * tempPtr &#x3D; next;
+	if(next &#x3D;&#x3D; 0)
+		return 0;
+	next &#x3D; tempPtr-&gt;next;
+	return tempPtr;
+&#125;
+ 
+template &lt;class tt&gt;
+node&lt;tt&gt; * node&lt;tt&gt;::nextNode()
+&#123;
+	return next;
+&#125;
+ 
+#endif</code></pre>
+
+
+
+<h4 id="link-h-链表类模板"><a href="#link-h-链表类模板" class="headerlink" title="link.h (链表类模板)"></a>link.h (链表类模板)</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#ifndef _LINK_H_
+#define _LINK_H_
+#include &lt;bits&#x2F;stdc++.h&gt;
+
+#include &quot;node.h&quot;
+
+template &lt;class tt&gt;
+class link
+&#123;
+private:
+    node&lt;tt&gt; *front, *rear;&#x2F;&#x2F;head and the end of the list
+    node&lt;tt&gt; *prePtr, *currPtr;&#x2F;&#x2F;record the current pointer
+    int size, position;&#x2F;&#x2F;the num of the element and record the list
+
+    node&lt;tt&gt; *newNode(const tt &amp;item, node&lt;tt&gt; *preNext);
+    &#x2F;&#x2F;create new node 
+    void freeNode(node&lt;tt&gt; *p);&#x2F;&#x2F;free node
+    void copy(const link&lt;tt&gt; &amp;l);
+    &#x2F;&#x2F;copy the list L to the current list
+public:
+    link();
+    link(const link&lt;tt&gt; &amp;l);
+    ~link();
+    link&lt;tt&gt; &amp;operator&#x3D;(const link&lt;tt&gt; &amp;l);
+    int getSize() const &#123; return size; &#125;
+    bool isEmpty() const &#123; return size &#x3D;&#x3D; 0; &#125;
+    void reset(int pos);
+    &#x2F;&#x2F;reset the pointer to special position
+    void next();
+    bool endOfList() const &#x2F;*&#123; return position &#x3D;&#x3D; size; &#125;*&#x2F;
+    &#123;
+        &#x2F;&#x2F; std::cout &lt;&lt; &quot;the last data: &quot; &lt;&lt; data() &lt;&lt; std::endl;
+        return position &#x3D;&#x3D; size;
+    &#125;
+    &#x2F;&#x2F;judge if the pointer move the end of the list
+    bool judgeEnd() const &#123; return position &#x3D;&#x3D; size - 1; &#125;
+    &#x2F;&#x2F;judge if the pointer move the end of the list
+    &#x2F;*this is different from the former, this function is used to judge if the 
+    current data is the last data, the former function is to judge if pointer 
+    move the rear position*&#x2F;
+    int currentPostion() const &#123; return position; &#125;
+    &#x2F;&#x2F;pointer return to current position
+
+    void insertFront(tt &amp;item);
+    &#x2F;&#x2F;insert at the head of the list
+    void insertRear(tt &amp;item);
+    &#x2F;&#x2F;insert at the end of the list
+    void insertAt(tt &amp;item);
+    &#x2F;&#x2F;insert before the current node
+    void insertAfter(tt &amp;item);
+    &#x2F;&#x2F;insert after the current node
+    tt deleteFront();&#x2F;&#x2F;delete head node
+    void deleteCurrent();&#x2F;&#x2F;delete current node
+
+    tt &amp;data() &#123; return currPtr-&gt;data; &#125;
+    &#x2F;&#x2F;return current data of the member
+    const tt &amp;data() const &#123; return currPtr-&gt;data; &#125;
+    &#x2F;&#x2F;return current data of the member (const)
+    void clear();
+    &#x2F;&#x2F;clear the list,free all the memory space
+&#125;;
+template &lt;class tt&gt;
+void link&lt;tt&gt;::freeNode(node&lt;tt&gt; *p)
+&#123;
+    delete p;
+&#125;
+
+template &lt;class tt&gt;
+void link&lt;tt&gt;::copy(const link&lt;tt&gt; &amp;l)
+&#123;
+    front &#x3D; l.front;
+    rear &#x3D; l.rear;
+    currPtr &#x3D; l.currPtr;
+    prePtr &#x3D; l.prePtr;
+    size &#x3D; l.size;
+    position &#x3D; l.position;
+&#125;
+
+template &lt;class tt&gt;
+link&lt;tt&gt;::link()
+&#123;
+    front &#x3D; NULL;
+    rear &#x3D; NULL;
+    currPtr &#x3D; NULL;
+    prePtr &#x3D; NULL;
+    size &#x3D; 0;
+    position &#x3D; 0;
+&#125;
+
+template &lt;class tt&gt;
+link&lt;tt&gt;::link(const link&lt;tt&gt; &amp;l)
+&#123;
+    copy(l);
+&#125;
+
+template &lt;class tt&gt;
+link&lt;tt&gt;::~link()
+&#123;
+    clear();
+    delete prePtr;
+    delete currPtr;
+&#125;
+
+template &lt;class tt&gt;
+link&lt;tt&gt; &amp;link&lt;tt&gt;::operator&#x3D;(const link&lt;tt&gt; &amp;l)
+&#123;
+    copy(l);
+&#125;
+
+template &lt;class tt&gt;
+void link&lt;tt&gt;::reset(int pos)
+&#123;
+    if (pos &gt;&#x3D; 0 &amp;&amp; pos &lt;&#x3D; size)
+    &#123;
+        position &#x3D; 0;
+        currPtr &#x3D; front;
+        prePtr &#x3D; NULL;
+        while (pos--)
+            next();
+    &#125;
+    else
+    &#123;
+        position &#x3D; pos;
+        currPtr &#x3D; prePtr &#x3D; NULL;
+    &#125;
+&#125;
+
+template &lt;class tt&gt;
+void link&lt;tt&gt;::next()
+&#123;
+    ++position;
+    prePtr &#x3D; currPtr;
+    if (currPtr !&#x3D; NULL)
+        currPtr &#x3D; currPtr-&gt;nextNode();
+&#125;
+
+template &lt;class tt&gt;
+node&lt;tt&gt; *link&lt;tt&gt;::newNode(const tt &amp;item, node&lt;tt&gt; *preNext)
+&#123;
+    node&lt;tt&gt; *p &#x3D; new node&lt;tt&gt;(item, preNext);
+    assert(p !&#x3D; NULL);
+    return p;
+&#125;
+
+template &lt;class tt&gt;
+void link&lt;tt&gt;::insertFront(tt &amp;item)
+&#123;
+    front &#x3D; newNode(item, front);
+    if (isEmpty())
+        rear &#x3D; front;
+    ++size;
+    reset(++position);
+&#125;
+
+template &lt;class tt&gt;
+void link&lt;tt&gt;::insertRear(tt &amp;item)
+&#123;
+    node&lt;tt&gt; *p &#x3D; newNode(item,currPtr);
+    if (isEmpty())
+        front &#x3D; rear &#x3D; p;
+    else
+    &#123;
+        rear-&gt;insertAfter(p);
+        rear &#x3D; p;
+    &#125;
+    ++size;
+    reset(position);
+&#125;
+
+template &lt;class tt&gt;
+void link&lt;tt&gt;::insertAt(tt &amp;item)
+&#123;
+    if (currPtr !&#x3D; NULL)
+    &#123;
+        node&lt;tt&gt; *p &#x3D; newNode(item, currPtr);
+        if (prePtr !&#x3D; NULL)
+            prePtr-&gt;insertAfter(p);
+        else
+            front &#x3D; rear &#x3D; p;
+        ++size;
+        reset(++position);
+    &#125;
+&#125;
+
+template&lt;class tt&gt;
+void link&lt;tt&gt;::insertAfter(tt&amp;item)
+&#123;
+    if(currPtr !&#x3D; NULL)
+    &#123;
+        node&lt;tt&gt; *p &#x3D; newNode(item, currPtr-&gt;nextNode());
+        currPtr-&gt;insertAfter(p);
+        ++size;
+        reset(position);
+    &#125;    
+&#125;
+
+template&lt;class tt&gt;
+tt link&lt;tt&gt;::deleteFront()
+&#123;
+    assert(!isEmpty());
+    node&lt;tt&gt; *p &#x3D; front;
+    front &#x3D; front-&gt;nextNode();
+    if(--size &#x3D;&#x3D; 0)
+        front &#x3D; rear &#x3D; NULL;
+    reset(--position);
+    tt item &#x3D; p-&gt;data;
+    freeNode(p);
+    return item;
+&#125;
+
+template&lt;class tt&gt;
+void link&lt;tt&gt;::deleteCurrent()
+&#123;
+    node&lt;tt&gt; *tempPtr &#x3D; currPtr;
+    prePtr-&gt;deleteAfter();
+    delete currPtr;
+    currPtr &#x3D; prePtr;
+    size--;
+    &#x2F;*there may be error in here, I forgot to link the currPtr with the 
+    prePtr, this lead to the data after this node can&#39;t be showed*&#x2F;
+&#125;
+
+template&lt;class tt&gt;
+void link&lt;tt&gt;::clear()
+&#123;
+    while(!isEmpty())
+        deleteFront();
+&#125;
+
+#endif</code></pre>
+
+
+
+<h4 id="main-cpp-主函数"><a href="#main-cpp-主函数" class="headerlink" title="main.cpp(主函数)"></a>main.cpp(主函数)</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&#x2F;&#x2F; #include&lt;bits&#x2F;stdc++.h&gt;
+#include &quot;link.h&quot;
+using namespace std;
+int main()
+&#123;
+    link&lt;int&gt; list;
+    int n;
+    cin &gt;&gt; n;
+    for (int i &#x3D; 0; i &lt; n; i++)
+    &#123;
+        int x;
+        cin &gt;&gt; x;
+        list.insertRear(x);
+    &#125;
+    cout &lt;&lt; &quot;list:&quot;;
+    list.reset(0);
+    while (!list.endOfList())
+    &#123;
+        cout &lt;&lt; list.data() &lt;&lt; &#39; &#39;;
+        list.next();
+    &#125;
+    cout &lt;&lt; endl;
+
+    &#x2F;&#x2F;search
+    int temp;
+    list.reset(0);
+    cout &lt;&lt; &quot;enter the data that you wanna search: &quot;;
+    cin &gt;&gt; temp;
+    while (!list.endOfList())
+    &#123;
+        if (list.data() &#x3D;&#x3D; temp)
+        &#123;
+            cout &lt;&lt; &quot;the result: &quot; &lt;&lt; list.data() &lt;&lt; endl;            
+            break;
+        &#125;
+        else
+        &#123;            
+            if (list.judgeEnd())
+            &#123;
+                cout &lt;&lt; &quot;not found\n&quot;;
+                break;
+            &#125;
+            list.next();
+        &#125;
+    &#125;
+
+    &#x2F;&#x2F;delete
+    list.reset(0);
+    cout &lt;&lt; &quot;enter the data that you wanna remove: &quot;;
+    cin &gt;&gt; temp;
+    while (!list.endOfList())
+    &#123;
+        if (list.data() &#x3D;&#x3D; temp)
+        &#123;
+            list.deleteCurrent();
+            break;
+        &#125;
+        else
+        &#123;
+            if(list.judgeEnd())
+            &#123;
+                cout &lt;&lt; &quot;not found\n&quot;;
+                break;
+            &#125;
+            list.next();
+        &#125;
+    &#125;
+
+    &#x2F;&#x2F;output the linklist
+    cout &lt;&lt; &quot;list: &quot;;
+    list.reset(0);
+    while (!list.endOfList())
+    &#123;
+        cout &lt;&lt; list.data() &lt;&lt; &#39; &#39;;
+        list.next();
+    &#125;
+    cout &lt;&lt; endl;
+&#125;</code></pre>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x0013.html" rel="prev" title="简单实现页面提交数据">
+                  <i class="fa fa-chevron-left"></i> 简单实现页面提交数据
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/0x0015.html" rel="next" title="拖拽式页面的简单实现">
+                  拖拽式页面的简单实现 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jayden Chang</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-core.min.js" integrity="sha256-vlRYHThwdq55dA+n1BKQRzzLwFtH9VINdSI68+5JhpU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-cl5LNmPvcRcGFaQFjwEKIfs51AX7wBkvoByH6LTxQCs=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-K837BwIyiXo5k/9fCYgqUyA14bN4/Ve9P2SIT0KmZD0=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch-lite.umd.js" integrity="sha256-48AZ24Ct05NAMLT7hvYgeW1X350OgEcZvHd6Ih6xwOA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.33.2/dist/instantsearch.production.min.js" integrity="sha256-0B5Q7I/DVd8yp8JYLzbpELEonNBlVe7NLixMCLEnlBU=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","app_key":"ilR9U6Vhlpi6qDnDIQJESR3O","server_url":"qvyuwipq.api.lncldglobal.com","security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"qvyuwipq.api.lncldglobal.com","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x0014.html"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>

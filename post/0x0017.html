@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="mask-icon" href="https://jaydenchang.gitee.io/images/Jayden.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在肝前端大作业时，产生了使用轮播图的想法，翻阅了之前自己发过的一篇帖子，发现完全不能满足现在的需求，发现csdn上一篇帖子的代码写的不错，于是摘录下来学习  实现的效果：  自动播放 鼠标停留时停止播放，显示左右切换 点击左右切换、下方圆形可以手动切换 图片无缝切换，首位切换无违和感   采用胶片播放方式来切换图片   经过css修饰后     html部分&lt;!DOCTYPE html&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js轮播图改进版">
+<meta property="og:url" content="https://jaydenchang.top/post/0x0017.html">
+<meta property="og:site_name" content="Jayden&#39;s Blog">
+<meta property="og:description" content="在肝前端大作业时，产生了使用轮播图的想法，翻阅了之前自己发过的一篇帖子，发现完全不能满足现在的需求，发现csdn上一篇帖子的代码写的不错，于是摘录下来学习  实现的效果：  自动播放 鼠标停留时停止播放，显示左右切换 点击左右切换、下方圆形可以手动切换 图片无缝切换，首位切换无违和感   采用胶片播放方式来切换图片   经过css修饰后     html部分&lt;!DOCTYPE html&amp;gt">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x0017-2.gif">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x0017-1.gif">
+<meta property="article:published_time" content="2021-06-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-12-06T12:31:35.096Z">
+<meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaydenchang.gitee.io/images/images/0x0017-2.gif">
+
+
+<link rel="canonical" href="https://jaydenchang.top/post/0x0017.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x0017.html","path":"/post/0x0017.html","title":"js轮播图改进版"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>js轮播图改进版 | Jayden's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jayden's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <img class="custom-logo-image" src="https://jaydenchang.gitee.io/images/Jayden.jpg" alt="Jayden's Blog">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">39</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#html%E9%83%A8%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">html部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">css部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js%E9%83%A8%E5%88%86"><span class="nav-number">3.</span> <span class="nav-text">js部分</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jayden Chang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JaydenChang" title="Github → https:&#x2F;&#x2F;github.com&#x2F;JaydenChang" rel="noopener" target="_blank">Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jaydenchang@gmail.com" title="E-Mail → jaydenchang@gmail.com">E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/jaydenchang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;jaydenchang" rel="noopener" target="_blank">Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JaydenChang7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JaydenChang7" rel="noopener" target="_blank">Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/jaydenchang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;jaydenchang" rel="noopener" target="_blank">FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15092270/jayden-chang" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15092270&#x2F;jayden-chang" rel="noopener" target="_blank">StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/jaydenchang7" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;jaydenchang7" rel="noopener" target="_blank">Instagram</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0017.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js轮播图改进版
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-21T00:00:00+08:00">2021-06-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/FrontEnd/" itemprop="url" rel="index"><span itemprop="name">FrontEnd</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/post/0x0017.html" class="post-meta-item leancloud_visitors" data-flag-title="js轮播图改进版" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/post/0x0017.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0017.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在肝前端大作业时，产生了使用轮播图的想法，翻阅了之前自己发过的一篇帖子，发现完全不能满足现在的需求，发现csdn上一篇帖子的代码写的不错，于是摘录下来学习</p>
+<blockquote>
+<p>实现的效果：</p>
+<ul>
+<li>自动播放</li>
+<li>鼠标停留时停止播放，显示左右切换</li>
+<li>点击左右切换、下方圆形可以手动切换</li>
+<li>图片无缝切换，首位切换无违和感</li>
+</ul>
+</blockquote>
+<p>采用胶片播放方式来切换图片</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x0017-2.gif'>
+
+<p>经过css修饰后</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x0017-1.gif'>
+
+
+
+<h4 id="html部分"><a href="#html部分" class="headerlink" title="html部分"></a>html部分</h4><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;div id&#x3D;&quot;box&quot;&gt;
+        &lt;div id&#x3D;&quot;slider&quot;&gt;
+            &lt;ul class&#x3D;&quot;slieder-item-container&quot;&gt;
+                &lt;li&gt;
+                    &lt;a href&#x3D;&quot;#&quot;&gt;&lt;img src&#x3D;&quot;img&#x2F;index1.jpg&quot; &#x2F;&gt;&lt;&#x2F;a&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;a href&#x3D;&quot;#&quot;&gt;&lt;img src&#x3D;&quot;img&#x2F;index2.jpg&quot; &#x2F;&gt;&lt;&#x2F;a&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;a href&#x3D;&quot;#&quot;&gt;&lt;img src&#x3D;&quot;img&#x2F;index3.jpg&quot; &#x2F;&gt;&lt;&#x2F;a&gt;
+                &lt;&#x2F;li&gt;
+            &lt;&#x2F;ul&gt;
+            &lt;div class&#x3D;&quot;arrow-container&quot;&gt;
+                &lt;span class&#x3D;&quot;left-arrow&quot;&gt;&lt;&lt;&#x2F;span&gt;
+                &lt;span class&#x3D;&quot;right-arrow&quot;&gt;&gt;&lt;&#x2F;span&gt;
+                &lt;!-- 这个是左右箭头，用于切换图片 --&gt;
+            &lt;&#x2F;div&gt;
+            &lt;div class&#x3D;&quot;indicator-container&quot;&gt;
+                &lt;span class&#x3D;&quot;indicator active&quot;&gt;&lt;&#x2F;span&gt;
+                &lt;span class&#x3D;&quot;indicator&quot;&gt;&lt;&#x2F;span&gt;
+                &lt;span class&#x3D;&quot;indicator&quot;&gt;&lt;&#x2F;span&gt;
+                &lt;!-- 这个是图片下方的小圆点，定位第几张图 --&gt;
+            &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;</code></pre>
+
+
+
+<h4 id="css部分"><a href="#css部分" class="headerlink" title="css部分"></a>css部分</h4><pre class="line-numbers language-css" data-language="css"><code class="language-css">#slider,
+#slider ul,
+#slider ul li a &#123;
+    width: 800px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+&#125;
+
+#slider &#123;
+    position: absolute;
+    &#x2F;* position: relative; *&#x2F;
+    border: 2px solid black;
+    &#x2F;*padding: 3px;*&#x2F;
+    margin: 10px 0 0 10px;
+    &#x2F;* z-index: 1; *&#x2F;
+    overflow: hidden;
+    &#x2F;* 隐藏显示区域外的图片 *&#x2F;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+&#125;
+
+#slider ul &#123;
+    position: absolute;
+    list-style-type: none;
+    width: 6000px;
+    &#x2F;* 设置图片列表的长度 *&#x2F;
+    &#x2F;*transition-duration: 0.3s;*&#x2F;
+&#125;
+
+#slider li &#123;
+    float: left;
+&#125;
+
+#slider a &#123;
+    &#x2F;* display: inline-block; *&#x2F;
+    display: block;
+&#125;
+
+img &#123;
+    width: 100%;
+    height: 100%;
+&#125;
+
+#slider:hover .arrow-container &#123;
+    display: block;
+&#125;
+
+.arrow-container &#123;
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 50%;
+    margin-top: -25px;
+    display: none;
+&#125;
+&#x2F;* 箭头的样式设计 *&#x2F;
+.arrow-container span &#123;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    &#x2F;*display: inline-block;*&#x2F;
+    text-align: center;
+    line-height: 50px;
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+&#125;
+
+.left-arrow &#123;
+    left: 0px;
+    cursor: pointer;
+&#125;
+
+.right-arrow &#123;
+    right: 0px;
+    cursor: pointer;
+&#125;
+&#x2F;* 小圆点的样式设计 *&#x2F;
+.indicator-container &#123;
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -75px;
+    text-align: center;
+&#125;
+
+.indicator &#123;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background: white;
+    cursor: pointer;
+&#125;
+
+.indicator.active &#123;
+    background: lightskyblue;
+&#125;</code></pre>
+
+
+
+<h4 id="js部分"><a href="#js部分" class="headerlink" title="js部分"></a>js部分</h4><pre class="line-numbers language-js" data-language="js"><code class="language-js">var autoplay &#x3D; true;
+var autoplay_Delay &#x3D; 2000; &#x2F;&#x2F; ms
+var autoplayId;
+var intervalId;
+
+var slider;
+var slider_item_container;
+var slider_items;
+var indicator_container;
+
+var slider_item_width;
+var curIndex &#x3D; 0;
+
+window.onload &#x3D; function() &#123;
+    initElement();
+    initEvent();
+    if (autoplay) &#123;
+        startAnimation(slider_item_container);
+    &#125;
+&#125;
+&#x2F;&#x2F; 初始化元素
+function initElement() &#123;
+    slider &#x3D; document.getElementById(&quot;slider&quot;);
+    slider_items &#x3D; slider.getElementsByTagName(&quot;li&quot;);
+    slider_item_container &#x3D; slider.getElementsByClassName(&quot;slieder-item-container&quot;)[0];
+    indicator_container &#x3D; slider.getElementsByClassName(&quot;indicator-container&quot;)[0];
+    
+    var firstItem &#x3D; slider_items[0].cloneNode(true);
+    slider_item_container.appendChild(firstItem);
+    
+    slider_item_width &#x3D; slider_items[0].offsetWidth;
+&#125;
+&#x2F;&#x2F; 初始化相关事件
+function initEvent() &#123;
+    slider.addEventListener(&quot;mouseover&quot;, function () &#123;
+        clearTimeout(autoplayId);
+        autoplay &#x3D; false;
+    &#125;);
+    slider.addEventListener(&quot;mouseout&quot;, function () &#123;
+        autoplay &#x3D; true;
+        startAnimation(slider_item_container);
+    &#125;);
+    
+    var indicators &#x3D; indicator_container.children;
+    for (var i &#x3D; 0; i &lt; indicators.length; i++) &#123;
+        indicators[i].setAttribute(&quot;index&quot;, i);
+        indicators[i].addEventListener(&quot;click&quot;, function () &#123;
+            var index &#x3D; parseInt(this.getAttribute(&quot;index&quot;));
+            next(index);
+        &#125;);
+    &#125;
+    
+    var left_arrow &#x3D; slider.getElementsByClassName(&quot;left-arrow&quot;)[0];
+    var right_arrow &#x3D; slider.getElementsByClassName(&quot;right-arrow&quot;)[0];
+    left_arrow.addEventListener(&quot;click&quot;, function () &#123;
+        prev();
+    &#125;);
+    right_arrow.addEventListener(&quot;click&quot;, function () &#123;
+        next();
+    &#125;);
+&#125;
+
+&#x2F;&#x2F; 动画效果，传入的形参未要移动的元素以及移动的目标值
+&#x2F;&#x2F; 默认每10ms移动10px，手动翻页时，移动事件缩短，每次移动step值增大
+function animate(element, target) &#123;
+    var step &#x3D; 10;
+    var time &#x3D; 10;
+    var gap &#x3D; (Math.abs(target - element.offsetLeft) &#x2F; slider_item_width);
+    if (gap &gt; 1) &#123;
+        step &#x3D; step * gap;
+        time &#x3D; time &#x2F; gap;
+    &#125;
+    if (element) &#123;
+        step &#x3D; (element.offsetLeft &gt; target) ? -step : step;
+        clearInterval(intervalId);
+        setCurrentActiveIndicator(curIndex);
+        intervalId &#x3D; setInterval(function () &#123;
+            if ((step &lt; 0) &amp;&amp; (Math.abs(element.offsetLeft + step) &lt; Math.abs(target))) &#123;
+                element.style.left &#x3D; element.offsetLeft + step + &quot;px&quot;;
+            &#125; else &#123;
+                if (Math.abs(target - element.offsetLeft) &gt; Math.abs(step)) &#123;
+                    element.style.left &#x3D; element.offsetLeft + step + &quot;px&quot;;
+                &#125; else &#123;
+                    clearInterval(intervalId);
+                    intervalId &#x3D; -1;
+                    element.style.left &#x3D; target + &quot;px&quot;;
+                    if (autoplay) &#123;
+                        startAnimation(element);
+                    &#125;
+                &#125;
+            &#125;
+        &#125;, time);
+    &#125;
+&#125;
+&#x2F;*&#x2F; 左右翻页，改变轮播图的left值，改变当前显示的图片，再进行翻页动作，使用户感受不到过明显的跳转变化，
+
+*&#x2F;
+function prev() &#123;
+    var element &#x3D; slider_item_container;
+    var li &#x3D; element.children;
+    curIndex &#x3D; curIndex - 1;
+    if (curIndex &lt; 0) &#123;
+        element.style.left &#x3D; -((li.length-1)*slider_item_width) + &quot;px&quot;;
+        curIndex &#x3D; li.length-2;
+    &#125;
+    animate(element, -(curIndex*slider_item_width));
+&#125;
+&#x2F;&#x2F; 点击小圆点，也就是单词调用next()，但需要将要跳转的下标值传入
+function next(nextIndex) &#123;
+    var element &#x3D; slider_item_container;
+    var li &#x3D; element.children;
+    if ((nextIndex !&#x3D; null) &amp;&amp; (typeof(nextIndex) !&#x3D; &quot;undefined&quot;)) &#123;
+        curIndex &#x3D; nextIndex;
+    &#125; else &#123;
+        curIndex &#x3D; curIndex + 1;
+        if (curIndex &gt; (li.length-1)) &#123;
+            element.style.left &#x3D; 0 + &quot;px&quot;;
+            curIndex &#x3D; 1;
+        &#125;
+    &#125;
+    animate(element, -(curIndex*slider_item_width));
+&#125;
+&#x2F;&#x2F; 自动播放，每次轮播图移动到目标位置后，持续调用startAnimation()，内部也是调用next()
+function startAnimation(element) &#123;
+    if (autoplayId) &#123;
+        clearTimeout(autoplayId);
+    &#125;
+    autoplayId &#x3D; setTimeout(function () &#123;
+        next();
+    &#125;, autoplay_Delay);
+&#125;
+
+function setCurrentActiveIndicator(index) &#123;
+    var indicators &#x3D; indicator_container.children;
+    if (index &#x3D;&#x3D; indicators.length) &#123;
+        index &#x3D; 0;
+    &#125;
+    for (var i &#x3D; 0; i &lt; indicators.length; i++) &#123;
+        if (i &#x3D;&#x3D; index) &#123;
+            indicators[i].className &#x3D; &quot;indicator active&quot;;
+        &#125; else &#123;
+            indicators[i].className &#x3D; &quot;indicator&quot;;
+        &#125;
+        &#x2F;&#x2F; 判断当前是第几张图并对小圆点加颜色
+    &#125;
+&#125;
+</code></pre>
+
+<blockquote>
+<p>总结以上一些小细节</p>
+<ul>
+<li>span设置宽高无效，但设置<code>position: absolute;</code>或<code>display: inline-block;</code>就有效了</li>
+<li>子元素设置了<code>float: left</code>，父元素的<code>text-align</code>就失效了</li>
+<li>圆形<code>border-radius: 50%;</code></li>
+<li>文字上下居中：<code>line-height</code>设置和<code>height</code>一样的值</li>
+<li>水平文字居中<code>text-align: center;</code></li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href='https://blog.csdn.net/u013347241/article/details/107054441/'>JS实现无缝切换轮播图(自动+手动)-f清风q的博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"># html</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x0016.html" rel="prev" title="网页的注册、登录、拦截">
+                  <i class="fa fa-chevron-left"></i> 网页的注册、登录、拦截
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/0x0018.html" rel="next" title="基于css的一些动画">
+                  基于css的一些动画 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jayden Chang</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-core.min.js" integrity="sha256-vlRYHThwdq55dA+n1BKQRzzLwFtH9VINdSI68+5JhpU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-cl5LNmPvcRcGFaQFjwEKIfs51AX7wBkvoByH6LTxQCs=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-K837BwIyiXo5k/9fCYgqUyA14bN4/Ve9P2SIT0KmZD0=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.11.0/dist/algoliasearch-lite.umd.js" integrity="sha256-48AZ24Ct05NAMLT7hvYgeW1X350OgEcZvHd6Ih6xwOA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.33.2/dist/instantsearch.production.min.js" integrity="sha256-0B5Q7I/DVd8yp8JYLzbpELEonNBlVe7NLixMCLEnlBU=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","app_key":"ilR9U6Vhlpi6qDnDIQJESR3O","server_url":"qvyuwipq.api.lncldglobal.com","security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"qvyuwipq.api.lncldglobal.com","placeholder":"Just go go","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":false,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x0017.html"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+
+</body>
+</html>
