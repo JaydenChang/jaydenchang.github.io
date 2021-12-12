@@ -934,212 +934,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x000D.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jayden Chang">
-      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jayden's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/0x000D.html" class="post-title-link" itemprop="url">关于下拉二级菜单</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-21T00:00:00+08:00">2021-04-21</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/FrontEnd/" itemprop="url" rel="index"><span itemprop="name">FrontEnd</span></a>
-        </span>
-    </span>
-
-  
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>第七次前端作业，要求做一个下拉二级菜单，本次工程采用html+css完成</p>
-<p>分别展示html和css的代码</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;aaaa.css&quot;&gt;
-    &lt;!-- &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;reset.css&quot;&gt; --&gt;
-    &lt;style&gt;
-        *&#123;
-            list-style: none;
-            text-decoration: none;
-            margin: 0;
-            padding: 0;
-        &#125;
-    &lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;div class&#x3D;&quot;topmenu&quot;&gt;
-        &lt;ul class&#x3D;&quot;nav&quot;&gt;
-            &lt;li class&#x3D;&quot;nav-container&quot;&gt;
-                &lt;a href&#x3D;&quot;#&quot;&gt;首页&lt;&#x2F;a&gt;
-                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;教育动态&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学术动态&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学生动态&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;通知公告&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;信息公开&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                &lt;&#x2F;ul&gt;
-            &lt;&#x2F;li&gt;
-            &lt;li class&#x3D;&quot;nav-container&quot;&gt;
-                &lt;a href&#x3D;&quot;#&quot;&gt;学院概况&lt;&#x2F;a&gt;
-                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;院长寄语&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学院简介&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;历史沿革&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学院机构&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;校园印象&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                &lt;&#x2F;ul&gt;
-            &lt;&#x2F;li&gt;&lt;li class&#x3D;&quot;nav-container&quot;&gt;
-                &lt;a href&#x3D;&quot;#&quot;&gt;教职员工&lt;&#x2F;a&gt;
-                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;专任教师&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;实验技术人员&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;行政人员&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;离退休&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;招聘信息&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                &lt;&#x2F;ul&gt;
-            &lt;&#x2F;li&gt;&lt;li class&#x3D;&quot;nav-container&quot;&gt;
-                &lt;a href&#x3D;&quot;#&quot;&gt;学生工作&lt;&#x2F;a&gt;
-                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;本科生工作&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;研究生工作&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;共青团&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学生会&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;研究生会&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                &lt;&#x2F;ul&gt;
-            &lt;&#x2F;li&gt;&lt;li class&#x3D;&quot;nav-container&quot;&gt;
-                &lt;a href&#x3D;&quot;#&quot;&gt;科学研究&lt;&#x2F;a&gt;
-                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学术活动&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;科研平台&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;研究方向&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;重大研究&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;科研成果&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-                &lt;&#x2F;ul&gt;
-            &lt;&#x2F;li&gt;            
-        &lt;&#x2F;ul&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;</code></pre>
-
-<p>css代码</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css">.topmenu&#123;
-    width: 100%;
-    height: 50px;
-    &#x2F;* background: whitesmoke; *&#x2F;
-    background: lightgrey;
-&#125;
-&#x2F;*hover是来设置鼠标的属性*&#x2F;
-.topmenu .nav .nav-container&#123;
-    float: left;
-    &#x2F;* left: 300px;
-    position: relative; *&#x2F;
-    background: lightgrey;
-    text-align: center;
-    width: 155px;
-    &#x2F;* border-right: solid 2px #fff; *&#x2F;
-&#125;
-a &#123;
-    line-height: 50px;
-    color: #fff;
-&#125;
-.topmenu .nav .nav-container .nav-list &#123;
-    display: none;
-    &#x2F;*一级菜单的属性，不显示二级内容*&#x2F;
-&#125;
-.topmenu .nav .nav-container:hover .nav-list &#123;
-    display: list-item;
-    &#x2F;*当鼠标停留在相关标签上，展开二级菜单*&#x2F;
-&#125;
-&#x2F;* 
-.topmenu .nav-container:hover .nav-list&#123;
-    display: list-item;
-	这种写法也行，一定要.topmenu .nav-container:hover .nav-list
-	不然鼠标指针停留在标签上无反应
-在设置颜色时，注意颜色不要冲突了
-*&#x2F;
-.topmenu li:hover &#123;
-    background: lightskyblue;
-&#125;</code></pre>
-
-
-
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/0x000D.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x000E.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1379,6 +1173,212 @@ a &#123;
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/0x000E.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x000D.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/0x000D.html" class="post-title-link" itemprop="url">关于下拉二级菜单</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-21T00:00:00+08:00">2021-04-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-12-06 20:31:35" itemprop="dateModified" datetime="2021-12-06T20:31:35+08:00">2021-12-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/FrontEnd/" itemprop="url" rel="index"><span itemprop="name">FrontEnd</span></a>
+        </span>
+    </span>
+
+  
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>第七次前端作业，要求做一个下拉二级菜单，本次工程采用html+css完成</p>
+<p>分别展示html和css的代码</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;aaaa.css&quot;&gt;
+    &lt;!-- &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;reset.css&quot;&gt; --&gt;
+    &lt;style&gt;
+        *&#123;
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+        &#125;
+    &lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;div class&#x3D;&quot;topmenu&quot;&gt;
+        &lt;ul class&#x3D;&quot;nav&quot;&gt;
+            &lt;li class&#x3D;&quot;nav-container&quot;&gt;
+                &lt;a href&#x3D;&quot;#&quot;&gt;首页&lt;&#x2F;a&gt;
+                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;教育动态&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学术动态&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学生动态&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;通知公告&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;信息公开&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                &lt;&#x2F;ul&gt;
+            &lt;&#x2F;li&gt;
+            &lt;li class&#x3D;&quot;nav-container&quot;&gt;
+                &lt;a href&#x3D;&quot;#&quot;&gt;学院概况&lt;&#x2F;a&gt;
+                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;院长寄语&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学院简介&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;历史沿革&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学院机构&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;校园印象&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                &lt;&#x2F;ul&gt;
+            &lt;&#x2F;li&gt;&lt;li class&#x3D;&quot;nav-container&quot;&gt;
+                &lt;a href&#x3D;&quot;#&quot;&gt;教职员工&lt;&#x2F;a&gt;
+                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;专任教师&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;实验技术人员&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;行政人员&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;离退休&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;招聘信息&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                &lt;&#x2F;ul&gt;
+            &lt;&#x2F;li&gt;&lt;li class&#x3D;&quot;nav-container&quot;&gt;
+                &lt;a href&#x3D;&quot;#&quot;&gt;学生工作&lt;&#x2F;a&gt;
+                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;本科生工作&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;研究生工作&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;共青团&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学生会&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;研究生会&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                &lt;&#x2F;ul&gt;
+            &lt;&#x2F;li&gt;&lt;li class&#x3D;&quot;nav-container&quot;&gt;
+                &lt;a href&#x3D;&quot;#&quot;&gt;科学研究&lt;&#x2F;a&gt;
+                &lt;ul class&#x3D;&quot;nav-list&quot;&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;学术活动&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;科研平台&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;研究方向&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;重大研究&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                    &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;科研成果&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+                &lt;&#x2F;ul&gt;
+            &lt;&#x2F;li&gt;            
+        &lt;&#x2F;ul&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
+
+<p>css代码</p>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">.topmenu&#123;
+    width: 100%;
+    height: 50px;
+    &#x2F;* background: whitesmoke; *&#x2F;
+    background: lightgrey;
+&#125;
+&#x2F;*hover是来设置鼠标的属性*&#x2F;
+.topmenu .nav .nav-container&#123;
+    float: left;
+    &#x2F;* left: 300px;
+    position: relative; *&#x2F;
+    background: lightgrey;
+    text-align: center;
+    width: 155px;
+    &#x2F;* border-right: solid 2px #fff; *&#x2F;
+&#125;
+a &#123;
+    line-height: 50px;
+    color: #fff;
+&#125;
+.topmenu .nav .nav-container .nav-list &#123;
+    display: none;
+    &#x2F;*一级菜单的属性，不显示二级内容*&#x2F;
+&#125;
+.topmenu .nav .nav-container:hover .nav-list &#123;
+    display: list-item;
+    &#x2F;*当鼠标停留在相关标签上，展开二级菜单*&#x2F;
+&#125;
+&#x2F;* 
+.topmenu .nav-container:hover .nav-list&#123;
+    display: list-item;
+	这种写法也行，一定要.topmenu .nav-container:hover .nav-list
+	不然鼠标指针停留在标签上无反应
+在设置颜色时，注意颜色不要冲突了
+*&#x2F;
+.topmenu li:hover &#123;
+    background: lightskyblue;
+&#125;</code></pre>
+
+
+
+
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/0x000D.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
