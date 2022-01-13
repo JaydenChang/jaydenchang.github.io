@@ -6,7 +6,7 @@
   <link href="https://jaydenchang.top/atom.xml" rel="self"/>
   
   <link href="https://jaydenchang.top/"/>
-  <updated>2022-01-03T08:43:52.196Z</updated>
+  <updated>2022-01-13T04:04:41.513Z</updated>
   <id>https://jaydenchang.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>win10找回Ubuntu启动项(非EasyBCD)</title>
+    <link href="https://jaydenchang.top/post/0x002B.html"/>
+    <id>https://jaydenchang.top/post/0x002B.html</id>
+    <published>2022-01-12T16:00:00.000Z</published>
+    <updated>2022-01-13T04:04:41.513Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近想对装在电脑上的Ubuntu进行更新，但是之前在BIOS里改了引导系统的文件，导致找不到Ubuntu启动项，EasyBCD程序也不起作用(整块硬盘Windows分区都是GPT，改BIOS也没什么用)，在必应上逛了两天找到了一个解决方法，在Windows下用命令行修改引导文件</p><p>打开管理员命令行(不是<u><strong>powershell</strong></u>)，输入以下命令</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mountvol g: &#x2F;sg:cd EFIbcdedit &#x2F;set &#123;bootmgr&#125; path \EFI\ubuntu\grubx64.efi</code></pre><p>这时候重启，开机就会进入grub菜单</p><p>如果想改回Windows引导，则最后一行命令改为</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">bcdedit &#x2F;set &#123;bootmgr&#125; path \EFI\Microsoft\Boot\bootmgfw.efi</code></pre><h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a href="https://linux.cn/article-4667-1.html">桌面应用|Windows和Ubuntu双系统，修复UEFI引导的两种办法 (linux.cn)</a></p>]]></content>
+    
+    
+    <summary type="html">不进入BIOS的情况下找回Ubuntu启动项</summary>
+    
+    
+    
+    <category term="整活" scheme="https://jaydenchang.top/categories/%E6%95%B4%E6%B4%BB/"/>
+    
+    
+    <category term="Linux" scheme="https://jaydenchang.top/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>不关闭SELinux情况下使用ftp传输</title>
@@ -674,29 +695,6 @@ a&amp;#123;
 
 
 &lt;h3 id=&quot;登录部分&quot;&gt;&lt;a href=&quot;#登录部分&quot; class=&quot;headerlink&quot; title=&quot;登录部分&quot;&gt;&lt;/a&gt;登录部分&lt;/h3&gt;&lt;h4 id=&quot;html-1&quot;&gt;&lt;a href=&quot;#html-1&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h4&gt;</summary>
-    
-    
-    
-    <category term="FrontEnd" scheme="https://jaydenchang.top/categories/FrontEnd/"/>
-    
-    
-    <category term="html" scheme="https://jaydenchang.top/tags/html/"/>
-    
-    <category term="JavaScript" scheme="https://jaydenchang.top/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拖拽式页面的简单实现</title>
-    <link href="https://jaydenchang.top/post/0x0015.html"/>
-    <id>https://jaydenchang.top/post/0x0015.html</id>
-    <published>2021-06-02T16:00:00.000Z</published>
-    <updated>2021-12-11T05:58:51.849Z</updated>
-    
-    <content type="html"><![CDATA[<p>本次作业是实现一个拖拽式简易点餐系统</p><h3 id="html部分-实现逻辑的主要部分"><a href="#html部分-实现逻辑的主要部分" class="headerlink" title="html部分(实现逻辑的主要部分)"></a>html部分(实现逻辑的主要部分)</h3><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;    &lt;title&gt;Document&lt;&#x2F;title&gt;    &lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;exp.css&quot;&gt;    &lt;script src&#x3D;&quot;exp.js&quot;&gt;&lt;&#x2F;script&gt;&lt;&#x2F;head&gt;&lt;body&gt;    &lt;center&gt;        &lt;div border&#x3D;&quot;1px solid grey&quot;&gt;            &lt;table border&#x3D;&quot;1px solid grey&quot; celllspacing&#x3D;&quot;0&quot; class&#x3D;&quot;style1&quot;&gt;                &lt;caption&gt;please select a dish and drag it to the proper position&lt;&#x2F;caption&gt;                &lt;tr class&#x3D;&quot;text1&quot;&gt;                    &lt;td&gt;                        &lt;p align&#x3D;&quot;center&quot;&gt;customer 1&lt;&#x2F;p&gt;                    &lt;&#x2F;td&gt;                    &lt;td&gt;                        &lt;p align&#x3D;&quot;center&quot;&gt;customer 2&lt;&#x2F;p&gt;                    &lt;&#x2F;td&gt;                    &lt;td&gt;                        &lt;p align&#x3D;&quot;center&quot;&gt;customer 3&lt;&#x2F;p&gt;                    &lt;&#x2F;td&gt;                &lt;&#x2F;tr&gt;                &lt;tr&gt;                    &lt;td width&#x3D;&quot;33%&quot; align&#x3D;&#39;center&#39; ondrop&#x3D;&quot;droplt(this,event)&quot; ondragenter&#x3D;&quot;return false&quot;                        ondragover&#x3D;&quot;return false&quot;&gt;                        &lt;span draggable&#x3D;&quot;true&quot; id&#x3D;&quot;A&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot;&gt;                            &lt;img src&#x3D;&quot;img&#x2F;1.JPG&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;&#x2F;span&gt;                    &lt;&#x2F;td&gt;                    &lt;td width&#x3D;&quot;33%&quot; align&#x3D;&quot;center&quot; ondrop&#x3D;&quot;droplt(this,event)&quot; ondragenter&#x3D;&quot;return false&quot;                        ondragover&#x3D;&quot;return false&quot;&gt;                        &lt;span draggable&#x3D;&quot;true&quot; id&#x3D;&quot;A&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot;&gt;                            &lt;img src&#x3D;&quot;img&#x2F;2.JPG&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;&#x2F;span&gt;                    &lt;&#x2F;td&gt;                    &lt;td width&#x3D;&quot;33%&quot; align&#x3D;&quot;center&quot; ondrop&#x3D;&quot;droplt(this,event)&quot; ondragenter&#x3D;&quot;return false&quot;                        ondragover&#x3D;&quot;return false&quot;&gt;                        &lt;span draggable&#x3D;&quot;true&quot; id&#x3D;&quot;C&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot;&gt;                            &lt;img src&#x3D;&quot;img&#x2F;3.JPG&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;&#x2F;span&gt;                    &lt;&#x2F;td&gt;                &lt;&#x2F;tr&gt;            &lt;&#x2F;table&gt;&lt;br&gt;&lt;br&gt;            &lt;table border&#x3D;&quot;1px solid grey&quot; cellspacing&#x3D;0 cellpadding&#x3D;2&gt;                &lt;tr &gt;                    &lt;td width&#x3D;&quot;80%&quot;  class&#x3D;&quot;style2&quot;&gt;                        &lt;p align&#x3D;&quot;center&quot;&gt;the dish can be selected&lt;&#x2F;p&gt;                    &lt;&#x2F;td&gt;                    &lt;td width&#x3D;&quot;20%&quot; class&#x3D;&quot;style3&quot;&gt;&lt;p align&#x3D;&#39;center&#39;&gt;delete&lt;&#x2F;p&gt;&lt;&#x2F;td&gt;                &lt;&#x2F;tr&gt;                &lt;tr width&#x3D;&quot;80%&quot;&gt;                    &lt;td class&#x3D;&quot;style2&quot; ondrop&#x3D;&quot;droplt(this,event)&quot; ondragenter&#x3D;&quot;return false&quot; ondragover&#x3D;&quot;return false&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;4.JPG&quot; id&#x3D;&quot;1&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;5.JPG&quot; id&#x3D;&quot;2&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;6.JPG&quot; id&#x3D;&quot;3&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;7.JPG&quot; id&#x3D;&quot;4&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;8.JPG&quot; id&#x3D;&quot;5&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;9.JPG&quot; id&#x3D;&quot;6&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;10.JPG&quot; id&#x3D;&quot;7&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot; draggable&#x3D;&quot;true&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;11.JPG&quot; id&#x3D;&quot;8&quot; ondragstart&#x3D;&quot;draglt(this,event)&quot; draggable&#x3D;&quot;true&quot;&gt;                    &lt;&#x2F;td&gt;                    &lt;td width&#x3D;&quot;20%&quot; class&#x3D;&quot;style3&quot;&gt;                        &lt;img src&#x3D;&quot;img&#x2F;12.JPG&quot; draggable&#x3D;&quot;false&quot; ondragenter&#x3D;&quot;return false&quot; ondragover&#x3D;&quot;return false&quot; ondrop&#x3D;&quot;trashlt(this,event)&quot;&gt;                    &lt;&#x2F;td&gt;                &lt;&#x2F;tr&gt;            &lt;&#x2F;table&gt;         &lt;&#x2F;div&gt;    &lt;&#x2F;center&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;</code></pre><h3 id="css部分"><a href="#css部分" class="headerlink" title="css部分"></a>css部分</h3><pre class="line-numbers language-css" data-language="css"><code class="language-css">td&#123;    width: 150px;&#125;caption&#123;    border: 1px solid grey;&#125;img&#123;    margin: 0 auto;&#125;.style1 tr td&#123;    width: 220px;&#125;.text1 td p&#123;      background-color: lightgray;          margin-top: 1px;    margin-bottom: 1px;&#125;.style2&#123;    width: 550px;&#125;.style2 p&#123;    background-color: lightgray;    margin-top: 0px;    margin-bottom: 0px;&#125;.style3     &#123;    width: 120px;&#125;.style3 p&#123;    background-color: lightgray;    margin-top: 0px;    margin-bottom: 0px;&#125;</code></pre><h3 id="JavaScript部分"><a href="#JavaScript部分" class="headerlink" title="JavaScript部分"></a>JavaScript部分</h3><h4 id="section-1"><a href="#section-1" class="headerlink" title="section 1"></a>section 1</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function draglt(target, e) &#123;    e.dataTransfer.setData(&#39;SpanImg&#39;, target.id);&#125;function droplt(target, e) &#123;    var id &#x3D; e.dataTransfer.getData(&#39;SpanImg&#39;);    target.appendChild(document.getElementById(id));    e.preventDefault();&#125;function trashlt(target, e) &#123;    var id &#x3D; e.dataTransfer.getData(&#39;SpanImg&#39;);    removeElement(id);    e.preventDefault();&#125;function removeElement(id) &#123;    var d_node &#x3D; document.getElementById(id);    d_node.parentNode.removeChild(d_node);&#125;</code></pre><h4 id="section-2"><a href="#section-2" class="headerlink" title="section 2"></a>section 2</h4><p>js部分还有一种写法(当然，方法有很多种，这里列出我所见过的)</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">&#x2F;&#x2F;相应的，img标签部分函数也要更新&#x2F;&#x2F;&lt;img src&#x3D;&quot;x.jpg&quot; ondragenter&#x3D;&quot;enter()&quot; ondragover&#x3D;&quot;enter()&quot; ondrop&#x3D;&quot;getObj(this)&quot; ondragstart&#x3D;&quot;startDrag(this)&quot;&gt;&#x2F;&#x2F;实质上，ondragover ondragenter这两个可以设置为禁用，下面会提到var objImg;function startDrag(that)&#123;    objImg&#x3D;that;&#125;function enter()&#123;    e&#x3D;window.event;    e.preventDefault();&#125;function getObj(that)&#123;    that.appendChild(objImg);&#125;function delObj()&#123;    objImg.parentElement.removeChild(objImg);&#125;</code></pre><h3 id="几个要注意的点"><a href="#几个要注意的点" class="headerlink" title="几个要注意的点"></a>几个要注意的点</h3><ul><li>img或者img的父级标签要有id号，不然js部分不能捕获img的id</li><li>ondrop的函数，有两类，可选择的子选项和删除类(trash)</li><li>return false是阻止控件的默认行为，作业要求的是拖动到限定区域再释放，这时候就不需要在拖动过程中触发相关事件，所以返回false禁用相关函数</li></ul><p>最后的效果</p><img src="https://jaydenchang.gitee.io/images/images/0x0015.png">]]></content>
-    
-    
-    <summary type="html">前端作业--拖拽点餐系统</summary>
     
     
     
