@@ -6,7 +6,7 @@
   <link href="https://jaydenchang.top/atom.xml" rel="self"/>
   
   <link href="https://jaydenchang.top/"/>
-  <updated>2022-01-13T04:04:41.513Z</updated>
+  <updated>2022-01-29T02:26:57.336Z</updated>
   <id>https://jaydenchang.top/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>To 脆弱zn 的一封信</title>
+    <link href="https://jaydenchang.top/post/To_zn.html"/>
+    <id>https://jaydenchang.top/post/To_zn.html</id>
+    <published>2022-01-30T16:00:00.000Z</published>
+    <updated>2022-01-29T02:26:57.336Z</updated>
+    
+    <content type="html"><![CDATA[<p>当我在打这一段文字时，我已做好了心理准备。<del>(这个网站我第二天就会撤掉)</del></p><p>考虑了很久，我想，我是时候该做出决定了，那敞开心扉说吧。在很久之前，我就已经有预想过这个结果了，女生的心，也确实如你所说，我不懂，也猜不透。感情这东西很微妙，喜欢就是喜欢，不喜欢就是不喜欢，如果你是后者，那，我也无话可说。</p><p>算起来，这应该是我人生中真正意义上第一次追求女孩子。认识了四个月了，最开始对你没什么感觉，emm，一个很活泼很健谈的女孩，也许是国庆期间的那几次对话，知道了你过去的经历后，对你也有了更深的了解，我渐渐发现了喜欢运动的女孩身上独有的气质，一种说不出的开朗，也意外知道你的性格有几分敏感(从把你pyq中秋的照片设为私有就能看出来)，之前你说我给你留下了稍微深刻的印象，我内心os：”就这，挺多人知道我的”，后面知道原来是摆摊那次，说实话，那次我没有留意你们宿舍三人，只隐约觉得其中一个女生还挺好看<del>(这个我忘了是谁了)</del>，因为害羞，我没多看，给完钱马上溜了。</p><p>不知何时起，我开始对你有好感。忘了十月的某一天，悉知你获得了国励后，我看了看我自己，顿时有了自卑心理<del>(希望以后大家不要自卑心理了ww)</del>，我决定开始痛改前非，我应该有和你说过，我有点好胜心，也许是不太喜欢数学，这学期绩点依旧拉跨，于是前几天又开始自卑了，但我知道，这不是我应有的状态，所以我在微博放完垃圾话后，马上调整回来。</p><p>这三个月的值班，我很珍惜每一次和你下班回去的机会，后面不知道怎么的，脑子抽了，竟然选择去当裁判。当然也很珍惜每一次和你聊天的机会，和你聊天也学到了挺多东西的(人生观，爱情观以及其他的)，也许是我还没尝试过恋爱是什么滋味吧，中间有一段日子，我开始患得患失，理智告诉我不能这么做，我死党及时疏导我，我也开始阅读一些心理学相关的书籍，渐渐的我感觉，我的敏感，貌似好一些了，但还是会在某个晚上翻来覆去，后面想，越分析越难顶，于是干脆放下包袱，把更多精力放在自己身上，当然，这也算一种成长吧。</p><p>关于我，其实你应该早就知道我对你有好感了，但我想说，如果面对一个对你有好感的男生，而你对他没什么感觉的话，我个人认为，你应该及时释放信号，让这男生死了这条心，这样，对他也算是一种解脱吧。我的话，在这段关系里面，感觉前期没有把重心放在自己身上吧，从十二月中旬开始，我们彼此都没找对方(估计也就剩微博了)，让我开始冷静下来，我过去好像有点迷失了，毕竟大一下就是这样挂科的。</p><p>总的来说，还是很高兴认识你的，你也不用有太多的包袱，我也不会做出什么过激的行为，以前该咋地就该咋地，只是，我觉得，喜欢那么久了，并且也年底了，喜欢就勇敢说出来，不说出来总会在青春里留下遗憾。也许多年以后回望我们这段经历，或许会不约而同感叹：”年轻真好” 吧。</p><img src='https://jaydenchang.gitee.io/images/images/temp.jpg' style="zoom:80%;" ><p>一些周杰伦的歌词，代表了我的青春，其中最想送你的是《明明就》，不过我估计你也不会去听</p><p>如果有来生，另一个时空的我如果有机会遇到另一个时空的你，我还是会选择认识你，还是会选择喜欢你，还是会选择勇敢的说出来<del>(这里没有想不开的意思)</del>。</p><p>最后，很感谢你，在我的青春出现过，祝你我在未来，都能在对的时间，对的地点，遇到对的人。</p><p align='right'>Jayden Chang</p><p align='right'>2022.1.31</p>]]></content>
+    
+    
+    <summary type="html">一个直男一些想说的话，希望不会破环你的过年好心情，不会打扰你的生活</summary>
+    
+    
+    
+    <category term="none" scheme="https://jaydenchang.top/categories/none/"/>
+    
+    
+    <category term="none" scheme="https://jaydenchang.top/tags/none/"/>
+    
+  </entry>
   
   <entry>
     <title>win10找回Ubuntu启动项(非EasyBCD)</title>
@@ -504,197 +525,6 @@ class student extends person &amp;#123;
     
     
     <summary type="html">实现一个基于JavaScript的轮播图效果</summary>
-    
-    
-    
-    <category term="FrontEnd" scheme="https://jaydenchang.top/categories/FrontEnd/"/>
-    
-    
-    <category term="html" scheme="https://jaydenchang.top/tags/html/"/>
-    
-    <category term="JavaScript" scheme="https://jaydenchang.top/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网页的注册、登录、拦截</title>
-    <link href="https://jaydenchang.top/post/0x0016.html"/>
-    <id>https://jaydenchang.top/post/0x0016.html</id>
-    <published>2021-06-19T16:00:00.000Z</published>
-    <updated>2021-12-11T06:07:09.102Z</updated>
-    
-    <content type="html"><![CDATA[<p>本次作业是简单实现网页的注册、登录、拦截</p><h3 id="注册部分"><a href="#注册部分" class="headerlink" title="注册部分"></a>注册部分</h3><h4 id="html"><a href="#html" class="headerlink" title="html"></a>html</h4><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;    &lt;title&gt;Document&lt;&#x2F;title&gt;    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;reg.css&quot;&gt;    &lt;script src&#x3D;&quot;fun.js&quot;&gt;&lt;&#x2F;script&gt;    &lt;&#x2F;head&gt;&lt;body&gt;    &lt;table align&#x3D;&quot;center&quot; cellpadding&#x3D;&quot;5px&quot;&gt;        &lt;tr&gt;            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;            &lt;td align&#x3D;&quot;left&quot;&gt;register&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td align&#x3D;&quot;right&quot;&gt;username:&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; autocomplete&#x3D;&quot;off&quot; placeholder&#x3D;&quot;enter your name&quot;&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td align&#x3D;&quot;right&quot;&gt;password&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;password&quot; placeholder&#x3D;&quot;enter your password&quot;&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td align&#x3D;&quot;right&quot;&gt;confirm password&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;repwd&quot; placeholder&#x3D;&quot;confirm your password&quot;&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;register&quot; id&#x3D;&quot;register&quot; onclick&#x3D;&quot;reg()&quot;&gt;                &lt;a href&#x3D;&quot;login.html&quot;&gt;login&lt;&#x2F;a&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;&#x2F;table&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;    &lt;title&gt;Document&lt;&#x2F;title&gt;    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;reg.css&quot;&gt;    &lt;script src&#x3D;&quot;fun.js&quot;&gt;&lt;&#x2F;script&gt;    &lt;&#x2F;head&gt;&lt;body&gt;    &lt;table align&#x3D;&quot;center&quot; cellpadding&#x3D;&quot;5px&quot;&gt;        &lt;tr&gt;            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;            &lt;td align&#x3D;&quot;left&quot;&gt;register&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td align&#x3D;&quot;right&quot;&gt;username:&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; autocomplete&#x3D;&quot;off&quot; placeholder&#x3D;&quot;enter your name&quot;&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td align&#x3D;&quot;right&quot;&gt;password&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;password&quot; placeholder&#x3D;&quot;enter your password&quot;&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td align&#x3D;&quot;right&quot;&gt;confirm password&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;repwd&quot; placeholder&#x3D;&quot;confirm your password&quot;&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;register&quot; id&#x3D;&quot;register&quot; onclick&#x3D;&quot;reg()&quot;&gt;                &lt;a href&#x3D;&quot;login.html&quot;&gt;login&lt;&#x2F;a&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;&#x2F;table&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;</code></pre><h4 id="css"><a href="#css" class="headerlink" title="css"></a>css</h4><pre class="line-numbers language-css" data-language="css"><code class="language-css">*&#123;    font-size: 18px;&#125;table&#123;    margin-top: 150px;&#125;tr&#123;    height: 50px;&#125;a&#123;    text-decoration: none;&#125;#register&#123;    background-color: gray;    border-radius: 10px;    box-shadow: 1px 1px 2px 2px #232;&#125;#username&#123;    background-image: url(img&#x2F;user.JPG);    background-repeat: no-repeat;    background-position-x: 5px;    background-position-y: 5px;    &#x2F;* 设置背景图,也就是那个用户名头像的位置 *&#x2F;    height: 30px;    padding-left: 35px;    border: 1px solid gray;    outline: none;&#125;#username:hover&#123;    border: 1px solid purple;&#125;#password,#repwd&#123;    background-image: url(img&#x2F;password.JPG);    background-repeat: no-repeat;    background-position-x: 5px;    background-position-y: 5px;    height: 30px;    padding-left: 35px;    border: 1px solid gray;    outline: none;&#125;#password:hover,#repwd:hover&#123;    border: 1px solid purple;&#125;</code></pre><h4 id="js"><a href="#js" class="headerlink" title="js"></a>js</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function reg() &#123;    var username &#x3D; document.getElementById(&quot;username&quot;).value;    var pwd &#x3D; document.getElementById(&quot;password&quot;).value;    var repwd &#x3D; document.getElementById(&quot;repwd&quot;).value;    if (username &#x3D;&#x3D; &#39;&#39;) &#123;        alert(&quot;username can&#39;t be empty&quot;);        return false;    &#125;    if (pwd !&#x3D; repwd) &#123;        alert(&quot;passwords aren&#39;t the same&quot;);        return false;    &#125;    if (pwd &#x3D;&#x3D; &#39;&#39; || repwd &#x3D;&#x3D; &#39;&#39;) &#123;        alert(&quot;password can&#39;t be empty&quot;);        return false;    &#125;    localStorage.setItem(&quot;username&quot;, username);    localStorage.setItem(&quot;password&quot;, pwd);    &#x2F;&#x2F; 在浏览器本地添加数据    alert(&quot;register successful&quot;);    window.location.href &#x3D; &quot;login.html&quot;;    &#x2F;&#x2F; 跳转到指定界面&#125;</code></pre><h3 id="登录部分"><a href="#登录部分" class="headerlink" title="登录部分"></a>登录部分</h3><h4 id="html-1"><a href="#html-1" class="headerlink" title="html"></a>html</h4><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;    &lt;title&gt;Document&lt;&#x2F;title&gt;    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;login.css&quot;&gt;    &lt;script src&#x3D;&quot;fun.js&quot;&gt;&lt;&#x2F;script&gt;    &lt;&#x2F;head&gt;&lt;body&gt;    &lt;table align&#x3D;&quot;center&quot; cellpadding&#x3D;&quot;5px&quot;&gt;        &lt;tr&gt;            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;            &lt;td align&#x3D;&quot;left&quot;&gt;login&lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td align&#x3D;&quot;right&quot;&gt;username:&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; autocomplete&#x3D;&quot;off&quot; placeholder&#x3D;&quot;enter your name&quot;&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td align&#x3D;&quot;left&quot;&gt;password&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;password&quot; placeholder&#x3D;&quot;enter your password&quot;&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;        &lt;tr&gt;            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;            &lt;td&gt;                &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;login&quot; id&#x3D;&quot;login&quot; onclick&#x3D;&quot;login()&quot;&gt;&amp;nbsp;                &lt;a href&#x3D;&quot;reg.html&quot;&gt;register&lt;&#x2F;a&gt;            &lt;&#x2F;td&gt;        &lt;&#x2F;tr&gt;    &lt;&#x2F;table&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;</code></pre><h4 id="css-1"><a href="#css-1" class="headerlink" title="css"></a>css</h4><pre class="line-numbers language-css" data-language="css"><code class="language-css">*&#123;    font-size: 18px;&#125;table&#123;    margin-top: 150px;&#125;tr&#123;    height: 50px;&#125;a&#123;    text-decoration: none;&#125;#login&#123;    background-color: gray;    border-radius: 10px;    box-shadow: 1px 1px 2px 2px #232;&#125;#username&#123;    background-image: url(img&#x2F;user.JPG);    background-repeat: no-repeat;    background-position-x: 5px;    background-position-y: 5px;    height: 30px;    padding-left: 35px;    border: 1px solid gray;    outline: none;&#125;#username:hover&#123;    border: 1px solid purple;&#125;#password&#123;    background-image: url(img&#x2F;password.JPG);    background-repeat: no-repeat;    background-position-x: 5px;    background-position-y: 5px;    height: 30px;    padding-left: 35px;    border: 1px solid gray;    outline: none;&#125;#password:hover&#123;    border: 1px solid purple;&#125;</code></pre><h4 id="js-1"><a href="#js-1" class="headerlink" title="js"></a>js</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function login() &#123;    var username &#x3D; document.getElementById(&quot;username&quot;).value;    var pwd &#x3D; document.getElementById(&quot;password&quot;).value;    if (username &#x3D;&#x3D; &#39;&#39;) &#123;        alert(&quot;username can&#39;t be empty&quot;);        return false;    &#125;    if (pwd &#x3D;&#x3D; &#39;&#39;) &#123;        alert(&quot;password can&#39;t be empty&quot;);        return false;    &#125;    if (localStorage.getItem(&quot;username&quot;)) &#123;        var name &#x3D; localStorage.getItem(&quot;username&quot;).toString();        var pass &#x3D; localStorage.getItem(&quot;password&quot;).toString();        &#x2F;&#x2F; 从本地数据库获取信息,判断是否存在相关信息        if (name &#x3D;&#x3D; username)            if (pwd &#x3D;&#x3D; pass) &#123;                sessionStorage.setItem(&quot;username&quot;, name);                &#x2F;&#x2F; 在临时数据库载入数据,用于临时性判断是否有登录过                alert(&quot;login success&quot;);                window.location.href &#x3D; &quot;index.html&quot;;                            &#125; else &#123;                alert(&quot;wrong password&quot;);            &#125;        else            alert(&quot;wrong username&quot;);    &#125; else &#123;        alert(&quot;username doesn&#39;t exist,please register first&quot;);            &#125;&#125;</code></pre><h3 id="拦截部分"><a href="#拦截部分" class="headerlink" title="拦截部分"></a>拦截部分</h3><h4 id="html-2"><a href="#html-2" class="headerlink" title="html"></a>html</h4><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;    &lt;title&gt;Document&lt;&#x2F;title&gt;    &lt;script src&#x3D;&quot;fun.js&quot;&gt;&lt;&#x2F;script&gt;&lt;&#x2F;head&gt;&lt;body onload&#x3D;&quot;check()&quot;&gt;    &lt;!-- 直接在body部分添加check(),触发函数 --&gt;    &lt;div style&#x3D;&quot;margin: 0 auto;text-align: center;margin-top: 200px;font-size: 32px;&quot; &gt;welcome&lt;&#x2F;div&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;</code></pre><h4 id="js-2"><a href="#js-2" class="headerlink" title="js"></a>js</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function check() &#123;    if (sessionStorage.getItem(&quot;username&quot;)) &#123;        alert(&quot;welcome:&quot;+sessionStorage.getItem(&quot;username&quot;).toString());    &#125; else &#123;        alert(&quot;please login first&quot;);        window.location.href &#x3D; &quot;login.html&quot;;    &#125;    &#x2F;&#x2F; 这个判断起到拦截的作用&#125;</code></pre>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;本次作业是简单实现网页的注册、登录、拦截&lt;/p&gt;
-&lt;h3 id=&quot;注册部分&quot;&gt;&lt;a href=&quot;#注册部分&quot; class=&quot;headerlink&quot; title=&quot;注册部分&quot;&gt;&lt;/a&gt;注册部分&lt;/h3&gt;&lt;h4 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h4&gt;&lt;pre class=&quot;line-numbers language-html&quot; data-language=&quot;html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang&amp;#x3D;&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset&amp;#x3D;&amp;quot;UTF-8&amp;quot;&amp;gt;
-    &amp;lt;meta http-equiv&amp;#x3D;&amp;quot;X-UA-Compatible&amp;quot; content&amp;#x3D;&amp;quot;IE&amp;#x3D;edge&amp;quot;&amp;gt;
-    &amp;lt;meta name&amp;#x3D;&amp;quot;viewport&amp;quot; content&amp;#x3D;&amp;quot;width&amp;#x3D;device-width, initial-scale&amp;#x3D;1.0&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;Document&amp;lt;&amp;#x2F;title&amp;gt;
-    &amp;lt;link rel&amp;#x3D;&amp;quot;stylesheet&amp;quot; href&amp;#x3D;&amp;quot;reg.css&amp;quot;&amp;gt;
-    &amp;lt;script src&amp;#x3D;&amp;quot;fun.js&amp;quot;&amp;gt;&amp;lt;&amp;#x2F;script&amp;gt;    
-&amp;lt;&amp;#x2F;head&amp;gt;
-&amp;lt;body&amp;gt;
-    &amp;lt;table align&amp;#x3D;&amp;quot;center&amp;quot; cellpadding&amp;#x3D;&amp;quot;5px&amp;quot;&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;amp;nbsp;&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td align&amp;#x3D;&amp;quot;left&amp;quot;&amp;gt;register&amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td align&amp;#x3D;&amp;quot;right&amp;quot;&amp;gt;username:&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;input type&amp;#x3D;&amp;quot;text&amp;quot; id&amp;#x3D;&amp;quot;username&amp;quot; autocomplete&amp;#x3D;&amp;quot;off&amp;quot; placeholder&amp;#x3D;&amp;quot;enter your name&amp;quot;&amp;gt;
-            &amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td align&amp;#x3D;&amp;quot;right&amp;quot;&amp;gt;password&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;input type&amp;#x3D;&amp;quot;password&amp;quot; id&amp;#x3D;&amp;quot;password&amp;quot; placeholder&amp;#x3D;&amp;quot;enter your password&amp;quot;&amp;gt;
-            &amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td align&amp;#x3D;&amp;quot;right&amp;quot;&amp;gt;confirm password&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;input type&amp;#x3D;&amp;quot;password&amp;quot; id&amp;#x3D;&amp;quot;repwd&amp;quot; placeholder&amp;#x3D;&amp;quot;confirm your password&amp;quot;&amp;gt;
-            &amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;amp;nbsp;&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;input type&amp;#x3D;&amp;quot;button&amp;quot; value&amp;#x3D;&amp;quot;register&amp;quot; id&amp;#x3D;&amp;quot;register&amp;quot; onclick&amp;#x3D;&amp;quot;reg()&amp;quot;&amp;gt;
-                &amp;lt;a href&amp;#x3D;&amp;quot;login.html&amp;quot;&amp;gt;login&amp;lt;&amp;#x2F;a&amp;gt;
-            &amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-    &amp;lt;&amp;#x2F;table&amp;gt;
-&amp;lt;&amp;#x2F;body&amp;gt;
-&amp;lt;&amp;#x2F;html&amp;gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html lang&amp;#x3D;&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-    &amp;lt;meta charset&amp;#x3D;&amp;quot;UTF-8&amp;quot;&amp;gt;
-    &amp;lt;meta http-equiv&amp;#x3D;&amp;quot;X-UA-Compatible&amp;quot; content&amp;#x3D;&amp;quot;IE&amp;#x3D;edge&amp;quot;&amp;gt;
-    &amp;lt;meta name&amp;#x3D;&amp;quot;viewport&amp;quot; content&amp;#x3D;&amp;quot;width&amp;#x3D;device-width, initial-scale&amp;#x3D;1.0&amp;quot;&amp;gt;
-    &amp;lt;title&amp;gt;Document&amp;lt;&amp;#x2F;title&amp;gt;
-    &amp;lt;link rel&amp;#x3D;&amp;quot;stylesheet&amp;quot; href&amp;#x3D;&amp;quot;reg.css&amp;quot;&amp;gt;
-    &amp;lt;script src&amp;#x3D;&amp;quot;fun.js&amp;quot;&amp;gt;&amp;lt;&amp;#x2F;script&amp;gt;    
-&amp;lt;&amp;#x2F;head&amp;gt;
-&amp;lt;body&amp;gt;
-    &amp;lt;table align&amp;#x3D;&amp;quot;center&amp;quot; cellpadding&amp;#x3D;&amp;quot;5px&amp;quot;&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;amp;nbsp;&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td align&amp;#x3D;&amp;quot;left&amp;quot;&amp;gt;register&amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td align&amp;#x3D;&amp;quot;right&amp;quot;&amp;gt;username:&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;input type&amp;#x3D;&amp;quot;text&amp;quot; id&amp;#x3D;&amp;quot;username&amp;quot; autocomplete&amp;#x3D;&amp;quot;off&amp;quot; placeholder&amp;#x3D;&amp;quot;enter your name&amp;quot;&amp;gt;
-            &amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td align&amp;#x3D;&amp;quot;right&amp;quot;&amp;gt;password&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;input type&amp;#x3D;&amp;quot;password&amp;quot; id&amp;#x3D;&amp;quot;password&amp;quot; placeholder&amp;#x3D;&amp;quot;enter your password&amp;quot;&amp;gt;
-            &amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td align&amp;#x3D;&amp;quot;right&amp;quot;&amp;gt;confirm password&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;input type&amp;#x3D;&amp;quot;password&amp;quot; id&amp;#x3D;&amp;quot;repwd&amp;quot; placeholder&amp;#x3D;&amp;quot;confirm your password&amp;quot;&amp;gt;
-            &amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-        &amp;lt;tr&amp;gt;
-            &amp;lt;td&amp;gt;&amp;amp;nbsp;&amp;lt;&amp;#x2F;td&amp;gt;
-            &amp;lt;td&amp;gt;
-                &amp;lt;input type&amp;#x3D;&amp;quot;button&amp;quot; value&amp;#x3D;&amp;quot;register&amp;quot; id&amp;#x3D;&amp;quot;register&amp;quot; onclick&amp;#x3D;&amp;quot;reg()&amp;quot;&amp;gt;
-                &amp;lt;a href&amp;#x3D;&amp;quot;login.html&amp;quot;&amp;gt;login&amp;lt;&amp;#x2F;a&amp;gt;
-            &amp;lt;&amp;#x2F;td&amp;gt;
-        &amp;lt;&amp;#x2F;tr&amp;gt;
-    &amp;lt;&amp;#x2F;table&amp;gt;
-&amp;lt;&amp;#x2F;body&amp;gt;
-&amp;lt;&amp;#x2F;html&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-
-
-
-&lt;h4 id=&quot;css&quot;&gt;&lt;a href=&quot;#css&quot; class=&quot;headerlink&quot; title=&quot;css&quot;&gt;&lt;/a&gt;css&lt;/h4&gt;&lt;pre class=&quot;line-numbers language-css&quot; data-language=&quot;css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;*&amp;#123;
-    font-size: 18px;
-&amp;#125;
-table&amp;#123;
-    margin-top: 150px;
-&amp;#125;
-tr&amp;#123;
-    height: 50px;
-&amp;#125;
-a&amp;#123;
-    text-decoration: none;
-&amp;#125;
-#register&amp;#123;
-    background-color: gray;
-    border-radius: 10px;
-    box-shadow: 1px 1px 2px 2px #232;
-&amp;#125;
-#username&amp;#123;
-    background-image: url(img&amp;#x2F;user.JPG);
-    background-repeat: no-repeat;
-    background-position-x: 5px;
-    background-position-y: 5px;
-    &amp;#x2F;* 设置背景图,也就是那个用户名头像的位置 *&amp;#x2F;
-    height: 30px;
-    padding-left: 35px;
-    border: 1px solid gray;
-    outline: none;
-&amp;#125;
-#username:hover&amp;#123;
-    border: 1px solid purple;
-&amp;#125;
-#password,#repwd&amp;#123;
-    background-image: url(img&amp;#x2F;password.JPG);
-    background-repeat: no-repeat;
-    background-position-x: 5px;
-    background-position-y: 5px;
-    height: 30px;
-    padding-left: 35px;
-    border: 1px solid gray;
-    outline: none;
-&amp;#125;
-#password:hover,#repwd:hover&amp;#123;
-    border: 1px solid purple;
-&amp;#125;&lt;/code&gt;&lt;/pre&gt;
-
-
-
-&lt;h4 id=&quot;js&quot;&gt;&lt;a href=&quot;#js&quot; class=&quot;headerlink&quot; title=&quot;js&quot;&gt;&lt;/a&gt;js&lt;/h4&gt;&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;function reg() &amp;#123;
-    var username &amp;#x3D; document.getElementById(&amp;quot;username&amp;quot;).value;
-    var pwd &amp;#x3D; document.getElementById(&amp;quot;password&amp;quot;).value;
-    var repwd &amp;#x3D; document.getElementById(&amp;quot;repwd&amp;quot;).value;
-    if (username &amp;#x3D;&amp;#x3D; &amp;#39;&amp;#39;) &amp;#123;
-        alert(&amp;quot;username can&amp;#39;t be empty&amp;quot;);
-        return false;
-    &amp;#125;
-    if (pwd !&amp;#x3D; repwd) &amp;#123;
-        alert(&amp;quot;passwords aren&amp;#39;t the same&amp;quot;);
-        return false;
-    &amp;#125;
-    if (pwd &amp;#x3D;&amp;#x3D; &amp;#39;&amp;#39; || repwd &amp;#x3D;&amp;#x3D; &amp;#39;&amp;#39;) &amp;#123;
-        alert(&amp;quot;password can&amp;#39;t be empty&amp;quot;);
-        return false;
-    &amp;#125;
-    localStorage.setItem(&amp;quot;username&amp;quot;, username);
-    localStorage.setItem(&amp;quot;password&amp;quot;, pwd);
-    &amp;#x2F;&amp;#x2F; 在浏览器本地添加数据
-    alert(&amp;quot;register successful&amp;quot;);
-    window.location.href &amp;#x3D; &amp;quot;login.html&amp;quot;;
-    &amp;#x2F;&amp;#x2F; 跳转到指定界面
-&amp;#125;
-
-&lt;/code&gt;&lt;/pre&gt;
-
-
-
-
-
-&lt;h3 id=&quot;登录部分&quot;&gt;&lt;a href=&quot;#登录部分&quot; class=&quot;headerlink&quot; title=&quot;登录部分&quot;&gt;&lt;/a&gt;登录部分&lt;/h3&gt;&lt;h4 id=&quot;html-1&quot;&gt;&lt;a href=&quot;#html-1&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h4&gt;</summary>
     
     
     
