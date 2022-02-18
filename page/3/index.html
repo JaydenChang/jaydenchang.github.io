@@ -91,9 +91,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">42</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -162,18 +162,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -223,6 +223,268 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0016.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/0x0016.html" class="post-title-link" itemprop="url">网页的注册、登录、拦截</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-20 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-20T00:00:00+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/FrontEnd/" itemprop="url" rel="index"><span itemprop="name">FrontEnd</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/post/0x0016.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0016.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本次作业是简单实现网页的注册、登录、拦截</p>
+<h3 id="注册部分"><a href="#注册部分" class="headerlink" title="注册部分"></a>注册部分</h3><h4 id="html"><a href="#html" class="headerlink" title="html"></a>html</h4><pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;reg.css&quot;&gt;
+    &lt;script src&#x3D;&quot;fun.js&quot;&gt;&lt;&#x2F;script&gt;    
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;table align&#x3D;&quot;center&quot; cellpadding&#x3D;&quot;5px&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;
+            &lt;td align&#x3D;&quot;left&quot;&gt;register&lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr&gt;
+            &lt;td align&#x3D;&quot;right&quot;&gt;username:&lt;&#x2F;td&gt;
+            &lt;td&gt;
+                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; autocomplete&#x3D;&quot;off&quot; placeholder&#x3D;&quot;enter your name&quot;&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr&gt;
+            &lt;td align&#x3D;&quot;right&quot;&gt;password&lt;&#x2F;td&gt;
+            &lt;td&gt;
+                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;password&quot; placeholder&#x3D;&quot;enter your password&quot;&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr&gt;
+            &lt;td align&#x3D;&quot;right&quot;&gt;confirm password&lt;&#x2F;td&gt;
+            &lt;td&gt;
+                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;repwd&quot; placeholder&#x3D;&quot;confirm your password&quot;&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;
+            &lt;td&gt;
+                &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;register&quot; id&#x3D;&quot;register&quot; onclick&#x3D;&quot;reg()&quot;&gt;
+                &lt;a href&#x3D;&quot;login.html&quot;&gt;login&lt;&#x2F;a&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+    &lt;&#x2F;table&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;reg.css&quot;&gt;
+    &lt;script src&#x3D;&quot;fun.js&quot;&gt;&lt;&#x2F;script&gt;    
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;table align&#x3D;&quot;center&quot; cellpadding&#x3D;&quot;5px&quot;&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;
+            &lt;td align&#x3D;&quot;left&quot;&gt;register&lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr&gt;
+            &lt;td align&#x3D;&quot;right&quot;&gt;username:&lt;&#x2F;td&gt;
+            &lt;td&gt;
+                &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; autocomplete&#x3D;&quot;off&quot; placeholder&#x3D;&quot;enter your name&quot;&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr&gt;
+            &lt;td align&#x3D;&quot;right&quot;&gt;password&lt;&#x2F;td&gt;
+            &lt;td&gt;
+                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;password&quot; placeholder&#x3D;&quot;enter your password&quot;&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr&gt;
+            &lt;td align&#x3D;&quot;right&quot;&gt;confirm password&lt;&#x2F;td&gt;
+            &lt;td&gt;
+                &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;repwd&quot; placeholder&#x3D;&quot;confirm your password&quot;&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&amp;nbsp;&lt;&#x2F;td&gt;
+            &lt;td&gt;
+                &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;register&quot; id&#x3D;&quot;register&quot; onclick&#x3D;&quot;reg()&quot;&gt;
+                &lt;a href&#x3D;&quot;login.html&quot;&gt;login&lt;&#x2F;a&gt;
+            &lt;&#x2F;td&gt;
+        &lt;&#x2F;tr&gt;
+    &lt;&#x2F;table&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
+
+
+
+<h4 id="css"><a href="#css" class="headerlink" title="css"></a>css</h4><pre class="line-numbers language-css" data-language="css"><code class="language-css">*&#123;
+    font-size: 18px;
+&#125;
+table&#123;
+    margin-top: 150px;
+&#125;
+tr&#123;
+    height: 50px;
+&#125;
+a&#123;
+    text-decoration: none;
+&#125;
+#register&#123;
+    background-color: gray;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px 2px #232;
+&#125;
+#username&#123;
+    background-image: url(img&#x2F;user.JPG);
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: 5px;
+    &#x2F;* 设置背景图,也就是那个用户名头像的位置 *&#x2F;
+    height: 30px;
+    padding-left: 35px;
+    border: 1px solid gray;
+    outline: none;
+&#125;
+#username:hover&#123;
+    border: 1px solid purple;
+&#125;
+#password,#repwd&#123;
+    background-image: url(img&#x2F;password.JPG);
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: 5px;
+    height: 30px;
+    padding-left: 35px;
+    border: 1px solid gray;
+    outline: none;
+&#125;
+#password:hover,#repwd:hover&#123;
+    border: 1px solid purple;
+&#125;</code></pre>
+
+
+
+<h4 id="js"><a href="#js" class="headerlink" title="js"></a>js</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">function reg() &#123;
+    var username &#x3D; document.getElementById(&quot;username&quot;).value;
+    var pwd &#x3D; document.getElementById(&quot;password&quot;).value;
+    var repwd &#x3D; document.getElementById(&quot;repwd&quot;).value;
+    if (username &#x3D;&#x3D; &#39;&#39;) &#123;
+        alert(&quot;username can&#39;t be empty&quot;);
+        return false;
+    &#125;
+    if (pwd !&#x3D; repwd) &#123;
+        alert(&quot;passwords aren&#39;t the same&quot;);
+        return false;
+    &#125;
+    if (pwd &#x3D;&#x3D; &#39;&#39; || repwd &#x3D;&#x3D; &#39;&#39;) &#123;
+        alert(&quot;password can&#39;t be empty&quot;);
+        return false;
+    &#125;
+    localStorage.setItem(&quot;username&quot;, username);
+    localStorage.setItem(&quot;password&quot;, pwd);
+    &#x2F;&#x2F; 在浏览器本地添加数据
+    alert(&quot;register successful&quot;);
+    window.location.href &#x3D; &quot;login.html&quot;;
+    &#x2F;&#x2F; 跳转到指定界面
+&#125;
+
+</code></pre>
+
+
+
+
+
+<h3 id="登录部分"><a href="#登录部分" class="headerlink" title="登录部分"></a>登录部分</h3><h4 id="html-1"><a href="#html-1" class="headerlink" title="html"></a>html</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/0x0016.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1333,280 +1595,6 @@ a &#123;
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/0x000C.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x000E.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jayden Chang">
-      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jayden's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/0x000E.html" class="post-title-link" itemprop="url">第八次前端作业</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-21T00:00:00+08:00">2021-04-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/FrontEnd/" itemprop="url" rel="index"><span itemprop="name">FrontEnd</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x000E.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x000E.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>第八次前端作业，要求结合div和css来做一个小页面，这个工程有许多小细节，特别是在css中，本次采用内部样式表</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-    &lt;style&gt;
-        *&#123;
-            list-style: none;
-            
-        &#125;
-        .all&#123;
-            margin: 10px;
-            padding: 10px;
-        &#125;
-        .pic&#123;
-            border: 2px solid goldenrod;
-            height: 230px;
-            width: 1200px;
-            
-        &#125;
-        .pic li&#123;
-            float: left;
-            margin: 10px;
-            margin-top: 20px;
-            &#x2F;* margin-top是来限定pic下的li的上边距 *&#x2F;
-        &#125;
-        .pic li p&#123;
-            text-align: center;
-        &#125;
-        &#x2F;* .t1&#123;
-            border: 1px solid goldenrod;
-            height: 20px;
-            width: 500px;
-            position: relative;
-            
-            
-        &#125;
-        .ti li&#123;
-            float: left;
-            margin: 1px;
-        &#125; *&#x2F;
-        .a1&#123;
-            
-            width: 590px;
-            height: 250px;
-            border: 2px solid goldenrod;
-            &#x2F;* 设置边框的粗细 *&#x2F;
-            float: left;
-            &#x2F;* 设置这里的div是为了可以多个div并排 *&#x2F;
-            margin-bottom: 20px;
-        &#125;
-        .a1 div&#123;
-            float: left;
-            &#x2F;* 如果不设置float，那么文字就会飘在父级div下方 *&#x2F;
-        &#125;
-        .a2&#123;
-            width: 250px;
-            height: 280px;
-            border: 2px solid goldenrod;
-            float: left;
-        &#125;
-        .a2 div&#123;
-            margin-top: 30px;
-            margin-left: 15px;
-            line-height: 16px;
-        &#125;
-        .a3&#123;
-            width: 930px;
-            height: 280px;
-            border: 2px solid goldenrod;
-            float: left;
-            margin-left: 50px;
-        &#125;
-        .a3 div&#123;
-            margin-left: 15px;
-            margin-right: 15px;
-            line-height: 26px;
-            &#x2F;* 设置行高，间接设置行间距 *&#x2F;
-        &#125;
-    &lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;div class&#x3D;&quot;all&quot;&gt;
-        &lt;div&gt;
-            &lt;ul class&#x3D;&quot;pic&quot;&gt;
-                &lt;li&gt;
-                    &lt;img src&#x3D;&quot;images&#x2F;i01.jpg&quot; width&#x3D;&quot;150px&quot;&gt;
-                    &lt;p&gt;天街&lt;&#x2F;p&gt;
-                &lt;&#x2F;li&gt;
-                &lt;li&gt;
-                    &lt;img src&#x3D;&quot;images&#x2F;i02.gif&quot; width&#x3D;&quot;216px&quot;&gt;
-                    &lt;p&gt;中天门&lt;&#x2F;p&gt;
-                &lt;&#x2F;li&gt;
-                &lt;li&gt;
-                    &lt;img src&#x3D;&quot;images&#x2F;i03.jpg&quot; width&#x3D;&quot;212px&quot;&gt;
-                    &lt;p&gt;旭日东升&lt;&#x2F;p&gt;
-                &lt;&#x2F;li&gt;
-                &lt;li&gt;
-                    &lt;img src&#x3D;&quot;images&#x2F;i04.jpg&quot; width&#x3D;&quot;242px&quot;&gt;
-                    &lt;p&gt;五岳独尊&lt;&#x2F;p&gt;
-                &lt;&#x2F;li&gt;
-                &lt;li&gt;
-                    &lt;img src&#x3D;&quot;images&#x2F;i05.jpg&quot; width&#x3D;&quot;225px&quot;&gt;
-                    &lt;p&gt;云海玉盘&lt;&#x2F;p&gt;
-                &lt;&#x2F;li&gt;
-            &lt;&#x2F;ul&gt;
-        &lt;&#x2F;div&gt;
-        &lt;br&gt;
-        &lt;div class&#x3D;&quot;a1&quot;&gt;
-            &lt;p style&#x3D;&quot;position: absolute;margin-left:70px;color:black;&quot;&gt;泰山摄影&lt;&#x2F;p&gt;
-                &lt;img src&#x3D;&quot;images&#x2F;bg01.gif&quot; width&#x3D;&quot;590px&quot;&gt;
-                &lt;!-- 这里文字内嵌在图片上方，先把文字放在图片前，再加position，设置absolute，注意设置左边距 --&gt;
-            &lt;div&gt;
-                &lt;img src&#x3D;&quot;images&#x2F;caishixi.jpg&quot; style&#x3D;&quot;margin-top: 20px;margin-left:20px&quot;&gt;
-                &lt;p align&#x3D;&quot;center&quot;&gt;彩石溪&lt;&#x2F;p&gt;
-            &lt;&#x2F;div&gt;
-            &lt;div style&#x3D;&quot;float: left;width:380px;margin-left:10px&quot;&gt;
-                    进入桃花峪，行约2公里，溪中流水之下忽如才是铺就，溪底一条条石纹五彩纷呈，
-                    阳光照耀下，分外生动，这就是著名的“彩石溪”。完完全全的溪水就像是被彩石染上了颜色，
-                    也像是一条五彩的飘带，在此流淌得格外精神。动人的彩石时长引得有人驻足，如果你细心，
-                    就可看见水中的赤鳞鱼。
-            &lt;&#x2F;div&gt;
-            
-        &lt;&#x2F;div&gt;
-        &lt;div class&#x3D;&quot;a1&quot; style&#x3D;&quot;margin-left: 50px;&quot;&gt;
-            &lt;p style&#x3D;&quot;position: absolute;margin-left:70px;color:black;&quot;&gt;景点推荐&lt;&#x2F;p&gt;
-            &lt;img src&#x3D;&quot;images&#x2F;bg02.gif&quot; width&#x3D;&quot;590px&quot;&gt;
-            &lt;div&gt;
-                &lt;img src&#x3D;&quot;images&#x2F;shanziya.jpg&quot;  style&#x3D;&quot;margin-left:10px;margin-top:20px;&quot;&gt;
-                &lt;p align&#x3D;&quot;center&quot; style&#x3D;&quot;margin-top: 5px;&quot;&gt;扇子崖&lt;&#x2F;p&gt;
-            &lt;&#x2F;div&gt;
-            &lt;div style&#x3D;&quot;float:left;width:370px;margin-left:10px;&quot;&gt;
-                位于泰山西溪西侧的扇子崖，奇峰突兀，高耸峻峭，形如扇面，故名。
-				崖上有明人杨博题刻摩崖石刻“仙人掌”。崖西有铁梯，攀援可登崖巅，
-				北眺龙角山，九女寨历历在目，西望傲徕峰尽收眼底。向东俯视，
-				龙潭水库宛若镶嵌在西溪的一颗璀璨的明珠，闪闪发光。清人孙宝僮有诗云：
-				“剑峰怒刺天，积铁拔千仞；俯临鬼谷幽，旁倚丈人峻”，的确写出了扇子崖的风韵。
-            &lt;&#x2F;div&gt;
-        &lt;&#x2F;div&gt;
-        &lt;br&gt;
-        &lt;br&gt;
-        &lt;div class&#x3D;&quot;a2&quot;&gt;
-            &lt;img src&#x3D;&quot;images&#x2F;bg03.gif&quot; width&#x3D;&quot;250px&quot; height&#x3D;&quot;30px&quot; style&#x3D;&quot;position: absolute;z-index: 1;&quot;&gt;
-            &lt;!-- 图片内嵌图片，除了设置position，还要设置z-index，数字越大，越靠近上方 --&gt;
-            &lt;img src&#x3D;&quot;images&#x2F;arrow.gif&quot; style&#x3D;&quot;position:absolute;margin-left:10px;z-index:2&quot;&gt;
-            &lt;p style&#x3D;&quot;position:absolute;float: left;margin-left:60px;margin-top:5px;color:black;z-index:3&quot;&gt;泰山旅游景点&lt;&#x2F;p&gt;
-            &lt;div style&#x3D;&quot;margin-top: 40px;font-size:14px;&quot;&gt;
-                &lt;p&gt;岱庙：宋天贶殿 ……&lt;&#x2F;p&gt;
-				&lt;p&gt;丽区：王母池  ……&lt;&#x2F;p&gt;
-				&lt;p&gt;幽区：岱宗坊  ……&lt;&#x2F;p&gt;
-				&lt;p&gt;妙区：南天门  ……&lt;&#x2F;p&gt;
-				&lt;p&gt;奥区：后石坞 ……&lt;&#x2F;p&gt;
-				&lt;p&gt;旷区：扇子崖  ……&lt;&#x2F;p&gt;
-				&lt;p&gt;秀区：桃花峪 ……&lt;&#x2F;p&gt;
-				&lt;p&gt;奇观：旭日东升 ……&lt;&#x2F;p&gt;
-            &lt;&#x2F;div&gt;
-        &lt;&#x2F;div&gt;
-        &lt;div class&#x3D;&quot;a3&quot;&gt;
-            &lt;p style&#x3D;&quot;position:absolute;margin-left: 70px;margin-top:5px;color:black;font-weight:bolder;&quot;&gt;泰山介绍&lt;&#x2F;p&gt;
-            &lt;img src&#x3D;&quot;images&#x2F;bg05.gif&quot; width&#x3D;&quot;930px&quot; height&#x3D;&quot;30px&quot;&gt;
-            &lt;div style&#x3D;&quot;margin-top: 5px;&quot;&gt;
-                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山突兀而立于华北大平原东侧的齐鲁古国，东临浩波无涯的大海，西靠源远流长、奔流到海不复回的黄河，南有汶、泗、淮之水。纵览东部沿海广大区域，泰山踞高临下、凌驾于齐鲁丘群之上，真正成了茫茫原野上的&quot;东天一柱&quot;。这样，古人们便有了泰山为天下之中心的感觉。&lt;br&gt;
-                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山除了深厚的文化内涵，还具有丰富的自然美，如果我们把风景自然美的形象特征概括为雄、奇、险、秀、幽、奥、旷的话，那么泰山除了从总体上和宏观上具有雄伟的特征外，还在雄中蕴含着奇、险、秀、幽、奥、旷等美的形象。&lt;br&gt;
-                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山风景区内，有山峰156座，崖岭138座，名洞72处，奇石72块，溪谷130条， 瀑潭64处，名泉72眼，古树名木万余株，寺庙58座，古遗址128处，碑碣1239块，摩崖刻石1277处。主要分布在岱阳、岱顶、岱阴及灵岩。&lt;br&gt;
-                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山是一座天然的历史、艺术博物馆，仅在泰山的中轴线上就现存有各种石刻1800余处，有的为帝王亲制，有的出自名流之手，大都文辞优美，书体高雅，制作精巧…… &lt;&#x2F;div&gt;
-            &lt;&#x2F;div&gt;
-
-        &lt;&#x2F;div&gt;
-        &lt;br&gt;&lt;br&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;
-</code></pre>
-
-<p>最后的效果</p>
-<img src="https://jaydenchang.gitee.io/images/images/0x000E.png" style="zoom:70%;">
-
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/0x000E.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

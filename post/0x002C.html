@@ -24,25 +24,33 @@
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jayden&#39;s Blog">
-<meta property="og:url" content="https://jaydenchang.top/archives/page/2/index.html">
+<meta name="description" content="在Cocos2d中拖动组件并吸附到节点中央">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cocos2d拖动组件吸附效果">
+<meta property="og:url" content="https://jaydenchang.top/post/0x002C.html">
 <meta property="og:site_name" content="Jayden&#39;s Blog">
-<meta property="og:description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+<meta property="og:description" content="在Cocos2d中拖动组件并吸附到节点中央">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C-1.png">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_drag_accept.gif">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_drag_refuse.gif">
+<meta property="article:published_time" content="2022-02-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-18T08:21:44.860Z">
 <meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Cocos">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaydenchang.gitee.io/images/images/0x002C-1.png">
 
 
-<link rel="canonical" href="https://jaydenchang.top/archives/page/2/">
+<link rel="canonical" href="https://jaydenchang.top/post/0x002C.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/page/2/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x002C.html","path":"/post/0x002C.html","title":"cocos2d拖动组件吸附效果"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | Jayden's Blog</title>
+<title>cocos2d拖动组件吸附效果 | Jayden's Blog</title>
   
 
 
@@ -72,7 +80,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Jayden's Blog</h1>
+      <p class="site-title">Jayden's Blog</p>
       <i class="logo-line"></i>
     </a>
       <img class="custom-logo-image" src="https://jaydenchang.gitee.io/images/Jayden.jpg" alt="Jayden's Blog">
@@ -137,7 +145,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -150,6 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E5%92%8C%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">定义节点和函数功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">1.2.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -222,234 +231,220 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        
-        <span class="collection-header">OK! 42 posts in total. Keep on posting.</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x002C.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cocos2d拖动组件吸附效果
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-18 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-18T00:00:00+08:00">2022-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Cocos/" itemprop="url" rel="index"><span itemprop="name">Cocos</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/post/0x002C.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x002C.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+            <div class="post-description">在Cocos2d中拖动组件并吸附到节点中央</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <pre class="line-numbers language-none"><code class="language-none"></code></pre>
+
+<p>最近在学习制作小游戏，要实现一个拖动吸附效果，这里简单实现一下</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x002C-1.png' style="zoom:67%;" >
+
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="定义节点和函数功能"><a href="#定义节点和函数功能" class="headerlink" title="定义节点和函数功能"></a>定义节点和函数功能</h5><p>这里用小车来表示要移动的组件，先在<code>onload()</code>内定义小车组件，设置位置，以及定义三个触摸事件函数</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">onload() &#123;
+    this.carPos &#x3D; cc.v2(0, 0);
+    &#x2F;&#x2F; 定义一个触摸移动控件
+    this.node.setPosition(this.carPos.x, this.carPos.y);
+    &#x2F;&#x2F; 对当前节点设置位置
+    this.node.on(&quot;touchstart&quot;, this.touchStart, this);
+    this.node.on(&quot;touchmove&quot;, this.touchMove, this);
+    this.node.on(&quot;touchend&quot;, this.touchEnd, this);
+    &#x2F;&#x2F; 定义三个触摸事件函数
+&#125;</code></pre>
+
+<p>然后就是对三个触摸事件定义</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">touchStart(event) &#123;
+    let touchPos &#x3D; event.getLocation();
+    &#x2F;&#x2F; 获取当前触摸位置
+    let posInNode &#x3D; this.worldConvertLocalPoint(this.node, touchPos);
+    &#x2F;&#x2F; 将当前触摸位置坐标转换为世界坐标
+    let target &#x3D; this.node.getContentSize();
+    &#x2F;&#x2F; 获得当前触摸组件的大小
+    let rect &#x3D; cc.rect(0, 0, target.width, target.height);
+    &#x2F;&#x2F; 对触摸对象组件创建一个矩形对象
+    if (rect.contains(posInNode)) &#123;
+        &#x2F;&#x2F; 判断触摸的位置是否在矩形内
+        this.touchTile &#x3D; this.node;
+        &#x2F;&#x2F; 获取被触摸的对象
+    &#125;
+    console.log(posInNode.x + &quot; &quot; + posInNode.y);
+    &#x2F;&#x2F; 测试，打印当前触摸位置
+&#125;,
+    
+touchMove(event) &#123;
+    if (this.touchTile) &#123;
+        this.touchTile.setPosition(this.touchTile.x + event.getDelta().x ,
+            this.touchTile.y + event.getDelta().y);
+        &#x2F;&#x2F; 根据小车组件移动距离重新给小车定位
+    &#125;
+&#125;,
+
+touchEnd(event) &#123;
+    let touchPos &#x3D; this.touchTile.convertToWorldSpaceAR(cc.v2(0, 0));
+    let posInNode &#x3D; this.worldConvertLocalPoint(this.sense1, touchPos);
+    let target &#x3D; this.sense1.getContentSize();
+    &#x2F;&#x2F; 获取要置放的区域的大小
+    let rect &#x3D; cc.rect(0, 0, target.width, target.height);
+    if (rect.contains(posInNode)) &#123;
+        &#x2F;&#x2F; 判断小车是否落在目标区域的矩形内
+        console.log(&quot;---endPos&quot;);
+        &#x2F;&#x2F; 设置触摸结束后小车的落位坐标
+        let targetPos &#x3D; this.sense1.convertToWorldSpace(cc.v2(0, -this.sense1.height &#x2F; 2));
+        &#x2F;&#x2F; 获取目标区域的中心坐标
+        let action &#x3D; cc.moveTo(0.3, targetPos);
+        &#x2F;&#x2F; 新建一个位移动作，动画持续时间为0.3s
+        this.touchTile.runAction(action);
+        &#x2F;&#x2F; 小车组件执行动作
+    &#125; else &#123;
+        console.log(&quot;----go back&quot;);
+        let action &#x3D; cc.moveTo(0.3, this.carPos);
+        &#x2F;&#x2F; 组件回到小车初始位置
+        this.touchTile.runAction(action);
+    &#125;
+    this.touchTile &#x3D; null;
+    &#x2F;&#x2F; 重置触摸组件为空
+&#125;,
+    
+worldConvertLocalPoint(node, worldPoint) &#123;
+    if (node) &#123;
+        return node.convertToNodeSpace(worldPoint);
+    &#125;
+    return null;
+&#125;</code></pre>
+
+<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><p>拖入目标区域</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x002C_drag_accept.gif' style="zoom:67%;" >
+
+<p>没拖到指定区域</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x002C_drag_refuse.gif' style="zoom:67%;" >
+
+<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45310244/article/details/113854722">(61条消息) CocosCreator的拖动小游戏主要逻辑_天才派大星 !的博客-CSDN博客_cocos creator 拖动</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-20T00:00:00+08:00"
-              content="2021-08-20">
-          08-20
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
       </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x0022.html" itemprop="url">
-            <span itemprop="name">迁移博客</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-16T00:00:00+08:00"
-              content="2021-08-16">
-          08-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x0021.html" itemprop="url">
-            <span itemprop="name">为博客添加评论邮件提醒功能(踩坑全过程)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-07T00:00:00+08:00"
-              content="2021-08-07">
-          08-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x0020.html" itemprop="url">
-            <span itemprop="name">单链表(Java)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-06T00:00:00+08:00"
-              content="2021-08-06">
-          08-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x001F.html" itemprop="url">
-            <span itemprop="name">稀疏数组和队列(数组)</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-04T00:00:00+08:00"
-              content="2021-08-04">
-          08-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x001E.html" itemprop="url">
-            <span itemprop="name">js简单实现拦截访问指定网页</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-20T00:00:00+08:00"
-              content="2021-07-20">
-          07-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x001C.html" itemprop="url">
-            <span itemprop="name">练字时我在想什么</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-18T00:00:00+08:00"
-              content="2021-07-18">
-          07-18
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x001B.html" itemprop="url">
-            <span itemprop="name">接口和包</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-14T00:00:00+08:00"
-              content="2021-07-14">
-          07-14
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x001A.html" itemprop="url">
-            <span itemprop="name">关于面向对象编程</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-08T00:00:00+08:00"
-              content="2021-07-08">
-          07-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x0018.html" itemprop="url">
-            <span itemprop="name">基于css的一些动画</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-21T00:00:00+08:00"
-              content="2021-06-21">
-          06-21
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/0x0017.html" itemprop="url">
-            <span itemprop="name">js轮播图改进版</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-
-    </div>
   </div>
-  
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+</div>
 
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+              <a href="/tags/Cocos/" rel="tag"># Cocos</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x002B.html" rel="prev" title="win10找回Ubuntu启动项(非EasyBCD)">
+                  <i class="fa fa-chevron-left"></i> win10找回Ubuntu启动项(非EasyBCD)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
 </div>
   </main>
 
@@ -519,7 +514,7 @@
 
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/archives/page/2/"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x002C.html"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)

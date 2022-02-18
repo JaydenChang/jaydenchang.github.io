@@ -91,9 +91,9 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="home fa-fw"></i>Home</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">10</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">5</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="th fa-fw"></i>Categories<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>Archives<span class="badge">42</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -162,18 +162,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -223,6 +223,280 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x000E.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jayden Chang">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/0x000E.html" class="post-title-link" itemprop="url">第八次前端作业</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-04-21 00:00:00" itemprop="dateCreated datePublished" datetime="2021-04-21T00:00:00+08:00">2021-04-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/FrontEnd/" itemprop="url" rel="index"><span itemprop="name">FrontEnd</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/post/0x000E.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x000E.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>第八次前端作业，要求结合div和css来做一个小页面，这个工程有许多小细节，特别是在css中，本次采用内部样式表</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+    &lt;style&gt;
+        *&#123;
+            list-style: none;
+            
+        &#125;
+        .all&#123;
+            margin: 10px;
+            padding: 10px;
+        &#125;
+        .pic&#123;
+            border: 2px solid goldenrod;
+            height: 230px;
+            width: 1200px;
+            
+        &#125;
+        .pic li&#123;
+            float: left;
+            margin: 10px;
+            margin-top: 20px;
+            &#x2F;* margin-top是来限定pic下的li的上边距 *&#x2F;
+        &#125;
+        .pic li p&#123;
+            text-align: center;
+        &#125;
+        &#x2F;* .t1&#123;
+            border: 1px solid goldenrod;
+            height: 20px;
+            width: 500px;
+            position: relative;
+            
+            
+        &#125;
+        .ti li&#123;
+            float: left;
+            margin: 1px;
+        &#125; *&#x2F;
+        .a1&#123;
+            
+            width: 590px;
+            height: 250px;
+            border: 2px solid goldenrod;
+            &#x2F;* 设置边框的粗细 *&#x2F;
+            float: left;
+            &#x2F;* 设置这里的div是为了可以多个div并排 *&#x2F;
+            margin-bottom: 20px;
+        &#125;
+        .a1 div&#123;
+            float: left;
+            &#x2F;* 如果不设置float，那么文字就会飘在父级div下方 *&#x2F;
+        &#125;
+        .a2&#123;
+            width: 250px;
+            height: 280px;
+            border: 2px solid goldenrod;
+            float: left;
+        &#125;
+        .a2 div&#123;
+            margin-top: 30px;
+            margin-left: 15px;
+            line-height: 16px;
+        &#125;
+        .a3&#123;
+            width: 930px;
+            height: 280px;
+            border: 2px solid goldenrod;
+            float: left;
+            margin-left: 50px;
+        &#125;
+        .a3 div&#123;
+            margin-left: 15px;
+            margin-right: 15px;
+            line-height: 26px;
+            &#x2F;* 设置行高，间接设置行间距 *&#x2F;
+        &#125;
+    &lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;div class&#x3D;&quot;all&quot;&gt;
+        &lt;div&gt;
+            &lt;ul class&#x3D;&quot;pic&quot;&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i01.jpg&quot; width&#x3D;&quot;150px&quot;&gt;
+                    &lt;p&gt;天街&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i02.gif&quot; width&#x3D;&quot;216px&quot;&gt;
+                    &lt;p&gt;中天门&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i03.jpg&quot; width&#x3D;&quot;212px&quot;&gt;
+                    &lt;p&gt;旭日东升&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i04.jpg&quot; width&#x3D;&quot;242px&quot;&gt;
+                    &lt;p&gt;五岳独尊&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    &lt;img src&#x3D;&quot;images&#x2F;i05.jpg&quot; width&#x3D;&quot;225px&quot;&gt;
+                    &lt;p&gt;云海玉盘&lt;&#x2F;p&gt;
+                &lt;&#x2F;li&gt;
+            &lt;&#x2F;ul&gt;
+        &lt;&#x2F;div&gt;
+        &lt;br&gt;
+        &lt;div class&#x3D;&quot;a1&quot;&gt;
+            &lt;p style&#x3D;&quot;position: absolute;margin-left:70px;color:black;&quot;&gt;泰山摄影&lt;&#x2F;p&gt;
+                &lt;img src&#x3D;&quot;images&#x2F;bg01.gif&quot; width&#x3D;&quot;590px&quot;&gt;
+                &lt;!-- 这里文字内嵌在图片上方，先把文字放在图片前，再加position，设置absolute，注意设置左边距 --&gt;
+            &lt;div&gt;
+                &lt;img src&#x3D;&quot;images&#x2F;caishixi.jpg&quot; style&#x3D;&quot;margin-top: 20px;margin-left:20px&quot;&gt;
+                &lt;p align&#x3D;&quot;center&quot;&gt;彩石溪&lt;&#x2F;p&gt;
+            &lt;&#x2F;div&gt;
+            &lt;div style&#x3D;&quot;float: left;width:380px;margin-left:10px&quot;&gt;
+                    进入桃花峪，行约2公里，溪中流水之下忽如才是铺就，溪底一条条石纹五彩纷呈，
+                    阳光照耀下，分外生动，这就是著名的“彩石溪”。完完全全的溪水就像是被彩石染上了颜色，
+                    也像是一条五彩的飘带，在此流淌得格外精神。动人的彩石时长引得有人驻足，如果你细心，
+                    就可看见水中的赤鳞鱼。
+            &lt;&#x2F;div&gt;
+            
+        &lt;&#x2F;div&gt;
+        &lt;div class&#x3D;&quot;a1&quot; style&#x3D;&quot;margin-left: 50px;&quot;&gt;
+            &lt;p style&#x3D;&quot;position: absolute;margin-left:70px;color:black;&quot;&gt;景点推荐&lt;&#x2F;p&gt;
+            &lt;img src&#x3D;&quot;images&#x2F;bg02.gif&quot; width&#x3D;&quot;590px&quot;&gt;
+            &lt;div&gt;
+                &lt;img src&#x3D;&quot;images&#x2F;shanziya.jpg&quot;  style&#x3D;&quot;margin-left:10px;margin-top:20px;&quot;&gt;
+                &lt;p align&#x3D;&quot;center&quot; style&#x3D;&quot;margin-top: 5px;&quot;&gt;扇子崖&lt;&#x2F;p&gt;
+            &lt;&#x2F;div&gt;
+            &lt;div style&#x3D;&quot;float:left;width:370px;margin-left:10px;&quot;&gt;
+                位于泰山西溪西侧的扇子崖，奇峰突兀，高耸峻峭，形如扇面，故名。
+				崖上有明人杨博题刻摩崖石刻“仙人掌”。崖西有铁梯，攀援可登崖巅，
+				北眺龙角山，九女寨历历在目，西望傲徕峰尽收眼底。向东俯视，
+				龙潭水库宛若镶嵌在西溪的一颗璀璨的明珠，闪闪发光。清人孙宝僮有诗云：
+				“剑峰怒刺天，积铁拔千仞；俯临鬼谷幽，旁倚丈人峻”，的确写出了扇子崖的风韵。
+            &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+        &lt;br&gt;
+        &lt;br&gt;
+        &lt;div class&#x3D;&quot;a2&quot;&gt;
+            &lt;img src&#x3D;&quot;images&#x2F;bg03.gif&quot; width&#x3D;&quot;250px&quot; height&#x3D;&quot;30px&quot; style&#x3D;&quot;position: absolute;z-index: 1;&quot;&gt;
+            &lt;!-- 图片内嵌图片，除了设置position，还要设置z-index，数字越大，越靠近上方 --&gt;
+            &lt;img src&#x3D;&quot;images&#x2F;arrow.gif&quot; style&#x3D;&quot;position:absolute;margin-left:10px;z-index:2&quot;&gt;
+            &lt;p style&#x3D;&quot;position:absolute;float: left;margin-left:60px;margin-top:5px;color:black;z-index:3&quot;&gt;泰山旅游景点&lt;&#x2F;p&gt;
+            &lt;div style&#x3D;&quot;margin-top: 40px;font-size:14px;&quot;&gt;
+                &lt;p&gt;岱庙：宋天贶殿 ……&lt;&#x2F;p&gt;
+				&lt;p&gt;丽区：王母池  ……&lt;&#x2F;p&gt;
+				&lt;p&gt;幽区：岱宗坊  ……&lt;&#x2F;p&gt;
+				&lt;p&gt;妙区：南天门  ……&lt;&#x2F;p&gt;
+				&lt;p&gt;奥区：后石坞 ……&lt;&#x2F;p&gt;
+				&lt;p&gt;旷区：扇子崖  ……&lt;&#x2F;p&gt;
+				&lt;p&gt;秀区：桃花峪 ……&lt;&#x2F;p&gt;
+				&lt;p&gt;奇观：旭日东升 ……&lt;&#x2F;p&gt;
+            &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+        &lt;div class&#x3D;&quot;a3&quot;&gt;
+            &lt;p style&#x3D;&quot;position:absolute;margin-left: 70px;margin-top:5px;color:black;font-weight:bolder;&quot;&gt;泰山介绍&lt;&#x2F;p&gt;
+            &lt;img src&#x3D;&quot;images&#x2F;bg05.gif&quot; width&#x3D;&quot;930px&quot; height&#x3D;&quot;30px&quot;&gt;
+            &lt;div style&#x3D;&quot;margin-top: 5px;&quot;&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山突兀而立于华北大平原东侧的齐鲁古国，东临浩波无涯的大海，西靠源远流长、奔流到海不复回的黄河，南有汶、泗、淮之水。纵览东部沿海广大区域，泰山踞高临下、凌驾于齐鲁丘群之上，真正成了茫茫原野上的&quot;东天一柱&quot;。这样，古人们便有了泰山为天下之中心的感觉。&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山除了深厚的文化内涵，还具有丰富的自然美，如果我们把风景自然美的形象特征概括为雄、奇、险、秀、幽、奥、旷的话，那么泰山除了从总体上和宏观上具有雄伟的特征外，还在雄中蕴含着奇、险、秀、幽、奥、旷等美的形象。&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山风景区内，有山峰156座，崖岭138座，名洞72处，奇石72块，溪谷130条， 瀑潭64处，名泉72眼，古树名木万余株，寺庙58座，古遗址128处，碑碣1239块，摩崖刻石1277处。主要分布在岱阳、岱顶、岱阴及灵岩。&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;泰山是一座天然的历史、艺术博物馆，仅在泰山的中轴线上就现存有各种石刻1800余处，有的为帝王亲制，有的出自名流之手，大都文辞优美，书体高雅，制作精巧…… &lt;&#x2F;div&gt;
+            &lt;&#x2F;div&gt;
+
+        &lt;&#x2F;div&gt;
+        &lt;br&gt;&lt;br&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+</code></pre>
+
+<p>最后的效果</p>
+<img src="https://jaydenchang.gitee.io/images/images/0x000E.png" style="zoom:70%;">
+
+
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/post/0x000E.html#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2148,104 +2422,6 @@ int main()
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/0x0003.html#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0002.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jayden Chang">
-      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jayden's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/0x0002.html" class="post-title-link" itemprop="url">2020年度总结</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-12-30 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-30T00:00:00+08:00">2020-12-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="far fa-comment"></i>
-    </span>
-    <span class="post-meta-item-text">Valine: </span>
-  
-    <a title="valine" href="/post/0x0002.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0002.html" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="年报"><a href="#年报" class="headerlink" title="年报"></a>年报</h1><p>2020是奇幻的一年，犹记得刚放寒假时，就听到了科比不幸逝世的噩耗，心里为之震撼，然后就是牵动全国人民的心的新冠疫情，总的来说，我的上半年并没有很认真，没有做到最好，所幸，还有老番茄和何无空的大学的开挂之旅激励着我。</p>
-<p>进入大学后，首先要感谢世豪师兄，他把我点上台唱歌[Facepalm]，开启了我大学的奇幻之旅，先是军训时的连队负责人(算半个)，然后到军训合唱团的指挥，不断尝试新事物。军训期间面试了两个组织部门，都没过一面，让我开始反思自己。军训后，面试了三个组织部门，都过了一面，再三考虑，还是选择了软件协会，然而我的二面经历是坎坷的，让我想不到的是，二面居然玩剧本杀，让我提前体验到社会的险恶，其他同学都有着自己的小心思，各种尔虞我诈，我被各种骗得团团转，最后应该是靠着嘴皮子功夫进了信宣部吧(逃)。大学竞选班长兼团支书，让我体验到了前所未有的忙。然后就是接下来的各种活动，班长嘛，肯定要第一个上的，于是我就担任了主持人，负责人，运动员，班赛球队队员，摄影师(虽然也没拍多少照)，文案撰写等，以至于其他班班长说9班班长是”全能班长”[Facepalm]，渐渐地我也开始摸索出一条摸鱼(划掉)高效率的工作模式，这样下来，确实腾出了许多时间。当了班长，就要有很多次上台发言、向其他班展示的情况，我企图在这些环节来改善我语速过快的缺点，但是我太天真了，效果甚微，还是只能从最基本的读书做起[Hurt]。加入了一个部门，认识了很多大佬，活也不多(划掉)，工作分配很合理，真正意义上接触了公众号，了解了公众号的一些基本信息(后来发现部门的男生就我不知道这些[Hurt])，总的来说，在这个部门还是很快乐的。回望这三个月，因为当了班长，我很多时间被占用了，包括周末用来打球的时间，全部被分配去收集、整理、填写资料，但有个好处是，我终于不会那么闲了，一闲下来就不知道要干什么，还有ddl的出现，让我提高了办事效率[Hurt]。大学里进行了多次团建，让我印象最深刻的一次是整个软协出去团建，当时只有我傻乎乎地说要骑单车回去，结果没想到mobike在佛山的运营区域还是分开的，当时我心急如焚找不到下策，只好乖乖等公车，所幸，都搭上了末班车，也算是给自己一次教训。这学期里认识了好多有趣的人，包括其他班的班长以及其他部门的人，他们都说自己是蒟蒻，结果我发现只有我才是蒟蒻[Hurt]。</p>
-<p>在过去一年里，我总是太在意别人的看法，经常因为别人一句话而彻夜不眠，今年，忘却昨日的功与过，踏踏实实做好一个班长，认认真真写好每一篇信宣推文，多参加比赛，让自己的大一不留遗憾。</p>
-<p>2021我也不立那么多flag，以前立的就没拔出过几个，2021就不立了，好好学习，朝着藏在自己心里的那个目标继续前进！</p>
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/post/0x0002.html#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
