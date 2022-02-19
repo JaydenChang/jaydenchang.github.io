@@ -34,8 +34,12 @@
 <meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C-1.png">
 <meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_drag_accept.gif">
 <meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_drag_refuse.gif">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_xOy.png">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_xOy_detail.png">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_without_correct.gif">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_correct.gif">
 <meta property="article:published_time" content="2022-02-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-18T08:32:34.331Z">
+<meta property="article:modified_time" content="2022-02-19T07:10:39.664Z">
 <meta property="article:author" content="Jayden Chang">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="Cocos">
@@ -158,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E5%92%8C%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">定义节点和函数功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">1.2.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E5%92%8C%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">定义节点和函数功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="nav-number">1.2.</span> <span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%AD%A3"><span class="nav-number">1.3.</span> <span class="nav-text">修正</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -313,11 +317,23 @@
         <p>最近在学习制作小游戏，要实现一个拖动吸附效果，这里简单实现一下</p>
 <img src='https://jaydenchang.gitee.io/images/images/0x002C-1.png' style="zoom:67%;" >
 
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="定义节点和函数功能"><a href="#定义节点和函数功能" class="headerlink" title="定义节点和函数功能"></a>定义节点和函数功能</h5><p>这里用小车来表示要移动的组件，先在<code>onload()</code>内定义小车组件，设置位置，以及定义三个触摸事件函数</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="定义节点和函数功能"><a href="#定义节点和函数功能" class="headerlink" title="定义节点和函数功能"></a>定义节点和函数功能</h5><p>在<code>properties</code>里新建一个对象，用来接收目标区域的节点</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">properties:&#123;
+    sense: &#123;
+        defaule: null,
+        type: cc.Node,
+    &#125;
+&#125;</code></pre>
+
+<p>然后在小车节点里绑定这个脚本，将要测试的目标节点拖动到属性检查器的<code>sense</code></p>
+<p>这里用小车来表示要移动的组件，先在<code>onload()</code>内定义小车组件，设置位置，以及定义三个触摸事件函数</p>
 <pre class="line-numbers language-js" data-language="js"><code class="language-js">onload() &#123;
     this.carPos &#x3D; cc.v2(0, 0);
     &#x2F;&#x2F; 定义一个触摸移动控件
     this.node.setPosition(this.carPos.x, this.carPos.y);
+    this.origin &#x3D; this.node.convertToWorldSpace(cc.v2(0, 0));
+    &#x2F;&#x2F; 获取小车移动前的坐标
+    
     &#x2F;&#x2F; 对当前节点设置位置
     this.node.on(&quot;touchstart&quot;, this.touchStart, this);
     this.node.on(&quot;touchmove&quot;, this.touchMove, this);
@@ -356,13 +372,15 @@ touchEnd(event) &#123;
     let touchPos &#x3D; this.touchTile.convertToWorldSpaceAR(cc.v2(0, 0));
     let posInNode &#x3D; this.worldConvertLocalPoint(this.sense1, touchPos);
     let target &#x3D; this.sense1.getContentSize();
+    &#x2F;&#x2F; 定义坐标修正值
+    let correctValue &#x3D; cc.v2(this.sense.width &#x2F; 2  - this.origin.x - this.node.width &#x2F; 2, this.sense.height &#x2F; 2 - this.origin.y - this.node.height &#x2F; 2);
     &#x2F;&#x2F; 获取要置放的区域的大小
     let rect &#x3D; cc.rect(0, 0, target.width, target.height);
     if (rect.contains(posInNode)) &#123;
         &#x2F;&#x2F; 判断小车是否落在目标区域的矩形内
         console.log(&quot;---endPos&quot;);
         &#x2F;&#x2F; 设置触摸结束后小车的落位坐标
-        let targetPos &#x3D; this.sense1.convertToWorldSpace(cc.v2(0, -this.sense1.height &#x2F; 2));
+        let targetPos &#x3D; this.sense1.convertToWorldSpace(cc.v2(correctValue));
         &#x2F;&#x2F; 获取目标区域的中心坐标
         let action &#x3D; cc.moveTo(0.3, targetPos);
         &#x2F;&#x2F; 新建一个位移动作，动画持续时间为0.3s
@@ -385,12 +403,33 @@ worldConvertLocalPoint(node, worldPoint) &#123;
     return null;
 &#125;</code></pre>
 
-<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><p>拖入目标区域</p>
+<h5 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h5><p>拖入目标区域</p>
 <img src='https://jaydenchang.gitee.io/images/images/0x002C_drag_accept.gif' style="zoom:67%;" >
 
 <p>没拖到指定区域</p>
 <img src='https://jaydenchang.gitee.io/images/images/0x002C_drag_refuse.gif' style="zoom:67%;" >
 
+<h5 id="修正"><a href="#修正" class="headerlink" title="修正"></a>修正</h5><p>这里要把小车放到目标区域的正中心，需要对坐标进行修正。在cocos creator里，有节点坐标和世界坐标这两个概念</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x002C_xOy.png' style="zoom:67%;" >
+
+<p>而在属性检查器里，我们所设置的<code>position</code>，也就是锚点的位置，是相对于父节点的，例如图中我把<code>position</code>设为0和0，就是相对于父节点，该组件定位在父节点的几何中心。</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x002C_xOy_detail.png' style="zoom:67%;" >
+
+<p>那么，哪些坐标值和最终放置的位置坐标有关联呢？</p>
+<ul>
+<li>小车初始坐标值</li>
+<li>小车组件的长宽</li>
+<li>目标区域的长宽</li>
+</ul>
+<p>在没有修正之前，把<code>targetPos</code>的值设为<code>this.sense.convertToWorldSpace(cc.v2(0, 0))</code>，拖动后的效果如下图</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x002C_without_correct.gif' style="zoom:67%;" >
+
+<p>并且log打印目标位置的坐标，水平值离屏幕宽度一半还有一定的差距，这时我又打印了拖动结束后小车的坐标值，好家伙，我轻点小车没有拖动，控制台输出的坐标值为<code>(0,0)</code>，而图中很明显，小车的位置不在世界坐标的原点上，即此时小车的坐标参照点为小车的初始位置</p>
+<p>那问题来了，怎么修正？</p>
+<p>只需在<code>onload()</code>中定义一个变量储存小车的世界坐标值<br> <code>this.origin = this.node.convertToWorldSpace(cc.v2(0, 0))</code>，然后在<code>touchEnd()</code>中新定义一个向量值<code>correctValue</code>，新建一个向量<code>cc.v2(-this.origin.x, -this.origin.y)</code>，并返回给<code>correctValue</code>，再将<code>correctValue</code>转化为世界坐标赋给<code>targetPos</code>，此时小车会自动吸附到目标区域左下角，展现的效果如下</p>
+<img src='https://jaydenchang.gitee.io/images/images/0x002C_correct.gif' style="zoom:67%;" >
+
+<p>如果要把小车定位到目标区域的正中央，还需要考虑小车组件和目标区域的长宽，相应地，<code>correctValue</code>应该设为<code>cc.v2(this.sense.width / 2 - this.node.width / 2 - this.origin.x, this.sense.height / 2 - this.node.height / 2 - this.origin.y)</code></p>
 <h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45310244/article/details/113854722">(61条消息) CocosCreator的拖动小游戏主要逻辑_天才派大星 !的博客-CSDN博客_cocos creator 拖动</a></p>
 
     </div>
