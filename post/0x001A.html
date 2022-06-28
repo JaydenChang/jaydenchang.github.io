@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
@@ -15,20 +16,20 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="暑假预习Java，这里总结下面向对象中Java和C++一些不一样的地方 super();class person &amp;#123;     protected int age;      public person(int age) &amp;#123;         this.age &#x3D; age;     &amp;#125; &amp;#125;  class student extends person &amp;">
+    <meta name="description" content="暑假预习Java，这里总结下面向对象中Java和C++一些不一样的地方 super(); class person &amp;#123;     protected int age;      public person(int age) &amp;#123;         this.age &#x3D; age;     &amp;#125; &amp;#125;  class student extends perso">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于面向对象编程">
 <meta property="og:url" content="https://jaydenchang.top/post/0x001A.html">
 <meta property="og:site_name" content="Jayden&#39;s Blog">
-<meta property="og:description" content="暑假预习Java，这里总结下面向对象中Java和C++一些不一样的地方 super();class person &amp;#123;     protected int age;      public person(int age) &amp;#123;         this.age &#x3D; age;     &amp;#125; &amp;#125;  class student extends person &amp;">
+<meta property="og:description" content="暑假预习Java，这里总结下面向对象中Java和C++一些不一样的地方 super(); class person &amp;#123;     protected int age;      public person(int age) &amp;#123;         this.age &#x3D; age;     &amp;#125; &amp;#125;  class student extends perso">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-07-13T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-12-06T12:31:35.097Z">
@@ -55,7 +56,7 @@
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 <link rel="alternate" href="/atom.xml" title="Jayden's Blog" type="application/atom+xml">
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
@@ -78,7 +79,6 @@
       <p class="site-title">Jayden's Blog</p>
       <i class="logo-line"></i>
     </a>
-      <img class="custom-logo-image" src="https://jaydenchang.gitee.io/images/Jayden.jpg" alt="Jayden's Blog">
   </div>
 
   <div class="site-nav-right">
@@ -91,13 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">6</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">43</span></a></li>
-        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">43</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -160,11 +154,11 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jayden Chang"
+      src="https://jaydenchang.gitee.io/images/Jayden.jpg">
   <p class="site-author-name" itemprop="name">Jayden Chang</p>
   <div class="site-description" itemprop="description">身在井隅，心向星光。眼中有诗，自在远方。</div>
 </div>
-
-
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
@@ -249,7 +243,7 @@
     <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x001A.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://jaydenchang.gitee.io/images/Jayden.jpg">
       <meta itemprop="name" content="Jayden Chang">
     </span>
 
@@ -257,7 +251,7 @@
       <meta itemprop="name" content="Jayden's Blog">
       <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
     </span>
-    
+
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="关于面向对象编程 | Jayden's Blog">
       <meta itemprop="description" content="">
@@ -319,7 +313,8 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>暑假预习Java，这里总结下面向对象中Java和C++一些不一样的地方</p>
-<h3 id="super"><a href="#super" class="headerlink" title="super();"></a><code>super();</code></h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">class person &#123;
+<h3 id="super"><code>super();</code></h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class person &#123;
     protected int age;
 
     public person(int age) &#123;
@@ -335,22 +330,22 @@ class student extends person &#123;
         this.score &#x3D; score;
     &#125;
 &#125;</code></pre>
-
 <p>如果没有使用super，会得到一个编译错误，在student的构造方法中，无法调用person的构造方法</p>
 <p>在java里，任何class的构造方法，第一行必须调用父类的构造方法，如果没有明确地调用父类的构造方法，编译器会自动加一句<code>super();</code>，but，这个super里没有参数，父类里没有无参数的构造方法，故编译失败，因此，需要把注释去掉，加上正确的super语句</p>
-<h3 id="阻止继承"><a href="#阻止继承" class="headerlink" title="阻止继承"></a>阻止继承</h3><h4 id="官方版"><a href="#官方版" class="headerlink" title="官方版"></a>官方版</h4><blockquote>
+<h3 id="阻止继承">阻止继承</h3>
+<h4 id="官方版">官方版</h4>
+<blockquote>
 <p>aa.java</p>
 </blockquote>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">public final class aa&#123;&#x2F;* code *&#x2F;&#125;</code></pre>
-
 <p>用<code>final</code>来修饰指定类</p>
 <blockquote>
 <p>bb.java</p>
 </blockquote>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">public class bb extends aa&#123;&#x2F;* code *&#x2F;&#125;</code></pre>
-
 <p>编译完第一个类后再编译第二个类，JDK编译器会报错，编译器会在extends处提示错误</p>
-<h4 id="非官方版"><a href="#非官方版" class="headerlink" title="非官方版"></a>非官方版</h4><blockquote>
+<h4 id="非官方版">非官方版</h4>
+<blockquote>
 <p>aa.java</p>
 </blockquote>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">public class aa&#123;
@@ -359,9 +354,9 @@ class student extends person &#123;
         return new aa();
     &#125;
 &#125;</code></pre>
-
 <p>Java在继承时必须在构造器里的第一行调用super class的构造器。当父类构造器设为private权限时，其他类继承这个类时，编译器会尝试调用一个默认的super构造器，而super构造器时private的，就不能被调用，也就是不能被继承。</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><blockquote>
+<h3 id="多态">多态</h3>
+<blockquote>
 <p>aa.java</p>
 </blockquote>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">public class aa&#123;
@@ -383,7 +378,6 @@ class student&#123;
         System.out.print(&quot;student.run&quot;);
     &#125;
 &#125;</code></pre>
-
 <p>下面是一个报税的例子</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">public class aa &#123;
     public static void main(String[] args) &#123;
@@ -437,8 +431,8 @@ class allowance extends income &#123;
         return 0;
     &#125;
 &#125;</code></pre>
-
-<h3 id="调用super"><a href="#调用super" class="headerlink" title="调用super"></a>调用super</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">class person&#123;
+<h3 id="调用super">调用super</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class person&#123;
     protected String name;
     public String hello()&#123;
         return &quot;hello, &quot; + name;
@@ -451,8 +445,8 @@ class student extends person&#123;
         return super.hello() + &quot;!&quot;;
     &#125;
 &#125;</code></pre>
-
-<h3 id="final"><a href="#final" class="headerlink" title="final"></a>final</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">class aa&#123;
+<h3 id="final">final</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class aa&#123;
     public final String fun()&#123;&#x2F;**&#x2F;&#125;
 &#125;
 class bb&#123;
@@ -461,17 +455,15 @@ class bb&#123;
     &#x2F;&#x2F;父类成员用final修饰，子类不能重写
     &#x2F;&#x2F;final修饰类，类不能被继承，final修饰变量，变量必须初始化
 &#125;</code></pre>
-
-<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;定义一个抽象类
+<h3 id="抽象类">抽象类</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F;定义一个抽象类
 class person&#123;
     public abstract void fun();
 &#125;</code></pre>
-
 <p>把一个方法声明为abstract，提示编译错误，无法编译person类，因为它包含抽象方法，所以必须把person也声明为abstract，这就叫抽象类</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">abstract class person&#123;
     public abstract void fun();
 &#125;</code></pre>
-
 <p>但是，对于person类，我们无法使他实例化，即在main中执行<code>person p = new person();</code></p>
 <p>因此，抽象类一般被设计来继承</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">public class aa &#123;
@@ -497,16 +489,14 @@ class teacher extends person&#123;
         System.out.println(&quot;teacher.fun&quot;);
     &#125;
 &#125;</code></pre>
-
 <p>如上例子，person定义了抽象方法<code>fun()</code>，那么在实现子类时，就必须覆写<code>run()</code></p>
-<h3 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h3><p>刚才定义了抽象类<code>person()</code>，以及具体的student、teacher的子类，我们可以通过抽象类person去引用具体的子类</p>
+<h3 id="面向对象编程">面向对象编程</h3>
+<p>刚才定义了抽象类<code>person()</code>，以及具体的student、teacher的子类，我们可以通过抽象类person去引用具体的子类</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">person s &#x3D; new student();
 person t &#x3D; new teacher();</code></pre>
-
 <p>这种引用抽象类的好处在于，我们调用其方法，并不关心person类型变量的具体子类型</p>
 <pre class="line-numbers language-none"><code class="language-none">s.fun();
 t.fun();</code></pre>
-
 <p>同样的，我们再用用一个新的子类，我们仍不关心具体类型。</p>
 <p>因此，这种尽量引用高层类型，避免引用实际子类型的方式，叫面向对象编程</p>
 <p>三个本质</p>
@@ -515,9 +505,9 @@ t.fun();</code></pre>
 <li>不需要子类就可以实现业务逻辑(正常编译)</li>
 <li>实现的业务逻辑由不同的子类实现，调用者并不关心</li>
 </ul>
-<p>:::tip</p>
+<div class="tip">
 <p>一个java文件里只能有一个public类</p>
-<p>:::</p>
+</div>
 <p><del>感觉我的面向对象编程是在Java里学的</del></p>
 
     </div>
@@ -608,17 +598,15 @@ t.fun();</code></pre>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
-
-
     </div>
   </footer>
 
   
   <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha256-c9n/9oG7sBeCouNZfRg5tO8VCCQXGPLiDPJNaF5Qgic=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-RtKI23ujTCOg3jNK74NK61WGNYbtBWcqh6UKebC2AQo=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-K837BwIyiXo5k/9fCYgqUyA14bN4/Ve9P2SIT0KmZD0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js" integrity="sha256-4mJNT2bMXxcc1GCJaxBmMPdmah5ji0Ldnd79DKd1hoM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-dL6vkUiCn30lPTN9cVrmQHo5UQmEwDMrx2ppAk4IhVk=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-9cmf7tcLdXpKsPi/2AWE93PbZpTp4M4tqzFk+lWomjU=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
@@ -642,7 +630,7 @@ t.fun();</code></pre>
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":"enable","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":"enable","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
@@ -653,7 +641,7 @@ t.fun();</code></pre>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
     .then(() => NexT.utils.getScript(
-      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
       { condition: window.Valine }
     ))
     .then(() => {
@@ -661,7 +649,7 @@ document.addEventListener('page:loaded', () => {
     });
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 
 <script>
 var options = {

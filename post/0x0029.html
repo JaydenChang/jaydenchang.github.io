@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.1">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
@@ -15,13 +16,13 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" integrity="sha256-jTIdiMuX/e3DGJUGwl3pKSxuc6YOuqtJYkM0bGQESA4=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="填坑系列之图，整理了数据结构无向图、最小生成树(Prim和Dijkstra)">
 <meta property="og:type" content="article">
@@ -56,7 +57,7 @@
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 <link rel="alternate" href="/atom.xml" title="Jayden's Blog" type="application/atom+xml">
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
@@ -79,7 +80,6 @@
       <p class="site-title">Jayden's Blog</p>
       <i class="logo-line"></i>
     </a>
-      <img class="custom-logo-image" src="https://jaydenchang.gitee.io/images/Jayden.jpg" alt="Jayden's Blog">
   </div>
 
   <div class="site-nav-right">
@@ -92,13 +92,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">6</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">43</span></a></li>
-        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">11</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">6</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">43</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -155,17 +149,17 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E5%90%91%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">无向图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B9%BF%E6%90%9C%E5%92%8C%E6%B7%B1%E6%90%9C"><span class="nav-number">1.3.</span> <span class="nav-text">广搜和深搜</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">主函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%8F%8A%E5%85%B6%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="nav-number">1.5.</span> <span class="nav-text">测试用例及其邻接矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">1.6.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prim"><span class="nav-number">2.</span> <span class="nav-text">prim</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-1"><span class="nav-number">2.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#prim%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.3.</span> <span class="nav-text">prim代码实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%8F%8A%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="nav-number">2.4.</span> <span class="nav-text">测试用例及邻接矩阵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dijkstra"><span class="nav-number">3.</span> <span class="nav-text">Dijkstra</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-2"><span class="nav-number">3.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-2"><span class="nav-number">3.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E6%90%9C%E5%92%8C%E5%B9%BF%E6%90%9C"><span class="nav-number">3.3.</span> <span class="nav-text">深搜和广搜</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dijkstra-1"><span class="nav-number">3.4.</span> <span class="nav-text">Dijkstra</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%8F%8A%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5-1"><span class="nav-number">3.5.</span> <span class="nav-text">测试用例及邻接矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.6.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E5%90%91%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">无向图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B9%BF%E6%90%9C%E5%92%8C%E6%B7%B1%E6%90%9C"><span class="nav-number">1.3.</span> <span class="nav-text">广搜和深搜</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">主函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%8F%8A%E5%85%B6%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="nav-number">1.5.</span> <span class="nav-text">测试用例及其邻接矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">1.6.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prim"><span class="nav-number">2.</span> <span class="nav-text">prim</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-1"><span class="nav-number">2.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#prim%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.3.</span> <span class="nav-text">prim代码实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%8F%8A%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="nav-number">2.4.</span> <span class="nav-text">测试用例及邻接矩阵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dijkstra"><span class="nav-number">3.</span> <span class="nav-text">Dijkstra</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-2"><span class="nav-number">3.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-2"><span class="nav-number">3.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E6%90%9C%E5%92%8C%E5%B9%BF%E6%90%9C"><span class="nav-number">3.3.</span> <span class="nav-text">深搜和广搜</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#dijkstra-1"><span class="nav-number">3.4.</span> <span class="nav-text">Dijkstra</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%8F%8A%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5-1"><span class="nav-number">3.5.</span> <span class="nav-text">测试用例及邻接矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.6.</span> <span class="nav-text">完整代码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jayden Chang"
+      src="https://jaydenchang.gitee.io/images/Jayden.jpg">
   <p class="site-author-name" itemprop="name">Jayden Chang</p>
   <div class="site-description" itemprop="description">身在井隅，心向星光。眼中有诗，自在远方。</div>
 </div>
-
-
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
@@ -250,7 +244,7 @@
     <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0029.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://jaydenchang.gitee.io/images/Jayden.jpg">
       <meta itemprop="name" content="Jayden Chang">
     </span>
 
@@ -258,7 +252,7 @@
       <meta itemprop="name" content="Jayden's Blog">
       <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
     </span>
-    
+
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
       <meta itemprop="name" content="数据结构-图及最小生成树 | Jayden's Blog">
       <meta itemprop="description" content="填坑系列之图，整理了数据结构无向图、最小生成树(Prim和Dijkstra)">
@@ -322,7 +316,9 @@
     <div class="post-body" itemprop="articleBody">
         <p>好久没更了 <del>其实摸鱼摸太久了</del>，当然也是最近太多事，一直没有时间去打理博客，趁着周末有空，来整理下图部分的内容</p>
 <p>这里来总结下无向图、最小生成树(prim和Dijkstra)算法</p>
-<h4 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h4><h5 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int maxSize &#x3D; 100;
+<h4 id="无向图">无向图</h4>
+<h5 id="结构">结构</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int maxSize &#x3D; 100;
 int visited[maxSize] &#x3D; &#123;0&#125;; &#x2F;&#x2F; 到后面发现，visited在无向图中设计的是真的巧妙
 template &lt;class DataType&gt;
 class MGraph &#123;
@@ -337,8 +333,8 @@ class MGraph &#123;
      int edge[maxSize][maxSize]; &#x2F;&#x2F; 存放图中边的数组
      int vertexNum, edgeNum; &#x2F;&#x2F; 图中的顶点数和变数
 &#125;;</code></pre>
-
-<h5 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
+<h5 id="构造函数">构造函数</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
 MGraph&lt;DataType&gt;::MGraph(DataType a[], int n, int e) &#123;
     int i, j, k;
     vertexNum &#x3D; n;
@@ -357,8 +353,8 @@ MGraph&lt;DataType&gt;::MGraph(DataType a[], int n, int e) &#123;
         edge[j][i] &#x3D; 1;
     &#125;
 &#125;</code></pre>
-
-<h5 id="广搜和深搜"><a href="#广搜和深搜" class="headerlink" title="广搜和深搜"></a>广搜和深搜</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
+<h5 id="广搜和深搜">广搜和深搜</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
 void MGraph&lt;DataType&gt;::DFS(int v) &#123;
     cout &lt;&lt; vertex[v];
     visited[v] &#x3D; 1;
@@ -390,8 +386,8 @@ void MGraph&lt;DataType&gt;::BFS(int v) &#123;
         &#125;
     &#125;
 &#125;</code></pre>
-
-<h5 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main() &#123;
+<h5 id="主函数">主函数</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int main() &#123;
     char ch[] &#x3D; &#123;&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;&#125;;
     MGraph&lt;char&gt; MG(ch, 6, 6);
     for (int i &#x3D; 0; i &lt; maxSize; i++) &#123;
@@ -403,15 +399,14 @@ void MGraph&lt;DataType&gt;::BFS(int v) &#123;
     cout &lt;&lt; &quot;BFS order: \n&quot;;
     MG.BFS(0);
 &#125;</code></pre>
-
-<h5 id="测试用例及其邻接矩阵"><a href="#测试用例及其邻接矩阵" class="headerlink" title="测试用例及其邻接矩阵"></a>测试用例及其邻接矩阵</h5><p>测试数据</p>
+<h5 id="测试用例及其邻接矩阵">测试用例及其邻接矩阵</h5>
+<p>测试数据</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">0 1
 0 2
 0 5
 1 2
 1 4
 3 4</code></pre>
-
 <p>邻接矩阵</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">   0 1 2 3 4 5 
 0&#39;   1 1     1 &#39;
@@ -421,11 +416,13 @@ void MGraph&lt;DataType&gt;::BFS(int v) &#123;
 4&#39;   1   1     &#39; 
 5&#39; 1           &#39;
 &#x2F;&#x2F; 以横轴为x，竖轴为y       </code></pre>
-
 <p>借用这个样例来说一下深搜和广搜</p>
-<h6 id="深搜"><a href="#深搜" class="headerlink" title="深搜"></a>深搜</h6><p>已知无向图的邻接矩阵是关于对角线对称的，深搜从第一行开始搜索，搜索到<code>(1,0)</code>时进入递归，进入递归后，首先对<code>visited[v]</code>进行标记，通过观察可以知道，上一轮DFS传入的j和下一轮DFS的v在矩阵中关于对角线对称 <del>好像是个无用信息</del>，每一轮DFS的<code>visited[v]=1</code>就是为了避免重复访问<code>vertex[v]</code>，再加上那条if语句的配合，即可无重复遍历完整个图</p>
-<h6 id="广搜"><a href="#广搜" class="headerlink" title="广搜"></a>广搜</h6><p>广搜的话其实还是要自己画出一个无向图来并且在debug模式运行一遍才知道大概是怎么个流程。对上面的测试用例来说，在第一轮搜索时，访问的都是和0号这个点有通路的点，第二轮是1号，第三轮是2号，依此类推。如果把最开始输入的0号放在中间，后面输入的数据一圈圈和0号联通，产生关联，那么广搜可以理解为，从搜寻点一圈圈向外扩散找</p>
-<h5 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+<h6 id="深搜">深搜</h6>
+<p>已知无向图的邻接矩阵是关于对角线对称的，深搜从第一行开始搜索，搜索到<code>(1,0)</code>时进入递归，进入递归后，首先对<code>visited[v]</code>进行标记，通过观察可以知道，上一轮DFS传入的j和下一轮DFS的v在矩阵中关于对角线对称 <del>好像是个无用信息</del>，每一轮DFS的<code>visited[v]=1</code>就是为了避免重复访问<code>vertex[v]</code>，再加上那条if语句的配合，即可无重复遍历完整个图</p>
+<h6 id="广搜">广搜</h6>
+<p>广搜的话其实还是要自己画出一个无向图来并且在debug模式运行一遍才知道大概是怎么个流程。对上面的测试用例来说，在第一轮搜索时，访问的都是和0号这个点有通路的点，第二轮是1号，第三轮是2号，依此类推。如果把最开始输入的0号放在中间，后面输入的数据一圈圈和0号联通，产生关联，那么广搜可以理解为，从搜寻点一圈圈向外扩散找</p>
+<h5 id="完整代码">完整代码</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 const int maxSize &#x3D; 100;
 int visited[maxSize] &#x3D; &#123;0&#125;;
@@ -507,8 +504,9 @@ int main() &#123;
     cout &lt;&lt; &quot;BFS order: \n&quot;;
     MG.BFS(0);
 &#125;</code></pre>
-
-<h4 id="prim"><a href="#prim" class="headerlink" title="prim"></a>prim</h4><h5 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int maxSize &#x3D; 100;
+<h4 id="prim">prim</h4>
+<h5 id="结构-1">结构</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int maxSize &#x3D; 100;
 int visited[maxSize] &#x3D; &#123;0&#125;;
 template &lt;class DataType&gt;
 class MGraph &#123;
@@ -525,8 +523,8 @@ class MGraph &#123;
      int edge[maxSize][maxSize];
      int vertexNum, edgeNum;
 &#125;;</code></pre>
-
-<h5 id="构造函数-1"><a href="#构造函数-1" class="headerlink" title="构造函数"></a>构造函数</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
+<h5 id="构造函数-1">构造函数</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
 MGraph&lt;DataType&gt;::MGraph(DataType a[], int n, int e) &#123;
     int i, j, w &#x3D; 0;
     vertexNum &#x3D; n;
@@ -552,27 +550,24 @@ MGraph&lt;DataType&gt;::MGraph(DataType a[], int n, int e) &#123;
         edge[j][i] &#x3D; w;
     &#125;
 &#125;</code></pre>
-
-<h5 id="prim代码实现"><a href="#prim代码实现" class="headerlink" title="prim代码实现"></a>prim代码实现</h5><p>将图中顶点（V）分两部分，最小生成树的点集为U，其余顶点在集合（V-U）</p>
+<h5 id="prim代码实现">prim代码实现</h5>
+<p>将图中顶点（V）分两部分，最小生成树的点集为U，其余顶点在集合（V-U）</p>
 <ul>
-<li><ol>
+<li><ol type="1">
 <li>首先任取一个点作为起点</li>
-</ol>
-</li>
-<li><ol start="2">
+</ol></li>
+<li><ol start="2" type="1">
 <li>在V-U中找和起点之间权值最小的边</li>
-</ol>
-</li>
-<li><ol start="3">
+</ol></li>
+<li><ol start="3" type="1">
 <li>adjVex记录上一轮找最小值的位置，cost记录到各顶点的距离</li>
-</ol>
-</li>
-<li><ol start="4">
+</ol></li>
+<li><ol start="4" type="1">
 <li>然后上一轮找到的权值最小的边的另一个点作为起点，不断重复步骤2，3</li>
-</ol>
-</li>
+</ol></li>
 </ul>
-<h6 id="找到最小值位置"><a href="#找到最小值位置" class="headerlink" title="找到最小值位置"></a>找到最小值位置</h6><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
+<h6 id="找到最小值位置">找到最小值位置</h6>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
 int MGraph&lt;DataType&gt;::minEdge(int r[], int n) &#123;
     int index;
     int min &#x3D; 100; &#x2F;&#x2F; 图中all权值最大不超过100
@@ -584,10 +579,8 @@ int MGraph&lt;DataType&gt;::minEdge(int r[], int n) &#123;
     &#125;
     return index; &#x2F;&#x2F; 返回最小值在数组中的位置
 &#125;</code></pre>
-
-
-
-<h6 id="prim核心代码"><a href="#prim核心代码" class="headerlink" title="prim核心代码"></a>prim核心代码</h6><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
+<h6 id="prim核心代码">prim核心代码</h6>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
 void MGraph&lt;DataType&gt;::Prim(int v) &#123;
     int adjVex[maxSize], cost[maxSize];
     int i, j, k;
@@ -614,8 +607,8 @@ void MGraph&lt;DataType&gt;::Prim(int v) &#123;
         &#125;
     &#125;
 &#125;</code></pre>
-
-<h5 id="测试用例及邻接矩阵"><a href="#测试用例及邻接矩阵" class="headerlink" title="测试用例及邻接矩阵"></a>测试用例及邻接矩阵</h5><pre class="line-numbers language-none"><code class="language-none">0 1
+<h5 id="测试用例及邻接矩阵">测试用例及邻接矩阵</h5>
+<pre class="line-numbers language-none"><code class="language-none">0 1
 34
 0 2
 46
@@ -633,9 +626,6 @@ void MGraph&lt;DataType&gt;::Prim(int v) &#123;
 25
 4 5
 26</code></pre>
-
-
-
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">   0  1  2  3  4  5 
 0&#39;    34 46       19 &#39;
 1&#39; 34          12    &#39;
@@ -644,8 +634,9 @@ void MGraph&lt;DataType&gt;::Prim(int v) &#123;
 4&#39;    12    38    26 &#39; 
 5&#39; 19    25    26    &#39;
 &#x2F;&#x2F; 以横轴为x，竖轴为y       </code></pre>
-
-<h4 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h4><h5 id="结构-2"><a href="#结构-2" class="headerlink" title="结构"></a>结构</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int maxSize &#x3D; 100;
+<h4 id="dijkstra">Dijkstra</h4>
+<h5 id="结构-2">结构</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">const int maxSize &#x3D; 100;
 int visited[maxSize] &#x3D; &#123;0&#125;; &#x2F;&#x2F; 到后面发现，visited在无向图中设计的是真的巧妙
 template &lt;class DataType&gt;
 class MGraph &#123;
@@ -660,8 +651,8 @@ class MGraph &#123;
      int edge[maxSize][maxSize]; &#x2F;&#x2F; 存放图中边的数组
      int vertexNum, edgeNum; &#x2F;&#x2F; 图中的顶点数和变数
 &#125;;</code></pre>
-
-<h5 id="构造函数-2"><a href="#构造函数-2" class="headerlink" title="构造函数"></a>构造函数</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
+<h5 id="构造函数-2">构造函数</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
 MGraph&lt;DataType&gt;::MGraph(DataType a[], int n, int e) &#123;
     vertexNum &#x3D; e, edgeNum &#x3D; n;
     int i, j, w &#x3D; 0;
@@ -685,8 +676,8 @@ MGraph&lt;DataType&gt;::MGraph(DataType a[], int n, int e) &#123;
     &#125;
 &#125;
 </code></pre>
-
-<h5 id="深搜和广搜"><a href="#深搜和广搜" class="headerlink" title="深搜和广搜"></a>深搜和广搜</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
+<h5 id="深搜和广搜">深搜和广搜</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
 void MGraph&lt;DataType&gt;::DFS(int v) &#123;
     cout &lt;&lt; vertex[v];
     visited[v] &#x3D; 1;
@@ -714,8 +705,8 @@ void MGraph&lt;DataType&gt;::BFS(int v) &#123;
         &#125;
     &#125;
 &#125;</code></pre>
-
-<h5 id="Dijkstra-1"><a href="#Dijkstra-1" class="headerlink" title="Dijkstra"></a>Dijkstra</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
+<h5 id="dijkstra-1">Dijkstra</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">template &lt;class DataType&gt;
 void MGraph&lt;DataType&gt;::Dijkstra(MGraph&lt;DataType&gt; mg, int v) &#123;
     int dist[maxSize];
     &#x2F;&#x2F; dist为起点到各个点的距离，具有临时性
@@ -757,8 +748,8 @@ void MGraph&lt;DataType&gt;::Dijkstra(MGraph&lt;DataType&gt; mg, int v) &#123;
         dist[k] &#x3D; 0;
     &#125;
 &#125;</code></pre>
-
-<h5 id="测试用例及邻接矩阵-1"><a href="#测试用例及邻接矩阵-1" class="headerlink" title="测试用例及邻接矩阵"></a>测试用例及邻接矩阵</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">0 1
+<h5 id="测试用例及邻接矩阵-1">测试用例及邻接矩阵</h5>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">0 1
 10
 0 3
 30
@@ -772,9 +763,6 @@ void MGraph&lt;DataType&gt;::Dijkstra(MGraph&lt;DataType&gt; mg, int v) &#123;
 20
 3 4
 60</code></pre>
-
-
-
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">   0   1   2   3   4
 0          
 1&#39; 10                 &#39;
@@ -782,8 +770,8 @@ void MGraph&lt;DataType&gt;::Dijkstra(MGraph&lt;DataType&gt; mg, int v) &#123;
 3&#39; 30                 &#39;
 4&#39; 100     10  60     &#39;
 &#x2F;&#x2F; 横轴为x，竖轴为y       </code></pre>
-
-<h5 id="完整代码-1"><a href="#完整代码-1" class="headerlink" title="完整代码"></a>完整代码</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
+<h5 id="完整代码-1">完整代码</h5>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;bits&#x2F;stdc++.h&gt;
 using namespace std;
 const int maxSize &#x3D; 100;
 int visited[maxSize] &#x3D; &#123;0&#125;;
@@ -911,10 +899,8 @@ int main() &#123;
     cout &lt;&lt; &quot;the short path: \n&quot;;
     mg.Dijkstra(mg, 0);
 &#125;</code></pre>
-
-
-
-<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zgsdlr/article/details/121426826">【数据结构】最小生成树Prim算法_zgsdlr的博客-CSDN博客_ java求最小生成树</a></p>
+<h4 id="参考链接">参考链接</h4>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zgsdlr/article/details/121426826">【数据结构】最小生成树Prim算法_zgsdlr的博客-CSDN博客_ java求最小生成树</a></p>
 
     </div>
 
@@ -1005,17 +991,15 @@ int main() &#123;
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
-
-
     </div>
   </footer>
 
   
   <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/components/prism-core.min.js" integrity="sha256-c9n/9oG7sBeCouNZfRg5tO8VCCQXGPLiDPJNaF5Qgic=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-RtKI23ujTCOg3jNK74NK61WGNYbtBWcqh6UKebC2AQo=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.27.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-K837BwIyiXo5k/9fCYgqUyA14bN4/Ve9P2SIT0KmZD0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js" integrity="sha256-4mJNT2bMXxcc1GCJaxBmMPdmah5ji0Ldnd79DKd1hoM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-dL6vkUiCn30lPTN9cVrmQHo5UQmEwDMrx2ppAk4IhVk=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-9cmf7tcLdXpKsPi/2AWE93PbZpTp4M4tqzFk+lWomjU=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
@@ -1039,7 +1023,7 @@ int main() &#123;
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":"enable","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":"enable","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
@@ -1050,7 +1034,7 @@ int main() &#123;
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
     .then(() => NexT.utils.getScript(
-      'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
       { condition: window.Valine }
     ))
     .then(() => {
@@ -1058,7 +1042,7 @@ document.addEventListener('page:loaded', () => {
     });
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
 
 <script>
 var options = {
