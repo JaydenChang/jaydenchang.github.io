@@ -31,11 +31,14 @@
 <meta property="og:site_name" content="Jayden&#39;s Blog">
 <meta property="og:description" content="用七天时间实现用Golang一个RPC框架">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x0031/0x0031-5.png">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x0031/0x0031-7.jpg">
 <meta property="article:published_time" content="2022-10-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-17T02:37:39.916Z">
+<meta property="article:modified_time" content="2022-11-07T07:42:23.153Z">
 <meta property="article:author" content="Jayden Chang">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaydenchang.gitee.io/images/images/0x0031/0x0031-5.png">
 
 
 <link rel="canonical" href="https://jaydenchang.top/post/0x0031.html">
@@ -316,7 +319,7 @@
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>59 mins.</span>
+      <span>1:01</span>
     </span>
 </div>
 
@@ -1901,7 +1904,7 @@ rpc server debug path: &#x2F;debug&#x2F;geerpc
 2 + 4 &#x3D; 6
 1 + 1 &#x3D; 2</code></pre>
 <p>服务已经启动，此时我们如果在浏览器中访问 <code>localhost:9999/debug/geerpc</code>，将会看到：</p>
-<p>// img 0x0031-5</p>
+<p><img src="https://jaydenchang.gitee.io/images/images/0x0031/0x0031-5.png"></p>
 <h3 id="day6.-负载均衡">day6. 负载均衡</h3>
 <ul>
 <li>通过随机选择和 Round Robin 轮询调度算法实现服务端负载均衡，约 250 行代码。</li>
@@ -2246,7 +2249,7 @@ broadcast Foo.Sleep error: rpc client: call failed: context deadline exceeded</c
 <li>客户端实现基于注册中心的服务发现机制。</li>
 </ul>
 <h4 id="注册中心的位置">注册中心的位置</h4>
-<p>// img</p>
+<p><img src="https://jaydenchang.gitee.io/images/images/0x0031/0x0031-7.jpg"></p>
 <p>注册中心的位置如上图所示。注册中心的好处在于，客户端和服务端都只需要感知注册中心的存在，而无需感知对方的存在。更具体一点：</p>
 <ol type="1">
 <li>服务端启动后，向注册中心发送注册信息，注册中心得知该服务已经启动，处于可用状态。一般来说，服务端还需要定期向注册中心发送心跳，证明自己还活着。</li>
@@ -2560,7 +2563,7 @@ broadcast Foo.Sleep error: rpc client: call failed: context deadline exceeded
 broadcast Foo.Sleep error: rpc client: call failed: context deadline exceeded</code></pre>
 <p>七天时间，参照 golang 标准库 net/rpc，实现了服务端以及支持并发的客户端，并且支持选择不同的序列化与反序列化方式；为了防止服务挂死，在其中一些关键部分添加蓝超时处理机制；支持 TCP、Unix、HTTP 等多种传输协议；支持多种负载均衡模式，最后还实现了一个简易的服务注册和发现中心。</p>
 <h3 id="一些想法">一些想法</h3>
-<p>其实我学习这个的目的是为了尝试完成 mit 6.824，它的 lab1 里，要求使用利用 rpc 来完成客户端和服务器之间的通信，但无奈，学习 golang 的时间并不是很长，恰巧留意到 geektutu 有发过 rpc 的七天项目，那么，正好，来敲一敲练练手。</p>
+<p>其实我学习这个的目的是为了尝试完成 mit 6.824，它的 lab1 里，要求使用利用 rpc 来完成客户端和服务器之间的通信，但无奈，学习 golang 的时间并不是很长，恰巧留意到 geektutu 有发过 rpc 的七天项目，那么，正好，来敲一敲练练手。并且推进这个小项目的时间也不止七天。</p>
 <p>那么来提炼一些个人觉得比较重要的知识。</p>
 <h4 id="典型的-rpc-调用过程">典型的 RPC 调用过程</h4>
 <p>感觉，这个项目中的 rpc 的一些定义我不是很能理解，那么根据自己在别的网站上学到的，以及在做 6.824 lab1时的一些经验，重新总结下相关 rpc 的基本结构。</p>
@@ -2600,6 +2603,8 @@ type TaskReply struct &#123;
     reply :&#x3D; TaskReply&#123;&#125;
     call(&quot;Server.Func&quot;, &amp;args, &amp;reply)
 &#125;</code></pre>
+<p>然后按照下列方式调用远程调用函数：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">call(&quot;StructName.FunctionName&quot;, &amp;args, &amp;reply),</code></pre>
 <p>这样子，就完成了一个基本的 rpc 调用过程。</p>
 
     </div>
