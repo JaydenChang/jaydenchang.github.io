@@ -187,75 +187,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://jaydenchang.top/post/0x0000.html"/>
-    <id>https://jaydenchang.top/post/0x0000.html</id>
-    <published>2021-12-10T23:52:02.544Z</published>
-    <updated>2022-10-17T02:37:49.471Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>0x0001随笔</li><li>0x0002随笔-年报</li><li>0x0003技术-链表</li><li>0x0004技术-二分法</li><li>0x0005 1月的胡思乱想</li><li>0x0006 基于单链表的图书管理系统</li><li>0x0007 最近沉沦、颓废的一些感受</li><li>0x0008 第一次前端作业</li><li>0x0009 第二次前端作业</li><li>0x000A c++类的简短总结 -- 10</li><li>0x000B c++类的链表实例</li><li>0x000C 第六次前端作业</li><li>0x000D 二级下拉菜单</li><li>0x000E 第八次前端作业</li><li>0x000F 第十次前端作业 -- 15</li><li>0x0010 第十一次前端作业</li><li>0x0011 最小生成树之prim</li><li>0x0012 重构运算符</li><li>0x0013 简单实现页面提交数据</li><li>0x0014 模板类链表 -- 20</li><li>0x0015 拖拽式页面</li><li>0x0016 网页注册，登录，拦截</li><li>0x0017 js轮播图升级版</li><li>0x0018 基于css的动画</li><li>0x0019 摸鱼的大一 -- 25</li><li>0x001A 关于面向对象编程</li><li>0x001B 接口和包</li><li>0x001C 练字时我在想什么</li><li>0x001D 关于大众对杨倩和王璐瑶的评价的一些想法</li><li>0x001E js简单实现拦截访问指定网页 -- 30</li><li>0x001F 稀疏数组和队列(数组)</li><li>0x0020 单链表(Java)</li><li>0x0021 为博客添加评论提醒功能(踩坑全过程)</li><li>0x0022 博客迁移</li><li>0x0023 旧手机改造成web服务器并实现内网穿透 -- 35</li><li>0x0024 数据结构--关于单链表小细节的一些补充</li><li>0x0025 数据结构--不设头指针的循环链队列</li><li>0x0026 kmp</li><li>0x0027 简单二叉树</li><li>0x0028 Huffman Tree -- 40</li><li>0x0029 图及最小生成树</li><li>0x002A 不关闭SELinux情况下使用ftp传输</li><li>0x002B win10找回Ubuntu启动项(非EasyBCD)</li><li>0x002C cocos2d拖动组件吸附效果</li><li>0x002D 只是一期唠嗑 -- 45</li><li>0x002E 摄影的哲与思</li><li>0x002F gee-web</li><li>0x0030 Java swing实现应用程序对数据库的访问</li><li>0x0031 gee-rpc</li><li>0x0032</li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;0x0001随笔&lt;/li&gt;
-&lt;li&gt;0x0002随笔-年报&lt;/li&gt;
-&lt;li&gt;0x0003技术-链表&lt;/li&gt;
-&lt;li&gt;0x0004技术-二分法&lt;/li&gt;
-&lt;li&gt;0x0005 1月的胡思乱想&lt;/li&gt;
-&lt;li&gt;0x0006 基于单链表的图书管理系统&lt;/li&gt;
-&lt;li&gt;0x0007 最近沉沦、颓废的一些感受&lt;/li&gt;
-&lt;li&gt;0x0008 第一次前端作业&lt;/li&gt;
-&lt;li&gt;0x0009 第二次前端作业&lt;/li&gt;
-&lt;li&gt;0x000A c++类的简短总结 -- 10&lt;/li&gt;
-&lt;li&gt;0x000B c++类的链表实例&lt;/li&gt;
-&lt;li&gt;0x000C 第六次前端作业&lt;/li&gt;
-&lt;li&gt;0x000D 二级下拉菜单&lt;/li&gt;
-&lt;li&gt;0x000E 第八次前端作业&lt;/li&gt;
-&lt;li&gt;0x000F 第十次前端作业 -- 15&lt;/li&gt;
-&lt;li&gt;0x0010 第十一次前端作业&lt;/li&gt;
-&lt;li&gt;0x0011 最小生成树之prim&lt;/li&gt;
-&lt;li&gt;0x0012 重构运算符&lt;/li&gt;
-&lt;li&gt;0x0013 简单实现页面提交数据&lt;/li&gt;
-&lt;li&gt;0x0014 模板类链表 -- 20&lt;/li&gt;
-&lt;li&gt;0x0015 拖拽式页面&lt;/li&gt;
-&lt;li&gt;0x0016 网页注册，登录，拦截&lt;/li&gt;
-&lt;li&gt;0x0017 js轮播图升级版&lt;/li&gt;
-&lt;li&gt;0x0018 基于css的动画&lt;/li&gt;
-&lt;li&gt;0x0019 摸鱼的大一 -- 25&lt;/li&gt;
-&lt;li&gt;0x001A 关于面向对象编程&lt;/li&gt;
-&lt;li&gt;0x001B 接口和包&lt;/li&gt;
-&lt;li&gt;0x001C 练字时我在想什么&lt;/li&gt;
-&lt;li&gt;0x001D 关于大众对杨倩和王璐瑶的评价的一些想法&lt;/li&gt;
-&lt;li&gt;0x001E js简单实现拦截访问指定网页 -- 30&lt;/li&gt;
-&lt;li&gt;0x001F 稀疏数组和队列(数组)&lt;/li&gt;
-&lt;li&gt;0x0020 单链表(Java)&lt;/li&gt;
-&lt;li&gt;0x0021 为博客添加评论提醒功能(踩坑全过程)&lt;/li&gt;
-&lt;li&gt;0x0022 博客迁移&lt;/li&gt;
-&lt;li&gt;0x0023 旧手机改造成web服务器并实现内网穿透 -- 35&lt;/li&gt;
-&lt;li&gt;0x0024 数据结构--关于单链表小细节的一些补充&lt;/li&gt;
-&lt;li&gt;0x0025 数据结构--不设头指针的循环链队列&lt;/li&gt;
-&lt;li&gt;0x0026 kmp&lt;/li&gt;
-&lt;li&gt;0x0027 简单二叉树&lt;/li&gt;
-&lt;li&gt;0x0028 Huffman Tree -- 40&lt;/li&gt;
-&lt;li&gt;0x0029 图及最小生成树&lt;/li&gt;
-&lt;li&gt;0x002A 不关闭SELinux情况下使用ftp传输&lt;/li&gt;
-&lt;li&gt;0x002B win10找回Ubuntu启动项(非EasyBCD)&lt;/li&gt;
-&lt;li&gt;0x002C cocos2d拖动组件吸附效果&lt;/li&gt;
-&lt;li&gt;0x002D 只是一期唠嗑 -- 45&lt;/li&gt;
-&lt;li&gt;0x002E 摄影的哲与思&lt;/li&gt;
-&lt;li&gt;0x002F gee-web&lt;/li&gt;
-&lt;li&gt;0x0030 Java swing实现应用程序对数据库的访问&lt;/li&gt;
-&lt;li&gt;0x0031 gee-rpc&lt;/li&gt;
-&lt;li&gt;0x0032&lt;/li&gt;
-&lt;/ul&gt;
-</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>数据结构-图及最小生成树</title>
     <link href="https://jaydenchang.top/post/0x0029.html"/>
     <id>https://jaydenchang.top/post/0x0029.html</id>
@@ -501,6 +432,29 @@
     <category term="数据结构" scheme="https://jaydenchang.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     <category term="Java" scheme="https://jaydenchang.top/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js简单实现拦截访问指定网页</title>
+    <link href="https://jaydenchang.top/post/0x001E.html"/>
+    <id>https://jaydenchang.top/post/0x001E.html</id>
+    <published>2021-08-03T16:00:00.000Z</published>
+    <updated>2021-12-11T06:06:47.305Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近闲的无事，写个脚本玩玩，实现拦截访问指定网址</p><h3 id="浏览器插件">浏览器插件</h3><p>要想实现这个功能，就要自定义一个浏览器插件</p><p>最简单的浏览器插件有两个文件，分别是<code>manifest.json</code>和<code>**.js</code>。首先新建一个文件夹，然后在文件夹目录新建上述两个文件。</p><h4 id="manifest.json"><code>manifest.json</code></h4><p><a href='https://ask.dcloud.net.cn/article/94'> <code>manifest.json</code> </a>是插件的配置文件，用于描述插件的元数据，插件的配置信息</p><pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;    &quot;name&quot;: &quot;hello&quot;,    &quot;description&quot;: &quot;hello&quot;,    &quot;version&quot;: &quot;1.0&quot;,    &quot;manifest_version&quot;: 2,    &quot;content_scripts&quot;: [&#123;        &quot;matches&quot;: [            &#39;http:&#x2F;&#x2F;*&#x2F;*&#39;, &quot;https:&#x2F;&#x2F;*&#x2F;*&quot;        ],        &quot;js&quot;: [            &quot;test.js&quot;        ]    &#125;]&#125;</code></pre><p>这里的matches通配http和https，js对应的文件名一定要和自己命名的js相同(包括路径)</p><h4 id="test.js"><code>test.js</code></h4><pre class="line-numbers language-js" data-language="js"><code class="language-js">var url;url &#x3D; window.location.host;&#x2F;&#x2F;获取当前网页urlif(url &#x3D;&#x3D; &#39;www.google.com.hk&#39; || url &#x3D;&#x3D; &#39;www.google.com&#39;)&#123;    alert(&quot;反正你就是打不开这个页面doge&quot;);    window.location.href &#x3D; &#39;cn.bing.com&#39;;&#x2F;&#x2F;跳转到指定页面&#125;</code></pre><h3 id="怎么使用">怎么使用</h3><p>edge用户在浏览器输入<code>edge://extensions</code>，chrome用户在浏览器输入<code>chrome://extensions</code> <del>(其他浏览器没用过)</del> ，然后把刚才装json和js的文件夹拖动到刚才打开的页面，重启浏览器就好了。</p>]]></content>
+    
+    
+    <summary type="html">写了一个脚本来拦截网页</summary>
+    
+    
+    
+    <category term="FrontEnd" scheme="https://jaydenchang.top/categories/FrontEnd/"/>
+    
+    
+    <category term="JavaScript" scheme="https://jaydenchang.top/tags/JavaScript/"/>
+    
+    <category term="技术" scheme="https://jaydenchang.top/tags/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
