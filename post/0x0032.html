@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="mask-icon" href="https://jaydenchang.gitee.io/images/Jayden.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="利用gin框架结合MySQL简单实现一个数据库查询的后端系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gin+MySQL简单实现数据库查询">
+<meta property="og:url" content="https://jaydenchang.top/post/0x0032.html">
+<meta property="og:site_name" content="Jayden&#39;s Blog">
+<meta property="og:description" content="利用gin框架结合MySQL简单实现一个数据库查询的后端系统">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-25T14:11:17.255Z">
+<meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="Golang">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jaydenchang.top/post/0x0032.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x0032.html","path":"/post/0x0032.html","title":"gin+MySQL简单实现数据库查询"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>gin+MySQL简单实现数据库查询 | Jayden's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Jayden's Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jayden's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">12</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">48</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E6%98%93%E7%9A%84-http-%E5%93%8D%E5%BA%94%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">一个简易的 HTTP 响应接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5-mysql"><span class="nav-number">2.</span> <span class="nav-text">连接 MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0"><span class="nav-number">2.1.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.2.</span> <span class="nav-text">查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9"><span class="nav-number">2.3.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4"><span class="nav-number">2.4.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E6%A1%86%E6%9E%B6"><span class="nav-number">2.5.</span> <span class="nav-text">搭建框架</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jayden Chang"
+      src="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <p class="site-author-name" itemprop="name">Jayden Chang</p>
+  <div class="site-description" itemprop="description">身在井隅，心向星光。眼中有诗，自在远方。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JaydenChang" title="Github → https:&#x2F;&#x2F;github.com&#x2F;JaydenChang" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhang44378@163.com" title="E-Mail → mailto:zhang44378@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/jaydenchang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;jaydenchang" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JaydenChang7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JaydenChang7" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15092270/jayden-chang" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15092270&#x2F;jayden-chang" rel="noopener" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/jaydenchang7" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;jaydenchang7" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://500px.com.cn/jaydenchang" title="500px → https:&#x2F;&#x2F;500px.com.cn&#x2F;jaydenchang" rel="noopener" target="_blank"><i class="fa-brands fa-500px fa-fw"></i>500px</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0032.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://jaydenchang.gitee.io/images/Jayden.jpg">
+      <meta itemprop="name" content="Jayden Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="gin+MySQL简单实现数据库查询 | Jayden's Blog">
+      <meta itemprop="description" content="利用gin框架结合MySQL简单实现一个数据库查询的后端系统">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          gin+MySQL简单实现数据库查询
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-12-25 00:00:00" itemprop="dateCreated datePublished" datetime="2022-12-25T00:00:00+08:00">2022-12-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Valine: </span>
+  
+    <a title="valine" href="/post/0x0032.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0032.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>9.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>8 mins.</span>
+    </span>
+</div>
+
+            <div class="post-description">利用gin框架结合MySQL简单实现一个数据库查询的后端系统</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><br/></p>
+<p>利用 gin 项目搭建一个简易的后端系统。</p>
+<h4 id="一个简易的-http-响应接口">一个简易的 HTTP 响应接口</h4>
+<p>首先在 go 工作区的终端输入这条指令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go get -u github.com&#x2F;gin-gonic&#x2F;gin</code></pre>
+<p>将 gin 项目的相关依赖保存到本地。</p>
+<p>在终端生成 go mod 包管理文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go mod init</code></pre>
+<p>再创建一个 <code>main.go</code> 文件：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+
+import &quot;github.com&#x2F;gonic-gin&#x2F;gin&quot;
+
+func main() &#123;
+    r :&#x3D; gin.Default()
+    r.GET(&quot;&#x2F;test&quot;, func(c *gin.Context) &#123;
+        c.JSON(200, gin.H&#123;
+            &quot;message&quot;: &quot;test&quot;,
+        &#125;)
+    &#125;)
+    r.Run(&quot;:9999&quot;) &#x2F;&#x2F; 运行在9999端口
+&#125;</code></pre>
+<p>因为我是在 wsl 运行这个项目，所以还需要先获取虚拟机的 ip，然后用 curl 测试：</p>
+<pre class="line-numbers language-none"><code class="language-none">curl http:&#x2F;&#x2F;&lt;ip&gt;:9999&#x2F;ping</code></pre>
+<p>返回结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;&quot;message&quot;:&quot;test&quot;&#125;</code></pre>
+<h4 id="连接-mysql">连接 MySQL</h4>
+<p>关于 MySQL 操作这部分，一开始想着简单，只学了查询数据库部分，大多数踩得坑都是在查询部分，后面觉得要举一反三，就在原来基础上又写了添加的部分，在添加数据这一块写的不是很详细。</p>
+<h5 id="添加">添加</h5>
+<p>先把基本的框架写出来，这里我连接的数据库结构体如下：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">type SqlUser struct &#123;
+	User_id       string &#96;json:&quot;user_id&quot; from:&quot;user_id&quot;&#96;	
+	User_name     string &#96;json:&quot;user_name&quot; from:&quot;user_name&quot;&#96;
+&#125;</code></pre>
+<p>添加单条数据：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">Db, _ :&#x3D; sql.Open(&quot;mysql&quot;, &quot;&lt;username&gt;:&lt;password&gt;@(localhost:3306)&#x2F;&lt;yourDatabase&gt;&quot;)
+router.POST(&quot;&#x2F;add&quot;, func(c *gin.Context) &#123;
+    User_id :&#x3D; c.Request.FormValue(&quot;User_id&quot;)
+	User_name :&#x3D; c.Request.FormValue(&quot;User_name&quot;)
+    result, err :&#x3D; db.SqlDB.Exec(&quot;INSERT INTO t_user (user_id,user_name) VALUE(?,?)&quot;, u.User_id, u.User_name)
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    id, err :&#x3D; result.LastInsertId()
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    msg :&#x3D; fmt.Sprintf(&quot;insert successfully %d&quot;, id)
+    c.JSON(http.StatusOK, gin.H&#123;
+        &quot;msg&quot;: msg,
+        &quot;user_name&quot;: User_name,
+    &#125;)
+&#125;)
+r.Run(&quot;:9999&quot;)</code></pre>
+<p>执行非 query 操作，使用 Exec 方法，使用 curl 进行测试：</p>
+<pre class="line-numbers language-none"><code class="language-none">curl -X POST http:&#x2F;&#x2F;&lt;ip&gt;:9999&#x2F;add -d &quot;User_id&#x3D;2&amp;User_name&#x3D;aaa&quot;</code></pre>
+<p>返回结果如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;&quot;msg&quot;:&quot;insert successfully 1&quot;,&quot;user_name&quot;:&quot;test&quot;&#125;</code></pre>
+<h5 id="查询">查询</h5>
+<p>单条查询如下</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">r.GET(&quot;&#x2F;test&#x2F;:id&quot;, func(c *gin.Context) &#123;
+    id: c.Param(&quot;id&quot;)
+    var u SqlUser
+    err :&#x3D; Db.QueryRow(&quot;select user_id,user_name from t_user where user_id &#x3D;?&quot;, id).Scan(&amp;u.user_id, &amp;u.user_name)
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+        c.JSON(http.StatusOK, gin.H&#123;
+            &quot;user&quot;: nil,
+        &#125;)
+        return
+    &#125;
+    c.JSON(http.StatusOK, gin.H&#123;
+        &quot;user&quot;: u.user_name,
+    &#125;)
+&#125;)</code></pre>
+<p>然后用 curl 命令去测试：</p>
+<pre class="line-numbers language-none"><code class="language-none">curl http:&#x2F;&#x2F;&lt;ip&gt;:9999&#x2F;test&#x2F;1</code></pre>
+<p>会得到之前在 MySQL 中预先保存的条目，样例结构如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">&#123;&quot;user&quot;:&quot;test&quot;&#125;</code></pre>
+<p>然而，最开始我不是这样写的，当时的我，没整理好这个框架，直接在单文件里封装函数，下面是我的错误示范：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">var Db *sql.DB
+func QueryData(c *gin.Context) &#123;
+    id :&#x3D; c.Param(&quot;id&quot;)
+    var u SqlUser
+    err :&#x3D; Db.QueryRow(&quot;select user_id,user_name from t_user where user_id &#x3D;?&quot;, id).Scan(&amp;u.user_id, &amp;u.user_name)
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+        c.JSON(200, gin.H&#123;
+            &quot;user&quot;: nil,
+        &#125;)
+        return
+    &#125;
+    c.JSON(200, gin.H&#123;
+        &quot;user&quot;: u.user_name,
+    &#125;)
+&#125;
+
+func main() &#123;
+    Db, _ &#x3D; sql.Open(&quot;&#x2F;*mysql link*&#x2F;&quot;)
+    &#x2F;&#x2F; 略去了这个问题相关的代码
+    r.GET(&quot;&#x2F;test&#x2F;:id&quot;, QueryData)
+    r.Run(&quot;:9999&quot;)
+&#125;</code></pre>
+<p>然后就出现这样的错误：</p>
+<pre class="line-numbers language-none"><code class="language-none">runtime error: invalid memory address or nil pointer dereference</code></pre>
+<p>必应上的结果是：指针声明后未初始化就赋值。</p>
+<p>这个 bug 困扰了我一整天，然后就开始了痛苦的 debug，main 函数的 router 应该是没问题的，接口测试正常，那问题应该是出在 <code>QueryData</code> 上，那只能一个个打印变量测试吧，测试到 <code>Db</code> 时，发现这个变量为 nil，然后紧接着抛出刚才提到的错误。好吧，这个错误我在之前也偶尔犯过，虽然在 main 中对其赋了值，但作用域不一样，所以还是无法传值，那只好去考虑下框架了。</p>
+<h5 id="修改">修改</h5>
+<p>修改单条数据：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">router.PUT(&quot;&#x2F;person&#x2F;:id&quot;, func(c *gin.Context) &#123;
+    cid :&#x3D; c.Param(&quot;id&quot;)
+    id, err :&#x3D; strconv.Atoi(cid)
+    person :&#x3D; Person&#123;Id: id&#125;
+    err &#x3D; c.Bind(&amp;person)
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    stmt, err :&#x3D; Db.Prepare(&quot;UPDATE person SET user_name&#x3D;? where user_id&#x3D;?&quot;)
+    
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    defer stmt.Close()
+    rs, err :&#x3D; stmt.Exec(person.user_name, person.user_id)
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    ra, err :&#x3D; rs.RowsAffected()
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    msg :&#x3D; fmt.Sprintf(&quot;UPDATE person %d successful %d&quot;, person.user_id, ra)
+    c.JSON(http.StatusOK, gin.H&#123;
+        &quot;msg&quot;: msg,
+    &#125;)
+&#125;)</code></pre>
+<p>urlencode 方式更新：</p>
+<pre class="line-numbers language-none"><code class="language-none">curl -X PUT http:&#x2F;&#x2F;&lt;ip&gt;:9999&#x2F;person&#x2F;1 -d &quot;user_id&#x3D;1&amp;user_name&#x3D;temp&quot;</code></pre>
+<p>json 方式更新：</p>
+<pre class="line-numbers language-none"><code class="language-none">curl -X PUT http:&#x2F;&#x2F;&lt;ip&gt;:9999&#x2F;person&#x2F;1 -H &quot;Content-Type: application&#x2F;json&quot; -d &#39;&#123;&quot;user_name&quot;:&quot;temp&quot;&#125;&#39;</code></pre>
+<h5 id="删除">删除</h5>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">router.DELETE(&quot;person&#x2F;:id&quot;, func(c *gin.Context) &#123;
+    cid :&#x3D; c.Param(&quot;id&quot;)
+    id, err :&#x3D; strconv.Atoi(cid)
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    rs, err :&#x3D; db.Exec(&quot;DELETE FROM person from where user_id&#x3D;?&quot;, id)
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    ra, err :&#x3D; rs.RowsAffected()
+    if err !&#x3D; nil &#123;
+        log.Fatalln(err)
+    &#125;
+    msg :&#x3D; fmt.Sprintf(&quot;DELETE person %d successful %d&quot;, id, ra)
+    c.JSON(http.StatusOK, gin.H&#123;
+        &quot;msg&quot;: msg,
+    &#125;)
+&#125;)</code></pre>
+<p>直接使用删除接口</p>
+<pre class="line-numbers language-none"><code class="language-none">curl -X &quot;DELETE&quot; http:&#x2F;&#x2F;&lt;ip&gt;:9999&#x2F;person&#x2F;1 </code></pre>
+<p>这里的 DELETE 参数必须在双引号内，不然不会被识别为 delete 请求。</p>
+<h5 id="搭建框架">搭建框架</h5>
+<p>参考了大佬的做法 <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，我也来创建我的目录：</p>
+<pre class="line-numbers language-none"><code class="language-none">ginExample tree
+.
+├── api
+│   └── query.go
+├── database
+│   └── mysql.go
+├── main.go
+├── models
+│   └── queryUser.go
+├── router.go
+├── go.mod
+└── go.sum</code></pre>
+<p>这里的话以添加、查询功能为例，增删改同理，具体可以查看文末的参考链接。</p>
+<p>api 存放 handler 函数，model 存放数据模型。</p>
+<h6 id="数据库处理">数据库处理</h6>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">&#x2F;&#x2F; mysql.go
+package database
+
+import (
+    &quot;database&#x2F;sql&quot;
+    _ &quot;github.com&#x2F;go-sql-driver&#x2F;mysql&quot;
+    &quot;log&quot;
+)
+
+var SqlDB *sql.DB
+
+func init() &#123;
+    var err error
+	SqlDB, err &#x3D; sql.Open(&quot;mysql&quot;, &quot;root:jaydenmysql@(127.0.0.1:3306)&#x2F;microtest&quot;)
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err.Error())
+	&#125;
+	err &#x3D; SqlDB.Ping()
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err.Error())
+	&#125;
+&#125;</code></pre>
+<p>因为在别的包会用到 <code>SqlDB</code> 这个变量，因此必须大写 (golang 只有大写开头变量才是 public 类变量)</p>
+<h6 id="数据-model-封装">数据 model 封装</h6>
+<p>抽离出 SqlUser 结构体以及对应的方法：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package models
+
+import (
+	db &quot;ginExample&#x2F;database&quot;
+	&quot;log&quot;
+)
+
+type SqlUser struct &#123;
+	User_id       string &#96;json:&quot;user_id&quot; from:&quot;user_id&quot;&#96;	
+	User_name     string &#96;json:&quot;user_name&quot; from:&quot;user_name&quot;&#96;
+&#125;
+
+func (u *SqlUser) GetUser(id string) SqlUser &#123;
+	err :&#x3D; db.SqlDB.QueryRow(&quot;select user_id,user_name from t_user where user_id &#x3D;?&quot;, id).Scan(&amp;u.User_id, &amp;u.User_name)
+	if err !&#x3D; nil &#123;
+		log.Println(err)
+		u.User_name &#x3D; &quot;nil&quot;
+		return *u
+	&#125;
+	return *u
+&#125;
+
+func (u *SqlUser) AddUser() (id int64, err error) &#123;
+    result, err :&#x3D; db.SqlDB.Exec(&quot;INSERT INTO t_user (user_id,user_name) VALUE(?,?)&quot;, u.User_id, u.User_name)
+    if err !&#x3D; nil &#123;
+		log.Fatalln(err)
+		return
+	&#125;
+	id, err &#x3D; result.LastInsertId()
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err)
+		return
+	&#125;
+	fmt.Println(id)
+	return id, err
+&#125;
+
+func (u *SqlUser) UpdateUser() int64 &#123;
+    stmt, err :&#x3D; db.SqlDB.Prepare(&quot;UPDATE t_user SET user_name&#x3D;? where user_id&#x3D;?&quot;)
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err)
+	&#125;
+	rs, err :&#x3D; stmt.Exec(u.User_name, u.User_id)
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err)
+	&#125;
+	ra, err :&#x3D; rs.RowsAffected()
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err)
+	&#125;
+	return ra
+&#125;
+
+func (u *SqlUser) DeleteUser() &#123;
+	rs, err :&#x3D; db.SqlDB.Exec(&quot;DELETE FROM t_user where user_id&#x3D;?&quot;, id)
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err)
+	&#125;
+	ra, err :&#x3D; rs.RowsAffected()
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err)
+	&#125;
+	return ra
+&#125;</code></pre>
+<h6 id="handler">handler</h6>
+<p>然后把具体的 handler 封装到 api 中，handler 操作数据库，因此会引用 model 包。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package api
+
+import (
+	&quot;fmt&quot;
+	&quot;net&#x2F;http&quot;
+
+	. &quot;ginExample&#x2F;models&quot;
+
+	&quot;github.com&#x2F;gin-gonic&#x2F;gin&quot;
+)
+
+func IndexApi(c *gin.Context) &#123;
+	c.String(http.StatusOK, &quot;It works&quot;)
+&#125;
+
+func GetUserApi(c *gin.Context) &#123;
+	var u SqlUser
+	id :&#x3D; c.Param(&quot;id&quot;)
+	u &#x3D; u.GetUser(id)
+	c.JSON(200, gin.H&#123;
+		&quot;user&quot;: u.User_name,
+	&#125;)
+&#125;
+
+func AddUserApi(c *gin.Context) &#123;
+	User_id :&#x3D; c.Request.FormValue(&quot;User_id&quot;)
+	User_name :&#x3D; c.Request.FormValue(&quot;User_name&quot;)
+    &#x2F;&#x2F; 这里的大小写一定要对应上结构体内的变量名
+
+	u :&#x3D; models.SqlUser&#123;User_id: User_id, User_name: User_name&#125;
+
+	rows, err :&#x3D; u.AddUser()
+	if err !&#x3D; nil &#123;
+		log.Fatalln(err)
+	&#125;
+	msg :&#x3D; fmt.Sprintf(&quot;insert successfully %d\n&quot;, rows)
+	c.JSON(200, gin.H&#123;
+		&quot;msg&quot;:       msg,
+		&quot;user_name&quot;: User_name,
+	&#125;)
+&#125;
+
+func UpdateUserApi(c *gin.Context) &#123;
+	User_id :&#x3D; c.Request.FormValue(&quot;User_id&quot;)
+	User_name :&#x3D; c.Request.FormValue(&quot;User_name&quot;)
+
+	u :&#x3D; models.SqlUser&#123;User_id: User_id, User_name: User_name&#125;
+	row :&#x3D; u.UpdateUser()
+	msg :&#x3D; fmt.Sprintf(&quot;update successful %d&quot;, row)
+	c.JSON(200, gin.H&#123;
+		&quot;msg&quot;: msg,
+	&#125;)
+&#125;
+
+func DeleteUserApi(c *gin.Context) &#123;
+	var u models.SqlUser
+	id :&#x3D; c.Param(&quot;id&quot;)
+	row :&#x3D; u.DeleteUser(id)
+	msg :&#x3D; fmt.Sprintf(&quot;DELETE user successful %d&quot;, row)
+	c.JSON(200, gin.H&#123;
+		&quot;msg&quot;: msg,
+	&#125;)
+&#125;</code></pre>
+<h6 id="router">router</h6>
+<p>最后就是把路由抽离出来：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">&#x2F;&#x2F;router.go
+package main
+
+import (
+    &quot;github.com&#x2F;gin-gonic&#x2F;gin&quot;
+    . &quot;ginExample&#x2F;api&quot;
+)
+
+func initRouter() *gin.Engine &#123;
+    router :&#x3D; gin.Default()
+    router.GET(&quot;&#x2F;&quot;, IndexApi)
+    router.GET(&quot;&#x2F;query&#x2F;:id&quot;, GetUserApi)
+    router.GET(&quot;&#x2F;add&quot;, AddUserApi)
+    return router
+&#125;</code></pre>
+<h6 id="app-入口">app 入口</h6>
+<p>最后就是 main 的 app 入口，将路由导入，同时在 main 即将结束时，关闭全局数据库连接池。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+
+import db &quot;ginExample&#x2F;database&quot;
+
+func main() &#123;
+    defer db.SqlDB.Close()
+    router :&#x3D; initRouter()
+    router.Run(&quot;:9999&quot;)
+&#125;</code></pre>
+<p>这里运行项目的话，不能像之前简单地使用 <code>go run main.go</code> ，因为 main 包含 <code>main.go</code> 和 <code>router.go</code>，因此要运行 <code>go run *.go</code>，如果最终编译二进制项目，则运行 <code>go build -o app</code>。</p>
+<p>测试结果和上面是一样的，至此，基本的访问、操作数据库功能实现。</p>
+<h4 id="参考链接">参考链接</h4>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a3f63b5da74c">Gin实战：Gin+Mysql简单的Restful风格的API - 简书 (jianshu.com)</a></span><a href="#fnref:1" rev="footnote"> ↩︎</a>
+</li>
+</ol>
+</div>
+</div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Golang/" rel="tag"># Golang</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x0031.html" rel="prev" title="动手写RPC框架">
+                  <i class="fa fa-chevron-left"></i> 动手写RPC框架
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="valine-comments"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jayden Chang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">331k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">5:01</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/prism-core.min.js" integrity="sha256-4mJNT2bMXxcc1GCJaxBmMPdmah5ji0Ldnd79DKd1hoM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-dL6vkUiCn30lPTN9cVrmQHo5UQmEwDMrx2ppAk4IhVk=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-9cmf7tcLdXpKsPi/2AWE93PbZpTp4M4tqzFk+lWomjU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":"enable","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.1/es5/tex-mml-chtml.js","integrity":"sha256-hlC2uSQYTmPsrzGZTEQEg9PZ1a/+SV6VBCTclohf2og="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x0032.html"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+
+
+
+</body>
+</html>
