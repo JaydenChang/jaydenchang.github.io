@@ -32,7 +32,7 @@
 <meta property="og:description" content="利用gin框架结合MySQL简单实现一个数据库查询的后端系统">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-12-24T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-12-25T14:11:17.255Z">
+<meta property="article:modified_time" content="2022-12-27T02:32:30.666Z">
 <meta property="article:author" content="Jayden Chang">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
@@ -309,14 +309,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>9.3k</span>
+      <span>9.4k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>8 mins.</span>
+      <span>9 mins.</span>
     </span>
 </div>
 
@@ -586,7 +586,7 @@ func (u *SqlUser) UpdateUser() int64 &#123;
 	return ra
 &#125;
 
-func (u *SqlUser) DeleteUser() &#123;
+func (u *SqlUser) DeleteUser(id string) int64 &#123;
 	rs, err :&#x3D; db.SqlDB.Exec(&quot;DELETE FROM t_user where user_id&#x3D;?&quot;, id)
 	if err !&#x3D; nil &#123;
 		log.Fatalln(err)
@@ -676,7 +676,9 @@ func initRouter() *gin.Engine &#123;
     router :&#x3D; gin.Default()
     router.GET(&quot;&#x2F;&quot;, IndexApi)
     router.GET(&quot;&#x2F;query&#x2F;:id&quot;, GetUserApi)
-    router.GET(&quot;&#x2F;add&quot;, AddUserApi)
+    router.POST(&quot;&#x2F;add&quot;, api.AddUserApi)
+	router.PUT(&quot;&#x2F;update&#x2F;:id&quot;, api.UpdateUserApi)
+	router.DELETE(&quot;&#x2F;delete&#x2F;:id&quot;, api.DeleteUserApi)
     return router
 &#125;</code></pre>
 <h6 id="app-入口">app 入口</h6>
