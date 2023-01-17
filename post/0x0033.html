@@ -24,29 +24,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="这两周的c++课都没怎么听，也许是对自己太自信了，第一次的类的作业竟然不会做(丢人)，翻看了书本，加上论坛大佬的代码才大概弄明白；然而这次的上机作业，要求再用类写个链表系统，做的时候有发现问题了，虽然之前总结过链表，但是是用结构体写的，貌似不支持string(基于类的链表支持string)，这次又浏览了论坛上大佬的帖子，总结了一波，做出了以下单链表系统(阉割版) #include&lt;iost">
+    <meta name="description" content="Vue在前端获取后端json数据并展现在 echart 上">
 <meta property="og:type" content="article">
-<meta property="og:title" content="c++类的作业实例(单链表)">
-<meta property="og:url" content="https://jaydenchang.top/post/0x000B.html">
+<meta property="og:title" content="Vue+echart 展示后端获取的数据">
+<meta property="og:url" content="https://jaydenchang.top/post/0x0033.html">
 <meta property="og:site_name" content="Jayden&#39;s Blog">
-<meta property="og:description" content="这两周的c++课都没怎么听，也许是对自己太自信了，第一次的类的作业竟然不会做(丢人)，翻看了书本，加上论坛大佬的代码才大概弄明白；然而这次的上机作业，要求再用类写个链表系统，做的时候有发现问题了，虽然之前总结过链表，但是是用结构体写的，貌似不支持string(基于类的链表支持string)，这次又浏览了论坛上大佬的帖子，总结了一波，做出了以下单链表系统(阉割版) #include&lt;iost">
+<meta property="og:description" content="Vue在前端获取后端json数据并展现在 echart 上">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-12-06T12:36:50.262Z">
+<meta property="article:published_time" content="2023-01-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-17T09:41:55.794Z">
 <meta property="article:author" content="Jayden Chang">
-<meta property="article:tag" content="数据结构">
-<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jaydenchang.top/post/0x000B.html">
+<link rel="canonical" href="https://jaydenchang.top/post/0x0033.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x000B.html","path":"/post/0x000B.html","title":"c++类的作业实例(单链表)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x0033.html","path":"/post/0x0033.html","title":"Vue+echart 展示后端获取的数据"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>c++类的作业实例(单链表) | Jayden's Blog</title>
+<title>Vue+echart 展示后端获取的数据 | Jayden's Blog</title>
   
 
 
@@ -240,7 +240,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x000B.html">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0033.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://jaydenchang.gitee.io/images/Jayden.jpg">
@@ -253,12 +253,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="c++类的作业实例(单链表) | Jayden's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="Vue+echart 展示后端获取的数据 | Jayden's Blog">
+      <meta itemprop="description" content="Vue在前端获取后端json数据并展现在 echart 上">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          c++类的作业实例(单链表)
+          Vue+echart 展示后端获取的数据
         </h1>
 
         <div class="post-meta-container">
@@ -269,7 +269,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-03-23 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-23T00:00:00+08:00">2021-03-23</time>
+      <time title="Created: 2023-01-17 00:00:00" itemprop="dateCreated datePublished" datetime="2023-01-17T00:00:00+08:00">2023-01-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -277,7 +277,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
         </span>
     </span>
 
@@ -297,8 +297,8 @@
     </span>
     <span class="post-meta-item-text">Valine: </span>
   
-    <a title="valine" href="/post/0x000B.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x000B.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/0x0033.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0033.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -309,17 +309,18 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>4.6k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>4 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
+            <div class="post-description">Vue在前端获取后端json数据并展现在 echart 上</div>
         </div>
       </header>
 
@@ -327,202 +328,131 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>这两周的c++课都没怎么听，也许是对自己太自信了，第一次的类的作业竟然不会做(丢人)，翻看了书本，加上论坛大佬的代码才大概弄明白；然而这次的上机作业，要求再用类写个链表系统，做的时候有发现问题了，虽然之前总结过链表，但是是用结构体写的，貌似不支持string(基于类的链表支持string)，这次又浏览了论坛上大佬的帖子，总结了一波，做出了以下单链表系统(阉割版)</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;iostream&gt;
-#include&lt;string&gt;
-using namespace std;
-
-typedef struct student &#123;
-    string name, ID, publisher, author;
-    student* next;
-&#125; student, * stu;
-
-class list &#123;
-public:
-    ~list();&#x2F;&#x2F;析构函数
-    list(string, string, string, string);&#x2F;&#x2F;构造函数
-    void search(string name);
-    void insert(string, string, string, string);
-    void del(string);
-    void print();
-    void edit(string);
-    struct student* head;
-&#125;;
-
-list::~list()
-&#123;
-    cout &lt;&lt; &quot;release successfully&quot; &lt;&lt; endl;
-    system(&quot;pause&quot;);
-&#125;
-&#x2F;&#x2F;析构函数不要出现在主函数里，不然会报错
-
-list::list(string a, string b, string c, string d)
-&#123;
-    head &#x3D; new student;
-    head-&gt;next &#x3D; NULL;
-    student* s &#x3D; NULL;
-    s &#x3D; new student;
-    s-&gt;name &#x3D; a;
-    s-&gt;ID &#x3D; b;
-    s-&gt;author &#x3D; c;
-    s-&gt;publisher &#x3D; d;
-    s-&gt;next &#x3D; head-&gt;next;
-    head-&gt;next &#x3D; s;
-&#125;
-&#x2F;&#x2F;初始化链表
-
-void list::search(string name)
-&#123;
-    student* p &#x3D; head-&gt;next;
-    while (p !&#x3D; NULL) &#123;
-        if (p-&gt;name &#x3D;&#x3D; name) &#123;
-            &#x2F;&#x2F;return p;
-            cout &lt;&lt; &quot;name: &quot; &lt;&lt; p-&gt;name &lt;&lt; endl;
-            cout &lt;&lt; &quot;ID: &quot; &lt;&lt; p-&gt;ID &lt;&lt; endl;
-            cout &lt;&lt; &quot;author: &quot; &lt;&lt; p-&gt;author &lt;&lt; endl;
-            cout &lt;&lt; &quot;publisher: &quot; &lt;&lt; p-&gt;publisher &lt;&lt; endl;
-            break;
-        &#125;
-        p &#x3D; p-&gt;next;
+        <p>最近在合作做一个前后端分离项目时，为了测试我写的后端部分获取数据的效果，自己也学了一下 vue 的知识，在获取 json 信息这里也踩了很多坑。</p>
+<p>这里列举下我返回的 json 部分信息：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
+  &quot;house_basic&quot;: [
+    &#123;
+      &quot;HOUSE_ID&quot;: &quot;00001&quot;,
+      &quot;HOUSE_NAME&quot;: &quot;盈翠华庭122A户型&quot;,
+      &quot;HOUSE_AREA&quot;: &quot;122&quot;,
+      &quot;HOUSE_STATE&quot;: 0,
+      &quot;HOUSE_SPECIAL&quot;: &quot;采光好，南北通透&quot;
+    &#125;,
+    &#123;
+      &quot;HOUSE_ID&quot;: &quot;00002&quot;,
+      &quot;HOUSE_NAME&quot;: &quot;北海中心中间户&quot;,
+      &quot;HOUSE_AREA&quot;: &quot;92&quot;,
+      &quot;HOUSE_STATE&quot;: 0,
+      &quot;HOUSE_SPECIAL&quot;: &quot;采光好，客厅朝南&quot;
     &#125;
-    system(&quot;pause&quot;);
-    &#x2F;&#x2F;return NULL;
-&#125;
-&#x2F;&#x2F;查找链表中的成员
-
-void list::insert(string a, string b, string c, string d)
-&#123;
-    student* p &#x3D; head, * s &#x3D; NULL;
-    s &#x3D; new student;
-    s-&gt;name &#x3D; a;
-    s-&gt;ID &#x3D; b;
-    s-&gt;author &#x3D; c;
-    s-&gt;publisher &#x3D; d;
-    s-&gt;next &#x3D; p-&gt;next;
-    head-&gt;next &#x3D; s;
-&#125;
-&#x2F;&#x2F;往链表添加新成员
-
-void list::del(string name)
-&#123;
-    student* p &#x3D; head-&gt;next, * s &#x3D; head, * q &#x3D; NULL;
-    q &#x3D; new student;
-    while (p !&#x3D; NULL &amp;&amp; p-&gt;name !&#x3D; name) &#123;
-        p &#x3D; p-&gt;next;
-        s &#x3D; s-&gt;next;
-    &#125;
-    if (p-&gt;name &#x3D;&#x3D; name) &#123;
-        s-&gt;next &#x3D; p-&gt;next;
-        q &#x3D; p;
-        delete q;
-        cout &lt;&lt; &quot;delete successfully&quot; &lt;&lt; endl;
-    &#125;
-&#125;
-&#x2F;&#x2F;删除链表的结点
-
-void list::print()
-&#123;
-    student* p &#x3D; head-&gt;next;
-    cout &lt;&lt; &quot;name\t&quot; &lt;&lt; &quot;ID\t&quot; &lt;&lt; &quot;author\t&quot; &lt;&lt; &quot;publisher&quot; &lt;&lt; endl;
-    while (p !&#x3D; NULL) &#123;
-        cout &lt;&lt; p-&gt;name &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;ID &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;author &lt;&lt; &#39;\t&#39; &lt;&lt; p-&gt;publisher &lt;&lt; endl;
-        p &#x3D; p-&gt;next;
-    &#125;
-    cout &lt;&lt; endl;
-&#125;
-&#x2F;&#x2F;打印链表
-
-void list::edit(string name)
-&#123;
-    student* p &#x3D; head-&gt;next;
-    while (p !&#x3D; NULL) &#123;
-        if (p-&gt;name &#x3D;&#x3D; name) &#123;
-            break;
-        &#125;
-        p &#x3D; p-&gt;next;
-    &#125;
-    while (1) &#123;
-        cout &lt;&lt; &quot;what data do you wanna edit(enter &#39;none&#39; to exit): &quot;;
-        string temp;
-        cin &gt;&gt; temp;
-        cout &lt;&lt; &quot;enter the new data: &quot;;
-        if (temp &#x3D;&#x3D; name) &#123;
-            cin &gt;&gt; p-&gt;name;
-        &#125;
-        else if (temp &#x3D;&#x3D; &quot;ID&quot;) &#123;
-            cin &gt;&gt; p-&gt;ID;
-        &#125;
-        else if (temp &#x3D;&#x3D; &quot;author&quot;) &#123;
-            cin &gt;&gt; p-&gt;author;
-        &#125;
-        else if (temp &#x3D;&#x3D; &quot;publisher&quot;) &#123;
-            cin &gt;&gt; p-&gt;publisher;
-        &#125;
-        else if (temp &#x3D;&#x3D; &quot;none&quot;) &#123;
-            break;
-        &#125;
-        else &#123;
-            cout &lt;&lt; &quot;error, please check what you enter&quot; &lt;&lt; endl;
-        &#125;
-
-    &#125;
-&#125;
-&#x2F;&#x2F;编辑链表成员的数据
-
-int main()
-&#123;
-    list li(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;);
-    while (1) &#123;
-        cout &lt;&lt; &quot;---------------------------\n&quot;;
-        cout &lt;&lt; &quot;1.add the info             \n&quot;;
-        cout &lt;&lt; &quot;2.search the info          \n&quot;;
-        cout &lt;&lt; &quot;3.edit the info            \n&quot;;
-        cout &lt;&lt; &quot;4.delete the info          \n&quot;;
-        cout &lt;&lt; &quot;5.print the list           \n&quot;;
-        cout &lt;&lt; &quot;0.exit                     \n&quot;;
-        cout &lt;&lt; &quot;---------------------------\n&quot;;
-        cout &lt;&lt; &quot;choose a mode: &quot;;
-        int mode;
-        cin &gt;&gt; mode;
-        if (mode &#x3D;&#x3D; 1) &#123;
-            string a, b, c, d;
-            cout &lt;&lt; &quot;enter the new data(name ID author publisher): &quot;;
-            cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;
-            li.insert(a, b, c, d);
-        &#125;
-        else if (mode &#x3D;&#x3D; 2) &#123;
-            string temp;
-            cout &lt;&lt; &quot;enter the book&#39;s name that you want to search: &quot;;
-            cin &gt;&gt; temp;
-            li.search(temp);
-        &#125;
-        else if (mode &#x3D;&#x3D; 3) &#123;
-            string temp;
-            cin &gt;&gt; temp;
-            li.edit(temp);
-        &#125;
-        else if (mode &#x3D;&#x3D; 4) &#123;
-            string temp;
-            cin &gt;&gt; temp;
-            li.del(temp);
-            system(&quot;pause&quot;);
-        &#125;
-        else if (mode &#x3D;&#x3D; 5) &#123;
-            li.print();
-            system(&quot;pause&quot;);
-        &#125;
-        else if (mode &#x3D;&#x3D; 0) &#123;
-            cout &lt;&lt; endl;
-            system(&quot;pause&quot;);
-            break;
-        &#125;
-        else &#123;
-            cout &lt;&lt; &quot;error, please select the mode again\n&quot;;
-            system(&quot;pause&quot;);
-        &#125;
-        system(&quot;cls&quot;);
-    &#125;
+  ]
 &#125;</code></pre>
+<p>vue 的 script 部分：</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;script&gt;
+&#x2F;&#x2F; 基本的script部分框架
+import axios from &#39;axios&#39;;
+export default &#123;
+    created() &#123;
+        axios.get(&#39;http:&#x2F;&#x2F;&lt;ip&gt;:9999&#x2F;vote&#x2F;api&#39;)
+        .then((res) &#x3D; &gt; &#123;
+            console.log(res);
+        &#125;)
+    &#125;
+&#125;
+&lt;&#x2F;script&gt;    </code></pre>
+<p>我们打印一下 <code>res.data</code>，得到的是：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
+    &#123;
+        &quot;score&quot;: [
+        &#123;
+            &quot;HOUSE_ID&quot;: &quot;00001&quot;,
+            &quot;HOUSE_VOTE&quot;: 5,
+            &quot;HOUSE_NAME&quot;: &quot;盈翠华庭122A户型&quot;
+        &#125;,
+        &#123;
+            &quot;HOUSE_ID&quot;: &quot;00002&quot;,
+            &quot;HOUSE_VOTE&quot;: 22,
+            &quot;HOUSE_NAME&quot;: &quot;北海中心中间户&quot;
+        &#125;
+    ]&#125;，
+	&#x2F;&#x2F; 略过不重要信息
+&#125;</code></pre>
+<p>我们再打印 <code>res.data.score</code>，这才得到了我们想要的数组：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">[
+    &#123;
+      &quot;HOUSE_ID&quot;: &quot;00001&quot;,
+      &quot;HOUSE_VOTE&quot;: 5,
+      &quot;HOUSE_NAME&quot;: &quot;盈翠华庭122A户型&quot;
+    &#125;,
+    &#123;
+      &quot;HOUSE_ID&quot;: &quot;00002&quot;,
+      &quot;HOUSE_VOTE&quot;: 22,
+      &quot;HOUSE_NAME&quot;: &quot;北海中心中间户&quot;
+    &#125;
+]</code></pre>
+<p>输出其中一条的子条目看看 <code>res.data.score[0].HOUSE_ID</code>：<code>00001</code>。</p>
+<p>在搞清楚返回的 data 后，就可以来写 script 部分获取，保存数据了。</p>
+<pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;
+    &lt;div id&#x3D;&#39;main&#39;&gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+&#x2F;&#x2F; BarChart.vue
+import axios from &#39;axios&#39;;
+export default &#123;
+    name: &#39;barChart&#39;,
+    methods :&#123;
+        initChart() &#123;
+            var echarts &#x3D; require(&#39;echarts&#39;);
+            let myChart &#x3D; echarts.init(document.getElementBuId(&#39;main&#39;));
+            &#x2F;&#x2F; 这里需要一个id为main的空div标签，注意，必须是空标签
+            var option &#x3D; &#123;
+                tooltip: &#123;
+                    trigger: &#39;axis&#39;,
+                    axisPointer: &#123;
+                        type: &#39;shadow&#39;,
+                    &#125;
+                &#125;,
+                xAxis: &#123;
+                    type: &#39;category&#39;,
+                    name: &#39;id&#39;, &#x2F;&#x2F;x轴的名称
+                    data: this.idData,
+                &#125;,
+                yAxis: &#123;
+                    type: &#39;value&#39;,
+                    name: &#39;vote&#39;,
+                   &#x2F;&#x2F; data: this.voteData,
+                    &#x2F;&#x2F; y轴好像不放data也没多大影响
+                &#125;,
+                series: [&#123;
+                    data: this.voteData,
+                    type: &#39;bar&#39;,
+                &#125;]
+            &#125;
+            myChart.setOption(option); &#x2F;&#x2F; 设置图标样式
+        &#125;
+    &#125;,
+    created() &#123;
+        &#x2F;&#x2F; 这里拿投票数接口来举例
+        axios.get(&#39;http:&#x2F;&#x2F;&lt;ip&gt;:9999&#x2F;vote&#x2F;api&#39;)
+        .then((res) &#x3D;&gt; &#123;
+            this.idData &#x3D; [];
+            this.voteData &#x3D; [];
+            if (res.status &#x3D;&#x3D; 200) &#123;
+                let temp &#x3D; res.data.score;
+                for (let i in temp) &#123;
+                    this.idData.push(temp[i].HOUSE_ID);
+                    this.voteData.push(temp[i].HOUSE_VOTE);                    
+                &#125;
+            &#125;
+            this.initChart();
+        &#125;)
+    &#125;,
+    mounted() &#123;
+        this.initChart();
+    &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
 
     </div>
 
@@ -549,22 +479,19 @@ int main()
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
-              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/Golang/" rel="tag"># Golang</a>
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/0x0009.html" rel="prev" title="第二次html作业">
-                  <i class="fa fa-chevron-left"></i> 第二次html作业
+                <a href="/post/0x0032.html" rel="prev" title="gin+MySQL简单实现数据库查询">
+                  <i class="fa fa-chevron-left"></i> gin+MySQL简单实现数据库查询
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/0x000A.html" rel="next" title="学习类的过程的一些记录">
-                  学习类的过程的一些记录 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -685,7 +612,7 @@ darkmode.showWidget();
 </script>
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x000B.html"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x0033.html"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
