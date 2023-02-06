@@ -24,37 +24,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="在Cocos2d中拖动组件并吸附到节点中央">
+    <meta name="description" content="浅浅记录下 6.824 lab1 思路记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cocos2d拖动组件吸附效果">
-<meta property="og:url" content="https://jaydenchang.top/post/0x002C.html">
+<meta property="og:title" content="mit 6.824 lab1 思路贴">
+<meta property="og:url" content="https://jaydenchang.top/post/0x0034.html">
 <meta property="og:site_name" content="Jayden&#39;s Blog">
-<meta property="og:description" content="在Cocos2d中拖动组件并吸附到节点中央">
+<meta property="og:description" content="浅浅记录下 6.824 lab1 思路记录">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C-1.png">
-<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_drag_accept.gif">
-<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_drag_refuse.gif">
-<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_xOy.png">
-<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_xOy_detail.png">
-<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_without_correct.gif">
-<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x002C_correct.gif">
-<meta property="article:published_time" content="2022-02-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-02T10:51:46.841Z">
+<meta property="article:published_time" content="2023-02-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-06T12:11:42.754Z">
 <meta property="article:author" content="Jayden Chang">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="Cocos">
+<meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jaydenchang.gitee.io/images/images/0x002C-1.png">
 
 
-<link rel="canonical" href="https://jaydenchang.top/post/0x002C.html">
+<link rel="canonical" href="https://jaydenchang.top/post/0x0034.html">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x002C.html","path":"/post/0x002C.html","title":"cocos2d拖动组件吸附效果"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x0034.html","path":"/post/0x0034.html","title":"mit 6.824 lab1 思路贴"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>cocos2d拖动组件吸附效果 | Jayden's Blog</title>
+<title>mit 6.824 lab1 思路贴 | Jayden's Blog</title>
   
 
 
@@ -157,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E5%92%8C%E5%87%BD%E6%95%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">定义节点和函数功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="nav-number">1.2.</span> <span class="nav-text">最终效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%AD%A3"><span class="nav-number">1.3.</span> <span class="nav-text">修正</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getting-started"><span class="nav-number">2.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-rpc-%E9%80%9A%E4%BF%A1"><span class="nav-number">3.</span> <span class="nav-text">实现 rpc 通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#worker%E6%8E%A5%E6%94%B6%E6%B6%88%E6%81%AF"><span class="nav-number">4.</span> <span class="nav-text">worker接收消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-rpc-%E9%80%9A%E4%BF%A1-1"><span class="nav-number">5.</span> <span class="nav-text">实现 rpc 通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#worker-%E7%94%B3%E9%A2%86-task"><span class="nav-number">6.</span> <span class="nav-text">Worker 申领 task</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%85%A7%E6%8A%84-mrsequential.go"><span class="nav-number">7.</span> <span class="nav-text">照抄 mrsequential.go</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%91-coordinator-%E7%9A%84%E6%8A%A5%E5%91%8A"><span class="nav-number">8.</span> <span class="nav-text">向 coordinator 的报告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3-crash"><span class="nav-number">9.</span> <span class="nav-text">解决 crash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">10.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -249,7 +240,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x002C.html">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0034.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://jaydenchang.gitee.io/images/Jayden.jpg">
@@ -262,12 +253,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="cocos2d拖动组件吸附效果 | Jayden's Blog">
-      <meta itemprop="description" content="在Cocos2d中拖动组件并吸附到节点中央">
+      <meta itemprop="name" content="mit 6.824 lab1 思路贴 | Jayden's Blog">
+      <meta itemprop="description" content="浅浅记录下 6.824 lab1 思路记录">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          cocos2d拖动组件吸附效果
+          mit 6.824 lab1 思路贴
         </h1>
 
         <div class="post-meta-container">
@@ -278,7 +269,7 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-02-18 00:00:00" itemprop="dateCreated datePublished" datetime="2022-02-18T00:00:00+08:00">2022-02-18</time>
+      <time title="Created: 2023-02-06 00:00:00" itemprop="dateCreated datePublished" datetime="2023-02-06T00:00:00+08:00">2023-02-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -286,7 +277,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Cocos/" itemprop="url" rel="index"><span itemprop="name">Cocos</span></a>
+          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
         </span>
     </span>
 
@@ -306,8 +297,8 @@
     </span>
     <span class="post-meta-item-text">Valine: </span>
   
-    <a title="valine" href="/post/0x002C.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/post/0x002C.html" itemprop="commentCount"></span>
+    <a title="valine" href="/post/0x0034.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/0x0034.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -329,7 +320,7 @@
     </span>
 </div>
 
-            <div class="post-description">在Cocos2d中拖动组件并吸附到节点中央</div>
+            <div class="post-description">浅浅记录下 6.824 lab1 思路记录</div>
         </div>
       </header>
 
@@ -337,118 +328,110 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>最近在学习制作小游戏，要实现一个拖动吸附效果，这里简单实现一下</p>
-<p><img src='https://jaydenchang.gitee.io/images/images/0x002C-1.png' style="zoom:67%;" ></p>
-<h4 id="代码实现">代码实现</h4>
-<h5 id="定义节点和函数功能">定义节点和函数功能</h5>
-<p>在<code>properties</code>里新建一个对象，用来接收目标区域的节点</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">properties:&#123;
-    sense: &#123;
-        defaule: null,
-        type: cc.Node,
-    &#125;
-&#125;</code></pre>
-<p>然后在小车节点里绑定这个脚本，将要测试的目标节点拖动到属性检查器的<code>sense</code></p>
-<p>这里用小车来表示要移动的组件，先在<code>onload()</code>内定义小车组件，设置位置，以及定义三个触摸事件函数</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">onload() &#123;
-    this.carPos &#x3D; cc.v2(0, 0);
-    &#x2F;&#x2F; 定义一个触摸移动控件
-    this.node.setPosition(this.carPos.x, this.carPos.y);
-    this.origin &#x3D; this.node.convertToWorldSpace(cc.v2(0, 0));
-    &#x2F;&#x2F; 获取小车移动前的坐标
-    
-    &#x2F;&#x2F; 对当前节点设置位置
-    this.node.on(&quot;touchstart&quot;, this.touchStart, this);
-    this.node.on(&quot;touchmove&quot;, this.touchMove, this);
-    this.node.on(&quot;touchend&quot;, this.touchEnd, this);
-    &#x2F;&#x2F; 定义三个触摸事件函数
-&#125;</code></pre>
-<p>然后就是对三个触摸事件定义</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">touchStart(event) &#123;
-    let touchPos &#x3D; event.getLocation();
-    &#x2F;&#x2F; 获取当前触摸位置
-    let posInNode &#x3D; this.worldConvertLocalPoint(this.node, touchPos);
-    &#x2F;&#x2F; 将当前触摸位置坐标转换为世界坐标
-    let target &#x3D; this.node.getContentSize();
-    &#x2F;&#x2F; 获得当前触摸组件的大小
-    let rect &#x3D; cc.rect(0, 0, target.width, target.height);
-    &#x2F;&#x2F; 对触摸对象组件创建一个矩形对象
-    if (rect.contains(posInNode)) &#123;
-        &#x2F;&#x2F; 判断触摸的位置是否在矩形内
-        this.touchTile &#x3D; this.node;
-        &#x2F;&#x2F; 获取被触摸的对象
-    &#125;
-    console.log(posInNode.x + &quot; &quot; + posInNode.y);
-    &#x2F;&#x2F; 测试，打印当前触摸位置
-&#125;,
-    
-touchMove(event) &#123;
-    if (this.touchTile) &#123;
-        this.touchTile.setPosition(this.touchTile.x + event.getDelta().x ,
-            this.touchTile.y + event.getDelta().y);
-        &#x2F;&#x2F; 根据小车组件移动距离重新给小车定位
-    &#125;
-&#125;,
+        <h4 id="前言">前言</h4>
+<p>为遵守 mit 的约定，这个帖子不贴太多具体的代码，主要聊聊自己在码代码时的一些想法和遇到的问题。</p>
+<p>这个实验需要我们去实现一个 map-reduce 的功能。实质上，这个实验分为两个大的板块，map 和 reduce 两个阶段，也就是这个实验的核心部分，两个阶段都包含若干小的子任务，然后用户通过编写 map 和 reduce 函数。这个实验里，我们的任务是，读取 main 文件夹下的八个 txt 文档，扫描其中的单词，并计数，将结果输出到若干个子文件中，最后的话，测试脚本会读取这八个文件，把里面的结果输出到另一个 txt 中并进行排序，比对给出的标准答案，来评判该实验是否通过。</p>
+<p>做这个实验的前提是，已经读过这个实验配套的论文：<a target="_blank" rel="noopener" href="http://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf">mapreduce-osdi04.pdf (googleusercontent.com)</a> <del>知道这个实验以及想要做这个实验的人多少都会有点手段上谷歌</del>（当然，也可以去找国内转载的，看不懂的话就看中文的吧，实验文档也是。</p>
+<h4 id="getting-started">Getting Started</h4>
+<p>当我们打开这个项目工程，我们阅读这个项目的所有文件，以及 lab1 中给出的提示，我们可以先试着运行以下部分代码，来看看我们最重要得到什么结果：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 当前目录为 src&#x2F;main
+go build -race -buildmode&#x3D;plugin ..&#x2F;mrapps&#x2F;wc.go
+rm -rf mr-out*
+go run -race mrsequential.go wc.so pg*.txt
+more mr-out-0</code></pre>
+<p>这个是一个单线程的 map-reduce，我们可以查看 <code>mrsequential.go</code> 的内容，大概了解下整个 map-reduce 的过程是怎样的。</p>
+<p>然后，我们把目光聚集到以下文件中：</p>
+<pre class="line-numbers language-none"><code class="language-none">---main
+	 |---mrworker.go
+	 |---mrcoordinator.go
+	 |---mrsequential.go
+---mr
+	 |---worker.go
+	 |---coordinator.go
+	 |---rpc.go
+---mrapp
+	 |---wc.go</code></pre>
+<p>后面我们在这个实验中很多内容都要参考这些文件的内容，其中包含一些函数的来源，其中，尤其 <code>main/mrsequential.go</code> 尤其重要。</p>
+<h4 id="实现-rpc-通信">实现 rpc 通信</h4>
+<p>如果说想要实现 map-reduce，那么第一步就是实现 worker 和 coordinator 的 rpc 通信，观察 mr 目录下的文件后，我们需要在 <code>rpc.go</code> 和 <code>coordinator.go</code> 中定义以下结构体 (目前仅实现 rpc 通信)：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">&#x2F;&#x2F; coordinator.go
+&#x2F;&#x2F; 专门定义一个Task，用于coordinator向worker分发任务
+type Task struct &#123;
+    FileName string
+&#125;
 
-touchEnd(event) &#123;
-    let touchPos &#x3D; this.touchTile.convertToWorldSpaceAR(cc.v2(0, 0));
-    let posInNode &#x3D; this.worldConvertLocalPoint(this.sense1, touchPos);
-    let target &#x3D; this.sense1.getContentSize();
-    &#x2F;&#x2F; 定义坐标修正值
-    let correctValue &#x3D; cc.v2(this.sense.width &#x2F; 2  - this.origin.x - this.node.width &#x2F; 2, this.sense.height &#x2F; 2 - this.origin.y - this.node.height &#x2F; 2);
-    &#x2F;&#x2F; 获取要置放的区域的大小
-    let rect &#x3D; cc.rect(0, 0, target.width, target.height);
-    if (rect.contains(posInNode)) &#123;
-        &#x2F;&#x2F; 判断小车是否落在目标区域的矩形内
-        console.log(&quot;---endPos&quot;);
-        &#x2F;&#x2F; 设置触摸结束后小车的落位坐标
-        let targetPos &#x3D; this.sense1.convertToWorldSpace(cc.v2(correctValue));
-        &#x2F;&#x2F; 获取目标区域的中心坐标
-        let action &#x3D; cc.moveTo(0.3, targetPos);
-        &#x2F;&#x2F; 新建一个位移动作，动画持续时间为0.3s
-        this.touchTile.runAction(action);
-        &#x2F;&#x2F; 小车组件执行动作
-    &#125; else &#123;
-        console.log(&quot;----go back&quot;);
-        let action &#x3D; cc.moveTo(0.3, this.carPos);
-        &#x2F;&#x2F; 组件回到小车初始位置
-        this.touchTile.runAction(action);
-    &#125;
-    this.touchTile &#x3D; null;
-    &#x2F;&#x2F; 重置触摸组件为空
-&#125;,
-    
-worldConvertLocalPoint(node, worldPoint) &#123;
-    if (node) &#123;
-        return node.convertToNodeSpace(worldPoint);
-    &#125;
-    return null;
+&#x2F;&#x2F; 这里声明coordinator相关的结构体
+type Coordinator struct &#123;
+    task Task
+&#125;
+
+&#x2F;&#x2F; rpc.go
+&#x2F;&#x2F; 这里参考了上面的两个Example
+type TaskRequest struct &#123;
+    X int
+&#125;
+
+type TaskReply struct &#123;
+    XTask Task     
 &#125;</code></pre>
-<h5 id="最终效果">最终效果</h5>
-<p>拖入目标区域</p>
-<p><img src='https://jaydenchang.gitee.io/images/images/0x002C_drag_accept.gif' style="zoom:67%;" ></p>
-<p>没拖到指定区域</p>
-<p><img src='https://jaydenchang.gitee.io/images/images/0x002C_drag_refuse.gif' style="zoom:67%;" ></p>
-<h5 id="修正">修正</h5>
-<p>这里要把小车放到目标区域的正中心，需要对坐标进行修正。在cocos creator里，有节点坐标和世界坐标这两个概念</p>
-<p><img src='https://jaydenchang.gitee.io/images/images/0x002C_xOy.png' style="zoom:67%;" ></p>
-<p>而在属性检查器里，我们所设置的<code>position</code>，也就是锚点的位置，是相对于父节点的，例如图中我把<code>position</code>设为0和0，就是相对于父节点，该组件定位在父节点的几何中心。</p>
-<p><img src='https://jaydenchang.gitee.io/images/images/0x002C_xOy_detail.png' style="zoom:67%;" ></p>
-<p>那么，哪些坐标值和最终放置的位置坐标有关联呢？</p>
-<ul>
-<li>小车初始坐标值</li>
-<li>小车组件的长宽</li>
-<li>目标区域的长宽</li>
-</ul>
-<p>在没有修正之前，把<code>targetPos</code>的值设为<code>this.sense.convertToWorldSpace(cc.v2(0, 0))</code>，拖动后的效果如下图</p>
-<p><img src='https://jaydenchang.gitee.io/images/images/0x002C_without_correct.gif' style="zoom:67%;" ></p>
-<p>并且log打印目标位置的坐标，水平值离屏幕宽度一半还有一定的差距，这时我又打印了拖动结束后小车的坐标值，好家伙，我轻点小车没有拖动，控制台输出的坐标值为<code>(0,0)</code>，而图中很明显，小车的位置不在世界坐标的原点上，即此时小车的坐标参照点为小车的初始位置</p>
-<p>那问题来了，怎么修正？</p>
-<p>只需在<code>onload()</code>中定义一个变量储存小车的世界坐标值 <code>this.origin = this.node.convertToWorldSpace(cc.v2(0, 0))</code>，然后在<code>touchEnd()</code>中新定义一个向量值<code>correctValue</code>，新建一个向量<code>cc.v2(-this.origin.x, -this.origin.y)</code>，并返回给<code>correctValue</code>，再将<code>correctValue</code>转化为世界坐标赋给<code>targetPos</code>，此时小车会自动吸附到目标区域左下角，展现的效果如下</p>
-<p><img src='https://jaydenchang.gitee.io/images/images/0x002C_correct.gif' style="zoom:67%;" ></p>
-<p>如果要把小车定位到目标区域的正中央，还需要考虑小车组件和目标区域的长宽，相应地，<code>correctValue</code>应该设为<code>cc.v2(this.sense.width / 2 - this.node.width / 2 - this.origin.x, this.sense.height / 2 - this.node.height / 2 - this.origin.y)</code></p>
+<p>下一步要做的是，需要让 coordinator 和 worker 之间能够进行 rpc 通信。</p>
+<p>实现两者之间的通信是完成这个实验的基础。</p>
+<h4 id="worker接收消息">worker接收消息</h4>
+<p>worker 调用 coordinator 的获取任务函数，获取要处理的文件名，然后执行打开操作。</p>
+<p>在构建中间体 <code>intermediate</code> 时，可以留意到 <code>mrsequential.go</code> 有提示：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">&#x2F;&#x2F; a big difference from real MapReduce is that all the
+&#x2F;&#x2F; intermediate data is in one place, intermediate[],
+&#x2F;&#x2F; rather than being partitioned into NxM buckets.</code></pre>
+<p>根据这个思路，相当于提示我们，在构建桶存放中间体时，可能会用到二维 NxM 的数组。</p>
+<p>然后经过 map 处理后的键值对切片，需要进一步经过 json 处理，并且将这个结果分成 nReduce 份，存放的文件命名规则是 <code>mr-X-Y</code>，其中 x 是 map 任务的序号，y 是 reduce 任务的序号。</p>
+<p>在进行 reduce 任务时，读取结果也需要经过 json 处理，这里很多步骤都可以借鉴 <code>mrsequential.go</code>，包括读取文件等。</p>
+<p>在创建目标文件时，可以使用 <code>ioutil.TempFile</code> 来创建临时文件，最后再重新命名。</p>
+<p>此阶段的结构体声明如下：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">&#x2F;&#x2F; coordinator.go
+type Coordinator struct &#123;
+    State            int &#x2F;&#x2F; 0 map 1 reduce 2 none
+    MapTask          Task
+    ReduceTask       Task
+    NumMapTask       int
+    NumReduceTask    int
+    MapTaskFinish    chan bool
+    ReduceTaskFinish chan bool
+&#125;
+
+type Task struct &#123;
+    FileName string
+    IDMap    int
+    IDReduce string
+&#125;
+
+&#x2F;&#x2F; rpc.go
+type TaskRequest struct &#123;
+    X int
+&#125;
+
+type TaskReply struct &#123;
+    XTask            Task
+    NumMapTask       int
+    NumReduceTask    int
+    CurNumMapTask    int
+    CurNumReduceTask int
+&#125;</code></pre>
+<h4 id="实现-rpc-通信-1">实现 rpc 通信</h4>
+<p>根据文档的指引，我们首先要实现 coordinator 和 worker 之间的通信，我们看到 <code>worker.go</code> 中有 call 和 CallExample 两个函数，那也照葫芦画瓢，自己搞一个 CallGetTask，实现 rpc 通信。</p>
+<h4 id="worker-申领-task">Worker 申领 task</h4>
+<p>看着 <code>Worker()</code> 里的注释，有一行 <code>CallExample()</code>，是需要我们在这个函数里调用自定义的 CallGetTask 函数来获取 coordinator 分发的 task，在 call 之前，我们先要给 coordinator 的成员 MapTask 初始化，在 <code>MakeCoordinator</code> 中，我们可以看到 files 和 nReduce 这两个参数，那就从这两个入手，进行简单的初始化后，我们尝试在 Worker 中输出，能够输出文件名就是阶段性胜利。</p>
+<h4 id="照抄-mrsequential.go">照抄 <code>mrsequential.go</code></h4>
+<p>文档中有提到，可以随意借鉴 mrsequential 中的函数，那么，走起。不过也要看看注释和文档，可以创建一个 NxM 的桶，和利用 encoder 和 decoder 来处理中间产物。</p>
+<h4 id="向-coordinator-的报告">向 coordinator 的报告</h4>
+<p>每执行完一个任务，就向 coordinator 报告，方便 coordinator 记录，当所有任务都执行完时，修改 <code>Done</code> 中的条件，解除阻塞。</p>
+<p>其实，走到这一步，可以说这个 lab 完成一半了，剩下就是各种断点打印 debug。</p>
+<p>如果在执行过程提示无法打开文件，那说明，map 或 reduce 任务完成个数的条件没有控制好，<code>mrsequential.go</code> 中规定了一共会生成 3 个 workers，无法打开文件，只可能是，并发申请 task 时，已经快要到 task 的容量数，没分配到的 worker 自然也就没有分配到 FileName 和 MapID，所以需要设置好这些控制条件</p>
+<h4 id="解决-crash">解决 crash</h4>
+<p>做完上面，7 个 test 就可以 pass 6 个了，剩下一个 crash 的，需要用到锁或原子变量方面的知识。在进行 GetTask 时，我们传递的参数，需要确保其原子性，不然会出现 data race 现象；同时，也要对超过 10s 的任务进行舍弃处理，这里我们加一个时间戳，来记录任务的完成情况和开始时间。</p>
+<p>又考虑到在记录任务完成情况时，是一个并发状态，这里考虑使用 <code>sync.Map</code>。在进行最后的 <code>Done</code> 之前，我们还要再定义一个检查函数，来遍历检查是否还有 crash 的任务。</p>
 <h4 id="参考链接">参考链接</h4>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45310244/article/details/113854722">(61条消息) CocosCreator的拖动小游戏主要逻辑_天才派大星 !的博客-CSDN博客_cocos creator 拖动</a></p>
+<p><a target="_blank" rel="noopener" href="https://pdos.csail.mit.edu/6.824/labs/lab-mr.html">6.5840 Lab 1: MapReduce (mit.edu)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ft4y1a7cM/?spm_id_from=333.999.0.0&amp;vd_source=1724be72d1eb9a071146bb4df19bd7f6">mit6.824分布式lab1-MapReduce（1）_哔哩哔哩_bilibili</a></p>
 
     </div>
 
@@ -475,22 +458,18 @@ worldConvertLocalPoint(node, worldPoint) &#123;
 </div>
 
           <div class="post-tags">
-              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-              <a href="/tags/Cocos/" rel="tag"># Cocos</a>
+              <a href="/tags/Golang/" rel="tag"># Golang</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/0x002B.html" rel="prev" title="win10找回Ubuntu启动项(非EasyBCD)">
-                  <i class="fa fa-chevron-left"></i> win10找回Ubuntu启动项(非EasyBCD)
+                <a href="/post/0x0033.html" rel="prev" title="Vue+echart 展示后端获取的数据">
+                  <i class="fa fa-chevron-left"></i> Vue+echart 展示后端获取的数据
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/0x002D.html" rel="next" title="只是一期唠嗑">
-                  只是一期唠嗑 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -611,7 +590,7 @@ darkmode.showWidget();
 </script>
 
 
-<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x002C.html"}</script>
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"qvyUwIPqu30tYjKJ8dKulufd-MdYXbMMI","appKey":"ilR9U6Vhlpi6qDnDIQJESR3O","serverURLs":"https://qvyuwipq.api.lncldglobal.com","placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":null,"visitor":false,"comment_count":true,"recordIP":true,"enableQQ":false,"requiredFields":[],"el":"#valine-comments","path":"/post/0x0034.html"}</script>
 <script>
 document.addEventListener('page:loaded', () => {
   NexT.utils.loadComments(CONFIG.valine.el)
