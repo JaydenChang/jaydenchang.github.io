@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="mask-icon" href="https://jaydenchang.gitee.io/images/Jayden.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"waline","storage":true,"lazyload":false,"nav":null,"activeClass":"waline"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用Ubuntu20.04双节点，在k8s部署gin+MySQL服务mo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Ubuntu20.04在k8s 1.25部署gin+MySQL服务">
+<meta property="og:url" content="https://jaydenchang.top/post/0x0036.html">
+<meta property="og:site_name" content="Jayden&#39;s Blog">
+<meta property="og:description" content="使用Ubuntu20.04双节点，在k8s部署gin+MySQL服务mo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x0036/mysql.png">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x0036/mysql_login_by_host.png">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x0036/mysql_cluster_ip.png">
+<meta property="og:image" content="https://jaydenchang.gitee.io/images/images/0x0036/test_port.png">
+<meta property="article:published_time" content="2023-07-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-07-04T04:08:41.983Z">
+<meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaydenchang.gitee.io/images/images/0x0036/mysql.png">
+
+
+<link rel="canonical" href="https://jaydenchang.top/post/0x0036.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x0036.html","path":"/post/0x0036.html","title":"基于Ubuntu20.04在k8s 1.25部署gin+MySQL服务"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基于Ubuntu20.04在k8s 1.25部署gin+MySQL服务 | Jayden's Blog</title>
+  
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="jayden-valine-vercel.vercel.app">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Jayden's Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jayden's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">14</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">52</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">0. 前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-text">1. 环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E"><span class="nav-text">1.1 环境说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-text">1.2 版本信息</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">1.3 环境配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-containerd"><span class="nav-text">1.4 安装 containerd</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-kubernetes"><span class="nav-text">1.5 安装 kubernetes</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-docker"><span class="nav-text">1.6 安装 docker</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96-kubernetes-%E9%9B%86%E7%BE%A4"><span class="nav-text">1.7 初始化 kubernetes 集群</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-calico-%E7%BD%91%E7%BB%9C%E6%8F%92%E4%BB%B6"><span class="nav-text">1.8 安装 calico 网络插件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-mysql"><span class="nav-text">2. 部署 MySQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2-gin-%E6%9C%8D%E5%8A%A1"><span class="nav-text">3. 部署 gin 服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-text">参考链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jayden Chang"
+      src="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <p class="site-author-name" itemprop="name">Jayden Chang</p>
+  <div class="site-description" itemprop="description">身在井隅，心向星光。眼中有诗，自在远方。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JaydenChang" title="Github → https:&#x2F;&#x2F;github.com&#x2F;JaydenChang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhang44378@163.com" title="E-Mail → mailto:zhang44378@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/jaydenchang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;jaydenchang" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JaydenChang7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JaydenChang7" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@jaydenchang7" title="YouTuBe → https:&#x2F;&#x2F;www.youtube.com&#x2F;@jaydenchang7" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTuBe</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/jaydenchang7" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;jaydenchang7" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://500px.com.cn/jaydenchang" title="500px → https:&#x2F;&#x2F;500px.com.cn&#x2F;jaydenchang" rel="noopener me" target="_blank"><i class="fa-brands fa-500px fa-fw"></i>500px</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0036.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://jaydenchang.gitee.io/images/Jayden.jpg">
+      <meta itemprop="name" content="Jayden Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于Ubuntu20.04在k8s 1.25部署gin+MySQL服务 | Jayden's Blog">
+      <meta itemprop="description" content="使用Ubuntu20.04双节点，在k8s部署gin+MySQL服务mo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于Ubuntu20.04在k8s 1.25部署gin+MySQL服务
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-07-04 00:00:00" itemprop="dateCreated datePublished" datetime="2023-07-04T00:00:00+08:00">2023-07-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/BackEnd/" itemprop="url" rel="index"><span itemprop="name">BackEnd</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline: </span>
+  
+    <a title="waline" href="/post/0x0036.html#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/post/0x0036.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>11 mins.</span>
+    </span>
+</div>
+
+            <div class="post-description">使用Ubuntu20.04双节点，在k8s部署gin+MySQL服务mo</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr />
+<hr />
+<h4 id="前言">0. 前言</h4>
+<p>某天突发奇想，既然都学了 docker 了，那干脆，顺便把 kubernetes 也学了，于是开始了我长达一个月的环境搭建、踩坑历程。</p>
+<p>最开始，我的想法是，在我的物理机使用 WSL + docker 来部署服务，但是 WSL 部署的服务好像只是单机版，和实际生产中的情况相差甚远，于是，我去弄了几台服务器，一台阿里云 2C2G，一台腾讯云 4C8G，一台腾讯云 2C2G。</p>
+<p>基于本人比较喜欢折腾的特点，我没有选择常见的 CentOS 来搭建，而是使用了 Ubuntu (问就是平时用 WSL 用多了，对 Ubuntu 有了感情 bushi)。然后就开始了我漫长的异地组网历程。记得前后搭建了半个多月吧，前面七天基本在搭建环境，解决镜像源问题，后面七天在解决两个 node 之间的通信，后面发现，我租用的服务器，都是弹性服务器，没法换公网和内网的 ip，没办法，只好自己搞虚拟机了，不过还好，虚拟机的搭建成功了，后面如果能搞到更多磁盘和空间的话，可能会尝试双 master 和多 node 的集群。</p>
+<h4 id="环境搭建">1. 环境搭建</h4>
+<h5 id="环境说明">1.1 环境说明</h5>
+<p>节点名称、ip：</p>
+<ul>
+<li>master：192.168.22.222</li>
+<li>node1：192.168.22.223</li>
+</ul>
+<p>master 要求 至少 2G RAM，2 核 CPU</p>
+<h5 id="版本信息">1.2 版本信息</h5>
+<ul>
+<li>系统版本：Ubuntu 20.04.6 server</li>
+<li>Docker：20.10.21</li>
+<li>Kubernetes：1.25.0</li>
+</ul>
+<h5 id="环境配置">1.3 环境配置</h5>
+<p>设置主机名及解析</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># master
+sudo systemctl set-hosename master
+sudo cat &gt; &#x2F;etc&#x2F;hosts &lt;&lt; EOF
+192.168.22.222 master
+192.168.22.223 node1
+EOF
+
+
+# node1systemctl set-hosename node1
+sudo cat &gt; &#x2F;etc&#x2F;hosts &lt;&lt; EOF
+192.168.22.222 master
+192.168.22.223 node1
+EOF</code></pre>
+<p>关闭 swap</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo swapoff -a
+# 注释&#x2F;etc&#x2F;fstab文件的最后一行
+sudo sed -i &#39;&#x2F;swap&#x2F;s&#x2F;^&#x2F;#&#x2F;&#39; &#x2F;etc&#x2F;fstab</code></pre>
+<p>开启 IPv4 转发</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo cat &lt;&lt;EOF | sudo tee &#x2F;etc&#x2F;modules-load.d&#x2F;k8s.conf
+overlay
+br_netfilter
+EOF
+# 分割线
+modprobe overlay
+modprobe br_netfilter
+# 分割线
+sudo cat &lt;&lt;EOF | sudo tee &#x2F;etc&#x2F;sysctl.d&#x2F;k8s.conf
+net.bridge.bridge-nf-call-iptables  &#x3D; 1
+net.bridge.bridge-nf-call-ip6tables &#x3D; 1
+net.ipv4.ip_forward                 &#x3D; 1
+EOF
+#分割线
+sudo sysctl --system</code></pre>
+<h5 id="安装-containerd">1.4 安装 containerd</h5>
+<p>从 k8s 1.25 开始使用 containerd 来作为底层容器支持，根据 <a target="_blank" rel="noopener" href="https://containerd.io/releases/">k8s 和 containerd 的匹配要求</a>，这里我们使用 containerd 1.7.0</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># apt 安装无法安装最新的版本，这里使用tar包解压
+curl https:&#x2F;&#x2F;github.com&#x2F;containerd&#x2F;containerd&#x2F;releases&#x2F;download&#x2F;v1.7.0&#x2F;containerd-1.7.0-linux-amd64.tar.gz 
+tar zxvf containerd-1.7.0-linux-amd64.tar.gz -C &#x2F;usr&#x2F;local
+# 导出默认配置
+sudo containerd config default &gt; &#x2F;etc&#x2F;containerd&#x2F;config.toml
+# 编辑配置文件
+sudo vim &#x2F;etc&#x2F;containerd&#x2F;config.toml
+# 进入到 vim 后搜索、替换
+# 修改sandbox_image行替换为aliyun的pause镜像
+sandbox_image &#x3D; &quot;registry.aliyuncs.com&#x2F;google_containers&#x2F;pause:3.8&quot;
+
+# 配置 systemd cgroup 驱动 
+[plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc]
+  ...
+  [plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options]
+    SystemdCgroup &#x3D; true
+    
+# 配置镜像加速
+[plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry]
+      [plugins.&quot;io.containerd.grpc.v1.cri&quot;.registry.mirrors]
+        [plugins. &quot;io.containerd.grpc.v1.cri&quot;.registry.mirrors.&quot;docker.io&quot;]
+          endpoint &#x3D; [&quot;https:&#x2F;&#x2F;registry.aliyuncs.com&quot;]</code></pre>
+<p>添加 containerd 服务</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo cat &gt; &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;containerd.service &lt;&lt; EOF
+# Copyright The containerd Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http:&#x2F;&#x2F;www.apache.org&#x2F;licenses&#x2F;LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+[Unit]
+Description&#x3D;containerd container runtime
+Documentation&#x3D;https:&#x2F;&#x2F;containerd.io
+After&#x3D;network.target local-fs.target
+
+[Service]
+#uncomment to enable the experimental sbservice (sandboxed) version of containerd&#x2F;cri integration
+#Environment&#x3D;&quot;ENABLE_CRI_SANDBOXES&#x3D;sandboxed&quot;
+ExecStartPre&#x3D;-&#x2F;sbin&#x2F;modprobe overlay
+ExecStart&#x3D;&#x2F;usr&#x2F;local&#x2F;bin&#x2F;containerd
+
+Type&#x3D;notify
+Delegate&#x3D;yes
+KillMode&#x3D;process
+Restart&#x3D;always
+RestartSec&#x3D;5
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNPROC&#x3D;infinity
+LimitCORE&#x3D;infinity
+LimitNOFILE&#x3D;infinity
+# Comment TasksMax if your systemd version does not supports it.
+# Only systemd 226 and above support this version.
+TasksMax&#x3D;infinity
+OOMScoreAdjust&#x3D;-999
+
+[Install]
+WantedBy&#x3D;multi-user.target
+EOF</code></pre>
+<p>加载配置，启动 contained 服务</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl daemon-reload
+systemctl enable --now containerd</code></pre>
+<h5 id="安装-kubernetes">1.5 安装 kubernetes</h5>
+<p>安装必要组件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo apt-get install -y apt-transport-https ca-certificates curl</code></pre>
+<p>添加阿里云安装源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo cat &lt;&lt;EOF &gt; &#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;kubernetes.list
+deb https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;kubernetes&#x2F;apt&#x2F; kubernetes-xenial main
+EOF
+
+gpg --keyserver keyserver.ubuntu.com --recv-keys BA07F4FB
+gpg --export --armor BA07F4FB | sudo apt-key add -
+curl https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;kubernetes&#x2F;apt&#x2F;doc&#x2F;apt-key.gpg | apt-key add -</code></pre>
+<p>安装 k8s</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo apt-get update
+sudo apt-get install -y kubelet&#x3D;1.25.0-00 kubeadm&#x3D;1.25.0-00 kubectl&#x3D;1.25.0-00
+systemctl enable --now kubelet </code></pre>
+<p>标记软件包，避免自动更新</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo apt-mark hold kubelet kubeadm kubectl</code></pre>
+<h5 id="安装-docker">1.6 安装 docker</h5>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">apt install docker.io</code></pre>
+<h5 id="初始化-kubernetes-集群">1.7 初始化 kubernetes 集群</h5>
+<p>使用 kubeadm 初始化</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 这里的apiserver那行是master的ip, 注意service-cidr和pod-network-cidr和节点ip不要出现在同一网段
+kubeadm init \
+--image-repository registry.aliyuncs.com&#x2F;google_containers \
+--apiserver-advertise-address&#x3D;192.168.22.222 \
+--service-cidr&#x3D;10.96.0.0&#x2F;12 \
+--pod-network-cidr&#x3D;22.22.0.0&#x2F;16 \
+--kubernetes-version v1.25.0</code></pre>
+<p>如果没有报错的话，配置环境变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkdir -p $HOME&#x2F;.kube
+sudo cp -i &#x2F;etc&#x2F;kubernetes&#x2F;admin.conf $HOME&#x2F;.kube&#x2F;config
+sudo chown $(id -u):$(id -g) $HOME&#x2F;.kube&#x2F;config
+export KUBECONFIG&#x3D;&#x2F;etc&#x2F;kubernetes&#x2F;admin.conf</code></pre>
+<p>node1 端输入类似这样的命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 记得在 node1 开放6443端口
+kubeadm join 192.168.22.223:6443 --token dc4wxa.qar86v4pb1b2umvm \
+        --discovery-token-ca-cert-hash sha256:1df0074a2226ed1a56f53b9d33bf263c51d3794b4c4b9d6132f07b68592ac38a 
+# token 是随机生成的</code></pre>
+<p>重新生成 token</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubeadm token create --print-join-command</code></pre>
+<h5 id="安装-calico-网络插件">1.8 安装 calico 网络插件</h5>
+<p>流行的有 flannel 和 calico，这里选择 calico</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">wget https:&#x2F;&#x2F;raw.staticdn.net&#x2F;projectcalico&#x2F;calico&#x2F;v3.24.1&#x2F;manifests&#x2F;tigera-operator.yaml
+sudo kubectl create -f tigera-operator.yaml
+wget https:&#x2F;&#x2F;raw.staticdn.net&#x2F;projectcalico&#x2F;calico&#x2F;v3.24.1&#x2F;manifests&#x2F;custom-resources.yaml
+vim custom-resources.yaml
+# 修改cidr配置
+apiVersion: operator.tigera.io&#x2F;v1
+kind: Installation
+metadata:
+  name: default
+spec:
+  # Configures Calico networking.
+  calicoNetwork:
+    # Note: The ipPools section cannot be modified post-install.
+    ipPools:
+    - blockSize: 26
+      cidr: 10.244.0.0&#x2F;16 # 修改为刚刚初始化时的 pod-network-cidr
+      encapsulation: VXLANCrossSubnet
+      natOutgoing: Enabled
+      nodeSelector: all()      </code></pre>
+<p>注意，<code>custom-resources.yaml</code> 的 <code>spec.calicoNetwork.ipPools.cidr</code> 一定要和刚刚初始化的 <code>pod-network-cidr</code> 一致，不然无法添加 calico 插件</p>
+<p>查看 pod 状态</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get pod -A
+NAMESPACE          NAME                                       READY   STATUS    RESTARTS       AGE
+calico-apiserver   calico-apiserver-95575566-mpv54            1&#x2F;1     Running   4 (156m ago)   3d1h
+calico-apiserver   calico-apiserver-95575566-n4x5w            1&#x2F;1     Running   4 (156m ago)   3d1h
+calico-system      calico-kube-controllers-85666c5b94-lll7q   1&#x2F;1     Running   4 (156m ago)   3d1h
+calico-system      calico-node-djqts                          1&#x2F;1     Running   4 (14h ago)    3d1h
+calico-system      calico-node-wp4cf                          1&#x2F;1     Running   4 (156m ago)   3d1h
+calico-system      calico-typha-76fd59d84d-xn79m              1&#x2F;1     Running   6 (156m ago)   3d1h
+calico-system      csi-node-driver-74p7m                      2&#x2F;2     Running   8 (156m ago)   3d1h
+calico-system      csi-node-driver-t86b2                      2&#x2F;2     Running   8 (14h ago)    3d1h
+kube-system        coredns-c676cc86f-tmq7f                    1&#x2F;1     Running   4 (156m ago)   3d1h
+kube-system        etcd-master                                1&#x2F;1     Running   4 (156m ago)   3d1h
+kube-system        kube-apiserver-master                      1&#x2F;1     Running   4 (156m ago)   3d1h
+kube-system        kube-controller-manager-master             1&#x2F;1     Running   4 (156m ago)   3d1h
+kube-system        kube-proxy-449rk                           1&#x2F;1     Running   4 (14h ago)    3d1h
+kube-system        kube-proxy-vswhw                           1&#x2F;1     Running   4 (156m ago)   3d1h
+kube-system        kube-scheduler-master                      1&#x2F;1     Running   4 (156m ago)   3d1h
+tigera-operator    tigera-operator-6675dc47f4-wcfxf           1&#x2F;1     Running   7 (155m ago)   3d1h</code></pre>
+<h4 id="部署-mysql">2. 部署 MySQL</h4>
+<p>先编写一个 <code>mysql-deploy.yaml</code> 配置文件</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">apiVersion: apps&#x2F;v1                             # apiserver的版本
+kind: Deployment                                # 副本控制器deployment，管理pod和RS
+metadata:
+  name: mysql                                   # deployment的名称，全局唯一
+  namespace: default                            # deployment所在的命名空间
+  labels:
+    app: mysql
+spec:
+  replicas: 1                                   # Pod副本期待数量
+  selector:
+    matchLabels:                                # 定义RS的标签
+      app: mysql                                # 符合目标的Pod拥有此标签
+  strategy:                                     # 定义升级的策略
+    type: RollingUpdate                         # 滚动升级，逐步替换的策略
+  template:                                     # 根据此模板创建Pod的副本（实例）
+    metadata:
+      labels:
+        app: mysql                              # Pod副本的标签，对应RS的Selector
+    spec:
+      nodeName: node1                           # 指定pod运行在的node
+      containers:                               # Pod里容器的定义部分
+        - name: mysql                           # 容器的名称
+          image: mysql:8.0                      # 容器对应的docker镜像
+          volumeMounts:                         # 容器内挂载点的定义部分
+            - name: time-zone                   # 容器内挂载点名称
+              mountPath: &#x2F;etc&#x2F;localtime         # 容器内挂载点路径，可以是文件或目录
+            - name: mysql-data
+              mountPath: &#x2F;var&#x2F;lib&#x2F;mysql         # 容器内mysql的数据目录
+            - name: mysql-logs
+              mountPath: &#x2F;var&#x2F;log&#x2F;mysql         # 容器内mysql的日志目录
+          ports:
+            - containerPort: 3306               # 容器暴露的端口号
+          env:                                  # 写入到容器内的环境容量
+            - name: MYSQL_ROOT_PASSWORD         # 定义了一个mysql的root密码的变量
+              value: &quot;root&quot;
+      volumes:                                  # 本地需要挂载到容器里的数据卷定义部分
+        - name: time-zone                       # 数据卷名称，需要与容器内挂载点名称一致
+          hostPath:
+            path: &#x2F;etc&#x2F;localtime                # 挂载到容器里的路径，将localtime文件挂载到容器里，可让容器使用本地的时区
+        - name: mysql-data
+          hostPath:
+            path: &#x2F;data&#x2F;mysql&#x2F;data              # 本地存放mysql数据的目录
+        - name: mysql-logs
+          hostPath:
+            path: &#x2F;data&#x2F;mysql&#x2F;logs              # 本地存入mysql日志的目录</code></pre>
+<p>在编写一个对外提供服务的 <code>mysql-svc.yaml</code></p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    name: mysql
+spec:
+  type: NodePort
+  ports:
+    - port: 3306
+      targetPort: 3306
+      nodePort: 30001
+  selector:
+    app: mysql</code></pre>
+<p>创建服务</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl create -f mysql-deploy.yaml
+kubectl create -f mysql-svc.yaml</code></pre>
+<p>查看节点是否正常运行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get pod
+NAME                               READY   STATUS    RESTARTS      AGE
+mysql-566cddf86-v65mw              1&#x2F;1     Running   2 (15h ago)   2d1h</code></pre>
+<p>访问数据库，密码的话，刚有在 yaml 中说明，为 <code>root</code>，登陆成功后即可输入数据</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl exec -it mysql-566cddf86-v65mw -- mysql -u root -p</code></pre>
+<p><img src="https://jaydenchang.gitee.io/images/images/0x0036/mysql.png" /></p>
+<p>开放远程连接权限</p>
+<pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">FLUSH PRIVILEGES;
+&#x2F;* mysql8.0 只能以这种方式来赋权*&#x2F;
+alter user &#39;root&#39;@&#39;%&#39; identified with mysql_native_password by &#39;root&#39;;
+GRANT SELECT, INSERT, UPDATE, DELETE  ON *.* TO &#39;root&#39;@&#39;%&#39;;
+flush privileges;</code></pre>
+<p>然后 node1 节点要开放 3306 端口和 30001 端口 (刚刚设置的对外开放的端口)，可以在宿主机连接集群的数据库</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mysql -u root -h 192.168.22.223 -P 30001 -p</code></pre>
+<p><img src="https://jaydenchang.gitee.io/images/images/0x0036/mysql_login_by_host.png" /></p>
+<h4 id="部署-gin-服务">3. 部署 gin 服务</h4>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/jaydenchang/buy-house">BuyHouse: 一个简单的gin+MySQL数据查询系统，课程实训项目 (gitee.com)</a></p>
+<p>这里使用了学校实训项目的一个 demo，这里我只用到了 gin 部分。</p>
+<p>制作镜像以前，我们先看看集群里 MySQL 的 ip</p>
+<p><img src="https://jaydenchang.gitee.io/images/images/0x0036/mysql_cluster_ip.png" /></p>
+<p>看到 mysql 集群 ip 为 <code>22.22.166.184</code>，那么 gin 里数据库配置 (<code>database/mysql.go</code>) 的 ip 也要改成 <code>22.22.166.184</code></p>
+<p>首先是把项目打包成 docker image</p>
+<pre class="line-numbers language-docker" data-language="docker"><code class="language-docker">FROM golang:1.18-alpine AS builder
+WORKDIR &#x2F;app
+COPY . &#x2F;app
+RUN go env -w GO111MODULE&#x3D;on
+RUN go env -w GOPROXY&#x3D;https:&#x2F;&#x2F;goproxy.cn,direct
+RUN CGO_ENABLED&#x3D;0 go build -ldflags &quot;-s -w&quot; -o app
+
+FROM alpine AS runner
+WORKDIR &#x2F;app
+COPY --from&#x3D;builder &#x2F;app&#x2F;app .
+EXPOSE 9999:9999
+ENTRYPOINT [&quot;.&#x2F;app&quot;]</code></pre>
+<p>这里使用多级构建 (实际也就两层，太懒了，不想搞太多了，十多兆已经是我可以接受的大小了 doge)，如果不这样做，构建出的镜像差不多 1G，不论是推送到仓库还是拉取，都会很影响效率。</p>
+<p>然后编写 <code>go-deploy.yaml</code>，这里我使用自己制作的镜像，并上传到了个人仓库</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">apiVersion: apps&#x2F;v1
+kind: Deployment
+metadata:
+  name: go-deployment
+  labels:
+    app: go
+spec:
+  selector:
+    matchLabels:
+      app: go
+  replicas: 2
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: go
+    spec:
+      containers:
+      - image: jaydenchang&#x2F;buy-house:latest
+        name: go
+        imagePullPolicy: Always
+        command: [&quot;.&#x2F;app&quot;,&quot;-v&quot;,&quot;v1.3&quot;]
+        ports:
+        - containerPort: 9999
+          protocol: TCP</code></pre>
+<p>编写 <code>go-svc.yaml</code></p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: go-service
+  labels:
+    app: go
+spec:
+  selector:
+    app: go
+  ports:
+    - name: go-port
+      protocol: TCP
+      port: 9999
+      targetPort: 9999
+      nodePort: 31080
+  type: NodePort</code></pre>
+<p>生成节点</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl create -f go-svc.yaml
+kubectl create -f go-deploy.yaml</code></pre>
+<p>检查一下</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ kubectl get pod
+NAME                               READY   STATUS    RESTARTS      AGE
+busybox                            1&#x2F;1     Running   2 (14m ago)   173m
+go-deployment-66878c4885-twmzs     1&#x2F;1     Running   0             29s
+go-deployment-66878c4885-zxjqb     1&#x2F;1     Running   0             29s
+mysql-566cddf86-v65mw              1&#x2F;1     Running   3 (14m ago)   2d2h</code></pre>
+<p>go 的镜像被分配到了 node1 节点，我们输入 <code>node1IP:port</code>，也就是 <code>192.168.22.223:31080</code></p>
+<p><img src="https://jaydenchang.gitee.io/images/images/0x0036/test_port.png" /></p>
+<p>其他接口就不测试了 (<del>一个拿不出眼的小项目就不展示太多了</del>)。至此，整个部署过程结束。这次小试牛刀，搭建一个比较建议的双节点集群。未来的学习，可能会尝试更复杂的集群部署 (<del>先给自己挖个坑吧</del>)。</p>
+<h4 id="参考链接">参考链接</h4>
+<p><a target="_blank" rel="noopener" href="https://q.cnblogs.com/q/136113/">ubuntu 运行 apt-get update 时阿里云 k8s 安装源报错_已解决_博问_博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43285879/article/details/120794910">一个k8s集群——跨云服务器部署_k8s跨云部署_qq_43285879的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanzihuang/kubespray-extranet">kanzihuang/kubespray-extranet: Create a kubernetes cluster on the public network (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cn.bing.com/search?q=跨VPC或者跨云供应商搭建K8S集群&amp;aqs=edge..69i57j69i61.301j0j1&amp;FORM=ANCMS9&amp;PC=HCTS">跨VPC或者跨云供应商搭建K8S集群 - Search (bing.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tttlv/p/14395865.html">公网环境搭建k8s集群 - ttlv - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7107954026875977764#heading-15">Kubernetes（k8s）安装以及搭建k8s-Dashboard详解 - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/636831803">Kubernetes 1.27 快速安装手册 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.aledk.com/2022/10/29/ubuntu-k8s/">基于Ubuntu-22.04 kubeadm安装K8s-v1.25.0 | Marshall's blog (aledk.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34378595/article/details/123568313">k8s 初始化master节点时无calico，coredns一直是pending状态_calico pending_copa~的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39132936/article/details/103260481">K8s部署自己的web项目_k8s 前端_肖仙女hhh的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/kanzihuang/kubespray-extranet/blob/main/docs/solutions.md">公网创建 kubernetes 集群的解决方案 · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/410371256">在Linux公网、云服务器搭建K8s集群 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42599091/article/details/107244014">(43条消息) kubernetes集群部署nginx应用服务_kubernetes部署nginx_鱼大虾的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/blayn/p/16037199.html">k8s集群部署mysql完整过程记录 - blayn - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guyouyin123/p/15688012.html">部署go项目到k8s集群 - Jeff的技术栈 - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Scoful/article/details/120729102">如何给go项目打最小docker镜像，足足降低99%_Scoful的博客-CSDN博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"># 技术</a>
+              <a href="/tags/Golang/" rel="tag"># Golang</a>
+              <a href="/tags/k8s/" rel="tag"># k8s</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x0035.html" rel="prev" title="自己动手写Docker学习笔记">
+                  <i class="fa fa-chevron-left"></i> 自己动手写Docker学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jayden Chang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">466k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">7:04</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" integrity="sha256-4mJNT2bMXxcc1GCJaxBmMPdmah5ji0Ldnd79DKd1hoM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-AjM0J5XIbiB590BrznLEgZGLnOQWrt62s3BEq65Q/I0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-9cmf7tcLdXpKsPi/2AWE93PbZpTp4M4tqzFk+lWomjU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/code-unfold.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":"enable","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"jayden-valine-vercel.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":"填写邮箱可以及时收到回复哦ヾ(≧▽≦*)o","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"visitor":true,"comment_count":true,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","recordIP":true,"el":"#waline","comment":true,"path":"/post/0x0036.html"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+
+
+
+</body>
+</html>
