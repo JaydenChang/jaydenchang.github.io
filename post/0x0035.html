@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"waline","storage":true,"lazyload":false,"nav":null,"activeClass":"waline"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="从零实现一个Docker">
 <meta property="og:type" content="article">
@@ -376,12 +376,12 @@
 <p>kernel 接口，就是在 Linux 上调用 api 来控制 cgroups。</p>
 <ol type="1">
 <li><p>首先创建一个 hierarchy，而 hierarchy 要挂载到一个目录上，这里创建一个目录：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mkdir hierarchy-test</code></pre></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">mkdir hierarchy-test</code></pre></li>
 <li><p>然后挂载：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo mount -t cgroup -o none,name&#x3D;hierarchy-test hierarchy-test .&#x2F;hierarchy-test</code></pre></li>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo mount -t cgroup -o none,name&#x3D;hierarchy-test hierarchy-test .&#x2F;hierarchy-test</code></pre></li>
 <li><p>可以在这个目录下看到一大堆文件，这些文件就是 cgroup 根节点的配置。</p></li>
 <li><p>然后在这个目录下创建新的空目录，会发现，新的目录里也会有很多 cgroup 配置文件，这些目录已成为 cgroup 根节点的子节点 cgroup。</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">.
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">.
 ├── cgroup.clone_children
 ├── cgroup.procs
 ├── cgroup.sane_behavior
@@ -396,7 +396,7 @@
 <li><p>在 cgroup 中添加和移动进程：系统的所有进程都会被放到根节点中，可以根据需要移动进程：</p>
 <ul>
 <li><p>只需将进程 ID 写到对应的 cgroup 的 tasks 文件即可。</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sudo sh -c &quot;echo $$ &gt;&gt; tasks&quot;</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo sh -c &quot;echo $$ &gt;&gt; tasks&quot;</code></pre>
 <p>该命令就是将当前终端的这个进程加到当前所在的 cgroup 的目录的 tasks 文件中。</p></li>
 </ul></li>
 <li><p>通过 subsystem 限制 cgroup 中进程的资源：</p>
@@ -513,7 +513,7 @@ func main() &#123;
 │   └── image.txt
 └── mnt</code></pre>
 <p>然后挂载到 mnt 文件夹上：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">sudo mount -t aufs -o dirs&#x3D;.&#x2F;container-layer:.&#x2F;image-layer none .&#x2F;mnt</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sudo mount -t aufs -o dirs&#x3D;.&#x2F;container-layer:.&#x2F;image-layer none .&#x2F;mnt</code></pre>
 <p>如果没有手动添加权限的话，默认 dirs 左边第一个文件夹有 write-read 权限，其他都是 read-only。</p>
 <p>我们可以发现，imageLayer1 和 writeLayer 的文件出现在 mnt 文件夹下：</p>
 <pre class="line-numbers language-none"><code class="language-none">.
@@ -531,7 +531,7 @@ func main() &#123;
 <h4 id="pid">2.1 PID</h4>
 <p>在 <code>/proc</code> 文件夹下可以看到很多文件夹的名字都是个数字，其实就是个 PID。是 Linux 为每个进程创建的空间。</p>
 <h4 id="一些重要的目录">2.2 一些重要的目录</h4>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#x2F;proc&#x2F;N # PID 为 N 的进程
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F;proc&#x2F;N # PID 为 N 的进程
 &#x2F;proc&#x2F;N&#x2F;cmdline # 进程的启动命令
 &#x2F;proc&#x2F;N&#x2F;cwd # 链接到进程的工作目录
 &#x2F;proc&#x2F;N&#x2F;environ  # 进程的环境变量列表
@@ -547,7 +547,7 @@ func main() &#123;
 <h3 id="简单实现">3. 简单实现</h3>
 <h4 id="工具">3.1 工具</h4>
 <p>获取帮助编写 command line app 的工具：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">go get github.com&#x2F;urfave&#x2F;cli </code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go get github.com&#x2F;urfave&#x2F;cli </code></pre>
 <h4 id="实现代码">3.2 实现代码</h4>
 <p>代码结构：</p>
 <pre class="line-numbers language-none"><code class="language-none">.
@@ -1144,11 +1144,11 @@ func main() &#123;
 	&#125;
 &#125;</code></pre>
 <h4 id="运行-demo">4.8 运行 demo</h4>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">go run . run -it stress -m 100m --vm-bytes 200m --vm-keep -m 1</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go run . run -it stress -m 100m --vm-bytes 200m --vm-keep -m 1</code></pre>
 <p>效果如下：</p>
 <p><img src="http://jaydenchang.gitee.io/images/images/0x0035/demo_1.png" /></p>
 <p>不过这个运行方式不能进行交互，我们可以使用这个命令来验证我们写的 docker 是否与宿主机隔离：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">go run . run -it &#x2F;bin&#x2F;sh</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go run . run -it &#x2F;bin&#x2F;sh</code></pre>
 <p><img src="http://jaydenchang.gitee.io/images/images/0x0035/demo_sh.png" /></p>
 <p>可以看到，pid，ipc，network 方面都与宿主机进行了隔离。</p>
 <h2 id="三镜像篇">三、镜像篇</h2>
@@ -1164,22 +1164,22 @@ kernel&#x3D;&quot;要替换kernel的路径&quot;</code></pre></li>
 <p>很明显，我是不会满足于使用别人编译好的内核的，那我也来动手做一个。</p>
 <h5 id="准备代码库">5.1.1 准备代码库</h5>
 <p>我们先在 WSL 上准备好相关软件包：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">apt update #更新源
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">apt update #更新源
 apt install build-essential flex bison libssl-dev libelf-dev gcc make</code></pre>
 <p>编译内核需要从 GitHub 上 clone 微软官方的 WSL 代码和 AUFS-Standalone 的代码库</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">git clone https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL2-Linux-Kernel kernel
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">git clone https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL2-Linux-Kernel kernel
 git clone https:&#x2F;&#x2F;github.com&#x2F;sfjro&#x2F;aufs-standalone aufs5</code></pre>
 <p>然后查看 WSL 内核版本：在 wsl 下运行命令 <code>uname -r</code></p>
 <p>例如我的内核版本是 5.15.19，那 kernel 和 aufs 都要切换到相应的分支去 (kernel 默认就是 5.15.19，故不用切换)</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cd aufs5
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd aufs5
 git checkout aufs5.15.36</code></pre>
 <p>然后退回到 kernel 文件夹给代码打补丁：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cat ..&#x2F;aufs5&#x2F;aufs5-mmap.patch | patch -p1
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cat ..&#x2F;aufs5&#x2F;aufs5-mmap.patch | patch -p1
 cat ..&#x2F;aufs5&#x2F;aufs5-base.patch | patch -p1
 cat ..&#x2F;aufs5&#x2F;aufs5-kbuild.patch | patch -p1</code></pre>
 <p>三个 Patch 的顺序无关。</p>
 <p>然后再复制一点配置文件：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cp ..&#x2F;aufs5&#x2F;Documentation . -r
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cp ..&#x2F;aufs5&#x2F;Documentation . -r
 cp ..&#x2F;aufs5&#x2F;fs&#x2F; . -r
 cp ..&#x2F;aufs5&#x2F;include&#x2F;uapi&#x2F;linux&#x2F;aufs_type.h .&#x2F;include&#x2F;uapi&#x2F;linux</code></pre>
 <p>接下来我们来修改一下编译配置，在 <code>Microsoft/config-wsl</code> 中任意位置增加一行：</p>
@@ -1192,7 +1192,7 @@ cp ..&#x2F;aufs5&#x2F;include&#x2F;uapi&#x2F;linux&#x2F;aufs_type.h .&#x2F;inclu
 <h4 id="使用-busybox-创建容器">5.2 使用 busybox 创建容器</h4>
 <h5 id="busybox">5.2.1 busybox</h5>
 <p>先在 docker 获取 busybox 镜像并打包成一个 tar 包：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">docker pull busybox
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker pull busybox
 docker run -d busybox top -b
 docker export -o busybox.tar &lt;container_id&gt;</code></pre>
 <p>将其复制到 WSL 下并解压。</p>
@@ -1260,7 +1260,7 @@ docker export -o busybox.tar &lt;container_id&gt;</code></pre>
     logrus.Errorf(&quot;initProcess look path failed: %v&quot;, err)
 &#125;</code></pre>
 <p>然后来运行测试一下：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">root@Jayden: ~# go run . run -it sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@Jayden: ~# go run . run -it sh
 ###### dividing live	
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Start initiating...&quot;,&quot;time&quot;:&quot;2023-05-04T11:27:04+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: sh&quot;,&quot;time&quot;:&quot;2023-05-04T11:27:04+08:00&quot;&#125;
@@ -1359,7 +1359,7 @@ func DeleteWorkSpace(rootURL, mntURL string) &#123;
 	DeleteWriteLayer(rootURL)
 &#125;</code></pre>
 <p>现在来启动一个容器测试：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">root@Jayden: ~# go run . run -it sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@Jayden: ~# go run . run -it sh
 dirs&#x3D;&#x2F;root&#x2F;writeLayer:&#x2F;root&#x2F;busybox
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Start initiating...&quot;,&quot;time&quot;:&quot;2023-05-04T15:16:43+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: sh&quot;,&quot;time&quot;:&quot;2023-05-04T15:16:43+08:00&quot;&#125;
@@ -1367,7 +1367,7 @@ dirs&#x3D;&#x2F;root&#x2F;writeLayer:&#x2F;root&#x2F;busybox
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Find path: &#x2F;bin&#x2F;sh&quot;,&quot;time&quot;:&quot;2023-05-04T15:16:43+08:00&quot;&#125;
 &#x2F; #</code></pre>
 <p>测试在容器内创建文件：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">&#x2F; # mkdir aaa
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F; # mkdir aaa
 &#x2F; # touch aaa&#x2F;test.txt</code></pre>
 <p>此时我们可以在宿主机终端查看 <code>/root/mnt/writeLayer</code>，可以看到刚才新建的 <code>aaa</code> 文件夹和 <code>test.txt</code>，在我们退出容器后，<code>/root/mnt</code> 文件夹被删除，伴随着刚才创建的文件夹和文件都被删除，而作为镜像的 busybox 仍被保留，且内容未被修改。</p>
 <h4 id="实现-volume-数据卷">5.3 实现 volume 数据卷</h4>
@@ -1561,7 +1561,7 @@ func volumeUrlExtract(volume string) []string &#123;
 	&#125;
 &#125;</code></pre>
 <p>接下来启动容器测试：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -it -v &#x2F;root&#x2F;volume:&#x2F;containerVolume sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -it -v &#x2F;root&#x2F;volume:&#x2F;containerVolume sh
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;[\&quot;&#x2F;root&#x2F;volume\&quot; \&quot;&#x2F;containerVolume\&quot;]&quot;,&quot;time&quot;:&quot;2023-05-05T09:25:43+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: sh&quot;,&quot;time&quot;:&quot;2023-05-05T09:25:43+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Start initiating...&quot;,&quot;time&quot;:&quot;2023-05-05T09:25:43+08:00&quot;&#125;
@@ -1572,10 +1572,10 @@ bin              dev              home             lib64            root        
 containerVolume  etc              lib              proc             sys              usr
 &#x2F; #</code></pre>
 <p>进入 <code>containerVolume</code>，创建一个 文本文件，并随便写点东西：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cd containerVolume
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd containerVolume
 echo -e &quot;test&quot; &gt;&gt; test.txt</code></pre>
 <p>此时我们能在宿主机的 <code>/root/volume</code> 找到我们刚才创建的文本文件。退出容器后，volume 文件夹也没有被删除。再次进入容器：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">r# go run . run -it -v &#x2F;root&#x2F;volume:&#x2F;containerVolume sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">r# go run . run -it -v &#x2F;root&#x2F;volume:&#x2F;containerVolume sh
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;mkdir parent dir &#x2F;root&#x2F;volume error. mkdir &#x2F;root&#x2F;volume: file exists&quot;,&quot;time&quot;:&quot;2023-05-05T09:29:24+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;[\&quot;&#x2F;root&#x2F;volume\&quot; \&quot;&#x2F;containerVolume\&quot;]&quot;,&quot;time&quot;:&quot;2023-05-05T09:29:24+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: sh&quot;,&quot;time&quot;:&quot;2023-05-05T09:29:24+08:00&quot;&#125;
@@ -1588,7 +1588,7 @@ containerVolume  etc              lib              proc             sys         
 &#x2F; # ls containerVolume&#x2F;
 test.txt</code></pre>
 <p>此时这里会提示 volume 文件夹存在，我们在 <code>test.txt</code> 内追加内容：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">cd containerVolume
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd containerVolume
 echo -e &quot;###&quot; &gt;&gt; test.txt</code></pre>
 <p>此时再次退出容器，能看到修改过后的文件内容，可以看到 volume 文件夹没有被删除。</p>
 <h4 id="简单镜像打包">5.4 简单镜像打包</h4>
@@ -1630,9 +1630,9 @@ func commitContainer(imageName string) &#123;
 	&#125;
 &#125;</code></pre>
 <p>运行测试：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -it sh</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -it sh</code></pre>
 <p>然后在另一个终端运行：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . commit image</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . commit image</code></pre>
 <p>这时候可以在 root 目录下看到多了一个 <code>image.tar</code> ，解压后可以发现压缩包的内容和 <code>/root/mnt</code> 一致。</p>
 <blockquote>
 <p>tips：一定要先运行容器！如果不运行容器直接打包，会提示 <code>/root/mnt</code> 不存在。</p>
@@ -1736,10 +1736,10 @@ func commitContainer(imageName string) &#123;
 	os.Exit(0)
 &#125;</code></pre>
 <p>测试一下：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -d top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -d top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-05T15:32:44+08:00&quot;&#125;</code></pre>
 <p>根据书上的提示，<code>ps -ef</code> 用来查找 top 进程：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ps -ef | grep top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ps -ef | grep top
 root        3713     751  0 14:42 pts&#x2F;2    00:00:00 top</code></pre>
 <p>前面几次运行命令，都找不到 top 这个进程，于是我后面多跑了几次，终于看到了这个进程。。。</p>
 <p>可以看到，top 命令的进程正在运行着，不过运行环境是 WSL，父进程 id 不是 1，然后 <code>ps -ef</code> 查看一下，top 的父进程是一个 bash 进程，而 bash 进程的父进程是一个 init 进程，这样应该算过了吧 (偶尔的一两次不严谨)。</p>
@@ -1933,7 +1933,7 @@ var (
 	&#125;
 &#125;</code></pre>
 <p>测试一下：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -d top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -d top
 # go run . run -d --name jay top</code></pre>
 <p>执行完成后，可以在 <code>/var/run/simple-docker/</code> 找到两个文件夹，一个是随机 id，一个是 jay，文件夹下各有一个 <code>config.json</code>，记录了容器的相关信息。</p>
 <h5 id="实现-docker-ps">6.2.2 实现 docker ps</h5>
@@ -2008,7 +2008,7 @@ func getContainerInfo(file os.FileInfo) (*container.ContainerInfo, error) &#123;
 	return &amp;containerInfo, nil
 &#125;</code></pre>
 <p>接上小节的测试，我们运行以下命令：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -d top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -d top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-05T19:29:11+08:00&quot;&#125;
 # go run . run -d --name jay top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-05T19:29:25+08:00&quot;&#125;
@@ -2061,7 +2061,7 @@ ID           NAME         PID         STATUS      COMMAND     CREATED
 	fmt.Fprint(os.Stdout, string(content))
 &#125;	</code></pre>
 <p>测试一下，先用 detach 方式创建一个容器：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -d --name jay top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -d --name jay top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-06T14:26:32+08:00&quot;&#125;
 # go run . ps
 ID           NAME        PID         STATUS      COMMAND     CREATED
@@ -2242,7 +2242,7 @@ func ExecContainer(containerName string, comArray []string) &#123;
 	&#125;
 &#125;</code></pre>
 <p>测试一下：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run --name jay -d top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run --name jay -d top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-07T13:23:09+08:00&quot;&#125;
 # go run . ps
 ID           NAME        PID         STATUS      COMMAND     CREATED
@@ -2337,7 +2337,7 @@ PID   USER     TIME  COMMAND
 	&#125;
 &#125;</code></pre>
 <p>测试：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . stop jay
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . stop jay
 # go run . ps
 ID           NAME        PID         STATUS      COMMAND     CREATED
 6883605813   jay                     stopped     top
@@ -2378,7 +2378,7 @@ root       43588     761  0 20:00 pts&#x2F;0    00:00:00 grep --color&#x3D;auto 
 	&#125;
 &#125;</code></pre>
 <p>测试一下：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . rm jay
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . rm jay
 # go run . ps
 ID          NAME        PID         STATUS      COMMAND     CREATED</code></pre>
 <p>可以看到，jay 这个容器被删除了。</p>
@@ -2772,7 +2772,7 @@ ID          NAME        PID         STATUS      COMMAND     CREATED</code></pre>
 	&#125;
 &#125;</code></pre>
 <p>测试一下，用 busybox 启动两个容器 test1 和 test2，test1 把宿主机 <code>/root/from1</code> 挂载到容器 <code>/to1</code>，test2 把宿主机 <code>/root/from2</code> 挂载到 <code>/to2</code> 下：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -d --name test1 -v &#x2F;root&#x2F;from1:&#x2F;to1 busybox top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -d --name test1 -v &#x2F;root&#x2F;from1:&#x2F;to1 busybox top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;[\&quot;&#x2F;root&#x2F;from1\&quot; \&quot;&#x2F;to1\&quot;]&quot;,&quot;time&quot;:&quot;2023-05-11T10:04:42+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-11T10:04:42+08:00&quot;&#125;
 # go run . run -d --name test2 -v &#x2F;root&#x2F;from2:&#x2F;to2 busybox top
@@ -2783,21 +2783,21 @@ ID           NAME        PID         STATUS      COMMAND     CREATED
 4010011034   test1       11570       running     top         2023-05-11 10:04:42
 5746376093   test2       11684       running     top         2023-05-11 10:04:51</code></pre>
 <p>打开另一个终端，可以看到 <code>/root</code> 目录下多了 <code>from1</code> 和 <code>from2</code> 两个目录，我们看看 <code>mnt</code> 和 <code>writeLayer</code>，<code>mnt</code> 下多了两个 busybox 的挂载层，<code>writeLayer</code> 下分别挂载了两个容器的目录：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># tree writeLayer&#x2F;
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># tree writeLayer&#x2F;
 writeLayer&#x2F;
 ├── test1
 │   └── to1
 └── test2
     └── to2</code></pre>
 <p>下面进入 test1 容器，创建 <code>/to1/test1.txt</code>：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . exec test1 sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . exec test1 sh
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;container pid 11570&quot;,&quot;time&quot;:&quot;2023-05-11T10:16:33+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;command sh&quot;,&quot;time&quot;:&quot;2023-05-11T10:16:33+08:00&quot;&#125;
 &#x2F; # echo -e &quot;test1&quot; &gt;&gt; &#x2F;to1&#x2F;test1.txt
 &#x2F; # mkdir to1-1
 &#x2F; # echo -e &quot;test111111&quot; &gt;&gt; &#x2F;to1-1&#x2F;test1111.txt</code></pre>
 <p>这时候再来看看可写层：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># tree writeLayer&#x2F;
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># tree writeLayer&#x2F;
 writeLayer&#x2F;
 ├── test1
 │   ├── root
@@ -2810,10 +2810,10 @@ writeLayer&#x2F;
 test111111</code></pre>
 <p>多了 <code>to1-1/test1111.txt</code>，那刚刚创建的 <code>test1.txt</code> 去哪了呢？这时候我们看看 <code>from1</code>，在这里，新创建的文件写入了数据卷。</p>
 <p>下面来验证 commit 功能：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . commit test1 image1</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . commit test1 image1</code></pre>
 <p>导出的镜像路径为 <code>/root/image1.tar</code>。</p>
 <p>下面测试停止和删除容器：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . stop test1
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . stop test1
 # go run . ps
 ID           NAME        PID         STATUS      COMMAND     CREATED
 4010011034   test1                   stopped     top         2023-05-11 10:04:42
@@ -2823,7 +2823,7 @@ ID           NAME        PID         STATUS      COMMAND     CREATED
 ID           NAME        PID         STATUS      COMMAND     CREATED
 5746376093   test2       11684       running     top         2023-05-11 10:04:51</code></pre>
 <p>我们看看容器根目录和可读写层：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ls mnt
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ls mnt
 test2
 # tree writeLayer&#x2F;
 writeLayer&#x2F;
@@ -2831,7 +2831,7 @@ writeLayer&#x2F;
     └── to2</code></pre>
 <p>test1 的容器根目录和可读写层被删除。</p>
 <p>下面来试一下用镜像创建容器：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -d --name test3 -v &#x2F;root&#x2F;from3:&#x2F;to3 image1 top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -d --name test3 -v &#x2F;root&#x2F;from3:&#x2F;to3 image1 top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;[\&quot;&#x2F;root&#x2F;from3\&quot; \&quot;&#x2F;to3\&quot;]&quot;,&quot;time&quot;:&quot;2023-05-11T10:32:44+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-11T10:32:44+08:00&quot;&#125;
 # go run . ps
@@ -2839,7 +2839,7 @@ ID           NAME        PID         STATUS      COMMAND     CREATED
 5746376093   test2       11684       running     top         2023-05-11 10:04:51
 4713076733   test3       13056       running     top         2023-05-11 10:32:44</code></pre>
 <p>这时我们可以看到 <code>/root</code> 多了一个 <code>image1</code> 目录：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ls image1
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ls image1
 bin  dev  etc  home  lib  lib64  proc  root  sys  tmp  to1  to1-1  usr  var</code></pre>
 <p>在这里发现了刚才创建的 <code>to1-1</code>，用 <code>image1.tar</code> 启动的容器 test3，进入容器后发现我们刚刚写入的文件，至此，我们成功把容器 test1 的数据卷 to1 信息，重新写入了容器 test3 数据卷 to3。</p>
 <p>在次小节后，进入容器都要指定镜像名，不然都会报错。</p>
@@ -3002,7 +3002,7 @@ bin  dev  etc  home  lib  lib64  proc  root  sys  tmp  to1  to1-1  usr  var</cod
 	return cmd, writePipe
 &#125;</code></pre>
 <p>测试一下：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -it --name test -e test&#x3D;123 -e luck&#x3D;test busybox sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -it --name test -e test&#x3D;123 -e luck&#x3D;test busybox sh
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Start initiating...&quot;,&quot;time&quot;:&quot;2023-05-11T14:14:52+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: sh&quot;,&quot;time&quot;:&quot;2023-05-11T14:14:52+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Current location is &#x2F;root&#x2F;mnt&#x2F;test&quot;,&quot;time&quot;:&quot;2023-05-11T14:14:52+08:00&quot;&#125;
@@ -3011,7 +3011,7 @@ bin  dev  etc  home  lib  lib64  proc  root  sys  tmp  to1  to1-1  usr  var</cod
 test&#x3D;123
 luck&#x3D;test</code></pre>
 <p>可以看到，手动指定的环境变量在容器内可见。后面创建一个后台运行的容器：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -d --name test -e test&#x3D;123 -e luck&#x3D;test busybox top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -d --name test -e test&#x3D;123 -e luck&#x3D;test busybox top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-11T14:19:31+08:00&quot;&#125;
 # go run . ps
 ID           NAME        PID         STATUS      COMMAND     CREATED
@@ -3078,7 +3078,7 @@ PID   USER     TIME  COMMAND
 	&#125;
 &#125;</code></pre>
 <p>这里由于 exec 命令依然要宿主机的一些环境变量，因此将宿主机环境变量和容器环境变量都一起放置到 exec 进程中：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -d --name test -e test&#x3D;123 -e luck&#x3D;test busybox top
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -d --name test -e test&#x3D;123 -e luck&#x3D;test busybox top
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: top&quot;,&quot;time&quot;:&quot;2023-05-11T14:30:03+08:00&quot;&#125;
 # go run . ps
 ID           NAME        PID         STATUS      COMMAND     CREATED
@@ -3098,7 +3098,7 @@ luck&#x3D;test
 <p>Linux 是用网络设备去操作和使用网卡的，系统装了一个网卡后就会为其生成一个网络设备实例，例如 eth0。Linux 支持创建出虚拟化的设备，可通过组合实现多种多样的功能和网络拓扑，这里主要介绍 Veth 和 Bridge。</p>
 <p><strong>Linux Veth</strong></p>
 <p>Veth 时成对出现的虚拟网络设备，发送到 Veth 一端虚拟设备的请求会从另一端的虚拟设备中发出。容器的虚拟化场景中，常会使用 Veth 连接不同的网络 namespace：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ip netns add ns1
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ip netns add ns1
 # ip netns add ns2
 # ip link add veth0 type veth peer name veth1
 # ip link set veth0 netns ns1
@@ -3110,7 +3110,7 @@ luck&#x3D;test
     link&#x2F;ether 02:bf:18:99:77:ed brd ff:ff:ff:ff:ff:ff link-netns ns2</code></pre>
 <p>在 ns1 和 ns2 的namespace 中，除 loopback 的设备以外就只看到了一个网络设备。当请求发送到这个虚拟网络设备时，都会原封不动地从另一个网络 namespace 的网络接口中出来。例如，给两端分别配置不同地址后，向虚拟网络设备的一端发送请求，就能达到这个虚拟网络设备对应的另一端。</p>
 <p><img src="http://jaydenchang.gitee.io/images/images/0x0035/7.1.1-veth.png" style="zoom:43%;" /></p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ip netns exec ns1 ifconfig veth0 172.18.0.2&#x2F;24 up
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ip netns exec ns1 ifconfig veth0 172.18.0.2&#x2F;24 up
 # ip netns exec ns2 ifconfig veth1 172.18.0.3&#x2F;24 up
 # ip netns exec ns1 route add default dev veth0
 # ip netns exec ns2 route add default dev veth1
@@ -3123,12 +3123,12 @@ PING 172.18.0.3 (172.18.0.3) 56(84) bytes of data.
 rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 0.395&#x2F;0.395&#x2F;0.395&#x2F;0.000 ms</code></pre>
 <p><strong>Linux Bridge</strong></p>
 <p>进行下一步之前，先删除上一小节创建的 netns：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ip netns del ns1
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ip netns del ns1
 # ip netns del ns2
 # ip netns list</code></pre>
 <p>此时之前创建的两个 netns 被删除。</p>
 <p>Bridge 虚拟设备时用来桥接的网络设备，相当于现实世界的交换机，可以连接不同的网络设备，当请求达到 Bridge 设备时，可以通过报文中的 Mac 地址进行广播或转发。例如，创建一个 Bridge 设备，来连接 namespace 中的网络设备和宿主机上的网络：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ip netns add ns1
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ip netns add ns1
 # ip link add veth0 type veth peer name veth1
 # ip link set veth1 netns ns1
 ########## 创建网桥
@@ -3139,14 +3139,14 @@ rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 0.395&#x2F;0.395&#x2F;0.395&#x2F;0.00
 <p><img src="http://jaydenchang.gitee.io/images/images/0x0035/7.1.1-bridge.png" /></p>
 <h5 id="linux-路由表">7.1.2 Linux 路由表</h5>
 <p>路由表是 Linux 内核的一个模块，通过定义路由表来决定在某个网络 namespace 中包的流向，从而定义请求会到哪个网络设备上：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ip link set veth0 up
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ip link set veth0 up
 # ip link set br0 up
 # ip netns exec ns1 ifconfig veth1 172.18.0.2&#x2F;24 up
 # ip netns exec ns1 route add default dev veth1
 # route add -net 172.18.0.0&#x2F;24 dev br0</code></pre>
 <p><img src="http://jaydenchang.gitee.io/images/images/0x0035/7.1.2-route.png" /></p>
 <p>通过设置路由，对 IP 地址的请求就能正确被路由到对应的网络设备上，从而实现通信：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># ifconfig eth0
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># ifconfig eth0
 eth0: flags&#x3D;4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
         inet 172.31.93.218  netmask 255.255.240.0  broadcast 172.31.95.255
         inet6 fe80::215:5dff:fe4e:a16a  prefixlen 64  scopeid 0x20&lt;link&gt;
@@ -3175,13 +3175,13 @@ rtt min&#x2F;avg&#x2F;max&#x2F;mdev &#x3D; 0.113&#x2F;0.113&#x2F;0.113&#x2F;0.00
 <p>iptables 是对 Linux 内核的 netfilter 模块进行操作和展示的工具，用来管理包的流动和转送。iptables 定义了一套链式处理的结构，在网络包传输的各个阶段可以使用不同的策略和包进行加工、传送或丢弃。在容器虚拟化技术里，常会用到两种策略，MASQUERADE 和 DNAT，用于容器和宿主机外部的网络通信。</p>
 <p><strong>MASQUERADE</strong></p>
 <p>MASQUERADE 策略可以将请求包中的源地址转换为一个网络设备的地址，例如 <a href="#7.1.2%20Linux%20路由表">7.1.2 Linux 路由表</a> 这一小节里，namespace 中网络设备的地址是 172.18.0.2，这个地址虽然在宿主机可以路由到 br0 的网桥，但是到底宿主机外部后，是不知道如何路由到这个 IP 的，所以如果请求外部地址的话，要先通过 MASQUERADE 策略将这个 IP 转换为宿主机出口网卡的 IP：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># sysctl -w net.ipv4.conf.all.forwarding&#x3D;1
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># sysctl -w net.ipv4.conf.all.forwarding&#x3D;1
 net.ipv4.conf.all.forwarding &#x3D; 1
 # iptables -t nat -A POSTROUTING -s 172.18.0.0&#x2F;24 -o eth0 -j MASQUERADE</code></pre>
 <p>在 namespace 中请求宿主机外部地址时，将 namespace 中源地址转换为宿主机的地址作为源地址，就可以在 namespace 中访问宿主机外的网络了。</p>
 <p><strong>DAT</strong></p>
 <p>iptables 中的 DNAT 策略也是做网络地址的转换，不过它是要更换目标地址，常用于将内部网络地址的端口映射出去。例如，上面例子的 namespace 如果要提供服务给宿主机之外的应用要怎么办呢？外部应用没办法直接路由到 172.18.0.2 这个地址，这时候可以用 DNAT 策略。</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 172.18.0.2:80</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 172.18.0.2:80</code></pre>
 <p>这样就可以把宿主机上的 80 端口的 TCP 请求转发到 namespace 的 172.18.0.2:80，从而实现外部应用的调用。</p>
 <h4 id="构建容器网络模型">7.2 构建容器网络模型</h4>
 <h5 id="基本模型">7.2.1 基本模型</h5>
@@ -3792,9 +3792,9 @@ func (ipam *IPAM) dump() error &#123;
 <h5 id="测试">7.5.3 测试</h5>
 <p>现在终于可以测试了。</p>
 <p>首先创建一个网桥：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . network create --driver bridge --subnet 192.168.10.1&#x2F;24 testbridge</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . network create --driver bridge --subnet 192.168.10.1&#x2F;24 testbridge</code></pre>
 <p>然后启动两个容器：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -it -net testbridge busybox sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -it -net testbridge busybox sh
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Start initiating...&quot;,&quot;time&quot;:&quot;2023-05-20T19:24:53+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: sh&quot;,&quot;time&quot;:&quot;2023-05-20T19:24:53+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Current location is &#x2F;root&#x2F;mnt&#x2F;8116248511&quot;,&quot;time&quot;:&quot;2023-05-20T19:24:53+08:00&quot;&#125;
@@ -3820,7 +3820,7 @@ lo        Link encap:Local Loopback
 
 &#x2F; #</code></pre>
 <p>记住这个 IP：<code>192.168.10.2</code>，然后进入另一个容器：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -it -net testbridge busybox sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -it -net testbridge busybox sh
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Start initiating...&quot;,&quot;time&quot;:&quot;2023-05-20T19:26:24+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: sh&quot;,&quot;time&quot;:&quot;2023-05-20T19:26:24+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Current location is &#x2F;root&#x2F;mnt&#x2F;9558830402&quot;,&quot;time&quot;:&quot;2023-05-20T19:26:24+08:00&quot;&#125;
@@ -3857,7 +3857,7 @@ round-trip min&#x2F;avg&#x2F;max &#x3D; 0.086&#x2F;1.352&#x2F;2.619 ms
 <p>下面来试一下访问外部网络。我用的 WSL，默认的 nat 是关闭的，前期各种设置 iptables 规则什么的，都无法访问容器外部的网络，直到发现一篇帖子里说到，需要打开内核的 nat 功能，要将文件<code>/proc/sys/net/ipv4/ip_forward</code>内的值改为1（默认是0）。执行 <code>sysctl -w net.ipv4.ip_forward=1</code> 即可。</p>
 <p>修改之后，继续测试。</p>
 <p>容器默认是没有 DNS 服务器的，需要我们手动添加：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">&#x2F; # ping cn.bing.com
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">&#x2F; # ping cn.bing.com
 ping: bad address &#39;cn.bing.com&#39;
 &#x2F; # echo -e &quot;nameserver 8.8.8.8&quot; &gt; &#x2F;etc&#x2F;resolv.conf
 &#x2F; # ping cn.bing.com
@@ -3870,18 +3870,18 @@ PING cn.bing.com (202.89.233.101): 56 data bytes
 round-trip min&#x2F;avg&#x2F;max &#x3D; 38.419&#x2F;38.715&#x2F;39.011 ms
 &#x2F; #</code></pre>
 <p>然后再来测试容器映射端口到宿主机供外部访问：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># go run . run -it -p 90:90 -net testbridge busybox sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># go run . run -it -p 90:90 -net testbridge busybox sh
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Start initiating...&quot;,&quot;time&quot;:&quot;2023-05-20T19:39:07+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;whole init command is: sh&quot;,&quot;time&quot;:&quot;2023-05-20T19:39:07+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Current location is &#x2F;root&#x2F;mnt&#x2F;3445154844&quot;,&quot;time&quot;:&quot;2023-05-20T19:39:07+08:00&quot;&#125;
 &#123;&quot;level&quot;:&quot;info&quot;,&quot;msg&quot;:&quot;Find path: &#x2F;bin&#x2F;sh&quot;,&quot;time&quot;:&quot;2023-05-20T19:39:07+08:00&quot;&#125;
 &#x2F; # nc -lp 90</code></pre>
 <p>然后访问宿主机的 80 端口，看看能不能转发到容器里：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># telnet 172.31.93.218 90
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># telnet 172.31.93.218 90
 Trying 172.31.93.218...
 telnet: Unable to connect to remote host: Connection refused</code></pre>
 <p>开始我以为是我哪里码错了，然后拿作者的代码来跑，并放到虚拟机上跑，发现并不是自己的问题，那只能这样测试了：</p>
-<pre class="line-numbers language-sh" data-language="sh"><code class="language-sh"># telnet 192.168.10.3 90
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># telnet 192.168.10.3 90
 Trying 192.168.10.3...
 Connected to 192.168.10.3.
 Escape character is &#39;^]&#39;.</code></pre>
@@ -3948,7 +3948,20 @@ Escape character is &#39;^]&#39;.</code></pre>
 
 
 
-    <div class="comments" id="waline"></div>
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-waline">waline</a></li>
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane waline" id="comment-waline">
+              <div class="comments" id="waline"></div>
+            </div>
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments gitalk-container"></div>
+            </div>
+        </div>
+      </div>
 </div>
   </main>
 
@@ -4074,6 +4087,10 @@ const darkmode = new Darkmode(options);
 window.darkmode = darkmode;
 darkmode.showWidget();
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"JaydenChang","repo":"https://github.com/JaydenChang/jaydenchang.github.io","client_id":"4eefd4ac7c2004ef4002","client_secret":"83b3a65014e1cfa0565541412c12518873e5583f","admin_user":"JaydenChang","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"aa94db3e1bdc5ce07bca302cfd5e0747"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 
 

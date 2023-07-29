@@ -69,8 +69,6 @@ function addCodeWrap($node) {
 };
 
 function codeUnfold() {
-    console.log("++++==========")
-    console.log($(".highlight") + "======")
     // $('.highlight').each(function () {
     $('.line-numbers').each(function () {
         // 防止重复渲染        
@@ -80,7 +78,6 @@ function codeUnfold() {
         this.__render__ = true;
         var $this = $(this);
         var height = $(this).outerHeight();
-        console.log(height);
         if (height > CODE_MAX_HEIGHT) {
             // 添加展开&收起容器
             var $container = addCodeWrap($this, height);
