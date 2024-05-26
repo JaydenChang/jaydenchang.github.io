@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <link rel="mask-icon" href="https://jaydenchang.gitee.io/images/Jayden.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="重新编译一个新的 k8s 调度器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="改造 Kubernetes 自定义调度器">
+<meta property="og:url" content="https://jaydenchang.top/post/0x0037.html">
+<meta property="og:site_name" content="Jayden&#39;s Blog">
+<meta property="og:description" content="重新编译一个新的 k8s 调度器">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-26T03:11:54.805Z">
+<meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="k8s">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jaydenchang.top/post/0x0037.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x0037.html","path":"/post/0x0037.html","title":"改造 Kubernetes 自定义调度器"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>改造 Kubernetes 自定义调度器 | Jayden's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style><link rel="alternate" href="/atom.xml" title="Jayden's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jayden's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">15</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">53</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#overview"><span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E9%83%A8%E5%88%86"><span class="nav-text">实验部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%80%BB%E8%A7%88"><span class="nav-text">项目总览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-text">插件部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#prometheus-%E9%83%A8%E5%88%86"><span class="nav-text">Prometheus 部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%83%A8%E5%88%86"><span class="nav-text">配置部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E7%BB%93%E6%9E%9C"><span class="nav-text">验证结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-text">参考链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jayden Chang"
+      src="https://jaydenchang.gitee.io/images/Jayden.jpg">
+  <p class="site-author-name" itemprop="name">Jayden Chang</p>
+  <div class="site-description" itemprop="description">身在井隅，心向星光。眼中有诗，自在远方。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JaydenChang" title="Github → https:&#x2F;&#x2F;github.com&#x2F;JaydenChang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhang44378@163.com" title="E-Mail → mailto:zhang44378@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/jaydenchang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;jaydenchang" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JaydenChang7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JaydenChang7" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@jaydenchang7" title="YouTuBe → https:&#x2F;&#x2F;www.youtube.com&#x2F;@jaydenchang7" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTuBe</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/jaydenchang7" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;jaydenchang7" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://500px.com.cn/jaydenchang" title="500px → https:&#x2F;&#x2F;500px.com.cn&#x2F;jaydenchang" rel="noopener me" target="_blank"><i class="fa-brands fa-500px fa-fw"></i>500px</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0037.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://jaydenchang.gitee.io/images/Jayden.jpg">
+      <meta itemprop="name" content="Jayden Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="改造 Kubernetes 自定义调度器 | Jayden's Blog">
+      <meta itemprop="description" content="重新编译一个新的 k8s 调度器">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          改造 Kubernetes 自定义调度器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-05-26 00:00:00" itemprop="dateCreated datePublished" datetime="2024-05-26T00:00:00+08:00">2024-05-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>8.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>7 mins.</span>
+    </span>
+</div>
+
+            <div class="post-description">重新编译一个新的 k8s 调度器</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr>
+<h3 id="overview">Overview</h3>
+<p>Kubernetes 默认调度器在调度 Pod 时并不关心特殊资源例如磁盘、GPU
+等，因此突发奇想来改造调度器，在翻阅官方调度器框架<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>、调度器配置<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>和参考大佬的文章<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>后，自己也来尝试改写一下。</p>
+<h3 id="环境配置">环境配置</h3>
+<p>相关软件版本：</p>
+<ul>
+<li>Kubernetes 版本：v1.19.0</li>
+<li>Docker 版本：v26.1.2</li>
+<li>Prometheus 版本：v2.49</li>
+<li>Node Exporter 版本：v1.7.0</li>
+</ul>
+<p>集群内有 1 个 master 和 3 个 node。</p>
+<h3 id="实验部分">实验部分</h3>
+<h4 id="项目总览">项目总览</h4>
+<p>项目结构如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">.
+├── Dockerfile
+├── deployment.yaml
+├── go.mod
+├── go.sum
+├── main.go
+├── pkg
+│   ├── cpu
+│   │   └── cputraffic.go
+│   ├── disk
+│   │   └── disktraffic.go
+│   ├── diskspace
+│   │   └── diskspacetraffic.go
+│   ├── memory
+│   │   └── memorytraffic.go
+│   ├── network
+│   │   └── networktraffic.go
+│   └── prometheus.go
+├── scheduler
+├── scheduler.conf
+└── scheduler.yaml</code></pre>
+<h4 id="插件部分">插件部分</h4>
+<p>下面以构建内存插件为例。</p>
+<p>定义插件名称、变量和结构体</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">const MemoryPlugin &#x3D; &quot;MemoryTraffic&quot;
+var _ &#x3D; framework.ScorePlugin(&amp;MemoryTraffic&#123;&#125;)
+
+type MemoryTraffic struct &#123;
+    prometheus *pkg.PrometheusHandle
+    handle framework.FrameworkHandle
+&#125;</code></pre>
+<p>下面来实现 framework.FrameworkHandle 的接口。</p>
+<p>先定义插件初始化入口</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">func New(plArgs runtime.Object, h framework.FrameworkHandle) (framework.Plugin, error) &#123;
+    args :&#x3D; &amp;MemoryTrafficArgs&#123;&#125;
+    if err :&#x3D; fruntime.DecodeInto(plArgs, args); err !&#x3D; nil &#123;
+        return nil, err
+    &#125;
+
+    klog.Infof(&quot;[MemoryTraffic] args received. Device: %s; TimeRange: %d, Address: %s&quot;, args.DeviceName, args.TimeRange, args.IP)
+
+    return &amp;MemoryTraffic&#123;
+        handle:     h,
+        prometheus: pkg.NewProme(args.IP, args.DeviceName, time.Minute*time.Duration(args.TimeRange)),
+    &#125;, nil
+&#125;</code></pre>
+<p>实现 Score 接口，Score 进行初步打分</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">func (n *MemoryTraffic) Score(ctx context.Context, state *framework.CycleState, p *corev1.Pod, nodeName string) (int64, *framework.Status) &#123;
+    nodeBandwidth, err :&#x3D; n.prometheus.MemoryGetGauge(nodeName)
+    if err !&#x3D; nil &#123;
+        return 0, framework.NewStatus(framework.Error, fmt.Sprintf(&quot;error getting node bandwidth measure: %s&quot;, err))
+    &#125;
+    bandWidth :&#x3D; int64(nodeBandwidth.Value)
+    klog.Infof(&quot;[MemoryTraffic] node &#39;%s&#39; bandwidth: %v&quot;, nodeName, bandWidth)
+    return bandWidth, nil
+&#125;</code></pre>
+<p>实现 NormalizeScore，对上一步 Score 的打分进行修正</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">func (n *MemoryTraffic) NormalizeScore(ctx context.Context, state *framework.CycleState, pod *corev1.Pod, scores framework.NodeScoreList) *framework.Status &#123;
+    var higherScore int64
+    for _, node :&#x3D; range scores &#123;
+        if higherScore &lt; node.Score &#123;
+            higherScore &#x3D; node.Score
+        &#125;
+    &#125;
+    &#x2F;&#x2F; 计算公式为，满分 - (当前内存使用 &#x2F; 总内存 * 100)
+    &#x2F;&#x2F; 公式的计算结果为，内存使用率越大的节点，分数越低
+    for i, node :&#x3D; range scores &#123;
+        scores[i].Score &#x3D; node.Score * 100 &#x2F; higherScore
+        klog.Infof(&quot;[MemoryTraffic] Nodes final score: %v&quot;, scores[i].Score)
+    &#125;
+
+    klog.Infof(&quot;[MemoryTraffic] Nodes final score: %v&quot;, scores)
+    return nil
+&#125;</code></pre>
+<p>配置插件名称和返回 ScoreExtension</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">func (n *MemoryTraffic) Name() string &#123;
+    return MemoryPlugin
+&#125;
+
+&#x2F;&#x2F; 如果返回framework.ScoreExtensions 就需要实现framework.ScoreExtensions
+func (n *MemoryTraffic) ScoreExtensions() framework.ScoreExtensions &#123;
+    return n
+&#125;</code></pre>
+<h4 id="prometheus-部分">Prometheus 部分</h4>
+<p>首先来编写查询内存可用率的 PromQL</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">const memoryMeasureQueryTemplate &#x3D; &#96; (avg_over_time(node_memory_MemAvailable_bytes[30m]) &#x2F; avg_over_time(node_memory_MemTotal_bytes[30m])) * 100 * on(instance) group_left(nodename) (node_uname_info&#123;nodename&#x3D;&quot;%s&quot;&#125;)&#96;</code></pre>
+<p>然后来声明 PrometheusHandle</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">type PrometheusHandle struct &#123;
+    deviceName string
+    timeRange  time.Duration
+    ip         string
+    client     v1.API
+&#125;</code></pre>
+<p>另外在插件部分也要声明查询 Prometheus 的参数结构体</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">type MemoryTrafficArgs struct &#123;
+    IP         string &#96;json:&quot;ip&quot;&#96;
+    DeviceName string &#96;json:&quot;deviceName&quot;&#96;
+    TimeRange  int    &#96;json:&quot;timeRange&quot;&#96;
+&#125;</code></pre>
+<p>编写初始化 Prometheus 插件入口</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">func NewProme(ip, deviceName string, timeRace time.Duration) *PrometheusHandle &#123;
+    client, err :&#x3D; api.NewClient(api.Config&#123;Address: ip&#125;)
+    if err !&#x3D; nil &#123;
+        klog.Fatalf(&quot;[Prometheus Plugin] FatalError creating prometheus client: %s&quot;, err.Error())
+    &#125;
+    return &amp;PrometheusHandle&#123;
+        deviceName: deviceName,
+        ip:         ip,
+        timeRange:  timeRace,
+        client:     v1.NewAPI(client),
+    &#125;
+&#125;</code></pre>
+<p>编写通用查询接口，可供其他类型资源查询</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">func (p *PrometheusHandle) query(promQL string) (model.Value, error) &#123;
+    results, warnings, err :&#x3D; p.client.Query(context.Background(), promQL, time.Now())
+    if len(warnings) &gt; 0 &#123;
+        klog.Warningf(&quot;[Prometheus Query Plugin] Warnings: %v\n&quot;, warnings)
+    &#125;
+
+    return results, err
+&#125;</code></pre>
+<p>获取内存可用率接口</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">func (p *PrometheusHandle) MemoryGetGauge(node string) (*model.Sample, error) &#123;
+    value, err :&#x3D; p.query(fmt.Sprintf(memoryMeasureQueryTemplate, node))
+    fmt.Println(fmt.Sprintf(memoryMeasureQueryTemplate, node))
+    if err !&#x3D; nil &#123;
+        return nil, fmt.Errorf(&quot;[MemoryTraffic Plugin] Error querying prometheus: %w&quot;, err)
+    &#125;
+
+    nodeMeasure :&#x3D; value.(model.Vector)
+    if len(nodeMeasure) !&#x3D; 1 &#123;
+        return nil, fmt.Errorf(&quot;[MemoryTraffic Plugin] Invalid response, expected 1 value, got %d&quot;, len(nodeMeasure))
+    &#125;
+    return nodeMeasure[0], nil
+
+&#125;</code></pre>
+<p>然后在程序入口里启用插件并执行</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">func main() &#123;
+    rand.Seed(time.Now().UnixNano())
+    command :&#x3D; app.NewSchedulerCommand(
+        app.WithPlugin(network.NetworkPlugin, network.New),
+        app.WithPlugin(disk.DiskPlugin, disk.New),
+        app.WithPlugin(diskspace.DiskSpacePlugin, diskspace.New),
+        app.WithPlugin(cpu.CPUPlugin, cpu.New),
+        app.WithPlugin(memory.MemoryPlugin, memory.New),
+    )
+    &#x2F;&#x2F; 对于外部注册一个plugin
+    &#x2F;&#x2F; command :&#x3D; app.NewSchedulerCommand(
+    &#x2F;&#x2F; 	app.WithPlugin(&quot;example-plugin1&quot;, ExamplePlugin1.New))
+
+    if err :&#x3D; command.Execute(); err !&#x3D; nil &#123;
+        fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, err)
+        os.Exit(1)
+    &#125;
+&#125;</code></pre>
+<h4 id="配置部分">配置部分</h4>
+<p>为方便观察，这里使用二进制方式运行，准备运行时的配置文件</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">apiVersion: kubescheduler.config.k8s.io&#x2F;v1beta1
+kind: KubeSchedulerConfiguration
+clientConnection:
+  kubeconfig: &#x2F;etc&#x2F;kubernetes&#x2F;scheduler.conf
+profiles:
+- schedulerName: custom-scheduler
+  plugins:
+    score:
+      enabled:
+      - name: &quot;CPUTraffic&quot;
+        weight: 3
+      - name: &quot;MemoryTraffic&quot;
+        weight: 4
+      - name: &quot;DiskSpaceTraffic&quot;
+        weight: 3
+      - name: &quot;NetworkTraffic&quot;
+        weight: 2
+      disabled:
+      - name: &quot;*&quot;
+  pluginConfig:
+    - name: &quot;NetworkTraffic&quot;
+      args:
+        ip: &quot;http:&#x2F;&#x2F;172.19.32.140:9090&quot;
+        deviceName: &quot;eth0&quot;
+        timeRange: 60   
+    - name: &quot;CPUTraffic&quot;
+      args:
+        ip: &quot;http:&#x2F;&#x2F;172.19.32.140:9090&quot;
+        deviceName: &quot;eth0&quot;
+        timeRange: 0
+    - name: &quot;MemoryTraffic&quot;
+      args:
+        ip: &quot;http:&#x2F;&#x2F;172.19.32.140:9090&quot;
+        deviceName: &quot;eth0&quot;
+        timeRange: 0
+    - name: &quot;DiskSpaceTraffic&quot;
+      args:
+        ip: &quot;http:&#x2F;&#x2F;172.19.32.140:9090&quot;
+        deviceName: &quot;eth0&quot;
+        timeRange: 0</code></pre>
+<p>kubeconfig 处为 master 节点的
+scheduler.conf，以实际路径为准，内包含集群的证书哈希，ip 为部署
+Prometheus 节点的 ip，端口为 Promenade 配置中对外暴露的端口。</p>
+<p>将二进制文件和 scheduler.yaml 放至 master 同一目录下运行：</p>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;scheduler --logtostderr&#x3D;true \
+	--address&#x3D;127.0.0.1 \
+	--v&#x3D;6 \
+	--config&#x3D;&#96;pwd&#96;&#x2F;scheduler.yaml \
+	--kubeconfig&#x3D;&quot;&#x2F;etc&#x2F;kubernetes&#x2F;scheduler.conf&quot; \</code></pre>
+<h4 id="验证结果">验证结果</h4>
+<p>准备一个要部署的 Pod，使用指定的调度器名称</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml">apiVersion: apps&#x2F;v1
+kind: Deployment
+metadata:
+  name: gin
+  namespace: default
+  labels:
+    app: gin
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gin
+  template:
+    metadata:
+      labels:
+        app: gin
+    spec:
+      schedulerName: my-custom-scheduler  # 使用自定义调度器
+      containers:
+      - name: gin
+        image: jaydenchang&#x2F;k8s_test:latest
+        imagePullPolicy: Always
+        command: [&quot;.&#x2F;app&quot;]
+        ports:
+        - containerPort: 9999
+          protocol: TCP</code></pre>
+<p>最后的可以查看日志，部分日志如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">I0808 17:32:35.138289   27131 memorytraffic.go:83] [MemoryTraffic] node &#39;node1&#39; bandwidth: %!s(int64&#x3D;2680340)
+I0808 17:32:35.138763   27131 memorytraffic.go:70] [MemoryTraffic] Nodes final score: [&#123;node1 2680340&#125; &#123;node2 0&#125;]
+I0808 17:32:35.138851   27131 memorytraffic.go:70] [MemoryTraffic] Nodes final score: [&#123;node1 71&#125; &#123;node2 0&#125;]
+I0808 17:32:35.138911   27131 memorytraffic.go:73] [MemoryTraffic] Nodes final score: [&#123;node1 71&#125; &#123;node2 0&#125;]
+I0808 17:32:35.139565   27131 default_binder.go:51] Attempting to bind default&#x2F;go-deployment-66878c4885-b4b7k to node1
+I0808 17:32:35.141114   27131 eventhandlers.go:225] add event for scheduled pod default&#x2F;go-deployment-66878c4885-b4b7k
+I0808 17:32:35.141714   27131 eventhandlers.go:205] delete event for unscheduled pod default&#x2F;go-deployment-66878c4885-b4b7k
+I0808 17:32:35.143504   27131 scheduler.go:609] &quot;Successfully bound pod to node&quot; pod&#x3D;&quot;default&#x2F;go-deployment-66878c4885-b4b7k&quot; node&#x3D;&quot;no
+de1&quot; evaluatedNodes&#x3D;2 feasibleNodes&#x3D;2
+I0808 17:32:35.104540   27131 scheduler.go:609] &quot;Successfully bound pod to node&quot; pod&#x3D;&quot;default&#x2F;go-deployment-66878c4885-b4b7k&quot; node&#x3D;&quot;no
+de1&quot; evaluatedNodes&#x3D;2 feasibleNodes&#x3D;2</code></pre>
+<h3 id="参考链接">参考链接</h3>
+<div id="footnotes">
+<hr>
+<div id="footnotelist">
+<ol style="list-style:none; padding-left: 0;">
+<li id="fn:1">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span
+style="display: inline-block; vertical-align: top;"><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/concepts/scheduling-eviction/scheduling-framework/">Scheduling
+Framework | Kubernetes</a></span><a href="#fnref:1" rev="footnote">
+↩︎</a>
+</li>
+<li id="fn:2">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span
+style="display: inline-block; vertical-align: top;"><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/scheduling/config/">Scheduler
+Configuration | Kubernetes</a></span><a href="#fnref:2" rev="footnote">
+↩︎</a>
+</li>
+<li id="fn:3">
+<span
+style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span
+style="display: inline-block; vertical-align: top;"><a target="_blank" rel="noopener" href="https://www.oomkill.com/2022/08/ch22-custom-scheduler.html">基于Prometheus的Kubernetes网络调度器
+| Cylon's Collection
+(oomkill.com)</a></span><a href="#fnref:3" rev="footnote"> ↩︎</a>
+</li>
+</ol>
+</div>
+</div>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"># 技术</a>
+              <a href="/tags/k8s/" rel="tag"># k8s</a>
+              <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"># 运维</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x0036.html" rel="prev" title="基于Ubuntu20.04在k8s 1.25部署gin+MySQL服务">
+                  <i class="fa fa-chevron-left"></i> 基于Ubuntu20.04在k8s 1.25部署gin+MySQL服务
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jayden Chang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">475k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">7:12</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" integrity="sha256-4mJNT2bMXxcc1GCJaxBmMPdmah5ji0Ldnd79DKd1hoM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-AjM0J5XIbiB590BrznLEgZGLnOQWrt62s3BEq65Q/I0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-9cmf7tcLdXpKsPi/2AWE93PbZpTp4M4tqzFk+lWomjU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/code-unfold.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":"enable","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"JaydenChang","repo":"jaydenchang.github.io","client_id":"4eefd4ac7c2004ef4002","client_secret":"83b3a65014e1cfa0565541412c12518873e5583f","admin_user":"JaydenChang","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"cf6ce8a0e92e6099c84abda5ce59076c"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+
+
+
+</body>
+</html>
