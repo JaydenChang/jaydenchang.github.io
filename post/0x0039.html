@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="https://avatars.githubusercontent.com/u/72348653?v=4">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://avatars.githubusercontent.com/u/72348653?v=4">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://avatars.githubusercontent.com/u/72348653?v=4">
+  <link rel="mask-icon" href="https://avatars.githubusercontent.com/u/72348653?v=4" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jaydenchang.top","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="使用自建Web应用实现将AWS CloudWatch的告警推送至外部的AlertManager">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS CloudWatch告警推送至外部AlertManager">
+<meta property="og:url" content="https://jaydenchang.top/post/0x0039.html">
+<meta property="og:site_name" content="Jayden&#39;s Blog">
+<meta property="og:description" content="使用自建Web应用实现将AWS CloudWatch的告警推送至外部的AlertManager">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jaydenchang.top/post/0x0039/0x0039_1.png">
+<meta property="og:image" content="https://jaydenchang.top/post/0x0039/0x0039_2.png">
+<meta property="og:image" content="https://jaydenchang.top/post/0x0039/0x0039_3.png">
+<meta property="article:published_time" content="2025-09-05T12:48:09.186Z">
+<meta property="article:modified_time" content="2025-09-05T13:42:07.324Z">
+<meta property="article:author" content="Jayden Chang">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="运维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jaydenchang.top/post/0x0039/0x0039_1.png">
+
+
+<link rel="canonical" href="https://jaydenchang.top/post/0x0039.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jaydenchang.top/post/0x0039.html","path":"/post/0x0039.html","title":"AWS CloudWatch告警推送至外部AlertManager"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>AWS CloudWatch告警推送至外部AlertManager | Jayden's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Jayden's Blog" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jayden's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">15</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">55</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#aws-%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="nav-text">AWS 端配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90-eventbridge-payload"><span class="nav-text">解析 EventBridge payload</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-text">参考文档</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jayden Chang"
+      src="https://avatars.githubusercontent.com/u/72348653?v=4">
+  <p class="site-author-name" itemprop="name">Jayden Chang</p>
+  <div class="site-description" itemprop="description">身在井隅，心向星光。眼中有诗，自在远方。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JaydenChang" title="Github → https:&#x2F;&#x2F;github.com&#x2F;JaydenChang" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jaydenc1830@gmail.com" title="E-Mail → mailto:jaydenc1830@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/JaydenChang7" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;JaydenChang7" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/@jaydenchang7" title="YouTuBe → https:&#x2F;&#x2F;www.youtube.com&#x2F;@jaydenchang7" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTuBe</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/jaydenchang7" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;jaydenchang7" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://500px.com.cn/jaydenchang" title="500px → https:&#x2F;&#x2F;500px.com.cn&#x2F;jaydenchang" rel="noopener me" target="_blank"><i class="fa-brands fa-500px fa-fw"></i>500px</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml" rel="noopener me"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="Back to top">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jaydenchang.top/post/0x0039.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://avatars.githubusercontent.com/u/72348653?v=4">
+      <meta itemprop="name" content="Jayden Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jayden's Blog">
+      <meta itemprop="description" content="身在井隅，心向星光。眼中有诗，自在远方。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="AWS CloudWatch告警推送至外部AlertManager | Jayden's Blog">
+      <meta itemprop="description" content="使用自建Web应用实现将AWS CloudWatch的告警推送至外部的AlertManager">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AWS CloudWatch告警推送至外部AlertManager
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-09-05 20:48:09" itemprop="dateCreated datePublished" datetime="2025-09-05T20:48:09+08:00">2025-09-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>11 mins.</span>
+    </span>
+</div>
+
+            <div class="post-description">使用自建Web应用实现将AWS CloudWatch的告警推送至外部的AlertManager</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><hr>
+<h2 id="aws-端配置">AWS 端配置</h2>
+<p>想要实现 AWS 的 CloudWatch
+产生的告警推送至业务程序，或者直接邮件、短信方式通知到运维成员，通常使用
+AWS 的 SNS
+服务，但是该套服务组合有一个缺点，当告警异常恢复后，CloudWatch
+并不会发送一条恢复的通知，不符合业务上的需求。</p>
+<p>在查阅无数文档后，终于发现 AWS 有一个服务可以解决这个问题，使用
+EventBridge 去分发事件：<a
+target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/AmazonCloudWatch/latest/monitoring/cloudwatch-and-eventbridge.html">告警事件和
+EventBridge - Amazon CloudWatch</a></p>
+<p>CloudWatch 告警会默认推送至 EventBridge，但由于 EventBridge
+默认都没有配置规则，所以推送到 EventBridge
+后没有执行其他动作。因此可以在 EventBridge 创建 2
+个规则，分别对应告警发生和告警恢复。</p>
+<p>进入 EventBridge 页面，在左边导航栏选择 Rules，创建一个新 rule：</p>
+<img src="/post/0x0039/0x0039_1.png" class="">
+<p>Events 可以选择 All Events，Event pattern 选择 use schema，schema
+registry 默认只有一个 aws.events, schema 选择
+aws.cloudwatch@CloudWatchAlarmStateChange。</p>
+<p>在下面的 method 里，找到 state 和 previousState：</p>
+<img src="/post/0x0039/0x0039_2.png" class="">
+<p>分别设置 state.value 和 previousState.value，然后再点击 Generate
+event pattern in JSON，然后进入下一步配置通知目标</p>
+<img src="/post/0x0039/0x0039_3.png" class="">
+<p>这里一般会提前配置好 SNS 的
+subscription，选择要推送的渠道，下一步然后创建即可。</p>
+<p>我选择的 SNS subscription 会通过 https 回调到内部的 web
+应用去处理告警信息，下一步要做的是解析 EventBridge 的消息体。</p>
+<h2 id="解析-eventbridge-payload">解析 EventBridge payload</h2>
+<p>payload 格式大概如下所示：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
+        &quot;AlarmName&quot;: &quot;test-low-available-memory&quot;,
+        &quot;AlarmDescription&quot;: &quot;aws rds memory utilization &gt;&#x3D; 80%&quot;,
+        &quot;AWSAccountId&quot;: &quot;xxxxxx&quot;,
+        &quot;AlarmConfigurationUpdatedTimestamp&quot;: &quot;2025-08-12T07:49:42.878+0000&quot;,
+        &quot;NewStateValue&quot;: &quot;ALARM&quot;,
+        &quot;NewStateReason&quot;: &quot;Threshold Crossed: 3 out of the last 3 datapoints [7.066517504E8 (12&#x2F;08&#x2F;25 07:45:00), 7.03741952E8 (12&#x2F;08&#x2F;25 07:40:00), 7.072145408E8 (12&#x2F;08&#x2F;25 07:35:00)] were less than or equal to the threshold (8.0E8) (minimum 3 datapoints for OK -&gt; ALARM transition).&quot;,
+        &quot;StateChangeTime&quot;: &quot;2025-08-12T07:50:34.567+0000&quot;,
+        &quot;Region&quot;: &quot;EU (Ireland)&quot;,
+        &quot;AlarmArn&quot;: &quot;arn:aws:cloudwatch:eu-west-1:xxxx:alarm:test-low-available-memory&quot;,
+        &quot;OldStateValue&quot;: &quot;INSUFFICIENT_DATA&quot;,
+        &quot;OKActions&quot;: [],
+        &quot;AlarmActions&quot;: [&quot;arn:aws:sns:eu-west-1:xxx:prometheus_alert&quot;],
+        &quot;InsufficientDataActions&quot;: [],
+        &quot;Trigger&quot;: &#123;
+                &quot;MetricName&quot;: &quot;FreeableMemory&quot;,
+                &quot;Namespace&quot;: &quot;AWS&#x2F;RDS&quot;,
+                &quot;StatisticType&quot;: &quot;Statistic&quot;,
+                &quot;Statistic&quot;: &quot;AVERAGE&quot;,
+                &quot;Unit&quot;: null,
+                &quot;Dimensions&quot;: [&#123;
+                        &quot;value&quot;: &quot;eu2-2&quot;,
+                        &quot;name&quot;: &quot;DBInstanceIdentifier&quot;
+                &#125;],
+                &quot;Period&quot;: 300,
+                &quot;EvaluationPeriods&quot;: 3,
+                &quot;DatapointsToAlarm&quot;: 3,
+                &quot;ComparisonOperator&quot;: &quot;LessThanOrEqualToThreshold&quot;,
+                &quot;Threshold&quot;: 8.0E8,
+                &quot;TreatMissingData&quot;: &quot;missing&quot;,
+                &quot;EvaluateLowSampleCountPercentile&quot;: &quot;&quot;
+        &#125;
+&#125;</code></pre>
+<p>可以选择对自己业务有帮助的字段，再拼接为推送至 AlertManager
+的消息体。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">
+type AwsAlarmArgs struct &#123;
+	Type             string &#96;json:&quot;Type&quot;&#96;
+	MessageId        string &#96;json:&quot;MessageId&quot;&#96;
+	Token            string &#96;json:&quot;Token,omitempty&quot;&#96;
+	TopicArn         string &#96;json:&quot;TopicArn&quot;&#96;
+	Subject          string &#96;json:&quot;Subject,omitempty&quot;&#96;
+	Message          string &#96;json:&quot;Message&quot;&#96;
+	SubscribeURL     string &#96;json:&quot;SubscribeURL,omitempty&quot;&#96;
+	Timestamp        string &#96;json:&quot;Timestamp&quot;&#96;
+	SignatureVersion string &#96;json:&quot;SignatureVersion&quot;&#96;
+	Signature        string &#96;json:&quot;Signature&quot;&#96;
+	SigningCertURL   string &#96;json:&quot;SigningCertURL&quot;&#96;
+	UnsubscribeURL   string &#96;json:&quot;UnsubscribeURL,omitempty&quot;&#96;
+&#125;
+
+type AwsAlarmMsg struct &#123;
+	AlarmName        string          &#96;json:&quot;AlarmName&quot;&#96;
+	AlarmDescription string          &#96;json:&quot;AlarmDescription&quot;&#96;
+	AWSAccountId     string          &#96;json:&quot;AWSAccountId&quot;&#96;
+	NewStateValue    string          &#96;json:&quot;NewStateValue&quot;&#96;
+	NewStateReason   string          &#96;json:&quot;NewStateReason&quot;&#96;
+	StateChangeTime  string          &#96;json:&quot;StateChangeTime&quot;&#96;
+	Region           string          &#96;json:&quot;Region&quot;&#96;
+	OldStateValue    string          &#96;josn:&quot;OldStateValue&quot;&#96;
+	Trigger          AwsAlarmTrigger &#96;json:&quot;Trigger&quot;&#96;
+&#125;
+
+type AwsAlarmTrigger struct &#123;
+	MetricName                       string               &#96;json:&quot;MetricName&quot;&#96;
+	Namespace                        string               &#96;json:&quot;Namespace&quot;&#96;
+	StatisticType                    string               &#96;json:&quot;StatisticType&quot;&#96;
+	Statistic                        string               &#96;json:&quot;Statistic&quot;&#96;
+	Unit                             string               &#96;json:&quot;Unit&quot;&#96;
+	Dimensions                       []AwsAlarmDimensions &#96;json:&quot;Dimensions&quot;&#96;
+	Period                           int                  &#96;json:&quot;Period&quot;&#96;
+	EvaluationPeriods                int                  &#96;json:&quot;EvaluationPeriods&quot;&#96;
+	ComparisonOperator               string               &#96;json:&quot;ComparisonOperator&quot;&#96;
+	Threshold                        float32              &#96;json:&quot;Threshold&quot;&#96;
+	TreatMissingData                 string               &#96;json:&quot;TreatMissingData&quot;&#96;
+	EvaluateLowSampleCountPercentile string               &#96;json:&quot;EvaluateLowSampleCountPercentile&quot;&#96;
+&#125;
+
+type AwsEvent struct &#123;
+	Version    string         &#96;json:&quot;version&quot;&#96;
+	Id         string         &#96;json:&quot;id&quot;&#96;
+	DetailType string         &#96;json:&quot;detail-type&quot;&#96;
+	Source     string         &#96;json:&quot;source&quot;&#96;
+	Account    string         &#96;json:&quot;account&quot;&#96;
+	Time       string         &#96;json:&quot;time&quot;&#96;
+	Region     string         &#96;json:&quot;region&quot;&#96;
+	Resources  []string       &#96;json:&quot;resources&quot;&#96;
+	Detail     AwsEventDetail &#96;json:&quot;detail&quot;&#96;
+&#125;
+
+type AwsEventDetail struct &#123;
+	AlarmName     string                &#96;json:&quot;alarmName&quot;&#96;
+	State         AwsEventState         &#96;json:&quot;state&quot;&#96;
+	PreviousState AwsEventPreviousState &#96;json:&quot;previousState&quot;&#96;
+	Configuration AwsEventConfiguration &#96;json:&quot;configuration&quot;&#96;
+&#125;
+
+type AwsEventState struct &#123;
+	Value      string &#96;json:&quot;value&quot;&#96;
+	Reason     string &#96;json:&quot;reason&quot;&#96;
+	ReasonData string &#96;json:&quot;reasonData&quot;&#96;
+	Timestamp  string &#96;json:&quot;timestamp&quot;&#96;
+&#125;
+
+type AwsEventPreviousState struct &#123;
+	Value      string &#96;json:&quot;value&quot;&#96;
+	Reason     string &#96;json:&quot;reason&quot;&#96;
+	ReasonData string &#96;json:&quot;reasonData&quot;&#96;
+	Timestamp  string &#96;json:&quot;timestamp&quot;&#96;
+&#125;
+
+type AwsEventConfiguration struct &#123;
+	Metrics     []AwsEventMetrics &#96;json:&quot;metrics&quot;&#96;
+	Description string            &#96;json:&quot;description&quot;&#96;
+&#125;
+
+type AwsEventMetrics struct &#123;
+	Id         string             &#96;json:&quot;id&quot;&#96;
+	MetricStat AwsEventMetricStat &#96;json:&quot;metricStat&quot;&#96;
+	ReturnData bool               &#96;json:&quot;returnData&quot;&#96;
+&#125;
+
+type AwsEventMetricStat struct &#123;
+	Metric struct &#123;
+		Namespace  string            &#96;json:&quot;namespace&quot;&#96;
+		Name       string            &#96;json:&quot;name&quot;&#96;
+		Dimensions map[string]string &#96;json:&quot;dimensions&quot;&#96;
+	&#125; &#96;json:&quot;metric&quot;&#96;
+	Period int    &#96;json:&quot;period&quot;&#96;
+	Stat   string &#96;json:&quot;stat&quot;&#96;
+&#125;
+
+type AwsAlarmDimensions struct &#123;
+	Name  string &#96;json:&quot;name&quot;&#96;
+	Value string &#96;json:&quot;value&quot;&#96;
+&#125;
+
+type AwsAlarm struct &#123;
+	Token  string
+	Args   AwsAlarmArgs
+	Region string
+&#125;</code></pre>
+<p>处理 aws subscription 和 EventBridge 的 payload</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">&#x2F;&#x2F; 接收aws告警并发送给am
+func (p *Pusher) AWSAlert(c *gin.Context) (err error) &#123;
+	token :&#x3D; c.FormValue(&quot;token&quot;)
+	awsArgs :&#x3D; AwsAlarmArgs&#123;&#125;
+	awsEvent :&#x3D; AwsEvent&#123;&#125;
+	body, err :&#x3D; ioutil.ReadAll(c.Request().Body)
+	if err !&#x3D; nil &#123;
+		log.Logger.Errorf(&quot;read aws request body err:%v&quot;, err)
+		return
+	&#125;
+	msgType :&#x3D; c.Request().Header.Get(&quot;x-amz-sns-message-type&quot;) &#x2F;&#x2F; 获取消息类型
+	switch msgType &#123;
+	case &quot;SubscriptionConfirmation&quot;:
+		&#x2F;&#x2F; aws SNS订阅确认消息
+		if err &#x3D; json.Unmarshal(body, &amp;awsArgs); err !&#x3D; nil &#123;
+			log.Logger.Errorf(&quot;json unmarshal err:%v&quot;, err)
+			return
+		&#125;
+		subscribeUrl :&#x3D; awsArgs.SubscribeURL
+		resp, err :&#x3D; http.Get(subscribeUrl)
+		if err !&#x3D; nil &#123;
+			log.Logger.Errorf(&quot;Get url:%s err:%v&quot;, subscribeUrl, err)
+			return err
+		&#125;
+		if resp.StatusCode &#x3D;&#x3D; 200 &#123;
+			log.Logger.Infof(&quot;subscribe aws topic successful, statusCode:%v, status:%s&quot;, resp.StatusCode, resp.Status)
+		&#125; else &#123;
+			log.Logger.Errorf(&quot;subscribe aws topic failed, statusCode:%v, status:%s&quot;, resp.StatusCode, resp.Status)
+		&#125;
+	case &quot;Notification&quot;:
+		&#x2F;&#x2F; aws SNS通知消息
+		if err &#x3D; json.Unmarshal(body, &amp;awsEvent); err !&#x3D; nil &#123;
+			log.Logger.Errorf(&quot;json unmarshal err: body: %v, err: %v&quot;, string(body), err)
+			return
+		&#125;
+		state :&#x3D; &quot;&quot;
+		if awsEvent.Detail.State.Value &#x3D;&#x3D; &quot;ALARM&quot; &#123;
+			state &#x3D; &quot;firing&quot;
+		&#125; else if awsEvent.Detail.State.Value &#x3D;&#x3D; &quot;OK&quot; &#123;
+			state &#x3D; &quot;resolved&quot;
+		&#125; 
+		log.Logger.Infof(&quot;get aws alarm: traceId: %v, alarm description: %v&quot;, awsEvent.Id, awsEvent.Detail.Configuration.Description)
+		dimension :&#x3D; &quot;&quot;
+		namespace :&#x3D; &quot;&quot;
+		&#x2F;&#x2F; 正常情况下Metrics有一个元素，此处避免数组越界造成panic
+		if len(awsEvent.Detail.Configuration.Metrics) &gt; 0 &#123;
+			namespace &#x3D; awsEvent.Detail.Configuration.Metrics[0].MetricStat.Metric.Namespace
+			for _,v :&#x3D;range awsEvent.Detail.Configuration.Metrics[0].MetricStat.Metric.Dimensions &#123;
+				dimension &#x3D; v
+				break
+			&#125;
+		&#125;	
+		CreateAlert(awsEvent.Detail.State.Timestamp, awsEvent.Detail.AlarmName, awsEvent.Detail.Configuration.Description, namespace, dimension, state, &quot;error&quot;, option.Opt.AmOpt.AwsDs, &quot;aws&quot;)
+	default:
+		&#x2F;&#x2F; 未知类型
+		log.Logger.Errorf(&quot;unknown msgType:%s&quot;, msgType)
+		return
+	&#125;
+	c.JSON(http.StatusOK, map[string]interface&#123;&#125;&#123;
+		&quot;errcode&quot;: 0,
+		&quot;errmsg&quot;:  &quot;ok&quot;,
+	&#125;)
+	return
+&#125;</code></pre>
+<p>推送至外部 AlertManager</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">
+type AlertManagerArgs struct &#123;
+	StartsAt    string      &#96;json:&quot;startsAt,omitempty&quot;&#96; &#x2F;&#x2F; 报警开始时间
+	EndsAt      string      &#96;json:&quot;endsAt,omitempty&quot;&#96;   &#x2F;&#x2F; 报警结束时间
+	Annotations Annoattions &#96;json:&quot;annotations&quot;&#96;        &#x2F;&#x2F; 告警信息注解
+	Status      string      &#96;json:&quot;status&quot;&#96;             &#x2F;&#x2F; 告警状态
+	Labels      Labels      &#96;json:&quot;labels&quot;&#96;             &#x2F;&#x2F; 告警信息标签
+&#125;
+
+type Annoattions struct &#123;
+	Summary     string &#96;json:&quot;summary&quot;&#96;
+	Description string &#96;json:&quot;description&quot;&#96;
+&#125;
+
+type Labels struct &#123;
+	Severity   string &#96;json:&quot;severity&quot;&#96;
+	Ds         string &#96;json:&quot;ds&quot;&#96;
+	AlertGroup string &#96;json:&quot;alertgroup&quot;&#96;
+	NameSpace  string &#96;json:&quot;namespace&quot;&#96;
+	Instance   string &#96;json:&quot;instance&quot;&#96;
+	AlertName  string &#96;json:&quot;alertname&quot;&#96;
+&#125;
+
+func CreateAlert(startTimeOrigin string, summary, description, namespace, instance, status, severity, ds, alertGroup string) &#123;
+	amArgs :&#x3D; AlertManagerArgs&#123;
+		Status: status,
+		Annotations: Annoattions&#123;
+			Summary:     summary,
+			Description: description,
+		&#125;,
+		Labels: Labels&#123;
+			Severity:   severity,
+			Ds:         ds,
+			AlertGroup: alertGroup,
+			NameSpace:  namespace,
+			Instance:   instance,
+			AlertName:  summary,
+		&#125;,
+	&#125;
+	parseTime, err :&#x3D; time.Parse(&quot;2006-01-02T15:04:05.000-0700&quot;, startTimeOrigin)
+	if err !&#x3D; nil &#123;
+		log.Logger.Errorf(&quot;parse time failed: time: %v, err: %v&quot;, startTimeOrigin, err)
+		return
+	&#125;
+	if status &#x3D;&#x3D; &quot;firing&quot; &#123;
+		amArgs.StartsAt &#x3D; parseTime.Format(&quot;2006-01-02T15:04:05Z&quot;)
+		&#x2F;&#x2F; 延长endsAt,未加endsAt的告警默认2min后就关闭
+		amArgs.EndsAt &#x3D; parseTime.Add(time.Duration(option.Opt.AmOpt.EndTimeout) * time.Hour).Format(&quot;2006-01-02T15:04:05Z&quot;)
+	&#125; else if status &#x3D;&#x3D; &quot;resolved&quot; &#123;
+		amArgs.EndsAt &#x3D; parseTime.Format(&quot;2006-01-02T15:04:05Z&quot;)
+	&#125; else &#123;
+		log.Logger.Errorf(&quot;status invalid: status: %v&quot;, status)
+		return
+	&#125;
+	reqBody :&#x3D; []AlertManagerArgs&#123;amArgs&#125;
+	reqByte, err :&#x3D; json.Marshal(reqBody)
+	if err !&#x3D; nil &#123;
+		log.Logger.Errorf(&quot;json marshal failed: err: %v&quot;, err)
+		return
+	&#125;
+	req, err :&#x3D; http.NewRequest(http.MethodPost, option.Opt.AmOpt.AmHost, bytes.NewBuffer(reqByte))
+	if err !&#x3D; nil &#123;
+		log.Logger.Errorf(&quot;new request failed: err: %v&quot;, err)
+		return
+	&#125;
+	req.SetBasicAuth(option.Opt.AmOpt.Username, option.Opt.AmOpt.Password)
+	req.Header.Set(&quot;Content-Type&quot;, &quot;application&#x2F;json&quot;)
+	_, err &#x3D; http.DefaultClient.Do(req)
+	if err !&#x3D; nil &#123;
+		log.Logger.Errorf(&quot;http do failed: err: %v&quot;, err)
+		return
+	&#125;
+
+&#125;
+</code></pre>
+<p>代码仅供参考，需要根据实际业务再作修改</p>
+<h2 id="参考文档">参考文档</h2>
+<p><a
+target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/AmazonCloudWatch/latest/monitoring/cloudwatch-and-eventbridge.html">告警事件和
+EventBridge - Amazon CloudWatch</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://repost.aws/zh-Hans/knowledge-center/sns-sms-messages-china">repost.aws</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/141713511">zhuanlan.zhihu.com</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/sls/ingest-cloudwatch-alerts-into-log-service">接入CloudWatch告警</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/sns/latest/dg/http-notification-json.html">HTTP/HTTPS
+通知 JSON 格式 - Amazon Simple Notification Service</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2297333">cloud.tencent.com</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>Welcome to my other publishing channels</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag"># 技术</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/Golang/" rel="tag"># Golang</a>
+              <a href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag"># 运维</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/0x0038.html" rel="prev" title="记录一次博客图片迁移">
+                  <i class="fa fa-chevron-left"></i> 记录一次博客图片迁移
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jayden Chang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">994k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">15:04</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" integrity="sha256-4mJNT2bMXxcc1GCJaxBmMPdmah5ji0Ldnd79DKd1hoM=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha256-AjM0J5XIbiB590BrznLEgZGLnOQWrt62s3BEq65Q/I0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-9cmf7tcLdXpKsPi/2AWE93PbZpTp4M4tqzFk+lWomjU=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/code-unfold.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":"enable","tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"JaydenChang","repo":"jaydenchang.github.io","client_id":"4eefd4ac7c2004ef4002","client_secret":"83b3a65014e1cfa0565541412c12518873e5583f","admin_user":"JaydenChang","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"41582f17528e229532c8fcb31c7d4fe9"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+
+
+
+</body>
+</html>
